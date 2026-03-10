@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dlqgxr1kgg4"
-path="res://.godot/imported/bookshelf_sm.png-2cee3037788dfb0803b12a9eaa510bb4.ctex"
+uid="uid://crqdg11h06e1l"
+path="res://.godot/imported/door.png-400dd3ad73041489d787df847bdf7b4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/bookshelf_sm.png"
-dest_files=["res://.godot/imported/bookshelf_sm.png-2cee3037788dfb0803b12a9eaa510bb4.ctex"]
+source_file="res://assets/art/PNG/objects/door.png"
+dest_files=["res://.godot/imported/door.png-400dd3ad73041489d787df847bdf7b4e.ctex"]
 
 [params]
 

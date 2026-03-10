@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqkvgq2pn2tr"]
 
 [ext_resource type="Script" uid="uid://cynwfcgx3umb6" path="res://scripts/hallway.gd" id="1_448mm"]
-[ext_resource type="Texture2D" uid="uid://b6oh3u0mgcu5t" path="res://assets/art/Scene/woodfloor.png" id="2_43syb"]
+[ext_resource type="Texture2D" uid="uid://b6oh3u0mgcu5t" path="res://assets/art/Tiles/woodfloor.png" id="2_43syb"]
 [ext_resource type="PackedScene" uid="uid://c18phatv5dxe3" path="res://scenes/characters/player.tscn" id="3_vkmrw"]
 [ext_resource type="PackedScene" uid="uid://bibdng8g2ecni" path="res://scenes/objects/AreaExit.tscn" id="4_nutl7"]
 

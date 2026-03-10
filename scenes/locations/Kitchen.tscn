@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bc7tthgere54n" path="res://scripts/kitchen.gd" id="1_4few7"]
 [ext_resource type="Texture2D" uid="uid://bupy45pykg0q0" path="res://assets/art/Scene/diningroom-BG.png" id="3_32a3b"]
-[ext_resource type="Texture2D" uid="uid://b6oh3u0mgcu5t" path="res://assets/art/Scene/woodfloor.png" id="4_31040"]
+[ext_resource type="Texture2D" uid="uid://b6oh3u0mgcu5t" path="res://assets/art/Tiles/woodfloor.png" id="4_31040"]
 [ext_resource type="PackedScene" uid="uid://g6v2017ot3sj" path="res://scenes/characters/charles.tscn" id="5_nd8ns"]
 [ext_resource type="PackedScene" uid="uid://c18phatv5dxe3" path="res://scenes/characters/player.tscn" id="6_j7mgn"]
-[ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/Scene/island.png" id="6_k8dxl"]
+[ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/PNG/objects/island.png" id="6_k8dxl"]
 [ext_resource type="PackedScene" uid="uid://ctp6fk8umtmq5" path="res://scenes/characters/smoke.tscn" id="6_nd8ns"]
-[ext_resource type="Texture2D" uid="uid://prsx76dsmdj2" path="res://assets/art/Scene/droom-doorframe.png" id="7_31040"]
+[ext_resource type="Texture2D" uid="uid://prsx76dsmdj2" path="res://assets/art/PNG/objects/droom-doorframe.png" id="7_31040"]
 [ext_resource type="PackedScene" uid="uid://bibdng8g2ecni" path="res://scenes/objects/AreaExit.tscn" id="9_31040"]
 [ext_resource type="PackedScene" uid="uid://d4iiljtkqjhow" path="res://scenes/objects/Door.tscn" id="10_nd8ns"]
 

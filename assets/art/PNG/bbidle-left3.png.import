@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dlqgxr1kgg4"
-path="res://.godot/imported/bookshelf_sm.png-2cee3037788dfb0803b12a9eaa510bb4.ctex"
+uid="uid://cb1jfydioi0g0"
+path="res://.godot/imported/bbidle-left3.png-d2b66a711047649859bc846a887220b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/bookshelf_sm.png"
-dest_files=["res://.godot/imported/bookshelf_sm.png-2cee3037788dfb0803b12a9eaa510bb4.ctex"]
+source_file="res://assets/art/PNG/bbidle-left3.png"
+dest_files=["res://.godot/imported/bbidle-left3.png-d2b66a711047649859bc846a887220b2.ctex"]
 
 [params]
 
