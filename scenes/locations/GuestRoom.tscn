@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dcgbaq63kp2rt"]
+
+[ext_resource type="PackedScene" uid="uid://c18phatv5dxe3" path="res://scenes/characters/player.tscn" id="1_aswfj"]
+[ext_resource type="Script" uid="uid://288uai723f8i" path="res://scripts/guest-room.gd" id="1_erq10"]
+[ext_resource type="Texture2D" uid="uid://csr2tkqu007iu" path="res://assets/art/Scene/guestroom-BG-A.png" id="1_mbroc"]
+[ext_resource type="PackedScene" uid="uid://bibdng8g2ecni" path="res://scenes/objects/AreaExit.tscn" id="2_mbroc"]
+[ext_resource type="Texture2D" uid="uid://dqxqwb3osukv" path="res://assets/art/PNG/guestroom-opendoor.png" id="3_dp4tw"]
+[ext_resource type="Texture2D" uid="uid://vb343y6xga5p" path="res://assets/art/PNG/guestroom-closeddoor.png" id="4_y61s7"]
+[ext_resource type="Texture2D" uid="uid://c4djxlaavrrv0" path="res://assets/art/PNG/guestroom-deskcorner.png" id="5_erq10"]
+[ext_resource type="Texture2D" uid="uid://fipwolpnt0sv" path="res://assets/art/PNG/spanishbook-full.png" id="7_8e4sf"]
+[ext_resource type="Texture2D" uid="uid://dp0nxug5pywjx" path="res://assets/art/PNG/shelf-books.png" id="8_erq10"]
+[ext_resource type="Texture2D" uid="uid://b6d27112cfknn" path="res://assets/art/PNG/guestroom-keyboard.png" id="8_h587r"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="9_y61s7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg0lh"]
+size = Vector2(258.5, 1387.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqokd"]
+size = Vector2(232, 1534)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exr58"]
+size = Vector2(2633, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugmlh"]
+size = Vector2(409, 465.58826)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erq10"]
+size = Vector2(122.1487, 41)
+
+[node name="guest_room" type="Node2D" unique_id=687965879]
+texture_filter = 1
+script = ExtResource("1_erq10")
+
+[node name="camera_2d" type="Camera2D" parent="." unique_id=801062859]
+offset = Vector2(960, 545)
+metadata/_edit_lock_ = true
+
+[node name="scene_parts" type="Node2D" parent="." unique_id=521262168]
+texture_filter = 1
+position = Vector2(960, 545)
+
+[node name="background" type="Sprite2D" parent="scene_parts" unique_id=1259469306]
+texture_filter = 1
+position = Vector2(88, 49)
+scale = Vector2(1.359, 1.15)
+texture = ExtResource("1_mbroc")
+
+[node name="walls" type="StaticBody2D" parent="scene_parts" unique_id=787939735]
+texture_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="left_wall" type="CollisionShape2D" parent="scene_parts/walls" unique_id=1205567355]
+position = Vector2(-1029.25, 128.75)
+shape = SubResource("RectangleShape2D_mg0lh")
+
+[node name="right_wall" type="CollisionShape2D" parent="scene_parts/walls" unique_id=643263080]
+position = Vector2(1221, 165)
+shape = SubResource("RectangleShape2D_hqokd")
+
+[node name="floorpath" type="StaticBody2D" parent="scene_parts" unique_id=1721054440]
+texture_filter = 1
+
+[node name="floor" type="CollisionShape2D" parent="scene_parts/floorpath" unique_id=1450216151]
+position = Vector2(137.5, 520)
+shape = SubResource("RectangleShape2D_exr58")
+debug_color = Color(0.83009255, 0.0014573991, 0.9463418, 0.41960785)
+
+[node name="characters" type="Node2D" parent="scene_parts" unique_id=1666145331]
+z_index = 1
+texture_filter = 1
+position = Vector2(1.1920929e-07, 211)
+scale = Vector2(5, 5)
+
+[node name="player" parent="scene_parts/characters" unique_id=1847557259 instance=ExtResource("1_aswfj")]
+z_index = 3
+position = Vector2(124.2, 0)
+
+[node name="objects" type="Node2D" parent="scene_parts" unique_id=472990587]
+texture_filter = 1
+
+[node name="door" type="Node2D" parent="scene_parts/objects" unique_id=936277067]
+position = Vector2(-190, -24)
+scale = Vector2(1.359, 1.15)
+
+[node name="opendoor" type="Sprite2D" parent="scene_parts/objects/door" unique_id=791601693]
+position = Vector2(722.5901, -1.9073486e-06)
+texture = ExtResource("3_dp4tw")
+
+[node name="closeddoor" type="Sprite2D" parent="scene_parts/objects/door" unique_id=930254612]
+position = Vector2(715.2318, -9.565226)
+texture = ExtResource("4_y61s7")
+
+[node name="deskcorner" type="Sprite2D" parent="scene_parts/objects/door" unique_id=2043852931]
+z_index = 2
+position = Vector2(622.51654, 136.52174)
+texture = ExtResource("5_erq10")
+
+[node name="spanish_book" type="Sprite2D" parent="scene_parts/objects" unique_id=91365503]
+visible = false
+position = Vector2(-616, -152)
+scale = Vector2(3, 3)
+texture = ExtResource("7_8e4sf")
+
+[node name="bookshelf" type="Sprite2D" parent="scene_parts/objects" unique_id=1523246680]
+position = Vector2(-414.00006, -18)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("8_erq10")
+
+[node name="interaction_area" parent="scene_parts/objects/bookshelf" unique_id=55889324 instance=ExtResource("9_y61s7")]
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="scene_parts/objects/bookshelf/interaction_area" unique_id=1383965316]
+position = Vector2(0, 37.794067)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_ugmlh")
+debug_color = Color(0.49662036, 0.2240997, 0.08192956, 0.6509804)
+
+[node name="computer" type="Sprite2D" parent="scene_parts/objects" unique_id=1236906292]
+position = Vector2(210, 115)
+scale = Vector2(1.359, 1.15)
+texture = ExtResource("8_h587r")
+
+[node name="interaction_area" parent="scene_parts/objects/computer" unique_id=632641858 instance=ExtResource("9_y61s7")]
+position = Vector2(-44, -1)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="scene_parts/objects/computer/interaction_area" unique_id=587457805]
+position = Vector2(41.79248, 3.500122)
+shape = SubResource("RectangleShape2D_erq10")
+debug_color = Color(0.49662036, 0.2240997, 0.08192956, 0.6509804)
+
+[node name="exit_hallway" parent="." unique_id=1006710963 instance=ExtResource("2_mbroc")]
+position = Vector2(1607, 651)
+scale = Vector2(2, 1)
+dest_scene = "hallway"

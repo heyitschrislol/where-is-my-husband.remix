@@ -1,0 +1,10 @@
+if {DOOR_CLOSED} == true:
+	[signal arg="kitchen_start"]
+	[wait time="6.0"]
+	bailey (playful): Okay, Charles. You may play outside, but I expect you to behave yourself.
+	charles (alert): ¿me estas hablando?
+	set {DOOR_CLOSED} = false
+	[signal arg="kitchen_charles_leave"]
+
+bailey (winking): Oh hello Smoke
+smoke (default): me-..ahhck...-owrr

@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://cklhhshww5b77"]
+
+[ext_resource type="Texture2D" uid="uid://rx1ox6q7xeve" path="res://assets/art/Scene/lroom-BG2.png" id="1_fkd33"]
+[ext_resource type="Script" uid="uid://bhd87qjxtas4x" path="res://scripts/open_cutscene.gd" id="1_qi84d"]
+[ext_resource type="Texture2D" uid="uid://c27plkv7ba3wn" path="res://assets/art/PNG/objects/tv2.png" id="2_k8mhe"]
+[ext_resource type="Script" uid="uid://c37m6ba8aonhj" path="res://scripts/scene_parts.gd" id="2_r0l5s"]
+[ext_resource type="Texture2D" uid="uid://x6ec6w13lvsk" path="res://assets/art/Scene/doorcubby2.png" id="3_7hqvd"]
+[ext_resource type="Texture2D" uid="uid://c6874t0vb6sk3" path="res://assets/art/Scene/couch2.png" id="4_6uggt"]
+[ext_resource type="Animation" uid="uid://b6xed07mounum" path="res://animations/slow_walk.res" id="8_r0l5s"]
+
+[sub_resource type="GDScript" id="GDScript_d53q5"]
+script/source = "extends Camera2D
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_na1jq"]
+
+[sub_resource type="Animation" id="Animation_n5rwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_na1jq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, 573)]
+}
+
+[sub_resource type="Animation" id="Animation_r0l5s"]
+resource_name = "cutscene_sequence"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r0l5s"]
+_data = {
+&"RESET": SubResource("Animation_n5rwg"),
+&"cutscene_sequence": SubResource("Animation_r0l5s"),
+&"slow_walk": ExtResource("8_r0l5s")
+}
+
+[sub_resource type="GDScript" id="GDScript_fbi0h"]
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="open_cutscene" type="Node2D" unique_id=329143399]
+script = ExtResource("1_qi84d")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1631077614]
+position = Vector2(960, 545)
+script = SubResource("GDScript_d53q5")
+
+[node name="scene_parts" type="Node2D" parent="." unique_id=1368910708]
+process_mode = 1
+script = ExtResource("2_r0l5s")
+
+[node name="background" type="Sprite2D" parent="scene_parts" unique_id=827703277]
+texture_filter = 1
+position = Vector2(990.00006, 545.00006)
+scale = Vector2(1.3, 1.3)
+
+[node name="room" type="Sprite2D" parent="scene_parts/background" unique_id=1514715328]
+texture = ExtResource("1_fkd33")
+
+[node name="tv" type="Sprite2D" parent="scene_parts/background/room" unique_id=1069394874]
+texture_filter = 1
+position = Vector2(21, -75)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_k8mhe")
+
+[node name="cubby" type="Sprite2D" parent="scene_parts/background/room" unique_id=556231366]
+z_index = 4
+texture_filter = 1
+position = Vector2(-666.15393, 303.0769)
+scale = Vector2(0.71, 0.774)
+texture = ExtResource("3_7hqvd")
+
+[node name="couch" type="Sprite2D" parent="scene_parts/background/room" unique_id=779932206]
+texture_filter = 1
+position = Vector2(-178, 395.99994)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_6uggt")
+
+[node name="bailey" type="Sprite2D" parent="scene_parts" unique_id=138660326]
+texture_filter = 1
+position = Vector2(59, 573)
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_na1jq")
+centered = false
+
+[node name="cutsceneAnim" type="AnimationPlayer" parent="scene_parts" unique_id=1781874869]
+root_node = NodePath("../bailey")
+libraries/ = SubResource("AnimationLibrary_r0l5s")
+script = SubResource("GDScript_fbi0h")

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://skxb6emq5e5s"]
+
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_n0ttg"]
+[ext_resource type="PackedScene" uid="uid://by6waso0mjpjp" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn" id="2_7qy4l"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_s2cx7"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="3_7qy4l"]
+
+[sub_resource type="Resource" id="Resource_7qy4l"]
+script = ExtResource("1_n0ttg")
+overrides = {
+"canvas_layer": "100.0",
+"global_bg_color": "Color(0.0627451, 0.1882353, 0.011764706, 0.91764706)",
+"global_font": "\"res://assets/Fonts/Silkscreen-Regular.ttf\"",
+"global_font_size": "20.0"
+}
+
+[sub_resource type="Resource" id="Resource_ymcuo"]
+script = ExtResource("1_n0ttg")
+scene = ExtResource("2_7qy4l")
+overrides = {
+"box_modulate_custom_color": "Color(0.8203125, 0.8010864, 0.78186035, 1)",
+"box_size": "Vector2(800, 220)",
+"custom_bold_font": "\"res://assets/Fonts/Lora-Bold.ttf\"",
+"custom_bold_italic_font": "\"res://assets/Fonts/Lora-BoldItalic.ttf\"",
+"custom_italic_font": "\"res://assets/Fonts/Lora-Italic.ttf\"",
+"custom_normal_font": "\"res://assets/Fonts/Lora-Regular.ttf\"",
+"name_label_color_mode": "1",
+"name_label_custom_size": "20.0",
+"name_label_hide_when_no_character": "true",
+"use_global_fonts": "false"
+}
+
+[sub_resource type="Resource" id="Resource_nolqa"]
+script = ExtResource("1_n0ttg")
+scene = ExtResource("3_7qy4l")
+overrides = {
+"font_custom": "\"res://assets/Fonts/Silkscreen-Bold.ttf\"",
+"font_size_custom": "19.0",
+"font_use_global": "false",
+"maximum_choices": "5.0"
+}
+
+[resource]
+script = ExtResource("2_s2cx7")
+name = "mainstyle"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_7qy4l"),
+"10": SubResource("Resource_ymcuo"),
+"11": SubResource("Resource_nolqa")
+}
+metadata/_latest_layer = "11"

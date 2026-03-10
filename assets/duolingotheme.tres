@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dgsrpkulh6qpp"]
+
+[ext_resource type="FontFile" uid="uid://bsdyrvneohsnl" path="res://assets/Fonts/Duolingo Feather Bold.ttf" id="1_62d7q"]
+
+[resource]
+default_font = ExtResource("1_62d7q")
+default_font_size = 44

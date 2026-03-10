@@ -1,0 +1,203 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="WhereIsMyHusband.remix"
+run/main_scene="uid://bnxweo4w86il6"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+InteractionManager="*uid://bx8fmu533p70h"
+Gamedata="*uid://b3joqbgohcl3p"
+Dialogic="*uid://ds2q0uclmolvu"
+
+[debug]
+
+file_logging/enable_file_logging=true
+file_logging/max_log_files=10
+settings/gdscript/always_track_local_variables=true
+
+[dialogic]
+
+layout/style_directory={
+"mainstyle": "res://resources/dialogic/mainstyle.tres"
+}
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.135
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=false
+animations/leave_default_length=0.5
+animations/leave_default_wait=false
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"letter-scroll-sfx": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
+layout/style_list=["res://resources/dialogic/mainstyle.tres"]
+layout/default_style=""
+variables={
+"DOOR_CLOSED": true,
+"FIRST_CHARLES_INTERACTION": true,
+"FIRST_SPANISH_CONVO": true,
+"FOUND_SPANISH_BOOK": false,
+"LET_CHARLES_OUTSIDE": false,
+"PLAYED_DUOLINGO": false,
+"SMOKE_FED": false
+}
+glossary/default_case_sensitive=true
+text/autoadvance_enabled=true
+text/autoadvance_fixed_delay=1.5
+text/autocolor_names=true
+animations/join_default="Instant In"
+animations/leave_default="Instant Out"
+animations/cross_fade_default="Fade Cross"
+text/input_action="dialogic_default_action"
+history/simple_history_enabled=true
+history/visited_event_history_enabled=true
+history/save_on_autosave=true
+layout/end_behaviour=0
+history/full_history_enabled=true
+history/simple_history_save=false
+history/full_history_save=false
+history/save_on_save=true
+save/autosave=false
+directories/dch_directory={
+"bailey": "res://resources/dialogic/bailey.dch",
+"charles": "res://resources/dialogic/charles.dch",
+"husband": "res://resources/dialogic/husband.dch",
+"smoke": "res://resources/dialogic/smoke.dch"
+}
+directories/dtl_directory={
+"bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
+"dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
+"guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
+"guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",
+"kitchen_charles1": "res://resources/dialogic/kitchen_charles1.dtl",
+"kitchen_door": "res://resources/dialogic/kitchen_door.dtl",
+"startingscene": "res://resources/dialogic/startingscene.dtl",
+"startingscene2": "res://resources/dialogic/startingscene2.dtl"
+}
+choices/hotkey_behaviour=1
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=2
+window/size/initial_position_type=3
+
+[editor]
+
+version_control/plugin_name="Dialogic"
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+scene={
+&"nodes/root_type": "Node2D"
+}
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+player=""
+npc=""
+interactable-object=""
+
+[gui]
+
+theme/default_theme_scale=1.2
+
+[input]
+
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+walk_up={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+walk_down={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+walk_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194319,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+walk_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_render/layer_1="world"
+2d_render/layer_2="interactable"
+2d_physics/layer_1="walls"
+2d_physics/layer_2="player"
+2d_physics/layer_3="npcs"
+2d_physics/layer_4="objects"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"

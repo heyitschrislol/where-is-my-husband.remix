@@ -1,0 +1,484 @@
+[gd_scene format=3 uid="uid://cya2in2fetbut"]
+
+[ext_resource type="Script" uid="uid://ckxowovaq1xwd" path="res://scripts/kitchen_charles_cutscene.gd" id="1_ibtc4"]
+[ext_resource type="Texture2D" uid="uid://bupy45pykg0q0" path="res://assets/art/Scene/diningroom-BG.png" id="3_bcg0m"]
+[ext_resource type="Texture2D" uid="uid://dlgabvonukqw0" path="res://assets/art/PNG/objects/doorframe_scenic.png" id="3_wv7bt"]
+[ext_resource type="Texture2D" uid="uid://brbgk6lh74lj7" path="res://assets/art/Scene/droom-door.png" id="4_wv7bt"]
+[ext_resource type="Texture2D" uid="uid://x82fh1bvxwyl" path="res://assets/art/PNG/objects/droom-opendoor.png" id="5_eyrbp"]
+[ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/Scene/island.png" id="5_w4w37"]
+[ext_resource type="Texture2D" uid="uid://bqbchphdl514" path="res://assets/art/PNG/bb-idle1.png" id="8_mjm4x"]
+[ext_resource type="Texture2D" uid="uid://dc6tpjstjytej" path="res://assets/art/PNG/charliewalkA.png" id="9_rne83"]
+[ext_resource type="Texture2D" uid="uid://320vxslqgkrs" path="res://assets/art/PNG/bbwalk-right1.png" id="9_w4w37"]
+[ext_resource type="Texture2D" uid="uid://beoh1q88jotba" path="res://assets/art/PNG/bbwalk-right2.png" id="10_eyrbp"]
+[ext_resource type="Texture2D" uid="uid://qgml4b5mjybu" path="res://assets/art/PNG/bb-walk1.png" id="11_rne83"]
+[ext_resource type="Texture2D" uid="uid://2r3kc826s0id" path="res://assets/art/PNG/charliewalkB.png" id="13_oducp"]
+[ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="13_soqll"]
+[ext_resource type="Texture2D" uid="uid://clushordbdo7a" path="res://assets/art/PNG/smoke-idle1.png" id="13_w1ecs"]
+
+[sub_resource type="Animation" id="Animation_rne83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_wv7bt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eyrbp"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_eyrbp"), ExtResource("4_wv7bt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-101, 40), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4w37"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_wv7bt"), ExtResource("5_eyrbp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-101, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyrbp"]
+_data = {
+&"RESET": SubResource("Animation_rne83"),
+&"close": SubResource("Animation_eyrbp"),
+&"open": SubResource("Animation_w4w37")
+}
+
+[sub_resource type="Animation" id="Animation_tc4ty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bailey:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_mjm4x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bailey:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bailey:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 235.99998)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bailey:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.5, 3.5)]
+}
+
+[sub_resource type="Animation" id="Animation_6xbe3"]
+resource_name = "open-door"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bailey:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_mjm4x"), ExtResource("9_w4w37"), ExtResource("10_eyrbp"), ExtResource("9_w4w37"), ExtResource("10_eyrbp"), ExtResource("8_mjm4x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bailey:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(518, 513), Vector2(320, 474)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bailey:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.5, 3.5), Vector2(3.5, 3.5)]
+}
+
+[sub_resource type="Animation" id="Animation_wv7bt"]
+resource_name = "walk-to-door"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bailey:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_mjm4x"), ExtResource("9_w4w37"), ExtResource("10_eyrbp"), ExtResource("9_w4w37"), ExtResource("10_eyrbp"), ExtResource("9_w4w37"), ExtResource("10_eyrbp"), ExtResource("11_rne83"), ExtResource("8_mjm4x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bailey:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bailey:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1049.9999, 576), Vector2(517.9999, 513)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4w37"]
+_data = {
+&"RESET": SubResource("Animation_tc4ty"),
+&"open-door": SubResource("Animation_6xbe3"),
+&"walk-to-door": SubResource("Animation_wv7bt")
+}
+
+[sub_resource type="Animation" id="Animation_oducp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("charles:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_rne83")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("charles:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("charles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(833, 376)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("charles:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_soqll"]
+resource_name = "to-outside"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("charles:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8000001, 1.4000001, 1.8000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_soqll"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("13_soqll")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("charles:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.45, 1.45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("charles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(365, 594), Vector2(91, 427)]
+}
+
+[sub_resource type="Animation" id="Animation_w1ecs"]
+resource_name = "walk-to-door"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("charles:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8000001, 1.2, 1.6000001, 2, 2.4, 2.8000002, 3.2000003, 3.6000001, 4, 4.4, 4.8, 5.2000003, 5.6000004, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_oducp"), ExtResource("9_rne83"), ExtResource("13_soqll")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("charles:flip_h")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("charles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.0000002, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1577, 725), Vector2(953, 653), Vector2(365, 594)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_soqll"]
+_data = {
+&"RESET": SubResource("Animation_oducp"),
+&"to-outside": SubResource("Animation_soqll"),
+&"walk-to-door": SubResource("Animation_w1ecs")
+}
+
+[node name="KitchenCharlesCutscene" type="Node2D" unique_id=2053742607]
+script = ExtResource("1_ibtc4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=386890197]
+z_index = 10
+texture_filter = 1
+anchor_mode = 0
+
+[node name="sceneparts" type="Node2D" parent="." unique_id=314344086]
+position = Vector2(739, 312)
+
+[node name="doorframe" type="Sprite2D" parent="sceneparts" unique_id=1907501430]
+texture_filter = 1
+position = Vector2(-613, 40)
+texture = ExtResource("3_wv7bt")
+
+[node name="door" type="Sprite2D" parent="sceneparts/doorframe" unique_id=1481240813]
+visible = false
+z_index = 7
+texture_filter = 1
+skew = 0.017453292
+texture = ExtResource("4_wv7bt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sceneparts/doorframe/door" unique_id=103608782]
+libraries/ = SubResource("AnimationLibrary_eyrbp")
+
+[node name="island" type="Sprite2D" parent="sceneparts" unique_id=2097694917]
+z_index = 7
+texture_filter = 1
+position = Vector2(-631, 264)
+texture = ExtResource("5_w4w37")
+
+[node name="background" type="Sprite2D" parent="sceneparts" unique_id=1730141316]
+z_index = -2
+texture = ExtResource("3_bcg0m")
+
+[node name="bailey" type="Sprite2D" parent="." unique_id=795482220]
+texture_filter = 1
+position = Vector2(0, 235.99998)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("8_mjm4x")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bailey" unique_id=872849168]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w4w37")
+
+[node name="charles" type="Sprite2D" parent="." unique_id=1885241799]
+position = Vector2(833, 376)
+scale = Vector2(2, 2)
+texture = ExtResource("9_rne83")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="charles" unique_id=713887106]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_soqll")
+
+[node name="smoke" type="Sprite2D" parent="." unique_id=900363244]
+position = Vector2(112, 408)
+texture = ExtResource("13_w1ecs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="smoke" unique_id=1845266893]
+root_node = NodePath("../..")

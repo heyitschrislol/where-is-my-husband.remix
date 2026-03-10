@@ -1,0 +1,23 @@
+if {FIRST_CHARLES_INTERACTION} == true:
+	bailey (exhausted): Hello Charles, I trust you have behaved yourself while I was at work.
+	charles (default): ....
+	bailey (thinking): .... rude
+	set {FIRST_CHARLES_INTERACTION} = false
+elif {FIRST_CHARLES_INTERACTION} == false:
+	if {PLAYED_DUOLINGO} == false:
+		charles (default): ....
+	elif {PLAYED_DUOLINGO} == true:
+		if {FIRST_SPANISH_CONVO} == true:
+			bailey (exhausted): Está bien, señor gato. ¿Me entiende ahora?
+			charles (default): ..!
+			charles (alert): ¿Es eso ... "Gato español" que escucho?
+			bailey (default): ¡Gracias a Dios! ¿Me responderás ahora entonces?
+			charles (alert): Supuse... Pero tu habilidad para hablar "español de gato" requiere mucho trabajo, mamá.
+			bailey (exhausted): ¡Silencio tú! Charles, ¿dónde está tu padre?
+			charles (alert): No sé ¿Afuera, por favor?
+			bailey (exhausted): ...this has gotten me nowhere! Fine, I'll let you outside!
+		elif {FIRST_SPANISH_CONVO} == false:
+			if {LET_CHARLES_OUTSIDE} == false:
+				charles (alert): ¿afuera, por favor?
+			elif {LET_CHARLES_OUTSIDE} == true:
+				charles (alert): ¡Yo tengo hambre, Madre! ¡Solo soy piel y huesos!

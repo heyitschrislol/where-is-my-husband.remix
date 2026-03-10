@@ -1,0 +1,72 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(0.640625, 1, 0, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "defaultb",
+"sound_moods": {},
+"style": "mainstyle",
+"suffix": ""
+},
+&"default_portrait": "default",
+&"description": "",
+&"display_name": "Bailey",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"default": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-default-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "defaultb"
+},
+"exhausted": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-exhausted-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "defaultb"
+},
+"playful": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-playful-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "defaultb"
+},
+"thinking": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-thinking-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "defaultb"
+},
+"winking": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-winking-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "defaultb"
+}
+},
+&"scale": 1.0
+}

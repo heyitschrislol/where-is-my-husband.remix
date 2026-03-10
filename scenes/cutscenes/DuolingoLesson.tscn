@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://bgo5wr4giv3h3"]
+
+[ext_resource type="Script" uid="uid://5nifayaaqt4m" path="res://scripts/duolingo_lesson.gd" id="1_2lqbr"]
+[ext_resource type="FontFile" uid="uid://dwvwqqwx4ddq3" path="res://assets/Fonts/Odin Rounded - Bold.otf" id="2_6rodu"]
+[ext_resource type="Texture2D" uid="uid://cnu0anx8kg0kt" path="res://assets/art/Scene/duolingo/duo_speechbubble.png" id="3_a62pb"]
+[ext_resource type="FontFile" uid="uid://bsdyrvneohsnl" path="res://assets/Fonts/Duolingo Feather Bold.ttf" id="3_rpx7h"]
+[ext_resource type="Texture2D" uid="uid://cnx7o3qj1jcei" path="res://assets/art/Scene/duolingo/duocheckbtn1.png" id="4_rpx7h"]
+[ext_resource type="Texture2D" uid="uid://bmxmo1yl3f3ih" path="res://assets/art/Scene/duolingo/duo_guy1.png" id="6_hxve2"]
+[ext_resource type="AudioStream" uid="uid://b3mj68fga51ao" path="res://assets/sfx/duolingo-correct.mp3" id="7_0tjbf"]
+[ext_resource type="AudioStream" uid="uid://sym4505ajk4u" path="res://assets/sfx/duolingo-wrong.mp3" id="8_jbqh4"]
+[ext_resource type="AudioStream" uid="uid://ckqasvpv4ysx0" path="res://assets/sfx/duolingo-end-of-lesson.mp3" id="9_xngll"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpx7h"]
+font = ExtResource("2_6rodu")
+font_size = 43
+font_color = Color(0.43529412, 0.40392157, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a62pb"]
+font = ExtResource("2_6rodu")
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_hxve2"]
+default_font = ExtResource("3_rpx7h")
+default_font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxve2"]
+font = ExtResource("3_rpx7h")
+font_size = 48
+font_color = Color(0.34509805, 0.8, 0.007843138, 1)
+
+[node name="DuolingoLesson" type="CanvasLayer" unique_id=846371652]
+script = ExtResource("1_2lqbr")
+
+[node name="Control" type="Control" parent="." unique_id=347227819]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartLabel" type="Label" parent="Control" unique_id=1518041620]
+z_index = 2
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 64.0
+offset_right = 1211.0
+offset_bottom = 116.0
+text = "❤️"
+label_settings = SubResource("LabelSettings_rpx7h")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=285550326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1906232525]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 120.0
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="BubbleTexture" type="TextureRect" parent="Control" unique_id=144189011]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 176.0
+offset_right = 1064.0
+offset_bottom = 376.0
+texture = ExtResource("3_a62pb")
+
+[node name="QuestionLabel" type="Label" parent="Control/BubbleTexture" unique_id=2040124063]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 744.0
+offset_bottom = 192.0
+text = "question text"
+label_settings = SubResource("LabelSettings_a62pb")
+autowrap_mode = 3
+
+[node name="AnswerGrid" type="GridContainer" parent="Control" unique_id=1761908856]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 392.0
+offset_right = 1040.0
+offset_bottom = 544.0
+theme = SubResource("Theme_hxve2")
+theme_override_constants/h_separation = 85
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="FeedbackLabel" type="Label" parent="Control" unique_id=1627079935]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 568.0
+offset_right = 856.0
+offset_bottom = 632.0
+text = "feedback text"
+label_settings = SubResource("LabelSettings_hxve2")
+
+[node name="ContinueButton" type="Button" parent="Control" unique_id=634588895]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 624.0
+offset_right = 910.0
+offset_bottom = 712.0
+text = "CHECK"
+icon = ExtResource("4_rpx7h")
+flat = true
+clip_text = true
+icon_alignment = 1
+
+[node name="GuyTexture" type="TextureRect" parent="Control" unique_id=1369486840]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 216.0
+offset_right = 223.0
+offset_bottom = 477.0
+texture = ExtResource("6_hxve2")
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="Control" unique_id=1691914519]
+stream = ExtResource("7_0tjbf")
+volume_db = 10.0
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="Control" unique_id=1638892234]
+stream = ExtResource("8_jbqh4")
+volume_db = 10.0
+
+[node name="spanishlearnedSound" type="AudioStreamPlayer" parent="Control" unique_id=842990612]
+stream = ExtResource("9_xngll")
+volume_db = 10.0
+
+[connection signal="pressed" from="Control/ContinueButton" to="." method="_on_continue_button_pressed"]

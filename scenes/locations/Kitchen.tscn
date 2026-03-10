@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://bhvk2p3nfh0mi"]
+
+[ext_resource type="Script" uid="uid://bc7tthgere54n" path="res://scripts/kitchen.gd" id="1_4few7"]
+[ext_resource type="Texture2D" uid="uid://bupy45pykg0q0" path="res://assets/art/Scene/diningroom-BG.png" id="3_32a3b"]
+[ext_resource type="Texture2D" uid="uid://b6oh3u0mgcu5t" path="res://assets/art/Scene/woodfloor.png" id="4_31040"]
+[ext_resource type="PackedScene" uid="uid://g6v2017ot3sj" path="res://scenes/characters/charles.tscn" id="5_nd8ns"]
+[ext_resource type="PackedScene" uid="uid://c18phatv5dxe3" path="res://scenes/characters/player.tscn" id="6_j7mgn"]
+[ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/Scene/island.png" id="6_k8dxl"]
+[ext_resource type="PackedScene" uid="uid://ctp6fk8umtmq5" path="res://scenes/characters/smoke.tscn" id="6_nd8ns"]
+[ext_resource type="Texture2D" uid="uid://prsx76dsmdj2" path="res://assets/art/Scene/droom-doorframe.png" id="7_31040"]
+[ext_resource type="PackedScene" uid="uid://bibdng8g2ecni" path="res://scenes/objects/AreaExit.tscn" id="9_31040"]
+[ext_resource type="PackedScene" uid="uid://d4iiljtkqjhow" path="res://scenes/objects/Door.tscn" id="10_nd8ns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31040"]
+size = Vector2(67.12963, 1016.9568)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd8ns"]
+size = Vector2(67.77759, 1115.6525)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mi6m"]
+size = Vector2(2852, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8dxl"]
+size = Vector2(1282.7214, 75.91824)
+
+[sub_resource type="Animation" id="Animation_32a3b"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_4few7"]
+resource_name = "run_away"
+length = 3.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lnj44"]
+_data = {
+&"RESET": SubResource("Animation_32a3b"),
+&"run_away": SubResource("Animation_4few7")
+}
+
+[node name="Kitchen" type="Node2D" unique_id=1400655631]
+script = ExtResource("1_4few7")
+
+[node name="camera_2d" type="Camera2D" parent="." unique_id=456910251]
+position = Vector2(960, 545)
+metadata/_edit_lock_ = true
+
+[node name="scene_parts" type="Node2D" parent="." unique_id=1445988113]
+position = Vector2(960, 540)
+metadata/_edit_lock_ = true
+
+[node name="walls" type="StaticBody2D" parent="scene_parts" unique_id=1090833458]
+
+[node name="wallleft" type="CollisionShape2D" parent="scene_parts/walls" unique_id=784718747]
+z_index = 1
+position = Vector2(-914.00006, 44.25)
+scale = Vector2(1.35, 1.1499997)
+shape = SubResource("RectangleShape2D_31040")
+
+[node name="wallright" type="CollisionShape2D" parent="scene_parts/walls" unique_id=1153678767]
+z_index = 1
+position = Vector2(1115.25, 88.5)
+scale = Vector2(1.35, 1.1499997)
+shape = SubResource("RectangleShape2D_nd8ns")
+
+[node name="background" type="Sprite2D" parent="scene_parts" unique_id=960551220]
+texture_filter = 1
+position = Vector2(88, 49)
+scale = Vector2(1.359, 1.15)
+texture = ExtResource("3_32a3b")
+
+[node name="floorpath" type="StaticBody2D" parent="scene_parts" unique_id=249809669]
+position = Vector2(126, 386)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="scene_parts/floorpath" unique_id=780295537]
+z_index = 1
+position = Vector2(-34, 130)
+shape = SubResource("RectangleShape2D_0mi6m")
+
+[node name="collision_shape_2d2" type="CollisionShape2D" parent="scene_parts/floorpath" unique_id=405928913]
+z_index = 1
+position = Vector2(-578.57837, 75.56531)
+rotation = 0.13613568
+shape = SubResource("RectangleShape2D_k8dxl")
+
+[node name="sprite_2d" type="Sprite2D" parent="scene_parts/floorpath" unique_id=845718384]
+visible = false
+position = Vector2(-32.5, 130)
+scale = Vector2(2.2444968, 1.5)
+texture = ExtResource("4_31040")
+
+[node name="animation_player" type="AnimationPlayer" parent="scene_parts" unique_id=810726776]
+libraries/ = SubResource("AnimationLibrary_lnj44")
+
+[node name="characters" type="Node2D" parent="scene_parts" unique_id=1727931574]
+z_index = 1
+position = Vector2(-351, 271)
+
+[node name="player" parent="scene_parts/characters" unique_id=1847557259 instance=ExtResource("6_j7mgn")]
+z_index = 5
+position = Vector2(896, 36)
+scale = Vector2(4, 4)
+
+[node name="charles" parent="scene_parts/characters" unique_id=2050738804 instance=ExtResource("5_nd8ns")]
+z_index = 1
+position = Vector2(235, 115)
+scale = Vector2(3, 3)
+collision_mask = 7
+
+[node name="smoke" parent="scene_parts/characters" unique_id=1351300079 instance=ExtResource("6_nd8ns")]
+position = Vector2(-406.99994, -124.000015)
+scale = Vector2(1.7, 1.7)
+
+[node name="island" type="Sprite2D" parent="scene_parts" unique_id=1423787786]
+z_index = 15
+position = Vector2(-766.00006, 355)
+scale = Vector2(1.3, 1.15)
+texture = ExtResource("6_k8dxl")
+
+[node name="doorframe" type="Sprite2D" parent="scene_parts" unique_id=1533209943]
+position = Vector2(-748, 95.99994)
+scale = Vector2(1.35, 1.15)
+texture = ExtResource("7_31040")
+
+[node name="door" parent="scene_parts/doorframe" unique_id=1521985529 instance=ExtResource("10_nd8ns")]
+
+[node name="exit_hallway" parent="." unique_id=1006710963 instance=ExtResource("9_31040")]
+position = Vector2(373.00003, 902)
+rotation = 0.17976892
+scale = Vector2(2, 2.5)
+dest_scene = "hallway"

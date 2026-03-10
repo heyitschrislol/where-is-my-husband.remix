@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b86c4tjcapxau"]
+
+[ext_resource type="Texture2D" uid="uid://cmkh1jk3d6hp8" path="res://art/custom/Scene/woodfloor.png" id="1_0mi6m"]
+[ext_resource type="Script" uid="uid://bc7tthgere54n" path="res://scenes/kitchen.gd" id="1_yk5no"]
+[ext_resource type="PackedScene" uid="uid://c18phatv5dxe3" path="res://characters/player.tscn" id="3_e4uee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihhv2"]
+size = Vector2(1274, 68)
+
+[node name="kitchen" type="Node2D" unique_id=468925702]
+script = ExtResource("1_yk5no")
+
+[node name="background" type="Sprite2D" parent="." unique_id=716024491]
+
+[node name="island" type="Sprite2D" parent="." unique_id=16068060]
+
+[node name="door" type="Sprite2D" parent="." unique_id=1713035160]
+
+[node name="doorframe" type="Sprite2D" parent="." unique_id=144983808]
+
+[node name="floorPath" type="StaticBody2D" parent="." unique_id=44367196]
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="floorPath" unique_id=1439313105]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_ihhv2")
+
+[node name="woodtile" type="Sprite2D" parent="floorPath" unique_id=2027825866]
+texture = ExtResource("1_0mi6m")
+
+[node name="player" parent="." unique_id=1847557259 instance=ExtResource("3_e4uee")]
+position = Vector2(399, -75)
+speed = 300.0
+gravity = 1400.0

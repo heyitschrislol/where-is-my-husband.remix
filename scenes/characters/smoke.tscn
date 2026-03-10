@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://ctp6fk8umtmq5"]
+
+[ext_resource type="Script" uid="uid://dwujaclgvr0lh" path="res://scripts/smoke.gd" id="1_mkbkt"]
+[ext_resource type="Texture2D" uid="uid://clushordbdo7a" path="res://assets/art/PNG/smoke-idle1.png" id="2_lvkx1"]
+[ext_resource type="Texture2D" uid="uid://gtt7glc1utq6" path="res://assets/art/Spritesheet/charliewalk-sheet2.png" id="2_w73wl"]
+[ext_resource type="Texture2D" uid="uid://1fve14bjeq7a" path="res://assets/art/PNG/smoke-idle2.png" id="3_wssak"]
+[ext_resource type="Texture2D" uid="uid://civiqshyreqa5" path="res://assets/art/PNG/smoke-idle3.png" id="4_jbo1a"]
+[ext_resource type="Texture2D" uid="uid://cmr6ea12e80ep" path="res://assets/art/PNG/smoke-idle4.png" id="5_fakua"]
+[ext_resource type="Texture2D" uid="uid://cg4a7b1qf6nu0" path="res://assets/art/PNG/smoke-idle5.png" id="6_1g6lo"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_ejc4m"]
+[ext_resource type="Texture2D" uid="uid://dliakqslisvs1" path="res://assets/art/PNG/smoke-idle6.png" id="7_wv260"]
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vlt10"]
+resource_name = "charles_kitchen_event1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ejc4m"]
+_data = {
+&"RESET": SubResource("Animation_2hs0m"),
+&"charles_kitchen_event1": SubResource("Animation_vlt10")
+}
+
+[sub_resource type="GDScript" id="GDScript_oltu5"]
+script/source = "extends Node2D
+
+
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p1wj"]
+atlas = ExtResource("2_w73wl")
+region = Rect2(0, 0, 63, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlfmu"]
+atlas = ExtResource("2_w73wl")
+region = Rect2(63, 0, 63, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lypf5"]
+animations = [{
+"frames": [{
+"duration": 12.0,
+"texture": ExtResource("2_lvkx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wssak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jbo1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wssak")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 12.0,
+"texture": ExtResource("5_fakua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1g6lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wv260")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1g6lo")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p1wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlfmu")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvkx1"]
+radius = 57.142853
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wssak"]
+size = Vector2(56, 58.285713)
+
+[node name="smoke" type="CharacterBody2D" unique_id=2050738804 groups=["npc"]]
+texture_filter = 1
+scale = Vector2(0.7, 0.7)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_mkbkt")
+
+[node name="animations" type="Node2D" parent="." unique_id=519479578]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animations" unique_id=1280807264]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ejc4m")
+
+[node name="body" type="Node2D" parent="." unique_id=1274611056]
+script = SubResource("GDScript_oltu5")
+
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="body" unique_id=742757515]
+sprite_frames = SubResource("SpriteFrames_lypf5")
+animation = &"idle_right"
+frame_progress = 0.5051291
+
+[node name="interaction_area" parent="." unique_id=55889324 groups=["npc"] instance=ExtResource("6_ejc4m")]
+collision_layer = 4
+collision_mask = 11
+action_name = "talk"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1766191669 groups=["npc"]]
+position = Vector2(1.1920929e-07, -9.536743e-07)
+shape = SubResource("CircleShape2D_lvkx1")
+debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=1676307787 groups=["npc"]]
+position = Vector2(0, 5.1428566)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_wssak")

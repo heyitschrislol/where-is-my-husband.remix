@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://qsly621ahfr7"]
+
+[ext_resource type="Script" uid="uid://rpjmcqelw5xt" path="res://scripts/interactable.gd" id="1_1o2tx"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="2_sl0ci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kho8x"]
+
+[node name="Interactable" type="Sprite2D" unique_id=745050616]
+script = ExtResource("1_1o2tx")
+
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("2_sl0ci")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area" unique_id=588109631]
+shape = SubResource("RectangleShape2D_kho8x")
