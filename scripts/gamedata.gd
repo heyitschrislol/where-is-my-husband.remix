@@ -26,10 +26,13 @@ func _ready():
 	#var player = get_tree().get_first_node_in_group("player")
 	#current_location = [player.location.x,player.location.y]
 
-func goto_cutscene(cutscene: String):
-	# Saves the current scene, loads the new one on top.
-	# When the new scene emits `scene_finished`, swaps back.
 
+# Saves the current scene, loads the new one on top.
+# When the new scene emits `scene_finished`, swaps back.
+func goto_cutscene(cutscene: String):
+	# Clear Dialogic portraits before transitioning
+	if Dialogic.has_subsystem("Portraits"):
+		Dialogic.Portraits.clear_portraits()
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
