@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d4iiljtkqjhow" path="res://scenes/objects/Door.tscn" id="7_ptc3g"]
 [ext_resource type="Texture2D" uid="uid://8dlqgxr1kgg4" path="res://assets/art/PNG/objects/bookshelf_sm.png" id="9_65la3"]
 [ext_resource type="PackedScene" uid="uid://qsly621ahfr7" path="res://scenes/interaction/Interactable.tscn" id="9_7685u"]
+[ext_resource type="PackedScene" uid="uid://b5k8betmn662u" path="res://scenes/objects/specialdoor.tscn" id="9_de74l"]
 [ext_resource type="Texture2D" uid="uid://dtwseudjjfmjd" path="res://assets/art/PNG/objects/computerdesk_sm.png" id="11_7685u"]
 [ext_resource type="Texture2D" uid="uid://dua0eep4gs6wa" path="res://assets/art/PNG/objects/masterbed_sm.PNG" id="13_3ewhn"]
 [ext_resource type="Texture2D" uid="uid://7puacr1msk7r" path="res://assets/art/PNG/objects/couchgreen_sm.png" id="13_bhgw4"]
@@ -386,34 +387,41 @@ rotation = 3.1415927
 
 [node name="doors" type="Node2D" parent="objects" unique_id=1756970458]
 
-[node name="back" parent="objects/doors" unique_id=231373359 instance=ExtResource("7_ptc3g")]
-position = Vector2(-960, 495)
-scale = Vector2(1, 1.2)
-
 [node name="guestroom" parent="objects/doors" unique_id=974404425 instance=ExtResource("7_ptc3g")]
-position = Vector2(480, -41)
+texture_filter = 1
+position = Vector2(480.00006, -41.00006)
 rotation = -1.5707964
 scale = Vector2(1, 1.2)
 
+[node name="back" parent="objects/doors" unique_id=641251834 instance=ExtResource("9_de74l")]
+texture_filter = 1
+position = Vector2(-960, 490.0001)
+collision_mask = 6
+
 [node name="front" parent="objects/doors" unique_id=104687334 instance=ExtResource("7_ptc3g")]
+texture_filter = 1
 position = Vector2(-960, -481)
 scale = Vector2(1, 1.3)
 
 [node name="bathroom" parent="objects/doors" unique_id=200330778 instance=ExtResource("7_ptc3g")]
-position = Vector2(-112, 103)
+texture_filter = 1
+position = Vector2(-111.99994, 102.99994)
 rotation = -1.5707964
 scale = Vector2(1, 1.2)
 
 [node name="bedroom" parent="objects/doors" unique_id=958335291 instance=ExtResource("7_ptc3g")]
-position = Vector2(584, 31)
+texture_filter = 1
+position = Vector2(584.00006, 30.999939)
 scale = Vector2(1, 1.2)
 
 [node name="bedroom_closet" parent="objects/doors" unique_id=840223582 instance=ExtResource("7_ptc3g")]
-position = Vector2(584, 191)
+texture_filter = 1
+position = Vector2(584.00006, 190.99994)
 scale = Vector2(1, 1.2)
 
 [node name="bedroom_bathroom" parent="objects/doors" unique_id=1571382840 instance=ExtResource("7_ptc3g")]
-position = Vector2(585, 447)
+texture_filter = 1
+position = Vector2(585.00006, 446.99994)
 scale = Vector2(1, 1.2)
 
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]

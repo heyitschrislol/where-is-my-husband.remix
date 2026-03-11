@@ -20,11 +20,22 @@ extends Node2D
 
 
 func _ready():
+	#####	 DEBUG TEST STUFF REMOVE LATER	#####
+	Dialogic.VAR.set('FIRST_SPANISH_CONVO',false)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.set('FIRST_CHARLES_INTERACTION',false)
+	Gamedata.CAT_SPANISH_LEARNED = true
+	Gamedata.CHARLES_FIRST_INTERACTION = false
+	Gamedata.CHARLES_DIALOG_IN_SPANISH = true
+
+	#####								#####
 	if Gamedata.GAME_START:
 		Gamedata.GAME_START = false
 		Gamedata.goto_cutscene("open_cutscene")
 	obj_guestroom_bookshelf.dialog_name = "guestroom_bookshelf"
 	obj_guestroom_computer.dialog_name = "guestroom_computer"
+	door_back.dialog_name = "kitchen_door"
 	obj_guestroom_bookshelf.dialog_signal.connect(_on_dialog_request)
 	obj_guestroom_computer.dialog_signal.connect(_on_dialog_request)
 	charles.dialog_signal.connect(_on_dialog_request)

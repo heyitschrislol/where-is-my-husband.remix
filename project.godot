@@ -103,6 +103,7 @@ directories/dch_directory={
 "bailey": "res://resources/dialogic/bailey.dch",
 "charles": "res://resources/dialogic/charles.dch",
 "husband": "res://resources/dialogic/husband.dch",
+"narrator": "res://resources/dialogic/narrator.dch",
 "smoke": "res://resources/dialogic/smoke.dch"
 }
 directories/dtl_directory={

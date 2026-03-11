@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/PNG/objects/island.png" id="5_w4w37"]
 [ext_resource type="Texture2D" uid="uid://bqbchphdl514" path="res://assets/art/PNG/bb-idle1.png" id="8_mjm4x"]
 [ext_resource type="Texture2D" uid="uid://dc6tpjstjytej" path="res://assets/art/PNG/charliewalkA.png" id="9_rne83"]
-[ext_resource type="Texture2D" uid="uid://320vxslqgkrs" path="res://assets/art/PNG/bbwalk-right1.png" id="9_w4w37"]
-[ext_resource type="Texture2D" uid="uid://beoh1q88jotba" path="res://assets/art/PNG/bbwalk-right2.png" id="10_eyrbp"]
+[ext_resource type="Texture2D" uid="uid://chigt62ttv3ed" path="res://assets/art/PNG/bbwalk-right1.png" id="9_w4w37"]
+[ext_resource type="Texture2D" uid="uid://dopjbximu7f23" path="res://assets/art/PNG/bbwalk-right2.png" id="10_eyrbp"]
 [ext_resource type="Texture2D" uid="uid://qgml4b5mjybu" path="res://assets/art/PNG/bb-walk1.png" id="11_rne83"]
 [ext_resource type="Texture2D" uid="uid://2r3kc826s0id" path="res://assets/art/PNG/charliewalkB.png" id="13_oducp"]
 [ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="13_soqll"]
@@ -177,7 +177,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 235.99998)]
+"values": [Vector2(736, 539)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -317,7 +317,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(833, 376)]
+"values": [Vector2(1583, 707)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -436,7 +436,6 @@ position = Vector2(-613, 40)
 texture = ExtResource("3_wv7bt")
 
 [node name="door" type="Sprite2D" parent="sceneparts/doorframe" unique_id=1481240813]
-visible = false
 z_index = 7
 texture_filter = 1
 skew = 0.017453292
@@ -457,7 +456,7 @@ texture = ExtResource("3_bcg0m")
 
 [node name="bailey" type="Sprite2D" parent="." unique_id=795482220]
 texture_filter = 1
-position = Vector2(0, 235.99998)
+position = Vector2(736, 539)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_mjm4x")
 flip_h = true
@@ -467,7 +466,7 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_w4w37")
 
 [node name="charles" type="Sprite2D" parent="." unique_id=1885241799]
-position = Vector2(833, 376)
+position = Vector2(1583, 707)
 scale = Vector2(2, 2)
 texture = ExtResource("9_rne83")
 flip_h = true

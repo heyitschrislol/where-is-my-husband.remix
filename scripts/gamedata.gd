@@ -30,9 +30,6 @@ func _ready():
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.
 func goto_cutscene(cutscene: String):
-	# Clear Dialogic portraits before transitioning
-	if Dialogic.has_subsystem("Portraits"):
-		Dialogic.Portraits.clear_portraits()
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
@@ -102,6 +99,7 @@ func _on_dialogue_ended():
 var GAME_START = false
 ## KITCHEN
 ## -----------
+var LET_CHARLES_OUTSIDE = false
 var SMOKE_INSIDE = false
 var SMOKE_FED = false
 var CRUMPLED_NOTE_DROPPED = false

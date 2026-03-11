@@ -1,23 +1,27 @@
-if {FIRST_CHARLES_INTERACTION} == false:
+if {FIRST_CHARLES_INTERACTION} == true:
 	if {DOOR_CLOSED} == true:
 		the door is closed
+		bailey (default): I don't think Charles wants to go outside at the moment.
 	else:
 		the door is open
-	bailey (thinking): I should see if Charles wants to go outside
-elif {FIRST_CHARLES_INTERACTION} == true:
+		
+elif {FIRST_CHARLES_INTERACTION} == false:
 	if {PLAYED_DUOLINGO} == false:
 		if {DOOR_CLOSED} == true:
 			the door is closed
+			bailey (thinking): I should see if Charles wants to go outside
 		else:
 			the door is open
-		bailey (default): I don't think Charles wants to go outside at the moment.
+		
 	elif {PLAYED_DUOLINGO} == true:
 		if {DOOR_CLOSED} == true:
 			the door is closed
+			bailey (thinking): Should I open the door?
+			- Yes
+				do Gamedata.goto_cutscene("cutscene_kitchenA")
+				set {LET_CHARLES_OUTSIDE} = true
+				set Gamedata.LET_CHARLES_OUTSIDE = true
+			- No
+				bailey (thinking): Hmm... I know Charles wants to go out... but maybe not just yet
 		else:
 			the door is open
-		Would you like to open it?
-		- Yes
-			do Gamedata.goto_cutscene("cutscene_kitchenA")
-		- No
-			bailey (thinking): Hmm... I know Charles wants to go out... but maybe not just yet
