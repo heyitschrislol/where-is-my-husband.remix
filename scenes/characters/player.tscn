@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c18phatv5dxe3"]
 
-[ext_resource type="Script" uid="uid://bhwdtbvu78bkr" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bhwdtbvu78bkr" path="res://scripts/characters/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cb1jfydioi0g0" path="res://assets/art/PNG/bbidle-left3.png" id="2_k4v7y"]
 [ext_resource type="Texture2D" uid="uid://dnype038vho2c" path="res://assets/art/PNG/bbidle-down1.png" id="2_rpnd8"]
 [ext_resource type="Texture2D" uid="uid://cxw35lbx2q1ht" path="res://assets/art/PNG/bbidle-right1.png" id="3_2l4js"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5k8betmn662u"]
 
-[ext_resource type="Script" uid="uid://yqil0fmg5n51" path="res://scripts/specialdoor.gd" id="1_64do3"]
+[ext_resource type="Script" uid="uid://yqil0fmg5n51" path="res://scripts/objects/specialdoor.gd" id="1_64do3"]
 [ext_resource type="Texture2D" uid="uid://crqdg11h06e1l" path="res://assets/art/PNG/objects/door.png" id="2_f47uj"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="3_ib3nf"]
 

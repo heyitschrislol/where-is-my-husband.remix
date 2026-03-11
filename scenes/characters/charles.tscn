@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g6v2017ot3sj"]
 
-[ext_resource type="Script" uid="uid://cs4bxtdsonyj1" path="res://scripts/charles.gd" id="1_vlt10"]
+[ext_resource type="Script" uid="uid://cs4bxtdsonyj1" path="res://scripts/characters/charles.gd" id="1_vlt10"]
 [ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="2_kf162"]
 [ext_resource type="Texture2D" uid="uid://btpjxm7l0dsa1" path="res://assets/art/PNG/charles-idle2.png" id="3_r8kuy"]
 [ext_resource type="Texture2D" uid="uid://6xlfs3s77i8s" path="res://assets/art/PNG/charles-idle3.png" id="4_sxe5j"]
@@ -87,7 +87,7 @@ script = SubResource("GDScript_vlt10")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="body" unique_id=1733175321]
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"idle"
+animation = &"walking"
 
 [node name="interaction_area" parent="." unique_id=55889324 groups=["npc"] instance=ExtResource("6_vlt10")]
 collision_layer = 4
