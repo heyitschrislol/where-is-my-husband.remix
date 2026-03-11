@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bmw63xye3tw8q" path="res://assets/art/PNG/smokewalk-right2.png" id="11_js3p3"]
 [ext_resource type="Texture2D" uid="uid://b40d70036neq8" path="res://assets/art/PNG/smokewalk-up1.png" id="12_wthhu"]
 [ext_resource type="Texture2D" uid="uid://c4wglfv6l8py8" path="res://assets/art/PNG/smokewalk-up2.png" id="13_ci708"]
-[ext_resource type="Script" uid="uid://gjeyrp2jprye" path="res://scripts/npc_statemachine.gd" id="17_wthhu"]
+[ext_resource type="Script" uid="uid://gjeyrp2jprye" path="res://scripts/states/npc_statemachine.gd" id="17_wthhu"]
 [ext_resource type="Script" uid="uid://cv4ipatc3rcab" path="res://scripts/states/npcfollow.gd" id="18_ci708"]
 [ext_resource type="Script" uid="uid://c7xopbvujdjfi" path="res://scripts/states/npcidle.gd" id="19_af3dv"]
 
@@ -34,8 +34,6 @@ _data = {
 
 [sub_resource type="GDScript" id="GDScript_oltu5"]
 script/source = "extends Node2D
-
-
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lypf5"]
@@ -132,13 +130,13 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_mkbkt")
 
-[node name="animations" type="Node2D" parent="." unique_id=519479578]
+[node name="animations" type="Node" parent="." unique_id=329275106]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="animations" unique_id=1280807264]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ejc4m")
 
-[node name="body" type="Node2D" parent="." unique_id=1274611056]
+[node name="body" type="Node" parent="." unique_id=1729125299]
 script = SubResource("GDScript_oltu5")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="body" unique_id=742757515]
@@ -166,14 +164,12 @@ shape = SubResource("RectangleShape2D_wssak")
 script = ExtResource("17_wthhu")
 initial_state = NodePath("NPCIdle")
 
-[node name="NPCFollow" type="Node" parent="npc_statemachine" unique_id=30413562 node_paths=PackedStringArray("npc")]
+[node name="NPCFollow" type="Node" parent="npc_statemachine" unique_id=30413562]
 script = ExtResource("18_ci708")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://cv4ipatc3rcab"
 
-[node name="NPCIdle" type="Node" parent="npc_statemachine" unique_id=321457916 node_paths=PackedStringArray("npc")]
+[node name="NPCIdle" type="Node" parent="npc_statemachine" unique_id=321457916]
 script = ExtResource("19_af3dv")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://c7xopbvujdjfi"
 
 [node name="npc_animation" type="Node" parent="." unique_id=21078620]

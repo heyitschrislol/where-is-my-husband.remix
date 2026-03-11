@@ -1,24 +1,33 @@
 extends State
-class_name NPCIdle
+var idle_timer : Timer
 
-@export var npc: CharacterBody2D
-@export var move_speed := 10.0
 
-var move_direction : Vector2
-var wander_time : float
-
-func randomize_wander():
-	move_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
-	wander_time = randf_range(1,3)
-
+# Upon moving to this state, initialize the
+# timer with a random duration.
 func enter():
-	randomize_wander()
+	npc.velocity = Vector2.ZERO
 
-func update(_delta: float):
-	if wander_time > 0:
-		wander_time = _delta
-	else:
-		randomize_wander()
-func physics_update(_delta: float):
-	if npc:
-		npc.velocity = move_direction * move_speed
+	idle_timer = Timer.new()
+	idle_timer.wait_time = randi_range(3, 10)
+	idle_timer.timeout.connect(on_timeout)
+	idle_timer.autostart = true
+	add_child(idle_timer)
+
+
+func on_timeout():
+	transitioned.emit(self, "wander")
+
+
+func _physics_process(_delta: float) -> void:
+	try_chase()
+
+
+# When leaving this state (for any reason), stop timer,
+# disconnect signals, and free timer
+# Technically, just queue_free() would be required, but
+# I like showcasing all of the options
+func exit():
+	idle_timer.stop()
+	idle_timer.timeout.disconnect(on_timeout)
+	idle_timer.queue_free()
+	idle_timer = null

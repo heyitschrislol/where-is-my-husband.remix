@@ -1,15 +1,20 @@
 extends State
-class_name NPCFollow
 
-@export var npc: CharacterBody2D
-@export var move_speed := 40.0
-var player: CharacterBody2D
-
-func enter():
-	player.get_tree().get_first_node_in_group("player")
+@export var chase_speed := 75.0
 
 
-func physics_update(_delta: float):
-	#var direction = player.global_position - npc.global_position
-	#if direction.length
-	npc.velocity = Vector2()
+func physics_process_state(_delta: float):
+
+	var direction := player.global_position - npc.global_position
+
+	var distance = direction.length()
+	if distance > npc.chase_radius:
+		transitioned.emit(self, "idle")
+		return
+
+	npc.velocity = direction.normalized()*chase_speed
+
+	if distance <= npc.follow_radius:
+		npc.velocity = Vector2.ZERO
+
+	npc.move_and_slide()

@@ -1,5 +1,4 @@
-class_name NPC
-extends CharacterBody2D
+class_name NPC extends CharacterBody2D
 
 
 @onready var interaction_area: InteractionArea
@@ -12,6 +11,12 @@ extends CharacterBody2D
 @export var timeline_name : String
 @export var location: String
 @export var lines: Array[String] = []
+
+@export_group("Vision Ranges")
+@export var detection_radius := 100.0
+@export var chase_radius := 200.0
+# This guy doesn't actually attack, he just tries to get close to the player
+@export var follow_radius := 25.0
 
 signal dialog_signal(timeline_name: String,location: String,default_text: String)
 

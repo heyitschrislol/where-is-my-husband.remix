@@ -4,7 +4,7 @@ extends Node
 @onready var npc : NPC = get_owner()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !npc.alive:
 		return
 	if npc.stunned:
