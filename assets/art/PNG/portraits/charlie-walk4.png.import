@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2r3kc826s0id"
-path="res://.godot/imported/charliewalkB.png-9f5b72000e917c71a0b3a2984c7b6db2.ctex"
+uid="uid://cbirkhcka0pru"
+path="res://.godot/imported/charlie-walk4.png-e475a9b69b3006bc2f7fc8cf2ad0143b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/charliewalkB.png"
-dest_files=["res://.godot/imported/charliewalkB.png-9f5b72000e917c71a0b3a2984c7b6db2.ctex"]
+source_file="res://assets/art/PNG/portraits/charlie-walk4.png"
+dest_files=["res://.godot/imported/charlie-walk4.png-e475a9b69b3006bc2f7fc8cf2ad0143b.ctex"]
 
 [params]
 

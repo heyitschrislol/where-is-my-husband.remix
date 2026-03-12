@@ -16,10 +16,15 @@ func _on_interact():
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
-	if Gamedata.CHARLES_FOLLOW:
-		set_state(States.FOLLOWING)
-	else:
+	if get_distance_to_player() <= follow_radius:
 		set_state(States.IDLE)
+	else:
+		if Gamedata.SMOKE_FOLLOW:
+			set_state(States.FOLLOWING)
+		else:
+			set_state(States.IDLE)
+	update_anim()
+	move_and_slide()
 	update_anim()
 	move_and_slide()
 

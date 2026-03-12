@@ -4,16 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="2_kf162"]
 [ext_resource type="Texture2D" uid="uid://btpjxm7l0dsa1" path="res://assets/art/PNG/charles-idle2.png" id="3_r8kuy"]
 [ext_resource type="Texture2D" uid="uid://6xlfs3s77i8s" path="res://assets/art/PNG/charles-idle3.png" id="4_sxe5j"]
-[ext_resource type="Texture2D" uid="uid://gtt7glc1utq6" path="res://assets/art/Spritesheet/charliewalk-sheet2.png" id="5_scauq"]
+[ext_resource type="Texture2D" uid="uid://irmk5sgf1cnh" path="res://assets/art/PNG/charlie-walk1.png" id="5_567k5"]
+[ext_resource type="Texture2D" uid="uid://dseii8w60vyf5" path="res://assets/art/PNG/charlie-walk2.png" id="6_qw7ih"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_vlt10"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5p1wj"]
-atlas = ExtResource("5_scauq")
-region = Rect2(0, 0, 63, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlfmu"]
-atlas = ExtResource("5_scauq")
-region = Rect2(63, 0, 63, 53)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oltu5"]
 animations = [{
@@ -90,10 +83,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5p1wj")
+"texture": ExtResource("5_567k5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nlfmu")
+"texture": ExtResource("6_qw7ih")
 }],
 "loop": true,
 "name": &"walking",
@@ -113,10 +106,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf162"]
-radius = 32.01562
+radius = 28.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlt10"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_567k5"]
+radius = 26.019224
 
 [node name="charles" type="CharacterBody2D" unique_id=2050738804 node_paths=PackedStringArray("interaction_area", "animated_sprite") groups=["npc"]]
 texture_filter = 1
@@ -126,11 +119,14 @@ script = ExtResource("1_vlt10")
 interaction_area = NodePath("interaction_area")
 timeline_name = "bedroom_charles"
 lines = Array[String](["Meow", "....meow", "mrr... mrrr... mrr"])
+debugging = true
 animated_sprite = NodePath("animated_sprite_2d")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
+texture_filter = 1
+scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"walk_down"
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")
@@ -145,4 +141,4 @@ shape = SubResource("CircleShape2D_kf162")
 debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=376067245 groups=["npc"]]
-shape = SubResource("RectangleShape2D_vlt10")
+shape = SubResource("CircleShape2D_567k5")

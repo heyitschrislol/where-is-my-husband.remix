@@ -8,7 +8,7 @@ var player_previous_location = null
 var _is_dialog_active: bool = false
 var DIALOGLINE = null
 var CHARLES_FOLLOW = false
-var SMOKE_FOLLOW = false
+var SMOKE_FOLLOW = true
 #var _last_location: Array = [player.location.x,player.location.y]
 
 
@@ -30,6 +30,10 @@ func _ready():
 	#var player = get_tree().get_first_node_in_group("player")
 	#current_location = [player.location.x,player.location.y]
 
+func _process(delta: float):
+	if Gamedata.CHARLES_DIALOG_IN_SPANISH and !Gamedata.LET_CHARLES_OUTSIDE:
+		Gamedata.CHARLES_FOLLOW = true
+	else: Gamedata.CHARLES_FOLLOW = false
 
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.

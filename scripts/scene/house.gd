@@ -1,7 +1,7 @@
 extends Node2D
 
 # CHARACTERS
-@onready var charles = $characters/charles
+@onready var charles =$characters/charles
 @onready var player = $characters/player
 @onready var smoke = $characters/smoke
 
@@ -30,9 +30,6 @@ func _ready():
 	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 	#####								#####
 
-	if Gamedata.CHARLES_DIALOG_IN_SPANISH and !Gamedata.LET_CHARLES_OUTSIDE:
-		Gamedata.CHARLES_FOLLOW = true
-	else: Gamedata.CHARLES_FOLLOW = false
 
 	if Gamedata.GAME_START:
 		Gamedata.GAME_START = false

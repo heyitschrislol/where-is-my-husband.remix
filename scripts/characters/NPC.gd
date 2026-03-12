@@ -27,9 +27,10 @@ func _ready():
 
 
 func _on_interact():
+	pass
 	#print("Dialogic command: " + timeline_names[0])
 	#Gamedata._interaction_type = "speak"
-	start_dialog(timeline_name)
+	#start_dialog(timeline_name)
 
 func _physics_process(_delta):
 	if get_distance_to_player() <= detection_radius:
@@ -97,8 +98,8 @@ func update_anim():
 func get_distance_to_player() -> float:
 	return player.global_position.distance_to(global_position)
 
-func start_dialog(timeline):
-	dialog_signal.emit(timeline,location,lines.pick_random())
+#func start_dialog(timeline):
+	#dialog_signal.emit(timeline,location,lines.pick_random())
 
 
 ####################

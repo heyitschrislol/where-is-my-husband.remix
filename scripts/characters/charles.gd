@@ -10,18 +10,37 @@ signal dialog_signal(timeline_name: String,location: String)
 func _ready():
 	interaction_area.action_name = "speak"
 	interaction_area.interact = Callable(self, "_on_interact")
-	animated_sprite.play("idle_left")
+	animated_sprite.play("idle")
 
 func _on_interact():
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
-	if Gamedata.CHARLES_FOLLOW:
-		set_state(States.FOLLOWING)
-	else:
+	if get_distance_to_player() <= follow_radius:
 		set_state(States.IDLE)
+	else:
+		if Gamedata.CHARLES_FOLLOW:
+			set_state(States.FOLLOWING)
+		else:
+			set_state(States.IDLE)
 	update_anim()
 	move_and_slide()
+
+func update_anim():
+		if !velocity:
+			animated_sprite.play("idle")
+			match player.last_dir:
+				"up"	:		animated_sprite.flip_h = true
+				"down":	animated_sprite.flip_h = false
+				"left":	animated_sprite.flip_h = true
+				"right":	animated_sprite.flip_h = false
+
+		if abs(velocity.x) >= abs(velocity.y):
+			if velocity.x > 0:
+				animated_sprite.play("walking")
+			else:
+				animated_sprite.play("walking")
+				animated_sprite.flip_h = true
 
 func start_dialog(timeline):
 	Gamedata.DIALOGLINE = lines.pick_random()

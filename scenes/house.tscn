@@ -212,18 +212,17 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-776, -73)
+position = Vector2(-170, -205)
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 
-[node name="charles" parent="characters" unique_id=2050738804 node_paths=PackedStringArray("player") instance=ExtResource("2_se78b")]
-z_index = 4
-position = Vector2(-712, -289)
-player = NodePath("../player")
-
 [node name="smoke" parent="characters" unique_id=1193385349 node_paths=PackedStringArray("player") instance=ExtResource("3_3bgk5")]
 z_index = 4
-position = Vector2(1072.0001, -625)
+position = Vector2(198.99998, -449)
+player = NodePath("../player")
+
+[node name="charles" parent="characters" unique_id=2050738804 node_paths=PackedStringArray("player") instance=ExtResource("2_se78b")]
+position = Vector2(-440, -503)
 player = NodePath("../player")
 
 [node name="objects" type="Node2D" parent="." unique_id=2033404173]
