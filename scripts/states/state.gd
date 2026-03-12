@@ -8,12 +8,14 @@ class_name State extends Node
 
 signal transitioned(state: State, new_state_name: String)
 
-@onready var npc : NPC = get_owner()
+
+@onready var npc : NPC = get_tree().get_first_node_in_group("test")
 var player : Player
 
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	print_debug("npc: " + npc.to_string())
 	#npc.damaged.connect(on_damaged)
 
 
@@ -45,10 +47,10 @@ func exit():
 # methods that may be used by multiple states.
 ###############################################
 
-# Attempts to switch to chase state if it detects the player
-func try_chase() -> bool:
+# Attempts to switch to follow state if it detects the player
+func try_follow() -> bool:
 	if get_distance_to_player() <= npc.detection_radius:
-		transitioned.emit(self, "chase")
+		transitioned.emit(self, "follow")
 		return true
 
 	return false

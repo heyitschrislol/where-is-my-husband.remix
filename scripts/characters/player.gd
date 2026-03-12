@@ -4,7 +4,8 @@ class_name Player extends CharacterBody2D
 @export var speed: float = 200.0
 @export var inventory: Array[ContentItem] = []
 @export var last_dir: String = "down"
-@onready var player_sprite = $body/animated_sprite_2d
+@onready var player_sprite = $animated_sprite_2d
+@export var is_stopped: bool
 
 func _ready():
 	player_sprite.play("idle_down")
@@ -17,11 +18,14 @@ func _physics_process(_delta):
 		).normalized()
 
 		velocity = direction * speed
+		#print("player velocity: " + str(velocity))
+		#print("player direction: " + str(direction))
 		update_anim(direction)
 		move_and_slide()
 
 func update_anim(direction: Vector2):
 	if direction == Vector2.ZERO:
+		is_stopped = true
 		match last_dir:
 			"up":		player_sprite.play("idle_up")
 			"down":		player_sprite.play("idle_down")

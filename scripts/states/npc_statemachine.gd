@@ -29,6 +29,14 @@ func _physics_process(delta):
 
 
 func on_child_transition(state: State, new_state_name: String):
+	var debugs = [
+		"state: " + state.to_string(),
+		"new_state_name: " + new_state_name,
+		"current_state: " + current_state.to_string()
+	]
+	for x in debugs:
+		print(x)
+
 	if state != current_state:
 		return
 

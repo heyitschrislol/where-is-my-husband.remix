@@ -6,6 +6,9 @@ var previous_scene = null
 var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false
+var DIALOGLINE = null
+var CHARLES_FOLLOW = false
+var SMOKE_FOLLOW = false
 #var _last_location: Array = [player.location.x,player.location.y]
 
 
@@ -15,7 +18,8 @@ var scene_paths = {
 	"duolingo"				:	"res://scenes/cutscenes/DuolingoLesson.tscn",
 	"open_cutscene"			:	"res://scenes/cutscenes/open_cutscene.tscn",
 	"cutscene_kitchenA"		:	"res://scenes/cutscenes/KitchenCharles_cutscene.tscn",
-	"cutscene_kitchenB"		:	"res://scenes/cutscenes/KitchenSmokeFeeding_cutscene.tscn",
+	"cutscene_kitchenB"		:	"res://scenes/cutscenes/KitchenSmokeFeeding_cutscene.tscn"
+
 }
 
 

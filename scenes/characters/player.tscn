@@ -18,26 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://b1jjwmsernjig" path="res://assets/art/PNG/bbidle-back.png" id="11_kmyvj"]
 [ext_resource type="Texture2D" uid="uid://dopjbximu7f23" path="res://assets/art/PNG/bbwalk-right2.png" id="12_kmyvj"]
 
-[sub_resource type="Animation" id="Animation_2hs0m"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_1jxqw"]
-resource_name = "idle"
-length = 2.5
-loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_dw050"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
-_data = {
-&"RESET": SubResource("Animation_2hs0m"),
-&"idle": SubResource("Animation_1jxqw"),
-&"walk": SubResource("Animation_dw050")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vyk4"]
 atlas = ExtResource("3_kqtwu")
 region = Rect2(0, 0, 62, 80)
@@ -160,6 +140,26 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Animation" id="Animation_2hs0m"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_1jxqw"]
+resource_name = "idle"
+length = 2.5
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_dw050"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
+_data = {
+&"RESET": SubResource("Animation_2hs0m"),
+&"idle": SubResource("Animation_1jxqw"),
+&"walk": SubResource("Animation_dw050")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0jl3"]
 size = Vector2(48, 72)
 
@@ -169,17 +169,16 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_4flbx")
 
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1686775873]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8sqrr")
+animation = &"idle_down"
+
 [node name="animations" type="Node" parent="." unique_id=1511487854]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="animations" unique_id=651207039]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_dw050")
-
-[node name="body" type="Node" parent="." unique_id=1960626694]
-
-[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="body" unique_id=1686775873]
-sprite_frames = SubResource("SpriteFrames_8sqrr")
-animation = &"idle_down"
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=785791911]
 position = Vector2(0, -4)

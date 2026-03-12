@@ -21,15 +21,19 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	Dialogic.VAR.set('FIRST_SPANISH_CONVO',false)
+	Dialogic.VAR.set('FIRST_SPANISH_CONVO',true)
 	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
 	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
 	Dialogic.VAR.set('FIRST_CHARLES_INTERACTION',false)
 	Gamedata.CAT_SPANISH_LEARNED = true
 	Gamedata.CHARLES_FIRST_INTERACTION = false
-	Gamedata.CHARLES_DIALOG_IN_SPANISH = true
-
+	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 	#####								#####
+
+	if Gamedata.CHARLES_DIALOG_IN_SPANISH and !Gamedata.LET_CHARLES_OUTSIDE:
+		Gamedata.CHARLES_FOLLOW = true
+	else: Gamedata.CHARLES_FOLLOW = false
+
 	if Gamedata.GAME_START:
 		Gamedata.GAME_START = false
 		Gamedata.goto_cutscene("open_cutscene")
@@ -50,7 +54,7 @@ func _ready():
 
 
 
-func _on_dialog_request(timeline_name: String,location: String,default_text: String):
+func _on_dialog_request(timeline_name: String,location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	var dialog = Dialogic.start(timeline_name)
 	#player.add_child(dialog)

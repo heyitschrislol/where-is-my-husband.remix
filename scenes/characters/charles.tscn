@@ -7,24 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://gtt7glc1utq6" path="res://assets/art/Spritesheet/charliewalk-sheet2.png" id="5_scauq"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_vlt10"]
 
-[sub_resource type="Animation" id="Animation_2hs0m"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_vlt10"]
-resource_name = "charles_kitchen_event1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlfmu"]
-_data = {
-&"RESET": SubResource("Animation_2hs0m"),
-&"charles_kitchen_event1": SubResource("Animation_vlt10")
-}
-
-[sub_resource type="GDScript" id="GDScript_vlt10"]
-script/source = "extends Node2D
-
-
-"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p1wj"]
 atlas = ExtResource("5_scauq")
 region = Rect2(0, 0, 63, 53)
@@ -53,6 +35,60 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 12.0,
+"texture": ExtResource("2_kf162")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r8kuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sxe5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r8kuy")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 12.0,
+"texture": ExtResource("2_kf162")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r8kuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sxe5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r8kuy")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5p1wj")
 }, {
@@ -64,30 +100,40 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_2hs0m"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vlt10"]
+resource_name = "charles_kitchen_event1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlfmu"]
+_data = {
+&"RESET": SubResource("Animation_2hs0m"),
+&"charles_kitchen_event1": SubResource("Animation_vlt10")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf162"]
-radius = 40.112343
+radius = 32.01562
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlt10"]
 size = Vector2(48, 48)
 
-[node name="charles" type="CharacterBody2D" unique_id=2050738804 groups=["npc"]]
+[node name="charles" type="CharacterBody2D" unique_id=2050738804 node_paths=PackedStringArray("interaction_area", "animated_sprite") groups=["npc"]]
 texture_filter = 1
 collision_layer = 4
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("1_vlt10")
+interaction_area = NodePath("interaction_area")
+timeline_name = "bedroom_charles"
+lines = Array[String](["Meow", "....meow", "mrr... mrrr... mrr"])
+animated_sprite = NodePath("animated_sprite_2d")
 
-[node name="animations" type="Node2D" parent="." unique_id=550354942]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="animations" unique_id=327160509]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_nlfmu")
-
-[node name="body" type="Node2D" parent="." unique_id=624611806]
-script = SubResource("GDScript_vlt10")
-
-[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="body" unique_id=1733175321]
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"walking"
+animation = &"walk_down"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
+libraries/ = SubResource("AnimationLibrary_nlfmu")
 
 [node name="interaction_area" parent="." unique_id=55889324 groups=["npc"] instance=ExtResource("6_vlt10")]
 collision_layer = 4

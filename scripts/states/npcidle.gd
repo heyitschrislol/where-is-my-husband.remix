@@ -15,11 +15,11 @@ func enter():
 
 
 func on_timeout():
-	transitioned.emit(self, "wander")
+	transitioned.emit(self, "idle")
 
 
 func _physics_process(_delta: float) -> void:
-	try_chase()
+	try_follow()
 
 
 # When leaving this state (for any reason), stop timer,

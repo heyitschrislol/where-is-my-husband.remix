@@ -1,35 +1,19 @@
-class_name NPC extends CharacterBody2D
+class_name NPCMachine extends CharacterBody2D
+
 
 enum States { IDLE,FOLLOWING	}
 var state : States = States.IDLE
 
-@export var interaction_area: InteractionArea
-@export var animated_sprite : AnimatedSprite2D
-@export var timeline_name : String
-@export var location: String
-@export var lines: Array[String] = []
 @export var player : Player
-
-
+@export var animated_sprite : AnimatedSprite2D
 @export_group("Vision Ranges")
 @export var detection_radius := 250.0
 @export var follow_radius := 100.0
-# This guy doesn't actually attack, he just tries to get close to the player
-#@export var follow_radius := 200.0
-
-signal dialog_signal(timeline_name: String,location: String,default_text: String)
-
+@export var follow_speed := 175.0
 
 func _ready():
-	interaction_area.action_name = "speak"
-	interaction_area.interact = Callable(self, "_on_interact")
-	#animated_sprite.play("idle")
+	pass
 
-
-func _on_interact():
-	#print("Dialogic command: " + timeline_names[0])
-	#Gamedata._interaction_type = "speak"
-	start_dialog(timeline_name)
 
 func _physics_process(_delta):
 	if get_distance_to_player() <= detection_radius:
@@ -43,7 +27,6 @@ func _physics_process(_delta):
 
 func set_state(new_state: States) -> void:
 
-	var follow_speed := 145.0
 	var direction := player.global_position - global_position
 	var distance = direction.length()
 	var _previous_state := state
@@ -76,7 +59,6 @@ func follow_behavior(direction,follow_speed,distance):
 	if distance <= follow_radius:
 		velocity = Vector2.ZERO
 
-
 func update_anim():
 		if !velocity:
 			match player.last_dir:
@@ -96,11 +78,3 @@ func update_anim():
 				animated_sprite.play("walk_up")
 func get_distance_to_player() -> float:
 	return player.global_position.distance_to(global_position)
-
-func start_dialog(timeline):
-	dialog_signal.emit(timeline,location,lines.pick_random())
-
-
-####################
-#		FOLLOW STATE
-####################
