@@ -5,7 +5,7 @@
 &"color": Color(0.640625, 1, 0, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "defaultb",
+"sound_mood_default": "defaultbb",
 "sound_moods": {},
 "style": "mainstyle",
 "suffix": ""

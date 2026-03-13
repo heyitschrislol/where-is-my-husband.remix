@@ -46,20 +46,19 @@ func set_state(new_state: States):
 		debugtext(direction,distance)
 
 func update_anim():
-		if !velocity:
-			animated_sprite.play("idle")
+		if velocity == Vector2.ZERO:
 			match player.last_dir:
-				"up"	:		animated_sprite.flip_h = true
-				"down":	animated_sprite.flip_h = false
-				"left":	animated_sprite.flip_h = true
-				"right":	animated_sprite.flip_h = false
+				#"up"	:		animated_sprite.flip_h = true
+				#"down":	animated_sprite.flip_h = false
+				"left":	animated_sprite.play("idle_left")
+				"right":	animated_sprite.play("idle_right")
 
-		if abs(velocity.x) >= abs(velocity.y):
+		elif abs(velocity.x) >= abs(velocity.y):
 			if velocity.x > 0:
-				animated_sprite.play("walking")
-			else:
-				animated_sprite.play("walking")
-				animated_sprite.flip_h = true
+				animated_sprite.play("walk_right")
+			elif velocity.x < 0:
+				animated_sprite.play("walk_left")
+				#animated_sprite.flip_h = true
 
 func start_dialog(timeline):
 	Dialogic.VAR.set('INDEX',randf_range(1,3))

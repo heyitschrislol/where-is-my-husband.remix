@@ -57,14 +57,18 @@ func _on_dialogue_finished() -> void:
 
 func _on_dialogic_signal(argument:String):
 	if argument == "kitchen_start":
-		baileyplayer.play("walk-to-door")
-		charlesplayer.play("walk-to-door")
+		baileyplayer.play("cutscene-kitchen/bb-walk-to-door")
+		charlesplayer.play("cutscene-kitchen/charles-to-door")
 		await baileyplayer.animation_finished
 		await charlesplayer.animation_finished
-	elif argument == "kitchen_charles_leave":
-		baileyplayer.play("open-door")
+	elif argument == "kitchen_open_door":
+		baileyplayer.play("cutscene-kitchen/bb-open-door")
 		await baileyplayer.animation_finished
-		doorplayer.play("open")
+		doorplayer.play("door-open")
 		await doorplayer.animation_finished
-		charlesplayer.play("to-outside")
+	elif argument == "kitchen_charles_leave":
+		charlesplayer.play("cutscene-kitchen/charles-to-outside")
 		await charlesplayer.animation_finished
+	elif argument == "kitchen_smoke_arrive":
+		smokeplayer.play("cutscene-kitchen/smoke-to-inside")
+		await smokeplayer.animation_finished

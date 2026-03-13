@@ -33,10 +33,10 @@ layout/style_directory={
 "mainstyle": "res://resources/dialogic/mainstyle.tres"
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.135
-text/initial_text_reveal_skippable=true
+text/letter_speed=0.015
+text/initial_text_reveal_skippable=false
 text/text_reveal_skip_delay=0.1
-text/advance_delay=0.1
+text/advance_delay=0.3
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.5
@@ -95,7 +95,7 @@ variables={
 "SMOKE_FED": false
 }
 glossary/default_case_sensitive=true
-text/autoadvance_enabled=true
+text/autoadvance_enabled=false
 text/autoadvance_fixed_delay=1.5
 text/autocolor_names=true
 animations/join_default="Instant In"

@@ -4,7 +4,9 @@ if {DOOR_CLOSED} == true:
 	bailey (playful): Okay, Charles. You may play outside, but I expect you to behave yourself.
 	charles (alert): ¿me estas hablando?
 	set {DOOR_CLOSED} = false
+	[signal arg="kitchen_open_door"]
+	[wait time="4.0"]
 	[signal arg="kitchen_charles_leave"]
-
-bailey (winking): Oh hello Smoke
-smoke (default): me-..ahhck...-owrr
+	bailey (winking): Oh hello Smoke
+	smoke (default): me-..ahhck...-owrr
+	[signal arg="kitchen_smoke_arrive"]

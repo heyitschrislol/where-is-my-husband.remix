@@ -5,8 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://btpjxm7l0dsa1" path="res://assets/art/PNG/charles-idle2.png" id="3_r8kuy"]
 [ext_resource type="Texture2D" uid="uid://6xlfs3s77i8s" path="res://assets/art/PNG/charles-idle3.png" id="4_sxe5j"]
 [ext_resource type="Texture2D" uid="uid://irmk5sgf1cnh" path="res://assets/art/PNG/charlie-walk1.png" id="5_567k5"]
+[ext_resource type="Texture2D" uid="uid://c3t8dgto1mebu" path="res://assets/art/PNG/charles-idle4.png" id="5_uk4sv"]
+[ext_resource type="Texture2D" uid="uid://c6ik3vmu60pnd" path="res://assets/art/PNG/charles-idle5.png" id="6_ny5xi"]
 [ext_resource type="Texture2D" uid="uid://dseii8w60vyf5" path="res://assets/art/PNG/charlie-walk2.png" id="6_qw7ih"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_vlt10"]
+[ext_resource type="Texture2D" uid="uid://b073uuyd3wyt7" path="res://assets/art/PNG/charles-idle6.png" id="7_f31ki"]
+[ext_resource type="Texture2D" uid="uid://b4076rtmald3y" path="res://assets/art/PNG/charlie-walk3.png" id="10_f31ki"]
+[ext_resource type="Texture2D" uid="uid://dhshyaj2edvwi" path="res://assets/art/PNG/charlie-walk4.png" id="11_xva0k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oltu5"]
 animations = [{
@@ -46,16 +51,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 12.0,
-"texture": ExtResource("2_kf162")
+"texture": ExtResource("5_uk4sv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r8kuy")
+"texture": ExtResource("6_ny5xi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_sxe5j")
+"texture": ExtResource("7_f31ki")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r8kuy")
+"texture": ExtResource("6_ny5xi")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -66,12 +71,24 @@ animations = [{
 "name": &"walk_down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_567k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qw7ih")
+}],
 "loop": true,
 "name": &"walk_left",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_f31ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xva0k")
+}],
 "loop": true,
 "name": &"walk_right",
 "speed": 5.0
@@ -126,7 +143,7 @@ animated_sprite = NodePath("animated_sprite_2d")
 texture_filter = 1
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"idle"
+animation = &"walk_right"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")
