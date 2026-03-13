@@ -26,8 +26,8 @@ func _physics_process(_delta):
 			#set_state(States.FOLLOWING)
 		#else:
 			#set_state(States.IDLE)
-	update_anim()
-	move_and_slide()
+	#update_anim()
+	#move_and_slide()
 	#if get_distance_to_player() <= detection_radius:
 		#set_state(States.FOLLOWING)
 	#else:
@@ -47,18 +47,19 @@ func set_state(new_state: States) -> void:
 		velocity = Vector2.ZERO
 	if state == States.FOLLOWING:
 		velocity = direction.normalized()*follow_speed
-		if distance > follow_radius:
-			state = States.FOLLOWING
 		if distance <= follow_radius:
 			velocity = Vector2.ZERO
+		elif distance > follow_radius:
+			state = States.FOLLOWING
+
 	if debugging:
 		debugtext(direction,distance)
 
 
-func idle_behavior():
-	pass
-func follow_behavior(direction,follow_speed,distance):
-	pass
+#func idle_behavior():
+	#pass
+#func follow_behavior(direction,follow_speed,distance):
+	#pass
 
 func update_anim():
 		if !velocity:

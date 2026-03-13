@@ -6,9 +6,9 @@ var previous_scene = null
 var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false
-var DIALOGLINE = null
+#var DIALOGLINE = null
 var CHARLES_FOLLOW = false
-var SMOKE_FOLLOW = true
+var SMOKE_FOLLOW = false
 #var _last_location: Array = [player.location.x,player.location.y]
 
 
@@ -19,9 +19,9 @@ var scene_paths = {
 	"open_cutscene"			:	"res://scenes/cutscenes/open_cutscene.tscn",
 	"cutscene_kitchenA"		:	"res://scenes/cutscenes/KitchenCharles_cutscene.tscn",
 	"cutscene_kitchenB"		:	"res://scenes/cutscenes/KitchenSmokeFeeding_cutscene.tscn"
-
 }
-
+##---PRE-SCENE POSITIONS---##
+var position_store : Dictionary[String,Vector2] = {}
 
 func _ready():
 	var root = get_tree().root
@@ -30,7 +30,7 @@ func _ready():
 	#var player = get_tree().get_first_node_in_group("player")
 	#current_location = [player.location.x,player.location.y]
 
-func _process(delta: float):
+func _process(_delta: float):
 	if Gamedata.CHARLES_DIALOG_IN_SPANISH and !Gamedata.LET_CHARLES_OUTSIDE:
 		Gamedata.CHARLES_FOLLOW = true
 	else: Gamedata.CHARLES_FOLLOW = false
@@ -87,6 +87,11 @@ func _deferred_goto_scene(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
+
+	# Place characters at their previous locations
+	current_scene.find_child("player*").global_position = position_store["player"]
+	current_scene.find_child("charles*").global_position = position_store["charles"]
+	current_scene.find_child("smoke*").global_position = position_store["smoke"]
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene

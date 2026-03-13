@@ -106,10 +106,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf162"]
-radius = 28.0
+radius = 26.019224
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_567k5"]
-radius = 26.019224
+radius = 23.0
 
 [node name="charles" type="CharacterBody2D" unique_id=2050738804 node_paths=PackedStringArray("interaction_area", "animated_sprite") groups=["npc"]]
 texture_filter = 1

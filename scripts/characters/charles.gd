@@ -13,6 +13,7 @@ func _ready():
 	animated_sprite.play("idle")
 
 func _on_interact():
+	Gamedata.position_store["charles"] = global_position
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
@@ -25,6 +26,24 @@ func _physics_process(_delta):
 			set_state(States.IDLE)
 	update_anim()
 	move_and_slide()
+
+func set_state(new_state: States):
+	var direction := player.global_position - global_position
+	var distance = direction.length()
+	var _previous_state := state
+	state = new_state
+
+	if state == States.IDLE:
+		velocity = Vector2.ZERO
+	if state == States.FOLLOWING:
+		velocity = direction.normalized()*follow_speed
+		if distance <= follow_radius:
+			velocity = Vector2.ZERO
+		#elif distance > follow_radius:
+			#state = States.FOLLOWING
+
+	if debugging:
+		debugtext(direction,distance)
 
 func update_anim():
 		if !velocity:
@@ -43,5 +62,5 @@ func update_anim():
 				animated_sprite.flip_h = true
 
 func start_dialog(timeline):
-	Gamedata.DIALOGLINE = lines.pick_random()
+	Dialogic.VAR.set('INDEX',randf_range(1,3))
 	dialog_signal.emit(timeline,location)

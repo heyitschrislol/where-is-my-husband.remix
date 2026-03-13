@@ -26,3 +26,4 @@ elif {FIRST_CHARLES_INTERACTION} == false:
 				charles (alert): ¿afuera, por favor?
 			elif {LET_CHARLES_OUTSIDE} == true:
 				charles (alert): ¡Yo tengo hambre, Madre! ¡Solo soy piel y huesos!
+[end_timeline]

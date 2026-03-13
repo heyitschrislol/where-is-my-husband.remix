@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cj2oyhnhka5yt" path="res://assets/art/PNG/objects/droom-opendoor.png" id="5_eyrbp"]
 [ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/PNG/objects/island.png" id="5_w4w37"]
 [ext_resource type="Texture2D" uid="uid://bqbchphdl514" path="res://assets/art/PNG/bb-idle1.png" id="8_mjm4x"]
-[ext_resource type="Texture2D" uid="uid://dc6tpjstjytej" path="res://assets/art/PNG/charliewalkA.png" id="9_rne83"]
+[ext_resource type="Texture2D" uid="uid://irmk5sgf1cnh" path="res://assets/art/PNG/charlie-walk1.png" id="9_rne83"]
 [ext_resource type="Texture2D" uid="uid://chigt62ttv3ed" path="res://assets/art/PNG/bbwalk-right1.png" id="9_w4w37"]
 [ext_resource type="Texture2D" uid="uid://dopjbximu7f23" path="res://assets/art/PNG/bbwalk-right2.png" id="10_eyrbp"]
 [ext_resource type="Texture2D" uid="uid://qgml4b5mjybu" path="res://assets/art/PNG/bb-walk1.png" id="11_rne83"]
-[ext_resource type="Texture2D" uid="uid://2r3kc826s0id" path="res://assets/art/PNG/charliewalkB.png" id="13_oducp"]
+[ext_resource type="Texture2D" uid="uid://dseii8w60vyf5" path="res://assets/art/PNG/charlie-walk2.png" id="13_oducp"]
 [ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="13_soqll"]
 [ext_resource type="Texture2D" uid="uid://clushordbdo7a" path="res://assets/art/PNG/smoke-idle1.png" id="13_w1ecs"]
 

@@ -74,12 +74,24 @@ audio/channel_defaults={
 layout/style_list=["res://resources/dialogic/mainstyle.tres"]
 layout/default_style=""
 variables={
+"CHARLES": {
+"LINE1": "",
+"LINE2": "",
+"LINE3": ""
+},
 "DOOR_CLOSED": true,
 "FIRST_CHARLES_INTERACTION": true,
 "FIRST_SPANISH_CONVO": true,
 "FOUND_SPANISH_BOOK": false,
+"INDEX": 0,
 "LET_CHARLES_OUTSIDE": false,
 "PLAYED_DUOLINGO": false,
+"SMOKE": {
+"INDEX": "",
+"LINE1": "Me-..ack..-orrww",
+"LINE2": "Mroaa..aa..aa..oww",
+"LINE3": "ackk-..owww"
+},
 "SMOKE_FED": false
 }
 glossary/default_case_sensitive=true

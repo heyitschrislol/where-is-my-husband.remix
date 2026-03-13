@@ -40,4 +40,4 @@ func _special_interaction():
 	start_dialog(dialog_name)
 
 func start_dialog(timeline):
-	dialog_signal.emit(timeline,"","")
+	dialog_signal.emit(timeline,"")

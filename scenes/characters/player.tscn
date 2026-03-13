@@ -160,8 +160,9 @@ _data = {
 &"walk": SubResource("Animation_dw050")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0jl3"]
-size = Vector2(48, 60)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpnd8"]
+radius = 25.0
+height = 68.0
 
 [node name="player" type="CharacterBody2D" unique_id=1847557259 groups=["player"]]
 texture_filter = 1
@@ -181,6 +182,6 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_dw050")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=785791911]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_x0jl3")
+shape = SubResource("CapsuleShape2D_rpnd8")
+one_way_collision = true
 debug_color = Color(0.1150155, 0.64556694, 0.15491968, 0.41960785)

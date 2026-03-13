@@ -114,11 +114,10 @@ _data = {
 radius = 48.655388
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7b6q"]
-radius = 47.164516
+radius = 40.025517
 
 [node name="smoke" type="CharacterBody2D" unique_id=2050738804 node_paths=PackedStringArray("interaction_area", "animated_sprite") groups=["npc"]]
 texture_filter = 1
-scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_mkbkt")
@@ -129,7 +128,7 @@ animated_sprite = NodePath("animated_sprite_2d")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=742757515]
 position = Vector2(5.102042, 0)
-scale = Vector2(1.3265303, 1.4285712)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_lypf5")
 animation = &"idle_left"
 

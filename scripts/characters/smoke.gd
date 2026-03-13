@@ -16,6 +16,7 @@ func _on_interact():
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
+	Gamedata.position_store["smoke"] = global_position
 	if get_distance_to_player() <= follow_radius:
 		set_state(States.IDLE)
 	else:
@@ -30,5 +31,19 @@ func _physics_process(_delta):
 
 
 func start_dialog(timeline):
-	Gamedata.DIALOGLINE = lines.pick_random()
+	#Gamedata.DIALOGLINE = lines.pick_random()
+	Dialogic.VAR.set('INDEX',randf_range(1,3))
 	dialog_signal.emit(timeline,location)
+
+#func default_dialog():
+	#Gamedata.DIALOGLINE = lines.pick_random()
+	#var events : Array = []
+	#var text_event = DialogicTextEvent.new()
+	#text_event.text = Gamedata.DIALOGLINE
+	#text_event.character = load("res://resources/dialogic/smoke.dch")
+	#events.append(text_event)
+	#var timeline : DialogicTimeline = DialogicTimeline.new()
+	#timeline.events = events
+	## if your events are already resources, you need to add this:
+	##timeline.events_processed = true
+	#Dialogic.start(timeline)
