@@ -6,6 +6,6 @@ elif {FIRST_CHARLES_INTERACTION} == false:
 	bailey (default): Computer accessories... picture frames... books...\
 	My husband sure has decided to store a wide variety of objects on this...[pause=0.5] [i]"shelf"[/i]
 	bailey (thinking): What's this? A Spanish textbook... Hmm, my Husband likes to speak to Charles in Spanish, doesn't he? 
-	bailey (thinking): Maybe if I learn how to [b][color=orange]speak Charles language[/color][/b] then that little shitter will start cooperating.
+	bailey (thinking): Maybe if I learn how to [b][color=orange]speak Charles language[/color][/b] then that little turd will start cooperating.
 	bailey (playful): Personally I'd [i]much[/i] rather learn using my [color=green][b]Duolingo app[/b][/color]
 	set {FOUND_SPANISH_BOOK} = true

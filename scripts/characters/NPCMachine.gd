@@ -14,6 +14,7 @@ var state : States = States.IDLE
 @export var follow_speed := 175.0
 
 func _ready():
+
 	pass
 
 

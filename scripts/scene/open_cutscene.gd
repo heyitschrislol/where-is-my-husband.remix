@@ -7,12 +7,16 @@ signal scene_finished
 
 
 func _ready():
+
+
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	start_dialogue("startingscene")
+
 func _process(_delta):
 	pass
 
 func start_dialogue(timeline_name: String) -> void:
+	Gamedata.GAME_START = false
 	# Start the dialogue
 	Dialogic.start(timeline_name)
 

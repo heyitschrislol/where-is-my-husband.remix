@@ -9,6 +9,8 @@ var _is_dialog_active: bool = false
 #var DIALOGLINE = null
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
+var GAME_START = false
+#var GAME_START = false
 #var _last_location: Array = [player.location.x,player.location.y]
 
 
@@ -38,6 +40,12 @@ func _process(_delta: float):
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.
 func goto_cutscene(cutscene: String):
+	var pnode = get_node("/root/House/characters/player")
+	position_store["player"] = pnode.global_position
+	var cnode = get_node("/root/House/characters/charles")
+	position_store["charles"] = cnode.global_position
+	var snode = get_node("/root/House/characters/smoke")
+	position_store["smoke"] = snode.global_position
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
@@ -88,10 +96,16 @@ func _deferred_goto_scene(path):
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
 
+
 	# Place characters at their previous locations
-	current_scene.find_child("player*").global_position = position_store["player"]
-	current_scene.find_child("charles*").global_position = position_store["charles"]
-	current_scene.find_child("smoke*").global_position = position_store["smoke"]
+	var pnode = get_node("/root/House/characters/player")
+	pnode.global_position = position_store["player"]
+	var cnode = get_node("/root/House/characters/charles")
+	cnode.global_position = position_store["charles"]
+	var snode = get_node("/root/House/characters/smoke")
+	snode.global_position = position_store["smoke"]
+
+		#GAME_START = false
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
@@ -109,7 +123,7 @@ func _on_dialogue_ended():
 ##	---------------------------------------------
 
 
-var GAME_START = false
+
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false

@@ -17,31 +17,33 @@ extends Node2D
 # INTERACTABLE OBJECTS
 @onready var obj_guestroom_bookshelf = $objects/guestroom_objects/bookshelf
 @onready var obj_guestroom_computer = $objects/guestroom_objects/computer
+@onready var obj_livingroom_cellphone = $objects/livingroom_objects/coffeetable/cellphone
+@onready var obj_livingroom_whitecouch = $objects/livingroom_objects/whitecouch
+@onready var obj_livingroom_greencouch = $objects/livingroom_objects/greencouch
+@onready var obj_kitchen_fridge = $objects/kitchen_objects/fridge
+#@onready var obj_kitchen_pantry = $objects/guestroom_objects/computer
+#@onready var obj_kitchen_crumpled_note = $objects/guestroom_objects/computer
 
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	Dialogic.VAR.set('FIRST_SPANISH_CONVO',true)
-	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	Dialogic.VAR.set('FIRST_CHARLES_INTERACTION',false)
-	Gamedata.CAT_SPANISH_LEARNED = true
-	Gamedata.CHARLES_FIRST_INTERACTION = false
-	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
+	#Dialogic.VAR.set('FIRST_SPANISH_CONVO',true)
+	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.set('FIRST_CHARLES_INTERACTION',false)
+	#Gamedata.CAT_SPANISH_LEARNED = true
+	#Gamedata.CHARLES_FIRST_INTERACTION = false
+	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 	#####								#####
 
 
 	if Gamedata.GAME_START:
-		Gamedata.GAME_START = false
+		Gamedata.position_store["player"] = Vector2(-167.0,-77.0)
+		Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
+		Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
 		Gamedata.goto_cutscene("open_cutscene")
-
-	obj_guestroom_bookshelf.dialog_name = "guestroom_bookshelf"
-	obj_guestroom_computer.dialog_name = "guestroom_computer"
-	door_back.dialog_name = "kitchen_door"
-	obj_guestroom_bookshelf.dialog_signal.connect(_on_dialog_request)
-	obj_guestroom_computer.dialog_signal.connect(_on_dialog_request)
-	charles.dialog_signal.connect(_on_dialog_request)
-	smoke.dialog_signal.connect(_on_dialog_request)
+	#charles.dialog_signal.connect(_on_dialog_request)
+	#smoke.dialog_signal.connect(_on_dialog_request)
 	door_back.dialog_signal.connect(_on_dialog_request)
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)

@@ -6,7 +6,7 @@ signal dialog_signal(timeline_name: String,location: String,default_text: String
 @onready var sprite = $Sprite2D
 @onready var door_collision = $collision_shape_2d
 @onready var interaction_area: InteractionArea = $interaction_area
-@onready var dialog_name = ""
+@export var dialog_name = ""
 @onready var state = "closed"
 
 

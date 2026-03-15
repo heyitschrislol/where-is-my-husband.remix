@@ -16,7 +16,7 @@ shadow_color = Color(0, 0, 0, 0.79607844)
 script = ExtResource("1_p7j5n")
 
 [node name="label" type="Label" parent="." unique_id=1476736563]
-z_index = 7
+z_index = 30
 texture_filter = 1
 anchors_preset = 12
 anchor_top = 1.0
