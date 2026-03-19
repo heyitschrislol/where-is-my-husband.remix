@@ -1,4 +1,4 @@
-if {CHARLES.FIRST_INTERACTION}FIRST_CHARLES_INTERACTION} == true:
+if {CHARLES.FIRST_INTERACTION} == true:
 	bailey (exhausted): Hello Charles, I trust you have behaved yourself while I was at work.
 	charles (default): ....
 	bailey (thinking): .... rude

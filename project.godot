@@ -75,24 +75,17 @@ layout/style_list=["res://resources/dialogic/mainstyle.tres"]
 layout/default_style=""
 variables={
 "CHARLES": {
-"LINE1": "",
-"LINE2": "",
-"LINE3": ""
+"FIRST_INTERACTION": true,
+"FIRST_SPANISH_CONVO": true,
+"LET_OUTSIDE": false
 },
 "DOOR_CLOSED": true,
-"FIRST_CHARLES_INTERACTION": true,
-"FIRST_SPANISH_CONVO": true,
 "FOUND_SPANISH_BOOK": false,
-"INDEX": 0,
-"LET_CHARLES_OUTSIDE": false,
 "PLAYED_DUOLINGO": false,
 "SMOKE": {
-"INDEX": "",
-"LINE1": "Me-..ack..-orrww",
-"LINE2": "Mroaa..aa..aa..oww",
-"LINE3": "ackk-..owww"
-},
-"SMOKE_FED": false
+"FED": false,
+"LET_INSIDE": false
+}
 }
 glossary/default_case_sensitive=true
 text/autoadvance_enabled=false
@@ -132,6 +125,7 @@ directories/dtl_directory={
 "startingscene": "res://resources/dialogic/startingscene.dtl",
 "startingscene2": "res://resources/dialogic/startingscene2.dtl",
 "testline": "res://resources/dialogic/testline.dtl",
+"timeline-charles": "res://resources/dialogic/timeline-charles.dtl",
 "timeline-smoke": "res://resources/dialogic/timeline-smoke.dtl"
 }
 choices/hotkey_behaviour=1

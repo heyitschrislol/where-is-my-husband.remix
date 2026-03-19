@@ -39,29 +39,29 @@ var questions = [
 		"answers": ["come", "quiere", "gato", "casa"],
 		"correct": 1,
 		"image"	 : "res://assets/art/Scene/duolingo/duo_guy2.png"
-
-	},
-	{
-		"prompt": "Translate: 'El gato tiene hambre'",
-		"answers": ["The cat is outside", "The cat is sleeping", "The cat is hungry", "The cat wants in"],
-		"correct": 2,
-		"image"	 : "res://assets/art/Scene/duolingo/duo_guy3.png"
-
-	},
-	{
-		"prompt": "What does 'puerta' mean?",
-		"answers": ["Window", "Door", "Floor", "Wall"],
-		"correct": 1,
-		"image"	 : "res://assets/art/Scene/duolingo/duo_guy4.png"
-
-	},
-	{
-		"prompt": "Charles says 'Quiero salir.' What does he want?",
-		"answers": ["To eat", "To sleep", "To go outside", "To play"],
-		"correct": 2,
-		"image"	 : "res://assets/art/Scene/duolingo/duo_guy5.png"
-
 	}
+	#},
+	#{
+		#"prompt": "Translate: 'El gato tiene hambre'",
+		#"answers": ["The cat is outside", "The cat is sleeping", "The cat is hungry", "The cat wants in"],
+		#"correct": 2,
+		#"image"	 : "res://assets/art/Scene/duolingo/duo_guy3.png"
+#
+	#},
+	#{
+		#"prompt": "What does 'puerta' mean?",
+		#"answers": ["Window", "Door", "Floor", "Wall"],
+		#"correct": 1,
+		#"image"	 : "res://assets/art/Scene/duolingo/duo_guy4.png"
+#
+	#},
+	#{
+		#"prompt": "Charles says 'Quiero salir.' What does he want?",
+		#"answers": ["To eat", "To sleep", "To go outside", "To play"],
+		#"correct": 2,
+		#"image"	 : "res://assets/art/Scene/duolingo/duo_guy5.png"
+#
+	#}
 ]
 
 func _ready():

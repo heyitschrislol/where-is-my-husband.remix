@@ -1359,7 +1359,7 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(535, -93)
+position = Vector2(589, -157)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
@@ -1367,14 +1367,17 @@ zoom = Vector2(0.75, 0.75)
 
 [node name="charles" parent="characters" unique_id=2050738804 node_paths=PackedStringArray("player") instance=ExtResource("2_se78b")]
 z_index = 3
-position = Vector2(-900, -255)
+position = Vector2(290, -83)
 motion_mode = 1
+timeline_name = "timeline-charles"
+debugging = false
 player = NodePath("../player")
 
 [node name="smoke" parent="characters" unique_id=1193385349 node_paths=PackedStringArray("player") instance=ExtResource("3_3bgk5")]
 z_index = 4
-position = Vector2(1004, -672)
+position = Vector2(991, -625)
 motion_mode = 1
+timeline_name = "timeline-smoke"
 player = NodePath("../player")
 
 [node name="objects" type="Node2D" parent="." unique_id=2033404173]
@@ -1441,7 +1444,7 @@ scale = Vector2(0.11000001, 0.11000001)
 texture = ExtResource("4_3bgk5")
 
 [node name="computer" parent="objects/guestroom_objects" unique_id=745050616 instance=ExtResource("9_7685u")]
-z_index = 3
+z_index = 4
 texture_filter = 1
 position = Vector2(634, -54.00006)
 rotation = -3.1415925
@@ -1501,7 +1504,7 @@ shape = SubResource("RectangleShape2D_qrght")
 [node name="bed" type="StaticBody2D" parent="objects/bedroom_objects" unique_id=740585850]
 z_index = 4
 texture_filter = 1
-position = Vector2(767.0001, 379.99994)
+position = Vector2(759.0001, 412.99994)
 rotation = -1.5707964
 scale = Vector2(0.9, 0.9)
 

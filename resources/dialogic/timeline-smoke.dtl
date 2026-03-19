@@ -1,6 +1,7 @@
-if {INDEX} == 1:
-	smoke (default): {SMOKE.LINE1}
-elif {INDEX} == 2:
-	smoke (default): {SMOKE.LINE2}
-elif {INDEX} == 3:
-	smoke (default): {SMOKE.LINE3}
+if {SMOKE.LET_INSIDE} == true:
+	if {SMOKE.FED} == true:
+		smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+	else:
+		smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+else:
+	smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>

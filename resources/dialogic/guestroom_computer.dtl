@@ -1,13 +1,13 @@
-if {FOUND_SPANISH_BOOK} == true:
-	if {SMOKE_FED} == false:
-		bailey (playful): Look it's my phone.
-		bailey (thinking): Should I play Duolingo?
-		- Yes
-			[signal arg="play_duolingo"]
-		- No
-			bailey (default): maybe later
+#if {FOUND_SPANISH_BOOK} == true:
+#	if {SMOKE.FED} == false:
+#		bailey (playful): Look it's my phone.
+#		bailey (thinking): Should I play Duolingo?
+#		- Yes
+#			[signal arg="play_duolingo"]
+#		- No
+#			bailey (default): maybe later
 	
-	elif {SMOKE_FED} == true:
+	if {SMOKE.FED} == true:
 		Turn on the computer?
 		- Maybe I can find a clue somewhere on this machine
 			bailey (thinking): ...some of the text scribbled on that crumpled note I found sure looked \

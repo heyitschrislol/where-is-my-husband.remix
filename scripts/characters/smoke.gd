@@ -26,10 +26,10 @@ func _on_timeline_ended():
 	# do something else here
 
 func _on_interact():
+	#Gamedata.position_store["charles"] = global_position
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
-	#Gamedata.position_store["smoke"] = global_position
 	if get_distance_to_player() <= follow_radius:
 		set_state(States.IDLE)
 	else:
@@ -39,24 +39,39 @@ func _physics_process(_delta):
 			set_state(States.IDLE)
 	update_anim()
 	move_and_slide()
-	update_anim()
-	move_and_slide()
 
+func set_state(new_state: States):
+	var direction := player.global_position - global_position
+	var distance = direction.length()
+	var _previous_state := state
+	state = new_state
+
+	if state == States.IDLE:
+		velocity = Vector2.ZERO
+	if state == States.FOLLOWING:
+		velocity = direction.normalized()*follow_speed
+		if distance <= follow_radius:
+			velocity = Vector2.ZERO
+		#elif distance > follow_radius:
+			#state = States.FOLLOWING
+
+	if debugging:
+		debugtext(direction,distance)
+
+func update_anim():
+		if velocity == Vector2.ZERO:
+			match player.last_dir:
+				#"up"	:		animated_sprite.flip_h = true
+				#"down":	animated_sprite.flip_h = false
+				"left":	animated_sprite.play("idle_left")
+				"right":	animated_sprite.play("idle_right")
+
+		elif abs(velocity.x) >= abs(velocity.y):
+			if velocity.x > 0:
+				animated_sprite.play("walk_right")
+			elif velocity.x < 0:
+				animated_sprite.play("walk_left")
+				#animated_sprite.flip_h = true
 
 func start_dialog(timeline):
-	#Gamedata.DIALOGLINE = lines.pick_random()
-	Dialogic.VAR.set('INDEX',randf_range(1,3))
 	dialog_signal.emit(timeline,location)
-
-#func default_dialog():
-	#Gamedata.DIALOGLINE = lines.pick_random()
-	#var events : Array = []
-	#var text_event = DialogicTextEvent.new()
-	#text_event.text = Gamedata.DIALOGLINE
-	#text_event.character = load("res://resources/dialogic/smoke.dch")
-	#events.append(text_event)
-	#var timeline : DialogicTimeline = DialogicTimeline.new()
-	#timeline.events = events
-	## if your events are already resources, you need to add this:
-	##timeline.events_processed = true
-	#Dialogic.start(timeline)

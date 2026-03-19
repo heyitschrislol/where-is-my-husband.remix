@@ -57,10 +57,6 @@ func _on_dialogue_finished() -> void:
 
 func _on_dialogic_signal(argument:String):
 	if argument == "kitchen_start":
-		Gamedata.position_store["smoke"] = Vector2(544,-448)
-		Gamedata.position_store["charles"] = Vector2(1045,-647)
-		Gamedata.CHARLES_FOLLOW = false
-		Gamedata.SMOKE_FOLLOW = true
 		baileyplayer.play("cutscene-kitchen/bb-walk-to-door")
 		charlesplayer.play("cutscene-kitchen/charles-to-door")
 		await baileyplayer.animation_finished

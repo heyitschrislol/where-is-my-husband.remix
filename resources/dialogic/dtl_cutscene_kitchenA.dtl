@@ -8,5 +8,5 @@ if {DOOR_CLOSED} == true:
 	[wait time="4.0"]
 	[signal arg="kitchen_charles_leave"]
 	bailey (winking): Oh hello Smoke
-	smoke (default): me-..ahhck...-owrr
 	[signal arg="kitchen_smoke_arrive"]
+	smoke (default): me-..ahhck...-owrr

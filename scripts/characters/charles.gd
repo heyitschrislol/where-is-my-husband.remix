@@ -74,5 +74,4 @@ func update_anim():
 				#animated_sprite.flip_h = true
 
 func start_dialog(timeline):
-	Dialogic.VAR.set('INDEX',randf_range(1,3))
 	dialog_signal.emit(timeline,location)

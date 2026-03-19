@@ -6,12 +6,26 @@ var previous_scene = null
 var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false
-#var DIALOGLINE = null
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
 var GAME_START = false
-#var GAME_START = false
-#var _last_location: Array = [player.location.x,player.location.y]
+## KITCHEN
+## -----------
+var LET_CHARLES_OUTSIDE = false
+var SMOKE_INSIDE = false
+var SMOKE_FED = false
+var CRUMPLED_NOTE_DROPPED = false
+var CRUMPLED_NOTE_READ = false
+## GUESTROOM
+## -----------
+var PMAIL_HACKED = false
+var FOUND_SPANISH_BOOK = false
+var CAT_SPANISH_LEARNED = false
+## BEDROOM
+## -----------
+var CHARLES_FIRST_INTERACTION = true
+var CHARLES_DIALOG_IN_SPANISH = false
+
 
 
 ##---SCENE LIST---##
@@ -33,19 +47,21 @@ func _ready():
 	#current_location = [player.location.x,player.location.y]
 
 func _process(_delta: float):
-	if Gamedata.CHARLES_DIALOG_IN_SPANISH and !Gamedata.LET_CHARLES_OUTSIDE:
-		Gamedata.CHARLES_FOLLOW = true
-	else: Gamedata.CHARLES_FOLLOW = false
+	if CHARLES_DIALOG_IN_SPANISH and !LET_CHARLES_OUTSIDE:
+		CHARLES_FOLLOW = true
+		SMOKE_FOLLOW = false
+	else:
+		CHARLES_FOLLOW = false
+
 
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.
-func goto_cutscene(cutscene: String):
-	var pnode = get_node("/root/House/characters/player")
-	position_store["player"] = pnode.global_position
-	var cnode = get_node("/root/House/characters/charles")
-	position_store["charles"] = cnode.global_position
-	var snode = get_node("/root/House/characters/smoke")
-	position_store["smoke"] = snode.global_position
+func goto_cutscene(cutscene: String, custompos: bool):
+	if !custompos:
+		var pnode = get_node("/root/House/characters/player")
+		var cnode = get_node("/root/House/characters/charles")
+		var snode = get_node("/root/House/characters/smoke")
+		store_character_positions(pnode.global_position,cnode.global_position,snode.global_position)
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
@@ -97,18 +113,13 @@ func _deferred_goto_scene(path):
 	get_tree().root.add_child(current_scene)
 
 
-	# Place characters at their previous locations
-	var pnode = get_node("/root/House/characters/player")
-	pnode.global_position = position_store["player"]
-	var cnode = get_node("/root/House/characters/charles")
-	cnode.global_position = position_store["charles"]
-	var snode = get_node("/root/House/characters/smoke")
-	snode.global_position = position_store["smoke"]
-
-		#GAME_START = false
-
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
+
+	# Place characters at their previous locations
+	#set_character_positions()
+	#get_tree.call_deferred("load_stored_positions")
+	load_stored_positions()
 
 
 func _on_dialogue_started():
@@ -117,25 +128,45 @@ func _on_dialogue_started():
 func _on_dialogue_ended():
 	_is_dialog_active = false
 
+func _get_player():
+	return get_tree().get_first_node_in_group("player")
+func _get_cats():
+	return get_tree().get_nodes_in_group("npcs")
+
+
 
 ##	---------------------------------------------
 ##	--- PROGRESSION TRACKING
 ##	---------------------------------------------
 
-
-
-## KITCHEN
-## -----------
-var LET_CHARLES_OUTSIDE = false
-var SMOKE_INSIDE = false
-var SMOKE_FED = false
-var CRUMPLED_NOTE_DROPPED = false
-var CRUMPLED_NOTE_READ = false
-## GUESTROOM
-## -----------
-var PMAIL_HACKED = false
-var CAT_SPANISH_LEARNED = false
-## BEDROOM
-## -----------
-var CHARLES_FIRST_INTERACTION = true
-var CHARLES_DIALOG_IN_SPANISH = false
+func store_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
+	position_store["player"] = ppos
+	position_store["charles"] = cpos
+	position_store["smoke"] = spos
+func load_stored_positions():
+	#set_global_
+	var pnode = get_node("/root/House/characters/player")
+	pnode.set_position(position_store["player"])
+	var cnode = get_node("/root/House/characters/charles")
+	cnode.set_position(position_store["charles"])
+	var snode = get_node("/root/House/characters/smoke")
+	snode.set_position(position_store["smoke"])
+func set_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
+	var pnode = get_node("/root/House/characters/player")
+	pnode.global_position = ppos
+	var cnode = get_node("/root/House/characters/charles")
+	cnode.global_position = cpos
+	var snode = get_node("/root/House/characters/smoke")
+	snode.global_position = spos
+	#if p:
+		#position_store["player"] = p
+	#else:
+		#position_store["player"] = pnode.global_position
+	#if c:
+		#position_store["charles"] = c
+	#else:
+		#position_store["charles"] = cnode.global_position
+	#if s:
+		#position_store["smoke"] = s
+	#else:
+		#position_store["smoke"] = snode.global_position
