@@ -2383,6 +2383,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/2 = SubResource("TileSetAtlasSource_4jkga")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4eap"]
+size = Vector2(319.99994, 180.24982)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2gpw"]
 size = Vector2(120.000015, 184)
 
@@ -2408,8 +2411,11 @@ size = Vector2(96, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2srw"]
 size = Vector2(63.99997, 106.66674)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80gfe"]
+size = Vector2(167, 101)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrgyv"]
-size = Vector2(190, 108)
+size = Vector2(201, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kuml"]
 size = Vector2(274, 139)
@@ -2502,6 +2508,7 @@ scale = Vector2(1, 1.1)
 texture_filter = 1
 position = Vector2(-830, 402.00006)
 collision_mask = 6
+SPECIAL_DOOR = true
 dialog_name = "kitchen_door"
 
 [node name="front" parent="objects/doors" unique_id=104687334 instance=ExtResource("7_ptc3g")]
@@ -2541,6 +2548,9 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("9_65la3")
 dialog_name = "guestroom_bookshelf"
 
+[node name="CollisionShape2D" parent="objects/guestroom_objects/bookshelf/interaction_area" parent_id_path=PackedInt32Array(1948526707, 55889324) index="0" unique_id=588109631]
+position = Vector2(6.1035156e-05, -3.3862305)
+
 [node name="books" type="Sprite2D" parent="objects/guestroom_objects/bookshelf" unique_id=963329952]
 texture_filter = 1
 position = Vector2(15.555664, -57.777973)
@@ -2555,6 +2565,10 @@ rotation = -3.1415925
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_7685u")
 dialog_name = "guestroom_computer"
+
+[node name="CollisionShape2D" parent="objects/guestroom_objects/computer/interaction_area" parent_id_path=PackedInt32Array(745050616, 55889324) index="0" unique_id=588109631]
+position = Vector2(-16.666626, -20.125122)
+shape = SubResource("RectangleShape2D_p4eap")
 
 [node name="kitchen_objects" type="Node2D" parent="objects" unique_id=919411625]
 
@@ -2602,6 +2616,13 @@ debug_color = Color(0.7490196, 0.45882353, 0, 0.6901961)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/kitchen_objects/fridge/StaticBody2D" unique_id=1423332333]
 position = Vector2(37.5, -18)
 shape = SubResource("RectangleShape2D_qrght")
+
+[node name="pantry" parent="objects/kitchen_objects" unique_id=1847724227 instance=ExtResource("9_7685u")]
+position = Vector2(-796, 148.00008)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("22_3kuml")
+dialog_name = "kitchen_pantry"
 
 [node name="bedroom_objects" type="Node2D" parent="objects" unique_id=1573146749]
 
@@ -2699,13 +2720,14 @@ texture = ExtResource("13_bhgw4")
 dialog_name = "livingroom_greencouch"
 
 [node name="CollisionShape2D" parent="objects/livingroom_objects/greencouch/interaction_area" parent_id_path=PackedInt32Array(947305527, 55889324) index="0" unique_id=588109631]
-position = Vector2(1.5, -2)
+position = Vector2(-23.5, -1.5)
+shape = SubResource("RectangleShape2D_80gfe")
 debug_color = Color(0.7176471, 0.48235294, 0.03529412, 0.6392157)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="objects/livingroom_objects/greencouch" unique_id=1629490470]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/livingroom_objects/greencouch/StaticBody2D" unique_id=713798854]
-position = Vector2(-21, -1)
+position = Vector2(-5.5, -1)
 shape = SubResource("RectangleShape2D_nrgyv")
 
 [node name="whitecouch" parent="objects/livingroom_objects" unique_id=1524489993 instance=ExtResource("9_7685u")]
@@ -2753,7 +2775,9 @@ shape = SubResource("RectangleShape2D_de74l")
 debug_color = Color(0.6901961, 0.49803922, 0, 0.7019608)
 
 [editable path="objects/guestroom_objects/bookshelf"]
+[editable path="objects/guestroom_objects/computer"]
 [editable path="objects/kitchen_objects/fridge"]
+[editable path="objects/kitchen_objects/pantry"]
 [editable path="objects/livingroom_objects/greencouch"]
 [editable path="objects/livingroom_objects/whitecouch"]
 [editable path="objects/livingroom_objects/whitecouch/interaction_area"]

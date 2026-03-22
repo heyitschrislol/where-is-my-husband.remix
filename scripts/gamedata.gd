@@ -16,6 +16,7 @@ var SMOKE_INSIDE = false
 var SMOKE_FED = false
 var CRUMPLED_NOTE_DROPPED = false
 var CRUMPLED_NOTE_READ = false
+var HOLDING_CAT_FOOD = false
 ## GUESTROOM
 ## -----------
 var PMAIL_HACKED = false
@@ -65,7 +66,7 @@ func goto_cutscene(cutscene: String, custompos: bool):
 		var pnode = get_node("/root/House/characters/player")
 		var cnode = get_node("/root/House/characters/charles")
 		var snode = get_node("/root/House/characters/smoke")
-		store_character_positions(pnode.global_position,cnode.global_position,snode.global_position)
+		store_character_positions(pnode.position,cnode.position,snode.position)
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
@@ -157,11 +158,11 @@ func load_stored_positions():
 	snode.set_position(position_store["smoke"])
 func set_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
 	var pnode = get_node("/root/House/characters/player")
-	pnode.global_position = ppos
+	pnode.set_position(ppos)
 	var cnode = get_node("/root/House/characters/charles")
-	cnode.global_position = cpos
+	cnode.set_position(cpos)
 	var snode = get_node("/root/House/characters/smoke")
-	snode.global_position = spos
+	snode.set_position(spos)
 	#if p:
 		#position_store["player"] = p
 	#else:

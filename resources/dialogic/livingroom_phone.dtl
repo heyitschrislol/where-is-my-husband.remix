@@ -5,6 +5,8 @@ if {FOUND_SPANISH_BOOK} == true:
 		[signal arg="play_duolingo"]
 	- No
 		bailey (default): maybe later
+	[end_timeline]
 else:
 	bailey (playful): Look it's my phone.
 	bailey (thinking): I should look more around the house before playing on my phone.
+	[end_timeline]

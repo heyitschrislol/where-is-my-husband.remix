@@ -1,6 +1,13 @@
 extends Node2D
 
-# CHARACTERS
+#################################
+#	TODO
+#	-	add fade to scene transitions
+#	-	add display for when achieving special tasks
+#	-	a
+#
+#################################
+
 @onready var charles =$characters/charles
 @onready var player = $characters/player
 @onready var smoke = $characters/smoke
@@ -41,7 +48,7 @@ func _ready():
 
 
 	if Gamedata.GAME_START:
-		Gamedata.store_character_positions(Vector2(-167.0,-77.0),Vector2(-869.0,-289.0),Vector2(1105.0,-705.0))
+		Gamedata.store_character_positions(Vector2(452.0,444.0),Vector2(-869.0,-289.0),Vector2(1105.0,-705.0))
 		#Gamedata.position_store["player"] = Vector2(-167.0,-77.0)
 		#Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
 		#Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
@@ -51,7 +58,7 @@ func _ready():
 		Gamedata.load_stored_positions()
 		Gamedata.CHARLES_FOLLOW = false
 		Gamedata.SMOKE_FOLLOW = true
-		door_back.SPECIAL_DOOR = false
+
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -77,13 +84,18 @@ func _on_dialogic_signal(argument:String):
 		Gamedata.goto_cutscene("duolingo", false)
 	elif argument == "start_cutsceneA":
 		print("setting special positions")
-		Gamedata.store_character_positions(Vector2(589,-157),Vector2(1085,-637),Vector2(582,-16))
+		#Gamedata.store_character_positions(Vector2(589,-157),Vector2(1085,-637),Vector2(582,-16))
 		#Gamedata.position_store["player"] = Vector2(735,-162)
 		#Gamedata.position_store["smoke"] = Vector2(544,-448)
 		#Gamedata.position_store["charles"] = Vector2(1045,-647)
 		Gamedata.LET_CHARLES_OUTSIDE = true
 		Gamedata.SMOKE_INSIDE = true
 		Gamedata.goto_cutscene("cutscene_kitchenA", true)
+	elif argument == "back_door":
+		door_back.SPECIAL_DOOR = false
+	elif argument == "holding_cat_food":
+		Gamedata.HOLDING_CAT_FOOD = true
+
 
 
 func _on_timeline_ended():

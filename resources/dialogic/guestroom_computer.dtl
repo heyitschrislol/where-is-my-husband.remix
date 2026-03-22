@@ -1,21 +1,14 @@
-#if {FOUND_SPANISH_BOOK} == true:
-#	if {SMOKE.FED} == false:
-#		bailey (playful): Look it's my phone.
-#		bailey (thinking): Should I play Duolingo?
-#		- Yes
-#			[signal arg="play_duolingo"]
-#		- No
-#			bailey (default): maybe later
-	
-	if {SMOKE.FED} == true:
-		Turn on the computer?
-		- Maybe I can find a clue somewhere on this machine
-			bailey (thinking): ...some of the text scribbled on that crumpled note I found sure looked \
-			like that of a [b][color=blue]web page URL[/color][/b]
-			bailey (thinking): I guess I should open Firefox on my [b][color=gold]husbands computer[/color][/b] and try typing it into the address bar...
-		- Not right now
-			bailey (default): I'll come back later...
+if {SMOKE.FED} == true:
+	Turn on the computer?
+	- Maybe I can find a clue somewhere on this machine
+		bailey (thinking): ...some of the text scribbled on that crumpled note I found sure looked \
+		like that of a [b][color=blue]web page URL[/color][/b]
+		bailey (thinking): I guess I should open Firefox on my [b][color=gold]husbands computer[/color][/b] and try typing it into the address bar...
+	- Not right now
+		bailey (default): I'll come back later...
+		[end_timeline]
 
 else:
 	bailey (default): My husband [b]loves[/b] playing on his [b][color=gold]computer[/color][/b].
 	bailey (exhausted): Aw man... I thought for sure I'd find him here!
+	[end_timeline]

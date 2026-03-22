@@ -4,10 +4,11 @@ if {CHARLES.FIRST_INTERACTION} == true:
 	bailey (thinking): .... rude
 	set {CHARLES.FIRST_INTERACTION} = false
 	set Gamedata.CHARLES_FIRST_INTERACTION = false
-
+	[end_timeline]
 elif {CHARLES.FIRST_INTERACTION} == false:
 	if {PLAYED_DUOLINGO} == false:
 		charles (default): <..../...mrow/......./.../.....>
+		[end_timeline]
 	elif {PLAYED_DUOLINGO} == true:
 		set Gamedata.CAT_SPANISH_LEARNED = true
 		if {CHARLES.FIRST_SPANISH_CONVO} == true:
@@ -21,9 +22,11 @@ elif {CHARLES.FIRST_INTERACTION} == false:
 			bailey (exhausted): ...this has gotten me nowhere! Fine, I'll let you outside!
 			set {CHARLES.FIRST_SPANISH_CONVO} = false
 			set Gamedata.CHARLES_DIALOG_IN_SPANISH = true
+			[end_timeline]
 		elif {CHARLES.FIRST_SPANISH_CONVO} == false:
 			if {CHARLES.LET_OUTSIDE} == false:
 				charles (alert): ¿afuera, por favor?
+				[end_timeline]
 			elif {CHARLES.LET_OUTSIDE} == true:
 				charles (alert): <¡Yo tengo hambre, Madre! ¡Solo soy piel y huesos!/¿Debo esperar en el lavabo del baño?/Acabo de comprar una cama nueva y grande.>
-[end_timeline]
+				[end_timeline]

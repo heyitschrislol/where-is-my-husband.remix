@@ -1,0 +1,16 @@
+if {SMOKE.FED} == false:
+	if {SMOKE.LET_INSIDE} == false:
+		bailey (thinking): I better be careful opening this thing or Charles will think he's getting extra food...
+		[end_timeline]
+	else:
+		if {HOLDING_CAT_FOOD} == true:
+			bailey (thinking): Now where can I put this food for Smoke?
+			[end_timeline]
+		elif {HOLDING_CAT_FOOD} == false:
+			bailey (winking): I bet you're hungry, huh Smoke?
+			smoke: aaackk---eoww--ack!
+			bailey (exhausted): You and me both buddy.
+			bailey (playful):  Let me get a cup of food out for you...
+			set {HOLDING_CAT_FOOD} = true
+			[signal arg="holding_cat_food"]
+			[end_timeline]

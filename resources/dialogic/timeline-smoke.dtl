@@ -1,7 +1,15 @@
 if {SMOKE.LET_INSIDE} == true:
-	if {SMOKE.FED} == true:
-		smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+	if {HOLDING_CAT_FOOD} == true:
+		smoke: mroooww---ackkkk!
+		bailey (exhausted): Yeah, yeah I've got your food right here just let me figure out where to set it down!
+		[end_timeline]
 	else:
-		smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+		if {SMOKE.FED} == true:
+			smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+			[end_timeline]
+		else:
+			smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+			[end_timeline]
 else:
 	smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+	[end_timeline]

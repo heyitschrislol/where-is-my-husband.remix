@@ -81,6 +81,7 @@ variables={
 },
 "DOOR_CLOSED": true,
 "FOUND_SPANISH_BOOK": false,
+"HOLDING_CAT_FOOD": false,
 "PLAYED_DUOLINGO": false,
 "SMOKE": {
 "FED": false,
@@ -119,6 +120,7 @@ directories/dtl_directory={
 "kitchen_charles1": "res://resources/dialogic/kitchen_charles1.dtl",
 "kitchen_door": "res://resources/dialogic/kitchen_door.dtl",
 "kitchen_fridge": "res://resources/dialogic/kitchen_fridge.dtl",
+"kitchen_pantry": "res://resources/dialogic/kitchen_pantry.dtl",
 "livingroom_greencouch": "res://resources/dialogic/livingroom_greencouch.dtl",
 "livingroom_phone": "res://resources/dialogic/livingroom_phone.dtl",
 "livingroom_whitecouch": "res://resources/dialogic/livingroom_whitecouch.dtl",
