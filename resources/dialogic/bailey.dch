@@ -47,6 +47,15 @@
 "scene": "",
 "sound_mood": "defaultb"
 },
+"surprised": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-surprised-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "thinking": {
 "export_overrides": {
 "image": "\"res://assets/art/PNG/portraits/baileyportrait-thinking-export.png\""

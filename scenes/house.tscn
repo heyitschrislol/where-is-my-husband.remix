@@ -18,9 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://yvngedkgf6rp" path="res://assets/art/PNG/objects/couchbig_sm.png" id="14_3ewhn"]
 [ext_resource type="Texture2D" uid="uid://cd14mcligks2f" path="res://assets/art/PNG/objects/kitchen_island_sm.png" id="14_ep1bp"]
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
-[ext_resource type="Texture2D" uid="uid://c5pvwpkrsdiyh" path="res://assets/art/PNG/objects/livingroom-island_sm.png" id="15_0fn05"]
 [ext_resource type="Texture2D" uid="uid://xrjbd4epcjeb" path="res://assets/art/PNG/objects/diningtable_sm.PNG" id="16_57tf3"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
+[ext_resource type="Texture2D" uid="uid://br7bga03f1uhp" path="res://assets/art/PNG/objects/doorcubby.png" id="20_de74l"]
 [ext_resource type="Texture2D" uid="uid://bnnegpc7jmrbw" path="res://assets/art/PNG/objects/endtable_sm.PNG" id="21_57tf3"]
 [ext_resource type="Texture2D" uid="uid://dwyfjfqhn6vk2" path="res://assets/art/PNG/objects/coffeetable_sm.PNG" id="22_3kuml"]
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
@@ -2406,7 +2406,7 @@ size = Vector2(33.99999, 208)
 size = Vector2(144, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8noe"]
-size = Vector2(96, 48)
+size = Vector2(58, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2srw"]
 size = Vector2(63.99997, 106.66674)
@@ -2683,16 +2683,19 @@ position = Vector2(-7.86805e-07, 0)
 [node name="awkwardbookshelf" type="StaticBody2D" parent="objects/livingroom_objects" unique_id=1415259044]
 z_index = 1
 texture_filter = 1
-position = Vector2(-559, -363.99994)
+position = Vector2(-578, -354.99994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/livingroom_objects/awkwardbookshelf" unique_id=802193403]
 z_index = 1
-position = Vector2(0, 8)
+position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_r8noe")
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/livingroom_objects/awkwardbookshelf" unique_id=617552647]
 texture_filter = 1
-texture = ExtResource("15_0fn05")
+rotation = 3.1415927
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("20_de74l")
+flip_h = true
 
 [node name="endtable" type="StaticBody2D" parent="objects/livingroom_objects" unique_id=441694777]
 texture_filter = 1

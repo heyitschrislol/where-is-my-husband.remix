@@ -4,7 +4,7 @@ extends Node2D
 #	TODO
 #	-	add fade to scene transitions
 #	-	add display for when achieving special tasks
-#	-	a
+#	-	add shadows to rooms with the door closed
 #
 #################################
 
