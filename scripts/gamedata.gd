@@ -7,8 +7,10 @@ var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false
 var CHARLES_FOLLOW = false
+var CHARLES_IDLELOCATION = false
 var SMOKE_FOLLOW = false
-var GAME_START = true
+var SMOKE_IDLELOCATION = false
+var GAME_START = false
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false
@@ -51,7 +53,7 @@ func _process(_delta: float):
 	if CHARLES_DIALOG_IN_SPANISH and !LET_CHARLES_OUTSIDE:
 		CHARLES_FOLLOW = true
 		SMOKE_FOLLOW = false
-	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE:
+	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE and !SMOKE_FED:
 		CHARLES_FOLLOW = false
 		SMOKE_FOLLOW = true
 	else:

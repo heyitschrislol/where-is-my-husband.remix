@@ -10,5 +10,6 @@ if {DOOR_CLOSED} == true:
 	bailey (winking): [ns=1.0]Oh hello Smoke
 	[signal arg="kitchen_smoke_arrive"]
 	smoke (default): [ns=1.0]me-..ahhck...-owrr
+	set {SMOKE.LET_INSIDE} = true
 	[wait time="3.0"]
 	[end_timeline]

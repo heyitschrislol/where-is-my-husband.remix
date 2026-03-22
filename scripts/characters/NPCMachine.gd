@@ -1,7 +1,7 @@
 class_name NPCMachine extends CharacterBody2D
 
 
-enum States { IDLE,FOLLOWING	}
+enum States { IDLE,FOLLOWING,MOVINGTO	}
 var state : States = States.IDLE
 
 @export var debugging: bool
@@ -52,6 +52,12 @@ func set_state(new_state: States) -> void:
 			velocity = Vector2.ZERO
 		elif distance > follow_radius:
 			state = States.FOLLOWING
+	if state == States.MOVINGTO:
+		velocity = direction.normalized()*follow_speed
+		if distance <= follow_radius:
+			velocity = Vector2.ZERO
+		elif distance > follow_radius:
+			state = States.MOVINGTO
 
 	if debugging:
 		debugtext(direction,distance)
@@ -82,6 +88,9 @@ func update_anim():
 
 func get_distance_to_player() -> float:
 	return player.global_position.distance_to(global_position)
+
+func get_distance_to_object(object_pos: Vector2) -> float:
+	return object_pos.distance_to(global_position)
 
 func debugtext(direction, distance):
 	var debugdata = {

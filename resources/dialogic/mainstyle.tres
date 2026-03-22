@@ -20,13 +20,15 @@ scene = ExtResource("2_7qy4l")
 overrides = {
 "box_modulate_custom_color": "Color(0.8203125, 0.8010864, 0.78186035, 1)",
 "box_size": "Vector2(800, 220)",
-"custom_bold_font": "\"res://assets/Fonts/Lora-Bold.ttf\"",
-"custom_bold_italic_font": "\"res://assets/Fonts/Lora-BoldItalic.ttf\"",
-"custom_italic_font": "\"res://assets/Fonts/Lora-Italic.ttf\"",
-"custom_normal_font": "\"res://assets/Fonts/Lora-Regular.ttf\"",
+"custom_bold_font": "\"res://assets/Fonts/RobotoCondensed-Bold.ttf\"",
+"custom_bold_italic_font": "\"res://assets/Fonts/RobotoCondensed-BoldItalic.ttf\"",
+"custom_italic_font": "\"res://assets/Fonts/RobotoCondensed-Italic.ttf\"",
+"custom_normal_font": "\"res://assets/Fonts/RobotoCondensed-Regular.ttf\"",
 "name_label_color_mode": "1",
 "name_label_custom_size": "20.0",
 "name_label_hide_when_no_character": "true",
+"text_custom_size": "24.0",
+"text_use_global_size": "false",
 "use_global_fonts": "false"
 }
 
@@ -34,8 +36,10 @@ overrides = {
 script = ExtResource("1_n0ttg")
 scene = ExtResource("3_7qy4l")
 overrides = {
-"font_custom": "\"res://assets/Fonts/Silkscreen-Bold.ttf\"",
-"font_size_custom": "19.0",
+"boxes_min_size": "Vector2(250, 100)",
+"font_custom": "\"res://assets/Fonts/Duolingo Feather Bold.ttf\"",
+"font_size_custom": "44.0",
+"font_size_use_global": "false",
 "font_use_global": "false",
 "maximum_choices": "5.0"
 }
@@ -49,4 +53,4 @@ layer_info = {
 "10": SubResource("Resource_ymcuo"),
 "11": SubResource("Resource_nolqa")
 }
-metadata/_latest_layer = ""
+metadata/_latest_layer = "10"

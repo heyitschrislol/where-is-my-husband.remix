@@ -5,7 +5,10 @@ extends Node2D
 #	-	add fade to scene transitions
 #	-	add display for when achieving special tasks
 #	-	add shadows to rooms with the door closed
-#
+#	-	look into object shadows
+#	-	add music
+#	-	fix dialogic letter sounds
+#	-	add sounds for footsteps
 #################################
 
 @onready var charles =$characters/charles
@@ -34,13 +37,13 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	#Gamedata.CAT_SPANISH_LEARNED = true
-	#Gamedata.CHARLES_FIRST_INTERACTION = false
-	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
+	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	Gamedata.CAT_SPANISH_LEARNED = true
+	Gamedata.CHARLES_FIRST_INTERACTION = false
+	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
@@ -53,7 +56,7 @@ func _ready():
 		#Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
 		#Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
 		Gamedata.goto_cutscene("open_cutscene", true)
-	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
+	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE and !Gamedata.SMOKE_FED:
 		Gamedata.store_character_positions(Vector2(589,-157),Vector2(1085,-637),Vector2(582,-16))
 		Gamedata.load_stored_positions()
 		Gamedata.CHARLES_FOLLOW = false
@@ -95,6 +98,12 @@ func _on_dialogic_signal(argument:String):
 		door_back.SPECIAL_DOOR = false
 	elif argument == "holding_cat_food":
 		Gamedata.HOLDING_CAT_FOOD = true
+	elif argument == "feed_smoke":
+		Gamedata.HOLDING_CAT_FOOD = false
+	elif argument == "smoke_fed":
+		Gamedata.SMOKE_FED = true
+		Gamedata.SMOKE_FOLLOW = false
+		smoke.idlelocation = Vector2(780,21)
 
 
 

@@ -114,6 +114,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
+"diningroom_fooddish": "res://assets/Fonts/diningroom_fooddish.dtl",
 "dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
 "guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
 "guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",

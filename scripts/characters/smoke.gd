@@ -4,6 +4,7 @@ extends NPCMachine
 @export var timeline_name : String
 @export var location: String
 @export var lines: Array[String] = []
+var idlelocation : Vector2
 
 signal dialog_signal(timeline: String,location: String)
 
@@ -35,6 +36,12 @@ func _physics_process(_delta):
 	else:
 		if Gamedata.SMOKE_FOLLOW:
 			set_state(States.FOLLOWING)
+		elif Gamedata.SMOKE_IDLELOCATION:
+			set_state(States.MOVINGTO)
+			if get_distance_to_object(idlelocation) <= follow_radius:
+				set_state(States.IDLE)
+			else:
+				set_state(States.MOVINGTO)
 		else:
 			set_state(States.IDLE)
 	update_anim()
@@ -43,6 +50,8 @@ func _physics_process(_delta):
 func set_state(new_state: States):
 	var direction := player.global_position - global_position
 	var distance = direction.length()
+
+
 	var _previous_state := state
 	state = new_state
 
@@ -54,6 +63,13 @@ func set_state(new_state: States):
 			velocity = Vector2.ZERO
 		#elif distance > follow_radius:
 			#state = States.FOLLOWING
+	if state == States.MOVINGTO:
+		if idlelocation:
+			var objdirection := idlelocation - global_position
+			var objdistance = objdirection.length()
+			velocity = objdirection.normalized()*follow_speed
+			if objdistance <= follow_radius:
+				velocity = Vector2.ZERO
 
 	if debugging:
 		debugtext(direction,distance)
@@ -72,6 +88,15 @@ func update_anim():
 			elif velocity.x < 0:
 				animated_sprite.play("walk_left")
 				#animated_sprite.flip_h = true
+		else:
+			if velocity.y > 0:
+				animated_sprite.play("walk_down")
+			elif velocity.y < 0:
+				animated_sprite.play("walk_up")
+
+
+func set_movingto_state(location : Vector2):
+	idlelocation = location
 
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,location)
