@@ -8,7 +8,7 @@ var player_previous_location = null
 var _is_dialog_active: bool = false
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
-var GAME_START = false
+var GAME_START = true
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false
@@ -50,8 +50,12 @@ func _process(_delta: float):
 	if CHARLES_DIALOG_IN_SPANISH and !LET_CHARLES_OUTSIDE:
 		CHARLES_FOLLOW = true
 		SMOKE_FOLLOW = false
+	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE:
+		CHARLES_FOLLOW = false
+		SMOKE_FOLLOW = true
 	else:
 		CHARLES_FOLLOW = false
+		SMOKE_FOLLOW = false
 
 
 # Saves the current scene, loads the new one on top.

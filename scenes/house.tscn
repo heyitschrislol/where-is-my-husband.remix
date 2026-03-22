@@ -2464,7 +2464,7 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(589, -157)
+position = Vector2(452, 444)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
@@ -2533,7 +2533,7 @@ scale = Vector2(1, 1.1)
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
 
 [node name="bookshelf" parent="objects/guestroom_objects" unique_id=1948526707 instance=ExtResource("9_7685u")]
-z_index = 4
+z_index = 5
 texture_filter = 1
 position = Vector2(752, -52.00006)
 rotation = -3.1415925
@@ -2548,7 +2548,7 @@ scale = Vector2(0.11000001, 0.11000001)
 texture = ExtResource("4_3bgk5")
 
 [node name="computer" parent="objects/guestroom_objects" unique_id=745050616 instance=ExtResource("9_7685u")]
-z_index = 4
+z_index = 5
 texture_filter = 1
 position = Vector2(634, -54.00006)
 rotation = -3.1415925
