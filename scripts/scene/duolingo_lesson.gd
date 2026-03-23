@@ -85,7 +85,25 @@ func load_question():
 	for i in range(q["answers"].size()):
 		var btn = Button.new()
 		btn.text = q["answers"][i]
+		btn.add_theme_color_override("font_color",Color("#58cc02"))
 		btn.pressed.connect(_on_answer_pressed.bind(i))
+
+		var state_colors = {
+			"normal":   Color("#FFFFFF"),
+			"hover":    Color("#a8cc8d"),  # slightly darker on hover
+			"pressed":  Color("#DDDDDD"),  # noticeably darker when clicked
+			"disabled": Color("#CCCCCC"),  # muted when locked out
+		}
+		for state in state_colors:
+			var style = StyleBoxFlat.new()
+			style.corner_radius_top_left = 12
+			style.corner_radius_top_right = 12
+			style.corner_radius_bottom_left = 12
+			style.corner_radius_bottom_right = 12
+			style.bg_color = state_colors[state]
+
+			btn.add_theme_stylebox_override(state, style)
+
 		answer_grid.add_child(btn)
 
 	# Set character image

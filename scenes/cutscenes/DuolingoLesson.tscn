@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5nifayaaqt4m" path="res://scripts/scene/duolingo_lesson.gd" id="1_2lqbr"]
 [ext_resource type="FontFile" uid="uid://dwvwqqwx4ddq3" path="res://assets/Fonts/Odin Rounded - Bold.otf" id="2_6rodu"]
+[ext_resource type="FontFile" uid="uid://cu6wma35fpq8a" path="res://assets/Fonts/pixelfonts/A Goblin Appears!.otf" id="2_jbqh4"]
 [ext_resource type="Texture2D" uid="uid://cnu0anx8kg0kt" path="res://assets/art/Scene/duolingo/duo_speechbubble.png" id="3_a62pb"]
 [ext_resource type="FontFile" uid="uid://bsdyrvneohsnl" path="res://assets/Fonts/Duolingo Feather Bold.ttf" id="3_rpx7h"]
 [ext_resource type="Texture2D" uid="uid://cnx7o3qj1jcei" path="res://assets/art/Scene/duolingo/duocheckbtn1.png" id="4_rpx7h"]
@@ -11,14 +12,16 @@
 [ext_resource type="AudioStream" uid="uid://ckqasvpv4ysx0" path="res://assets/sfx/duolingo-end-of-lesson.mp3" id="9_xngll"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rpx7h"]
-font = ExtResource("2_6rodu")
-font_size = 43
+font = ExtResource("2_jbqh4")
+font_size = 33
 font_color = Color(0.43529412, 0.40392157, 1, 1)
+shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_a62pb"]
 font = ExtResource("2_6rodu")
-font_size = 56
+font_size = 43
 font_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="Theme" id="Theme_hxve2"]
 default_font = ExtResource("3_rpx7h")
@@ -28,11 +31,13 @@ default_font_size = 40
 font = ExtResource("3_rpx7h")
 font_size = 48
 font_color = Color(0.34509805, 0.8, 0.007843138, 1)
+shadow_size = 0
 
 [node name="DuolingoLesson" type="CanvasLayer" unique_id=846371652]
 script = ExtResource("1_2lqbr")
 
 [node name="Control" type="Control" parent="." unique_id=347227819]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +46,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HeartLabel" type="Label" parent="Control" unique_id=1518041620]
+visible = false
 z_index = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 1152.0
 offset_top = 64.0
@@ -69,6 +76,7 @@ step = 1.0
 show_percentage = false
 
 [node name="BubbleTexture" type="TextureRect" parent="Control" unique_id=144189011]
+texture_filter = 1
 layout_mode = 0
 offset_left = 288.0
 offset_top = 176.0
@@ -77,10 +85,12 @@ offset_bottom = 376.0
 texture = ExtResource("3_a62pb")
 
 [node name="QuestionLabel" type="Label" parent="Control/BubbleTexture" unique_id=2040124063]
+texture_filter = 2
 layout_mode = 0
 offset_left = 104.0
+offset_top = 10.0
 offset_right = 744.0
-offset_bottom = 192.0
+offset_bottom = 177.0
 text = "question text"
 label_settings = SubResource("LabelSettings_a62pb")
 autowrap_mode = 3
@@ -98,19 +108,19 @@ columns = 2
 
 [node name="FeedbackLabel" type="Label" parent="Control" unique_id=1627079935]
 layout_mode = 0
-offset_left = 512.0
 offset_top = 568.0
-offset_right = 856.0
+offset_right = 1278.0
 offset_bottom = 632.0
 text = "feedback text"
 label_settings = SubResource("LabelSettings_hxve2")
+horizontal_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="Control" unique_id=634588895]
 layout_mode = 0
-offset_left = 440.0
-offset_top = 624.0
-offset_right = 910.0
-offset_bottom = 712.0
+offset_left = 412.0
+offset_top = 632.0
+offset_right = 882.0
+offset_bottom = 720.0
 text = "CHECK"
 icon = ExtResource("4_rpx7h")
 flat = true
@@ -119,11 +129,13 @@ icon_alignment = 1
 
 [node name="GuyTexture" type="TextureRect" parent="Control" unique_id=1369486840]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 216.0
-offset_right = 223.0
-offset_bottom = 477.0
+offset_left = 125.99999
+offset_top = 277.0
+offset_right = 325.0
+offset_bottom = 538.0
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("6_hxve2")
+stretch_mode = 1
 
 [node name="CorrectSound" type="AudioStreamPlayer" parent="Control" unique_id=1691914519]
 stream = ExtResource("7_0tjbf")

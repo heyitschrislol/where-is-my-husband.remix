@@ -114,7 +114,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
-"diningroom_fooddish": "res://assets/Fonts/diningroom_fooddish.dtl",
+"diningroom_fooddish": "res://resources/dialogic/diningroom_fooddish.dtl",
 "dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
 "guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
 "guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",
@@ -139,6 +139,8 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
 window/size/initial_position_type=3
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor]
 
@@ -161,6 +163,7 @@ test=""
 
 [gui]
 
+theme/default_font_multichannel_signed_distance_field=true
 theme/default_theme_scale=1.2
 
 [input]
@@ -219,3 +222,4 @@ interact={
 
 rendering_device/driver.windows="d3d12"
 2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

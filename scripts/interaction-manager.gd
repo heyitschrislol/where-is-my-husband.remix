@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var label = $label
 
-const base_text = "[SPACEBAR] TO "
+const base_text = "[SPACEBAR] to "
 
 var active_areas = []
 var can_interact = true

@@ -2,6 +2,7 @@ extends Node2D
 
 #################################
 #	TODO
+#	-	add debug overlay showing Gamedata variables
 #	-	add fade to scene transitions
 #	-	add display for when achieving special tasks
 #	-	add shadows to rooms with the door closed
@@ -39,9 +40,9 @@ func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
 	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
 	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
 	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	Gamedata.CAT_SPANISH_LEARNED = true
+	#Gamedata.CAT_SPANISH_LEARNED = true
 	Gamedata.CHARLES_FIRST_INTERACTION = false
 	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #

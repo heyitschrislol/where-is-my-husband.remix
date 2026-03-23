@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bx8fmu533p70h"]
 
 [ext_resource type="Script" uid="uid://dlt5kx7waf4y8" path="res://scripts/interaction-manager.gd" id="1_p7j5n"]
-[ext_resource type="FontFile" uid="uid://c0cmcn2yr1tho" path="res://assets/Fonts/Geo-Regular.ttf" id="2_om8j3"]
+[ext_resource type="FontFile" uid="uid://b1wtmucxd8vj6" path="res://assets/Fonts/pixelfonts/CutePixel.ttf" id="2_om8j3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7j5n"]
 line_spacing = 2.0
 font = ExtResource("2_om8j3")
-font_size = 23
-outline_size = 16
+font_size = 22
+outline_size = 6
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 3
+shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.79607844)
 
 [node name="interaction_manager" type="Node2D" unique_id=1743740414]
