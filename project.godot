@@ -105,32 +105,8 @@ history/simple_history_save=false
 history/full_history_save=false
 history/save_on_save=true
 save/autosave=false
-directories/dch_directory={
-"bailey": "res://resources/dialogic/bailey.dch",
-"charles": "res://resources/dialogic/charles.dch",
-"husband": "res://resources/dialogic/husband.dch",
-"narrator": "res://resources/dialogic/narrator.dch",
-"smoke": "res://resources/dialogic/smoke.dch"
-}
-directories/dtl_directory={
-"bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
-"diningroom_fooddish": "res://resources/dialogic/diningroom_fooddish.dtl",
-"dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
-"guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
-"guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",
-"kitchen_charles1": "res://resources/dialogic/kitchen_charles1.dtl",
-"kitchen_door": "res://resources/dialogic/kitchen_door.dtl",
-"kitchen_fridge": "res://resources/dialogic/kitchen_fridge.dtl",
-"kitchen_pantry": "res://resources/dialogic/kitchen_pantry.dtl",
-"livingroom_greencouch": "res://resources/dialogic/livingroom_greencouch.dtl",
-"livingroom_phone": "res://resources/dialogic/livingroom_phone.dtl",
-"livingroom_whitecouch": "res://resources/dialogic/livingroom_whitecouch.dtl",
-"startingscene": "res://resources/dialogic/startingscene.dtl",
-"startingscene2": "res://resources/dialogic/startingscene2.dtl",
-"testline": "res://resources/dialogic/testline.dtl",
-"timeline-charles": "res://resources/dialogic/timeline-charles.dtl",
-"timeline-smoke": "res://resources/dialogic/timeline-smoke.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 choices/hotkey_behaviour=1
 
 [display]
