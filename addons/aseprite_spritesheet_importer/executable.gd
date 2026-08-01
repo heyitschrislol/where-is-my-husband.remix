@@ -1,0 +1,148 @@
+@tool
+extends RefCounted
+
+const AsepritePluginConfig = preload("res://addons/aseprite_spritesheet_importer/plugin_config.gd")
+
+enum SheetType {
+	DEFAULT,
+	HORIZONTAL,
+	VERTICAL,
+	ROWS,
+	COLUMNS,
+	PACKED,
+}
+
+var _sheet_type_args: Array[String] = [
+	"default",
+	"horizontal",
+	"vertical",
+	"rows",
+	"columns",
+	"packed",
+]
+
+class Options:
+	var all_layers: bool
+	var flatten_layer_groups: bool
+	var split_layers: bool
+	var spritesheet_path: String
+	var datafile_path: String
+	var flattened_path: String
+	var sheet_type: SheetType
+	var sheet_width: int
+	var sheet_height: int
+	var sheet_columns: int
+	var sheet_rows: int
+	var border_padding: int
+	var shape_padding: int
+	var inner_padding: int
+	var trim: bool
+	var extrude: bool
+
+var config: AsepritePluginConfig
+
+func validate() -> Error:
+	if config == null:
+		return ERR_UNCONFIGURED
+
+	# Execute Aseprite and capture stdout, stderr
+	var args: Array[String] = ["--version"]
+	var output: Array = []
+	var exit_code: Error = self.execute(args, output)
+	var stdout: String = output[0]
+	if exit_code != OK:
+		print("Can't run Aseprite:\n", stdout)
+		return ERR_UNCONFIGURED
+	if not stdout.match("Aseprite*"):
+		print("Invalid Aseprite executable:\n", stdout)
+		return ERR_UNCONFIGURED
+	return OK
+
+func execute(args: Array, output: Array) -> Error:
+	return OS.execute(self.config.get_aseprite_cmd(), args, output, true) as Error
+
+func export_spritesheet(source_file: String, aseprite_options: Options) -> Array:
+	# Export from Aseprite
+	var absolute_source_file: String = ProjectSettings.globalize_path(source_file)
+	var absolute_spritesheet_path: String = ProjectSettings.globalize_path(aseprite_options.spritesheet_path)
+	var absolute_datafile_path: String = ProjectSettings.globalize_path(aseprite_options.datafile_path)
+	var absolute_flattened_path: String = ProjectSettings.globalize_path(aseprite_options.flattened_path)
+
+	# Export .ase file with flattened layer groups
+	if aseprite_options.flatten_layer_groups:
+		var err: Error = export_flattened_groups(absolute_source_file, absolute_flattened_path, aseprite_options)
+		if err != OK:
+			DirAccess.remove_absolute(aseprite_options.flattened_path)
+			return [err, null]
+
+	# Aseprite arguments
+	var args: Array[String] = ["--batch", "--list-layers", "--list-tags", "--list-slices"]
+
+	if aseprite_options.all_layers:
+		args += ["--all-layers"]
+
+	if aseprite_options.split_layers:
+		args += ["--split-layers"]
+
+	if aseprite_options.sheet_type != SheetType.DEFAULT:
+		args += ["--sheet-type", _sheet_type_args[aseprite_options.sheet_type]]
+	if aseprite_options.sheet_type != SheetType.DEFAULT and aseprite_options.sheet_width > 0:
+		args += ["--sheet-width", "%d" % aseprite_options.sheet_width]
+	if aseprite_options.sheet_type != SheetType.DEFAULT and aseprite_options.sheet_height > 0:
+		args += ["--sheet-height", "%d" % aseprite_options.sheet_height]
+	if aseprite_options.sheet_type == SheetType.ROWS and aseprite_options.sheet_columns > 0:
+		args += ["--sheet-columns", "%d" % aseprite_options.sheet_columns]
+	if aseprite_options.sheet_type == SheetType.COLUMNS and aseprite_options.sheet_rows > 0:
+		args += ["--sheet-rows", "%d" % aseprite_options.sheet_rows]
+	if aseprite_options.border_padding > 0:
+		args += ["--border-padding", "%d" % aseprite_options.border_padding]
+	if aseprite_options.shape_padding > 0:
+		args += ["--shape-padding", "%d" % aseprite_options.shape_padding]
+	if aseprite_options.inner_padding > 0:
+		args += ["--inner-padding", "%d" % aseprite_options.inner_padding]
+	if aseprite_options.trim:
+		args += ["--trim"]
+	if aseprite_options.extrude:
+		args += ["--extrude"]
+	
+	args += ["--sheet", absolute_spritesheet_path]
+	args += ["--data", absolute_datafile_path]
+
+	if aseprite_options.flatten_layer_groups:
+		args += [absolute_flattened_path]
+	else:
+		args += [absolute_source_file]
+
+	# Execute Aseprite and capture stdout, stderr
+	var output: Array = []
+	var exit_code: Error = self.execute(args, output)
+	if aseprite_options.flatten_layer_groups:
+		DirAccess.remove_absolute(aseprite_options.flattened_path)
+	if exit_code != OK:
+		print("Failed to export spritesheet\n", output[0])
+		return [ERR_SCRIPT_FAILED, null]
+
+	# Load spritesheet data
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(aseprite_options.datafile_path))
+	return [OK, data]
+
+func export_flattened_groups(absolute_source_file: String, absolute_flattened_path: String, aseprite_options: Options) -> Error:
+	# Aseprite arguments
+	var args: Array[String] = ["--batch"]
+	if aseprite_options.all_layers:
+		args += ["--script-param", "delete_invisible=false"]
+	else:
+		args += ["--script-param", "delete_invisible=true"]
+	args += [absolute_source_file]
+	var script: Script = self.get_script()
+	var script_dir: String = script.get_path().rsplit("/", true, 1)[0]
+	args += ["--script", ProjectSettings.globalize_path("%s/flatten_layer_groups.lua" % script_dir)]
+	args += ["--save-as", absolute_flattened_path]
+
+	# Execute Aseprite and capture stdout, stderr
+	var output: Array = []
+	var exit_code: Error = self.execute(args, output)
+	if exit_code != OK:
+		print("Failed to flatten layer groups\n", output[0])
+		return ERR_SCRIPT_FAILED
+	return OK

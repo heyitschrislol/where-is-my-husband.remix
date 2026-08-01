@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dyyawj2ata8gu"]
+
+[ext_resource type="Script" uid="uid://dxn6tt87wvo3g" path="res://addons/tile_copy/setting.gd" id="1_b175k"]
+
+[node name="PropertySelector" type="AcceptDialog" unique_id=666650738]
+oversampling_override = 1.0
+title = "Setting"
+initial_position = 1
+size = Vector2i(600, 600)
+visible = true
+maximize_disabled = false
+script = ExtResource("1_b175k")
+
+[node name="ContentSplit" type="HSplitContainer" parent="." unique_id=2076934871]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 551.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentSplit" unique_id=1301027983]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CoordinateHeader" type="Label" parent="ContentSplit/VBoxContainer" unique_id=1467528311]
+layout_mode = 2
+text = "Position"
+
+[node name="HSeparator" type="HSeparator" parent="ContentSplit/VBoxContainer" unique_id=1622303044]
+layout_mode = 2
+
+[node name="TileDataTree" type="Tree" parent="ContentSplit/VBoxContainer" unique_id=1201398973]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+hide_root = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContentSplit" unique_id=1996536077]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PropertyLabel" type="Label" parent="ContentSplit/VBoxContainer2" unique_id=696237542]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Property"
+
+[node name="HSeparator" type="HSeparator" parent="ContentSplit/VBoxContainer2" unique_id=1191086571]
+layout_mode = 2
+
+[node name="PropertyTree" type="Tree" parent="ContentSplit/VBoxContainer2" unique_id=578009075]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+allow_search = false
+hide_root = true
+
+[connection signal="item_edited" from="ContentSplit/VBoxContainer/TileDataTree" to="." method="_on_tile_data_tree_item_edited" flags=18]
+[connection signal="item_edited" from="ContentSplit/VBoxContainer2/PropertyTree" to="." method="_on_property_tree_item_edited" flags=18]

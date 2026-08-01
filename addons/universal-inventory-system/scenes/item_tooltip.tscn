@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://ct8rnmnaq2347"]
+
+[ext_resource type="Script" uid="uid://bgffi58denc1f" path="res://scripts/tooltip/ItemTooltip.gd" id="1_3gh8j"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3gh8j"]
+device = -1
+keycode = 4194328
+
+[sub_resource type="Shortcut" id="Shortcut_704uw"]
+events = [SubResource("InputEventKey_3gh8j")]
+
+[node name="ItemTooltip" type="MarginContainer" unique_id=277727983 node_paths=PackedStringArray("hbox_container", "container_current", "margin_container_current", "equipped_panel", "container_equipped", "margin_container_equipped")]
+visible = false
+offset_right = 24.0
+offset_bottom = 10.0
+mouse_filter = 2
+script = ExtResource("1_3gh8j")
+hbox_container = NodePath("HBoxContainer")
+container_current = NodePath("HBoxContainer/Current/MarginContainer/VBoxContainer")
+margin_container_current = NodePath("HBoxContainer/Current/MarginContainer")
+equipped_panel = NodePath("HBoxContainer/Equipped")
+container_equipped = NodePath("HBoxContainer/Equipped/MarginContainer/VBoxContainer")
+margin_container_equipped = NodePath("HBoxContainer/Equipped/MarginContainer")
+max_width = 400
+advanced_shortcut = SubResource("Shortcut_704uw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1042559951]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Current" type="PanelContainer" parent="HBoxContainer" unique_id=653391110]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Current" unique_id=1156866397]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Current/MarginContainer" unique_id=1243074113]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Equipped" type="PanelContainer" parent="HBoxContainer" unique_id=1175063565]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Equipped" unique_id=1849803463]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Equipped/MarginContainer" unique_id=42421934]
+layout_mode = 2
+mouse_filter = 2
