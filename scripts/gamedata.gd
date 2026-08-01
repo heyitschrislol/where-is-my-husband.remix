@@ -10,7 +10,7 @@ var CHARLES_FOLLOW = false
 var CHARLES_IDLELOCATION = false
 var SMOKE_FOLLOW = false
 var SMOKE_IDLELOCATION = false
-var GAME_START = false
+var GAME_START = true
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false
