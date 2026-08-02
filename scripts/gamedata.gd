@@ -10,7 +10,8 @@ var CHARLES_FOLLOW = false
 var CHARLES_IDLELOCATION = false
 var SMOKE_FOLLOW = false
 var SMOKE_IDLELOCATION = false
-var GAME_START = true
+#var GAME_START = true
+var GAME_START = false
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false
@@ -29,7 +30,22 @@ var CAT_SPANISH_LEARNED = false
 var CHARLES_FIRST_INTERACTION = true
 var CHARLES_DIALOG_IN_SPANISH = false
 
+## ROOM SHADOWS
+## -----------
+var HALLBATH_REVEALED = false
+var MASTERBATH_REVEALED = false
+var BEDROOM_REVEALED = false
+var GUESTROOM_REVEALED = false
+var BACKYARD_REVEALED = false
+var CLOSET_REVEALED = false
 
+signal room_revealed(room_name: String)
+
+func reveal_room(room_name: String) -> void:
+	var flag_name = room_name + "_REVEALED"
+	if not get(flag_name):
+		set(flag_name, true)
+		room_revealed.emit(room_name)
 
 ##---SCENE LIST---##
 var scene_paths = {

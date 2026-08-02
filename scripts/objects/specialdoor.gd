@@ -7,7 +7,10 @@ signal dialog_signal(timeline_name: String,location: String,default_text: String
 @onready var door_collision = $collision_shape_2d
 @onready var interaction_area: InteractionArea = $interaction_area
 @export var dialog_name = ""
+@export var reveals_room: String = ""
+
 @onready var state = "closed"
+
 
 
 func _ready():
@@ -28,6 +31,8 @@ func _open_door():
 		#sprite.position.x = position_array["opened"][0]
 		#sprite.position.y = position_array["opened"][1]
 		state = "open"
+		if reveals_room != "":
+			Gamedata.reveal_room(reveals_room)
 	elif state == "open":
 		visible = true
 		door_collision.set_deferred("disabled", false)

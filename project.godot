@@ -26,6 +26,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 file_logging/enable_file_logging=true
 file_logging/max_log_files=10
 settings/gdscript/always_track_local_variables=true
+shapes/collision/draw_2d_outlines=false
 
 [dialogic]
 
@@ -136,7 +137,7 @@ choices/hotkey_behaviour=1
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_height=1024
 window/size/mode=2
 window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
