@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://be84jcfgfrnwx"]
+
+[ext_resource type="Script" uid="uid://yqil0fmg5n51" path="res://scripts/objects/specialdoor.gd" id="1_64do3"]
+[ext_resource type="Texture2D" uid="uid://cj2oyhnhka5yt" path="res://assets/art/PNG/objects/droom-opendoor.png" id="2_64do3"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="3_ib3nf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02005"]
+size = Vector2(56, 243)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dags0"]
+size = Vector2(56, 243)
+
+[node name="Specialdoor" type="StaticBody2D" unique_id=641251834]
+script = ExtResource("1_64do3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=476642420]
+texture_filter = 1
+texture = ExtResource("2_64do3")
+flip_h = true
+
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("3_ib3nf")]
+collision_layer = 1
+action_name = "talk"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=777106100]
+z_index = 9
+position = Vector2(5, -19.5)
+shape = SubResource("RectangleShape2D_02005")
+debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=363208448]
+z_index = 8
+position = Vector2(5, -19.5)
+shape = SubResource("RectangleShape2D_dags0")

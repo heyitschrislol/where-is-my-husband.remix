@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://do7mvwpr8bb2e"]
+
+[ext_resource type="Script" uid="uid://ckxowovaq1xwd" path="res://scripts/scene/kitchen_charles_cutscene.gd" id="1_ibtc4"]
+[ext_resource type="Texture2D" uid="uid://bupy45pykg0q0" path="res://assets/art/Scene/diningroom-BG.png" id="3_bcg0m"]
+[ext_resource type="Texture2D" uid="uid://dlgabvonukqw0" path="res://assets/art/PNG/objects/doorframe_scenic.png" id="3_wv7bt"]
+[ext_resource type="Texture2D" uid="uid://brbgk6lh74lj7" path="res://assets/art/PNG/objects/droom-door2.png" id="4_wv7bt"]
+[ext_resource type="Texture2D" uid="uid://cj2oyhnhka5yt" path="res://assets/art/PNG/objects/droom-opendoor.png" id="5_eyrbp"]
+[ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/PNG/objects/island.png" id="5_w4w37"]
+[ext_resource type="Texture2D" uid="uid://bqbchphdl514" path="res://assets/art/PNG/bb-idle1.png" id="8_mjm4x"]
+[ext_resource type="AnimationLibrary" uid="uid://3pedgju8iv1q" path="res://resources/cutscene-kitchen.res" id="11_4x3q6"]
+[ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="13_soqll"]
+[ext_resource type="Texture2D" uid="uid://2rug0aqal8f7" path="res://assets/art/PNG/smokeidleright1.png" id="15_6xbe3"]
+
+[sub_resource type="Animation" id="Animation_rne83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_wv7bt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eyrbp"]
+resource_name = "door-close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_eyrbp"), ExtResource("4_wv7bt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-143, 35.000004), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1.7090782, 1.4388992), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4w37"]
+resource_name = "door-open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_wv7bt"), ExtResource("5_eyrbp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-143, 35)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.709, 1.439)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyrbp"]
+_data = {
+&"RESET": SubResource("Animation_rne83"),
+&"door-close": SubResource("Animation_eyrbp"),
+&"door-open": SubResource("Animation_w4w37")
+}
+
+[sub_resource type="Animation" id="Animation_wv7bt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("charles:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4w37"]
+_data = {
+&"RESET": SubResource("Animation_wv7bt")
+}
+
+[node name="KitchenCharlesCutscene" type="Node2D" unique_id=2053742607]
+script = ExtResource("1_ibtc4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=386890197]
+z_index = 10
+texture_filter = 1
+anchor_mode = 0
+
+[node name="sceneparts" type="Node2D" parent="." unique_id=314344086]
+position = Vector2(739, 312)
+
+[node name="doorframe" type="Sprite2D" parent="sceneparts" unique_id=1907501430]
+texture_filter = 1
+position = Vector2(-613, 40)
+texture = ExtResource("3_wv7bt")
+
+[node name="door" type="Sprite2D" parent="sceneparts/doorframe" unique_id=1481240813]
+z_index = 7
+texture_filter = 1
+rotation = -0.017943468
+skew = 0.017453292
+texture = ExtResource("4_wv7bt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sceneparts/doorframe/door" unique_id=103608782]
+libraries/ = SubResource("AnimationLibrary_eyrbp")
+
+[node name="island" type="Sprite2D" parent="sceneparts" unique_id=2097694917]
+z_index = 7
+texture_filter = 1
+position = Vector2(-631, 264)
+texture = ExtResource("5_w4w37")
+
+[node name="background" type="Sprite2D" parent="sceneparts" unique_id=1730141316]
+z_index = -2
+texture = ExtResource("3_bcg0m")
+
+[node name="bailey" type="Sprite2D" parent="." unique_id=795482220]
+texture_filter = 1
+position = Vector2(518, 513)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("8_mjm4x")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bailey" unique_id=872849168]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w4w37")
+libraries/cutscene-kitchen = ExtResource("11_4x3q6")
+
+[node name="charles" type="Sprite2D" parent="." unique_id=1885241799]
+z_index = 1
+position = Vector2(365, 594)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("13_soqll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="charles" unique_id=713887106]
+root_node = NodePath("../..")
+libraries/cutscene-kitchen = ExtResource("11_4x3q6")
+
+[node name="smoke" type="Sprite2D" parent="." unique_id=900363244]
+z_index = 2
+position = Vector2(156, 456)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("15_6xbe3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="smoke" unique_id=1845266893]
+root_node = NodePath("../..")
+libraries/cutscene-kitchen = ExtResource("11_4x3q6")

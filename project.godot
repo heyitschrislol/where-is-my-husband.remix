@@ -138,7 +138,6 @@ choices/hotkey_behaviour=1
 
 window/size/viewport_width=1280
 window/size/viewport_height=1024
-window/size/mode=2
 window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"

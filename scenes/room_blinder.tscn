@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cggj5qgpld2cx"]
+
+[ext_resource type="Script" uid="uid://combwywqqbehf" path="res://scripts/room_blinder.gd" id="1_8fui2"]
+
+[node name="RoomBlinder" type="Polygon2D" unique_id=826326751]
+z_index = 99
+texture_filter = 1
+color = Color(0.31764707, 0.31764707, 0.31764707, 1)
+script = ExtResource("1_8fui2")

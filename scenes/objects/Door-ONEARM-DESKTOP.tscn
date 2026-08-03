@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://deqdw27x38w77"]
+
+[ext_resource type="Script" uid="uid://cf1e4na4bab46" path="res://scripts/objects/door.gd" id="1_kpc31"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="1_phtmr"]
+[ext_resource type="Texture2D" uid="uid://bunb872l4mmqe" path="res://assets/art/PNG/objects/wipdroom-door.png" id="2_w5jee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gokds"]
+size = Vector2(94, 180.2381)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpc31"]
+size = Vector2(94, 177.14285)
+
+[node name="door" type="StaticBody2D" unique_id=2020179029]
+scale = Vector2(1, 0.7)
+collision_mask = 6
+script = ExtResource("1_kpc31")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1111470841]
+scale = Vector2(0.73, 1)
+texture = ExtResource("2_w5jee")
+
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("1_phtmr")]
+collision_layer = 1
+action_name = "talk"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1115233311]
+z_index = 9
+position = Vector2(0, -38.452385)
+shape = SubResource("RectangleShape2D_gokds")
+debug_color = Color(0.65, 0.51956666, 0.09099999, 0.38431373)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=236775629]
+z_index = 8
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_kpc31")
