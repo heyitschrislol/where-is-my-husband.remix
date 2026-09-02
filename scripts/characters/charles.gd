@@ -7,10 +7,14 @@ extends NPCMachine
 
 signal dialog_signal(timeline: String,location: String)
 
+var was_moving := false
+var is_transitioning := false
+var facing := "right"
+
 func _ready():
 	interaction_area.action_name = "speak"
 	interaction_area.interact = Callable(self, "_on_interact")
-	animated_sprite.play("idle")
+	animated_sprite.play("sitting_idle_" + facing)
 	dialog_signal.connect(_on_dialog_request)
 
 func _on_dialog_request(timeline: String,_location: String):
@@ -59,19 +63,52 @@ func set_state(new_state: States):
 		debugtext(direction,distance)
 
 func update_anim():
-		if velocity == Vector2.ZERO:
-			match player.last_dir:
-				#"up"	:		animated_sprite.flip_h = true
-				#"down":	animated_sprite.flip_h = false
-				"left":	animated_sprite.play("idle_left")
-				"right":	animated_sprite.play("idle_right")
+	if is_transitioning:
+		return # a transition anim is playing — don't interrupt it
 
-		elif abs(velocity.x) >= abs(velocity.y):
-			if velocity.x > 0:
-				animated_sprite.play("walk_right")
-			elif velocity.x < 0:
-				animated_sprite.play("walk_left")
+	var moving = velocity != Vector2.ZERO
+
+	if moving:
+		if velocity.x > 0:
+			facing = "right"
+		elif velocity.x < 0:
+			facing = "left"
+
+	if moving and not was_moving:
+		# was sitting, now starts moving: stand up first
+		is_transitioning = true
+		animated_sprite.play("standing_motion_" + facing)
+	elif not moving and was_moving:
+		# was walking, now stops: sit down first
+		is_transitioning = true
+		animated_sprite.play("sitting_motion_" + facing)
+	elif moving:
+		animated_sprite.play("walk_" + facing)
+
+	was_moving = moving
+
+		#if velocity == Vector2.ZERO:
+			#match player.last_dir:
+				##"up"	:		animated_sprite.flip_h = true
+				##"down":	animated_sprite.flip_h = false
+				#"left":	animated_sprite.play("idle_left")
+				#"right":	animated_sprite.play("idle_right")
+#
+		#elif abs(velocity.x) >= abs(velocity.y):
+			#if velocity.x > 0:
+				#animated_sprite.play("walk_right")
+			#elif velocity.x < 0:
+				#animated_sprite.play("walk_left")
 				#animated_sprite.flip_h = true
+
+func _on_animation_finished():
+	if animated_sprite.animation.begins_with("standing_motion"):
+		is_transitioning = false
+		animated_sprite.play("walk_" + facing)
+	elif animated_sprite.animation.begins_with("sitting_motion"):
+		is_transitioning = false
+		animated_sprite.play("sitting_idle_" + facing)
+
 
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,location)

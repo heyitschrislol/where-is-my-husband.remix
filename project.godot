@@ -139,11 +139,14 @@ choices/hotkey_behaviour=1
 window/size/viewport_width=1280
 window/size/viewport_height=1024
 window/size/initial_position_type=3
+window/size/resizable=false
+window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
 [editor]
 
+movie_writer/movie_file="G:/Users/Chris/OneDrive/Depot/3-gamecaptures/project_videos/gameplay.avi"
 version_control/plugin_name="Dialogic"
 version_control/autoload_on_startup=true
 
