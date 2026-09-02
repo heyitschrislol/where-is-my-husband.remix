@@ -552,7 +552,7 @@ animated_sprite = NodePath("animated_sprite_2d")
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"sitting_motion_left"
+animation = &"standing_motion_right"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")

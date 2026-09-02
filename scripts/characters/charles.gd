@@ -16,6 +16,12 @@ func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite.play("sitting_idle_" + facing)
 	dialog_signal.connect(_on_dialog_request)
+	_check_transition_anims_not_looping()
+
+func _check_transition_anims_not_looping():
+	for anim_name in ["standing_motion_left", "standing_motion_right", "sitting_motion_left", "sitting_motion_right"]:
+		if animated_sprite.sprite_frames.get_animation_loop(anim_name):
+			push_warning("Charles: '%s' has Loop enabled — it should be a one-shot transition!" % anim_name)
 
 func _on_dialog_request(timeline: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)

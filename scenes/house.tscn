@@ -1896,7 +1896,7 @@ skew = -0.9773844
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
 
 [node name="bookshelf" parent="objects/guestroom_objects" unique_id=1948526707 instance=ExtResource("9_7685u")]
-z_index = 14
+z_index = 12
 texture_filter = 1
 position = Vector2(747, 107.99994)
 rotation = -3.1415925
@@ -1915,7 +1915,7 @@ scale = Vector2(0.11000001, 0.11000001)
 texture = ExtResource("4_3bgk5")
 
 [node name="computer" parent="objects/guestroom_objects" unique_id=745050616 instance=ExtResource("9_7685u")]
-z_index = 15
+z_index = 12
 texture_filter = 1
 position = Vector2(642, 101.99994)
 rotation = -3.1415925
