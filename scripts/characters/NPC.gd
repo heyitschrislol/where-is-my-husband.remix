@@ -14,7 +14,6 @@ var state : States = States.IDLE
 @export_group("Vision Ranges")
 @export var detection_radius := 250.0
 @export var follow_radius := 100.0
-# This guy doesn't actually attack, he just tries to get close to the player
 #@export var follow_radius := 200.0
 
 signal dialog_signal(timeline_name: String,location: String,default_text: String)
@@ -44,7 +43,7 @@ func _physics_process(_delta):
 
 func set_state(new_state: States) -> void:
 
-	var follow_speed := 145.0
+	var follow_speed := 115.0
 	var direction := player.global_position - global_position
 	var distance = direction.length()
 	var _previous_state := state

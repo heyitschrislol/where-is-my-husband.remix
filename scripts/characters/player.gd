@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var speed: float = 250.0
+@export var speed: float = 85.0
 @export var inventory: Array[ContentItem] = []
 @export var last_dir: String = "down"
 @onready var player_sprite = $animated_sprite_2d

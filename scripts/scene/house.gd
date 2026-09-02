@@ -1,15 +1,24 @@
 extends Node2D
 
 #################################
-#	TODO
-#	-	add debug overlay showing Gamedata variables
-#	-	add fade to scene transitions
-#	-	add display for when achieving special tasks
-#	-	add shadows to rooms with the door closed
-#	-	look into object shadows
-#	-	add music
-#	-	fix dialogic letter sounds
-#	-	add sounds for footsteps
+#	--------------------|
+#		**	TODO	**
+#	--------------------|
+#	(MUST-HAVE)	-	!!		FINISH THE GAME STORY BEATS UP TO THE GAME ENDING	!!
+#									(smoke drops clue, clue leads to PC, PC opens Firefox to fake email server site, read email
+#									leads to the mysteriously locked bedroom closet, game ends after closet gives a pop-up
+#									window with game's final message
+# (MUST-HAVE)	-	add visibility-blocking overlay to only reveal areas that have already been visited
+#	(MUST-HAVE)	-	 implement all remaining tasks required as part of story progression
+# (MUST-HAVE)	-	add fade to scene transitions
+#	(MUST-HAVE)	-	add display for when achieving special tasks
+#	(MUST-HAVE)	-	add sound-effects
+#	(MUST-HAVE)	-	fix dialogic letter sounds
+#	(MUST-HAVE)	-	add game pause functionality
+#	(MUST-HAVE)	-	create title/press start screen
+#								-	look into object shadows
+# 							- add music
+#								-	add debug overlay showing Gamedata variables
 #################################
 
 @onready var charles =$characters/charles

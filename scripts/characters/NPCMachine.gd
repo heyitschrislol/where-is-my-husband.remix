@@ -8,10 +8,12 @@ var state : States = States.IDLE
 
 @export var player : Player
 @export var animated_sprite : AnimatedSprite2D
+
 @export_group("Vision Ranges")
 @export var detection_radius := 250.0
 @export var follow_radius := 100.0
 @export var follow_speed := 175.0
+@export_group("""""")
 
 func _ready():
 
@@ -92,14 +94,21 @@ func get_distance_to_player() -> float:
 func get_distance_to_object(object_pos: Vector2) -> float:
 	return object_pos.distance_to(global_position)
 
-func debugtext(direction, distance):
-	var debugdata = {
-		"npc-dir:"						:	direction,
-		"npc-distance:"				:	distance,
-		"npc-velocity.x:"			:	velocity.x,
-		"npc-velocity.y:"			:	velocity.y,
-		"npc-state:"					:	state
-	}
-	for x in debugdata:
-		print(x, debugdata[x])
-		print(get_distance_to_player())
+func debugtext(direction,distance,debug_data: Dictionary = {}):
+
+
+	for item in debug_data:
+		var data_item =debug_data.get(item,0)
+		if data_item:
+			print(item, ": ", debug_data[item])
+		else:
+			print(item," is 0")
+
+
+	#print(get_distance_to_player())
+	#print("npc-dir",debugdata.get("npc-dir"))
+	#print("npc-distance",debugdata.get("npc-distance"))
+		#if debugdata[arg]
+	#for x in debugdata:
+		#print(x, debugdata[x])
+		#
