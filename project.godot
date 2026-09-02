@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Dialogic="*uid://ds2q0uclmolvu"
 InteractionManager="*uid://bx8fmu533p70h"
 Gamedata="*uid://b3joqbgohcl3p"
-Dialogic="*uid://ds2q0uclmolvu"
 
 [debug]
 

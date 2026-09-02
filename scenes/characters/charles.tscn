@@ -1,100 +1,510 @@
 [gd_scene format=3 uid="uid://g6v2017ot3sj"]
 
 [ext_resource type="Script" uid="uid://cs4bxtdsonyj1" path="res://scripts/characters/charles.gd" id="1_vlt10"]
-[ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="2_kf162"]
-[ext_resource type="Texture2D" uid="uid://btpjxm7l0dsa1" path="res://assets/art/PNG/charles-idle2.png" id="3_r8kuy"]
-[ext_resource type="Texture2D" uid="uid://6xlfs3s77i8s" path="res://assets/art/PNG/charles-idle3.png" id="4_sxe5j"]
+[ext_resource type="Texture2D" uid="uid://dybctr41f21pn" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_000.png" id="2_fapgb"]
+[ext_resource type="Texture2D" uid="uid://gsjugvmrkpwv" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_001.png" id="3_ggnas"]
+[ext_resource type="Texture2D" uid="uid://d2bpgxtbvcqm5" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_002.png" id="4_d665m"]
 [ext_resource type="Texture2D" uid="uid://irmk5sgf1cnh" path="res://assets/art/PNG/charlie-walk1.png" id="5_567k5"]
-[ext_resource type="Texture2D" uid="uid://c3t8dgto1mebu" path="res://assets/art/PNG/charles-idle4.png" id="5_uk4sv"]
-[ext_resource type="Texture2D" uid="uid://c6ik3vmu60pnd" path="res://assets/art/PNG/charles-idle5.png" id="6_ny5xi"]
+[ext_resource type="Texture2D" uid="uid://b5bidisws0ki7" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_003.png" id="5_v3ub3"]
+[ext_resource type="Texture2D" uid="uid://bpdus3h8th2at" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_004.png" id="6_avjl6"]
 [ext_resource type="Texture2D" uid="uid://dseii8w60vyf5" path="res://assets/art/PNG/charlie-walk2.png" id="6_qw7ih"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_vlt10"]
-[ext_resource type="Texture2D" uid="uid://b073uuyd3wyt7" path="res://assets/art/PNG/charles-idle6.png" id="7_f31ki"]
-[ext_resource type="Texture2D" uid="uid://b4076rtmald3y" path="res://assets/art/PNG/charlie-walk3.png" id="10_f31ki"]
-[ext_resource type="Texture2D" uid="uid://dhshyaj2edvwi" path="res://assets/art/PNG/charlie-walk4.png" id="11_xva0k"]
+[ext_resource type="Texture2D" uid="uid://dlomtk4wqin11" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_006.png" id="7_cmmfn"]
+[ext_resource type="Texture2D" uid="uid://tef7wgrilqwn" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_007.png" id="8_tbywh"]
+[ext_resource type="Texture2D" uid="uid://eqlaf88i08qm" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_008.png" id="9_fe8y7"]
+[ext_resource type="Texture2D" uid="uid://dyld6w2kbff2x" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_009.png" id="10_7omt3"]
+[ext_resource type="Texture2D" uid="uid://i0pxiunmc1ly" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_010.png" id="11_o2jqj"]
+[ext_resource type="Texture2D" uid="uid://hp1f8n6d1eu4" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_011.png" id="12_i3ptd"]
+[ext_resource type="Texture2D" uid="uid://bqreldtba4rse" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_west_012.png" id="13_c7jrr"]
+[ext_resource type="Texture2D" uid="uid://lcr1jx34q8vj" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_000.png" id="14_6myqc"]
+[ext_resource type="Texture2D" uid="uid://deyv2vnj6l3dj" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_001.png" id="15_nseek"]
+[ext_resource type="Texture2D" uid="uid://by5a5y22yuk75" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_002.png" id="16_22jkm"]
+[ext_resource type="Texture2D" uid="uid://waj6r5sprty1" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_003.png" id="17_4gx2f"]
+[ext_resource type="Texture2D" uid="uid://c4kx1hw7mbbv1" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_004.png" id="18_gifld"]
+[ext_resource type="Texture2D" uid="uid://c5yr4kjmgq1x3" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_006.png" id="19_fi51c"]
+[ext_resource type="Texture2D" uid="uid://dyuj5viskcft4" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_007.png" id="20_rvr2m"]
+[ext_resource type="Texture2D" uid="uid://v3c7xl85ukyr" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_008.png" id="21_m1a3d"]
+[ext_resource type="Texture2D" uid="uid://dgamlw1px6wod" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_009.png" id="22_ulij4"]
+[ext_resource type="Texture2D" uid="uid://is7ad80g3ipe" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_010.png" id="23_g86ce"]
+[ext_resource type="Texture2D" uid="uid://darus76oy5p5" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_011.png" id="24_i8t2q"]
+[ext_resource type="Texture2D" uid="uid://c25th8e1sxsjs" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_012.png" id="25_qkgt1"]
+[ext_resource type="Texture2D" uid="uid://dx3cnx4sgvvw7" path="res://assets/art/PNG/charles/charles_walk_south_000.png" id="26_cxcu1"]
+[ext_resource type="Texture2D" uid="uid://bnaaiw3s7mihx" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_006.png" id="26_heup3"]
+[ext_resource type="Texture2D" uid="uid://op6i6ajdt866" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_007.png" id="27_pxii2"]
+[ext_resource type="Texture2D" uid="uid://ber8dnpv1jnr6" path="res://assets/art/PNG/charles/charles_walk_south_001.png" id="27_x3dh3"]
+[ext_resource type="Texture2D" uid="uid://ccpxyr3btkdhx" path="res://assets/art/PNG/charles/charles_walk_south_002.png" id="28_krjnm"]
+[ext_resource type="Texture2D" uid="uid://dig2ns1axclac" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_008.png" id="28_xedf3"]
+[ext_resource type="Texture2D" uid="uid://bkf3ay1pc4cce" path="res://assets/art/PNG/charles/charles_walk_south_003.png" id="29_heup3"]
+[ext_resource type="Texture2D" uid="uid://dl51u7ph4u6un" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_006.png" id="29_rv7u6"]
+[ext_resource type="Texture2D" uid="uid://b22pad5gf2gua" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_007.png" id="30_1atnm"]
+[ext_resource type="Texture2D" uid="uid://h8qixns4k4ls" path="res://assets/art/PNG/charles/charles_walk_south_004.png" id="30_pxii2"]
+[ext_resource type="Texture2D" uid="uid://cxo4lkqs3drx1" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_008.png" id="31_6lbrs"]
+[ext_resource type="Texture2D" uid="uid://b2rooqqw32t4b" path="res://assets/art/PNG/charles/charles_walk_south_005.png" id="31_xedf3"]
+[ext_resource type="Texture2D" uid="uid://c56rxovw4wemt" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_000.png" id="32_6qkhx"]
+[ext_resource type="Texture2D" uid="uid://djnl64e08wdse" path="res://assets/art/PNG/charles/charles_walk_south_006.png" id="32_rv7u6"]
+[ext_resource type="Texture2D" uid="uid://bactsws3vaan" path="res://assets/art/PNG/charles/charles_walk_south_007.png" id="33_1atnm"]
+[ext_resource type="Texture2D" uid="uid://b3u7hmp1xega3" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_001.png" id="33_ev5q8"]
+[ext_resource type="Texture2D" uid="uid://b35mys1sxth78" path="res://assets/art/PNG/charles/charles_walk_south_008.png" id="34_6lbrs"]
+[ext_resource type="Texture2D" uid="uid://d0ypd143ipbx7" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_002.png" id="34_jfi8q"]
+[ext_resource type="Texture2D" uid="uid://c3se6gk8x38vl" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_003.png" id="35_3fv31"]
+[ext_resource type="Texture2D" uid="uid://crhhl7ddl1jy0" path="res://assets/art/PNG/charles/charles_walk_south_009.png" id="35_6qkhx"]
+[ext_resource type="Texture2D" uid="uid://bmd63hv5cug68" path="res://assets/art/PNG/charles/charles_walk_south_010.png" id="36_ev5q8"]
+[ext_resource type="Texture2D" uid="uid://ml60baakehqo" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_004.png" id="36_u7uwi"]
+[ext_resource type="Texture2D" uid="uid://cx6x53o7k5o34" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_005.png" id="37_2hjnr"]
+[ext_resource type="Texture2D" uid="uid://q1ywkpft4pfm" path="res://assets/art/PNG/charles/charles_walk_south_011.png" id="37_jfi8q"]
+[ext_resource type="Texture2D" uid="uid://bpyoffxlir22o" path="res://assets/art/PNG/charles/charles_walk_south_012.png" id="38_3fv31"]
+[ext_resource type="Texture2D" uid="uid://br16o8bqdcmm0" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_006.png" id="38_7xh13"]
+[ext_resource type="Texture2D" uid="uid://dut8blo6jqr4h" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_007.png" id="39_cvcih"]
+[ext_resource type="Texture2D" uid="uid://cpe41cnyesh78" path="res://assets/art/PNG/charles/charles_walk_south_013.png" id="39_u7uwi"]
+[ext_resource type="Texture2D" uid="uid://cboej6chfpuyr" path="res://assets/art/PNG/charles/charles_walk_south_014.png" id="40_2hjnr"]
+[ext_resource type="Texture2D" uid="uid://bvbihv8ds1er0" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_southB_008.png" id="40_hwd8c"]
+[ext_resource type="Texture2D" uid="uid://ls1iqg26t2y4" path="res://assets/art/PNG/charles/charles_walk_south_015.png" id="41_7xh13"]
+[ext_resource type="Texture2D" uid="uid://dte0jabm6bcuu" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_000.png" id="41_mj14a"]
+[ext_resource type="Texture2D" uid="uid://cov7ad711t433" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_001.png" id="42_00fxt"]
+[ext_resource type="Texture2D" uid="uid://ddl0gfogge2hl" path="res://assets/art/PNG/charles/charles_walk_west_000.png" id="42_cvcih"]
+[ext_resource type="Texture2D" uid="uid://c8i28otpl8esw" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_002.png" id="43_75yxk"]
+[ext_resource type="Texture2D" uid="uid://c8qboelh28hme" path="res://assets/art/PNG/charles/charles_walk_west_001.png" id="43_hwd8c"]
+[ext_resource type="Texture2D" uid="uid://cunhvihu3f177" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_003.png" id="44_gvxqh"]
+[ext_resource type="Texture2D" uid="uid://bg4p13l6axefq" path="res://assets/art/PNG/charles/charles_walk_west_002.png" id="44_mj14a"]
+[ext_resource type="Texture2D" uid="uid://bri8qec3w5kjt" path="res://assets/art/PNG/charles/charles_walk_west_003.png" id="45_00fxt"]
+[ext_resource type="Texture2D" uid="uid://8fatbghjfk4t" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_004.png" id="45_5wo6t"]
+[ext_resource type="Texture2D" uid="uid://dehfict37qtdl" path="res://assets/art/PNG/charles/charles_walk_west_004.png" id="46_75yxk"]
+[ext_resource type="Texture2D" uid="uid://ch1kik34m4h7b" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_005.png" id="46_n4xwg"]
+[ext_resource type="Texture2D" uid="uid://crhfcrerjp0cb" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_000.png" id="47_acfrn"]
+[ext_resource type="Texture2D" uid="uid://dekc71vlohyx" path="res://assets/art/PNG/charles/charles_walk_west_005.png" id="47_gvxqh"]
+[ext_resource type="Texture2D" uid="uid://jv6dqtbpxiy4" path="res://assets/art/PNG/charles/charles_walk_west_006.png" id="48_5wo6t"]
+[ext_resource type="Texture2D" uid="uid://dfx8edgpp5jpu" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_001.png" id="48_kwckt"]
+[ext_resource type="Texture2D" uid="uid://ca3rb68fkwkmm" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_002.png" id="49_00ao8"]
+[ext_resource type="Texture2D" uid="uid://cqyjm3f8ob86l" path="res://assets/art/PNG/charles/charles_walk_west_007.png" id="49_n4xwg"]
+[ext_resource type="Texture2D" uid="uid://ffvyhjbd16dd" path="res://assets/art/PNG/charles/charles_walk_east_000.png" id="50_acfrn"]
+[ext_resource type="Texture2D" uid="uid://q71scsfigfvn" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_003.png" id="50_dur7l"]
+[ext_resource type="Texture2D" uid="uid://kls3j7hqm0r7" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_004.png" id="51_ifm68"]
+[ext_resource type="Texture2D" uid="uid://w8k7q23lgfam" path="res://assets/art/PNG/charles/charles_walk_east_001.png" id="51_kwckt"]
+[ext_resource type="Texture2D" uid="uid://c4a8xrace8p1d" path="res://assets/art/PNG/charles/charles_walk_east_002.png" id="52_00ao8"]
+[ext_resource type="Texture2D" uid="uid://b4vcyx1q3eio5" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_east_005.png" id="52_78mmy"]
+[ext_resource type="Texture2D" uid="uid://cr73wtqwcr2ri" path="res://assets/art/PNG/charles/charles_walk_east_003.png" id="53_dur7l"]
+[ext_resource type="Texture2D" uid="uid://mpgb17jf43a6" path="res://assets/art/PNG/charles/charles_walk_east_004.png" id="54_ifm68"]
+[ext_resource type="Texture2D" uid="uid://c36d3dmqanj0g" path="res://assets/art/PNG/charles/charles_walk_east_005.png" id="55_78mmy"]
+[ext_resource type="Texture2D" uid="uid://21t17adgob4y" path="res://assets/art/PNG/charles/charles_walk_east_006.png" id="56_j4jvv"]
+[ext_resource type="Texture2D" uid="uid://dufotg5vxqsp5" path="res://assets/art/PNG/charles/charles_walk_east_007.png" id="57_vobff"]
+[ext_resource type="Texture2D" uid="uid://bfpmy5ibr7qtm" path="res://assets/art/PNG/charles/charles_walk_northB_000.png" id="58_vm7cc"]
+[ext_resource type="Texture2D" uid="uid://bhlhlk3bcv1iy" path="res://assets/art/PNG/charles/charles_walk_northB_001.png" id="59_siivd"]
+[ext_resource type="Texture2D" uid="uid://buphangcjkj6w" path="res://assets/art/PNG/charles/charles_walk_northB_002.png" id="60_wjm7h"]
+[ext_resource type="Texture2D" uid="uid://dstkm2qudf2w6" path="res://assets/art/PNG/charles/charles_walk_northB_003.png" id="61_woa6e"]
+[ext_resource type="Texture2D" uid="uid://dgh66cj2i0t8l" path="res://assets/art/PNG/charles/charles_walk_northB_004.png" id="62_2xv2l"]
+[ext_resource type="Texture2D" uid="uid://csx1wahwuix54" path="res://assets/art/PNG/charles/charles_walk_northB_005.png" id="63_8tjqg"]
+[ext_resource type="Texture2D" uid="uid://cx5xwhdwml4p1" path="res://assets/art/PNG/charles/charles_walk_northB_006.png" id="64_foe30"]
+[ext_resource type="Texture2D" uid="uid://dnxukr51aysdw" path="res://assets/art/PNG/charles/charles_walk_northB_007.png" id="65_rs7gu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oltu5"]
 animations = [{
 "frames": [{
-"duration": 12.0,
-"texture": ExtResource("2_kf162")
+"duration": 1.0,
+"texture": ExtResource("2_fapgb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r8kuy")
+"texture": ExtResource("3_ggnas")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_sxe5j")
+"texture": ExtResource("4_d665m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r8kuy")
+"texture": ExtResource("5_v3ub3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avjl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v3ub3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avjl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avjl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avjl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v3ub3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cmmfn")
+}, {
+"duration": 2.5,
+"texture": ExtResource("8_tbywh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fe8y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7omt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o2jqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i3ptd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c7jrr")
 }],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 12.0,
-"texture": ExtResource("2_kf162")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_r8kuy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_sxe5j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_r8kuy")
-}],
-"loop": true,
+"loop": 1,
 "name": &"idle_left",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 12.0,
-"texture": ExtResource("5_uk4sv")
+"duration": 1.0,
+"texture": ExtResource("14_6myqc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ny5xi")
+"texture": ExtResource("15_nseek")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_f31ki")
+"texture": ExtResource("16_22jkm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ny5xi")
+"texture": ExtResource("17_4gx2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gifld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4gx2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gifld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gifld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gifld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4gx2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fi51c")
+}, {
+"duration": 2.5,
+"texture": ExtResource("20_rvr2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_m1a3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ulij4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_g86ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_i8t2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_qkgt1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_right",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.8,
+"texture": ExtResource("26_heup3")
+}, {
+"duration": 1.8,
+"texture": ExtResource("27_pxii2")
+}, {
+"duration": 1.8,
+"texture": ExtResource("28_xedf3")
+}, {
+"duration": 1.8,
+"texture": ExtResource("27_pxii2")
+}],
+"loop": 1,
+"name": &"sitting_idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.8,
+"texture": ExtResource("29_rv7u6")
+}, {
+"duration": 1.8,
+"texture": ExtResource("30_1atnm")
+}, {
+"duration": 1.8,
+"texture": ExtResource("31_6lbrs")
+}, {
+"duration": 1.8,
+"texture": ExtResource("30_1atnm")
+}],
+"loop": 1,
+"name": &"sitting_idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_6qkhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ev5q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_jfi8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3fv31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_u7uwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_2hjnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_7xh13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_cvcih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_hwd8c")
+}],
+"loop": 1,
+"name": &"sitting_idle_south",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_mj14a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_00fxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_75yxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_gvxqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_5wo6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_n4xwg")
+}],
+"loop": 1,
+"name": &"sitting_motion_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_acfrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_kwckt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_00ao8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_dur7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ifm68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_78mmy")
+}],
+"loop": 1,
+"name": &"sitting_motion_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_n4xwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_5wo6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_gvxqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_75yxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_00fxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_mj14a")
+}],
+"loop": 1,
+"name": &"standing_motion_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_78mmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ifm68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_dur7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_00ao8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_kwckt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_acfrn")
+}],
+"loop": 1,
+"name": &"standing_motion_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_cxcu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_x3dh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_krjnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_heup3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_pxii2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_xedf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rv7u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_1atnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_6lbrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_6qkhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ev5q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_jfi8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_3fv31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_u7uwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_2hjnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_7xh13")
+}],
+"loop": 1,
 "name": &"walk_down",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_567k5")
+"texture": ExtResource("42_cvcih")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_qw7ih")
+"texture": ExtResource("43_hwd8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_mj14a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_00fxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_75yxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_gvxqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_5wo6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_n4xwg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_left",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_f31ki")
+"texture": ExtResource("50_acfrn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_xva0k")
+"texture": ExtResource("51_kwckt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_00ao8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_dur7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_ifm68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_78mmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_j4jvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_vobff")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_right",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_vm7cc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_siivd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_wjm7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_woa6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_2xv2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_8tjqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_foe30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_rs7gu")
+}],
+"loop": 1,
 "name": &"walk_up",
 "speed": 5.0
 }, {
@@ -105,7 +515,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_qw7ih")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walking",
 "speed": 4.0
 }]
@@ -141,9 +551,9 @@ animated_sprite = NodePath("animated_sprite_2d")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 texture_filter = 1
-scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"idle_right"
+animation = &"standing_motion_right"
+frame_progress = 0.80417556
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")
