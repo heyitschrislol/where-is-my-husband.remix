@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2n6ps20whe7v"
-path="res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"
+uid="uid://ny7m44e0yhue"
+path="res://.godot/imported/Idle_custom-The_character_stands_in_a_stea_north.png-50ed6b6973e1e4d85301187bad5502f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/droom-door-ONEARM-DESKTOP.png"
-dest_files=["res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"]
+source_file="res://assets/art/PNG/bb/idle/Idle_custom-The_character_stands_in_a_stea_north.png"
+dest_files=["res://.godot/imported/Idle_custom-The_character_stands_in_a_stea_north.png-50ed6b6973e1e4d85301187bad5502f4.ctex"]
 
 [params]
 

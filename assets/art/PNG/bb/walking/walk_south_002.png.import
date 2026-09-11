@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2n6ps20whe7v"
-path="res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"
+uid="uid://dgo6lbqlewfgw"
+path="res://.godot/imported/walk_south_002.png-d60a85ecd3d8691acfecc19db7c8288f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/droom-door-ONEARM-DESKTOP.png"
-dest_files=["res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"]
+source_file="res://assets/art/PNG/bb/walking/walk_south_002.png"
+dest_files=["res://.godot/imported/walk_south_002.png-d60a85ecd3d8691acfecc19db7c8288f.ctex"]
 
 [params]
 

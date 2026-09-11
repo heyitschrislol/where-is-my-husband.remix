@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2n6ps20whe7v"
-path="res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"
+uid="uid://dvbp1jjj4l4m5"
+path="res://.godot/imported/masterbed_side_3_128x128.png-857d00939660a8931a438ef06a1e2430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/droom-door-ONEARM-DESKTOP.png"
-dest_files=["res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"]
+source_file="res://assets/art/PNG/objects/masterbed_side_3_128x128.png"
+dest_files=["res://.godot/imported/masterbed_side_3_128x128.png-857d00939660a8931a438ef06a1e2430.ctex"]
 
 [params]
 

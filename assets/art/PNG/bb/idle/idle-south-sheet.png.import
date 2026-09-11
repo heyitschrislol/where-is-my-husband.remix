@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2n6ps20whe7v"
-path="res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"
+uid="uid://rt0c4veeoj85"
+path="res://.godot/imported/idle-south-sheet.png-1918824e33911eac0304da3eed700215.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/PNG/objects/droom-door-ONEARM-DESKTOP.png"
-dest_files=["res://.godot/imported/droom-door-ONEARM-DESKTOP.png-d9f9533c7f248b02ab8bc9c52cf4aa22.ctex"]
+source_file="res://assets/art/PNG/bb/idle/idle-south-sheet.png"
+dest_files=["res://.godot/imported/idle-south-sheet.png-1918824e33911eac0304da3eed700215.ctex"]
 
 [params]
 
