@@ -48,10 +48,10 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
 	#Gamedata.CAT_SPANISH_LEARNED = true
 	#Gamedata.CHARLES_FIRST_INTERACTION = false
 	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
@@ -103,6 +103,8 @@ func _on_dialog_request(timeline_name: String,_location: String):
 	#get_viewport().set_input_as_handled()
 
 func _on_dialogic_signal(argument:String):
+	if argument == "spanish_book_taken":
+		Gamedata.give_item("spanish_book")
 	if argument == "play_duolingo":
 		_on_play_duolingo()
 

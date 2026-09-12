@@ -50,6 +50,36 @@ func reveal_room(room_name: String) -> void:
 		set(flag_name, true)
 		room_revealed.emit(room_name)
 
+##---ITEM LIST---##
+var item_db := {
+	"spanish_book": {
+		"name": "a Spanish Textbook: Cat Dialect Edition",
+		"icon": "res://assets/art/PNG/objects/spanishbook-full.png"
+	},
+	"cat_food": {
+		"name": "a Cup of Chicken Recipe Senior Cat Food",
+		"icon": "res://assets/art/PNG/special/a_bag_of_science_diet_senior_7.png"
+	},
+	"crumpled_note": {
+		"name": "a Crumpled Note",
+		"icon": "res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png"
+	},
+	"torn_note": {
+		"name": "an Uncrumpled Note - it is torn",
+		"icon": "res://assets/art/PNG/special/SECRET-NOTE-fixed.png"
+	},
+}
+
+
+## Awards an item to the player and shows the popup.
+## Awaitable: await Gamedata.give_item("spanish_book")
+func give_item(item_id: String) -> void:
+	if not item_db.has(item_id):
+		push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
+		return
+	var data = item_db[item_id]
+	await ItemPopup.show_item(data["name"], load(data["icon"]))
+
 ##---SCENE LIST---##
 var scene_paths = {
 	"house"					:	"res://scenes/house.tscn",

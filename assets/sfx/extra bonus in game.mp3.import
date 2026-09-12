@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cf7d8nvufc0x3"
+path="res://.godot/imported/extra bonus in game.mp3-908ca5ff5d38a47eb03ee16ce3a1e738.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/extra bonus in game.mp3"
+dest_files=["res://.godot/imported/extra bonus in game.mp3-908ca5ff5d38a47eb03ee16ce3a1e738.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

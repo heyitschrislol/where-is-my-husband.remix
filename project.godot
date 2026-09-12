@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Dialogic="*uid://ds2q0uclmolvu"
 InteractionManager="*uid://bx8fmu533p70h"
 Gamedata="*uid://b3joqbgohcl3p"
+ItemPopup="*uid://cp6d10e0e1gm5"
 
 [debug]
 
@@ -118,6 +119,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
+"crumpled_note": "res://resources/dialogic/crumpled_note.dtl",
 "diningroom_fooddish": "res://resources/dialogic/diningroom_fooddish.dtl",
 "dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
 "guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
