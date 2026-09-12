@@ -61,13 +61,13 @@ func _ready():
 
 
 	if Gamedata.GAME_START:
-		Gamedata.store_character_positions(Vector2(452.0,444.0),Vector2(-869.0,-289.0),Vector2(1105.0,-705.0))
+		Gamedata.store_character_positions(Vector2(-70.0,-96.0),Vector2(-594.0,-359.0),Vector2(90.0,-419.0))
 		#Gamedata.position_store["player"] = Vector2(-167.0,-77.0)
 		#Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
 		#Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
 		Gamedata.goto_cutscene("open_cutscene", true)
 	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE and !Gamedata.SMOKE_FED:
-		Gamedata.store_character_positions(Vector2(589,-157),Vector2(1085,-637),Vector2(582,-16))
+		Gamedata.store_character_positions(Vector2(-89.0,-228.0),Vector2(98.0,-418.0),Vector2(-123.0,-338.0))
 		Gamedata.load_stored_positions()
 		Gamedata.CHARLES_FOLLOW = false
 		Gamedata.SMOKE_FOLLOW = true
@@ -113,7 +113,7 @@ func _on_dialogic_signal(argument:String):
 	elif argument == "smoke_fed":
 		Gamedata.SMOKE_FED = true
 		Gamedata.SMOKE_FOLLOW = false
-		smoke.idlelocation = Vector2(780,21)
+		smoke.idlelocation = Vector2(-14.0,-205.0)
 
 
 

@@ -21,7 +21,7 @@ func _ready():
 	animated_sprite.play("sitting_idle_" + facing)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	dialog_signal.connect(_on_dialog_request)
-	follow_speed = 100
+	follow_speed = 65
 	follow_radius = 40
 	_check_transition_anims_not_looping()
 

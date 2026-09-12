@@ -31,6 +31,11 @@ func _process(_delta):
 
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
+		if Engine.get_process_frames() % 30 == 0:
+			for a in active_areas:
+				print("[IM] %s -> '%s' @ %.1f px" % [
+					a.get_parent().name, a.action_name,
+					player.global_position.distance_to(a.global_position)])
 		label.text = base_text + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
 		label.global_position.y -= 36
@@ -38,6 +43,14 @@ func _process(_delta):
 		label.show()
 	else:
 		label.hide()
+		#active_areas.sort_custom(_sort_by_distance_to_player)
+		#label.text = base_text + active_areas[0].action_name
+		#label.global_position = active_areas[0].global_position
+		#label.global_position.y -= 36
+		#label.global_position.x -= label.size.x / 3
+		#label.show()
+	#else:
+		#label.hide()
 
 func _sort_by_distance_to_player(area1, area2):
 	var player = _get_player()

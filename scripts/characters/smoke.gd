@@ -5,6 +5,8 @@ extends NPCMachine
 @export var location: String
 @export var lines: Array[String] = []
 var idlelocation : Vector2
+var facing := "right"
+
 
 signal dialog_signal(timeline: String,location: String)
 
@@ -13,6 +15,9 @@ func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite.play("idle_left")
 	dialog_signal.connect(_on_dialog_request)
+	follow_speed = 65
+	follow_radius = 50
+
 
 func _on_dialog_request(timeline: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -75,24 +80,42 @@ func set_state(new_state: States):
 		debugtext(direction,distance)
 
 func update_anim():
-		if velocity == Vector2.ZERO:
-			match player.last_dir:
-				#"up"	:		animated_sprite.flip_h = true
-				#"down":	animated_sprite.flip_h = false
-				"left":	animated_sprite.play("idle_left")
-				"right":	animated_sprite.play("idle_right")
+	var moving = velocity != Vector2.ZERO
 
-		elif abs(velocity.x) >= abs(velocity.y):
+	if moving:
+		if abs(velocity.x) >= abs(velocity.y):
 			if velocity.x > 0:
-				animated_sprite.play("walk_right")
+				facing = "right"
 			elif velocity.x < 0:
-				animated_sprite.play("walk_left")
-				#animated_sprite.flip_h = true
+				facing = "left"
 		else:
 			if velocity.y > 0:
-				animated_sprite.play("walk_down")
+				facing = "down"
 			elif velocity.y < 0:
-				animated_sprite.play("walk_up")
+				facing = "up"
+
+	if not moving:
+		animated_sprite.play("idle_" + facing)
+	elif moving:
+		animated_sprite.play("walk_" + facing)
+	#if velocity == Vector2.ZERO:
+		#match player.last_dir:
+			##"up"	:		animated_sprite.flip_h = true
+			##"down":	animated_sprite.flip_h = false
+			#"left":	animated_sprite.play("idle_left")
+			#"right":	animated_sprite.play("idle_right")
+#
+	#elif abs(velocity.x) >= abs(velocity.y):
+		#if velocity.x > 0:
+			#animated_sprite.play("walk_right")
+		#elif velocity.x < 0:
+			#animated_sprite.play("walk_left")
+			##animated_sprite.flip_h = true
+	#else:
+		#if velocity.y > 0:
+			#animated_sprite.play("walk_down")
+		#elif velocity.y < 0:
+			#animated_sprite.play("walk_up")
 
 
 func set_movingto_state(location : Vector2):
