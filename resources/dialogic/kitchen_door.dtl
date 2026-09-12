@@ -12,7 +12,6 @@ if {CHARLES.LET_OUTSIDE} == false:
 			bailey: the door is closed
 			bailey (thinking): Should I open the door for Charles?
 			- Yes
-				[signal arg="back_door"]
 				[signal arg="start_cutsceneA"]
 				set {CHARLES.LET_OUTSIDE} = true
 				set {Gamedata.LET_CHARLES_OUTSIDE} = true

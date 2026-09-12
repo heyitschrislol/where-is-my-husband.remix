@@ -724,13 +724,13 @@ animation = &"walk_right"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")
 
-[node name="interaction_area" parent="." unique_id=55889324 groups=["npc"] instance=ExtResource("6_vlt10")]
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("6_vlt10")]
 action_name = "talk"
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1213262052 groups=["npc"]]
+[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1213262052]
 shape = SubResource("CapsuleShape2D_dg40j")
 debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=376067245 groups=["npc"]]
+[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=376067245]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7xgtv")

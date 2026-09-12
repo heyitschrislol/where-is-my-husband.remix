@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
 [ext_resource type="Texture2D" uid="uid://bee445v35so7h" path="res://assets/art/PNG/objects/white-couch-side.png" id="29_k27xr"]
+[ext_resource type="Texture2D" uid="uid://btt0rsl8j5rwb" path="res://assets/art/PNG/objects/a_white_coffee_table.png" id="30_r2srw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2srw"]
 texture = ExtResource("2_de74l")
@@ -1684,6 +1685,50 @@ size = Vector2(51.33629, 94.11769)
 [node name="House" type="Node2D" unique_id=515807016]
 script = ExtResource("1_f74lx")
 
+[node name="markers" type="Node2D" parent="." unique_id=20358726]
+
+[node name="FoodDish" type="Marker2D" parent="markers" unique_id=1424081731]
+position = Vector2(943, 340)
+gizmo_extents = 73.3
+
+[node name="routes" type="Node2D" parent="." unique_id=689679821]
+
+[node name="BackDoorToWaitSpot" type="Node2D" parent="routes" unique_id=1683330730]
+
+[node name="BackDoor" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=1953039527]
+position = Vector2(958, 202)
+
+[node name="SinkFront" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=2144273765]
+position = Vector2(834, 195)
+
+[node name="FridgeFront" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=2055601425]
+position = Vector2(833, 271)
+
+[node name="WaitSpotToFoodDish" type="Node2D" parent="routes" unique_id=2086528031]
+
+[node name="FridgeFront" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=412295831]
+position = Vector2(833, 271)
+
+[node name="DiningEntrance" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=2141631263]
+position = Vector2(832, 338)
+
+[node name="Misc" type="Node2D" parent="routes" unique_id=366852686]
+
+[node name="PantryFront" type="Marker2D" parent="routes/Misc" unique_id=174040058]
+position = Vector2(948, 279)
+
+[node name="GreenCouchBottom" type="Marker2D" parent="routes/Misc" unique_id=1601660141]
+position = Vector2(739, 471)
+
+[node name="FrontDoor" type="Marker2D" parent="routes/Misc" unique_id=645238575]
+position = Vector2(877, 453)
+
+[node name="GreenCouchTop" type="Marker2D" parent="routes/Misc" unique_id=1832669356]
+position = Vector2(741, 378)
+
+[node name="CoffeeTableTop" type="Marker2D" parent="routes/Misc" unique_id=694480554]
+position = Vector2(685, 397)
+
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
 visible = false
 
@@ -1791,8 +1836,9 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-523, -272)
+position = Vector2(-525, -272)
 wall_min_slide_angle = 0.061086524
+speed = 105.0
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1
@@ -1826,7 +1872,7 @@ rotation = 3.1415927
 
 [node name="doors" type="Node2D" parent="objects" unique_id=1756970458]
 
-[node name="guestroom" parent="objects/doors" unique_id=974404425 instance=ExtResource("7_ptc3g")]
+[node name="guestroom" parent="objects/doors" unique_id=974404425 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
 position = Vector2(433.00006, 199.99998)
 rotation = -1.5707964
@@ -1843,7 +1889,7 @@ visible = true
 [node name="collision_shape_2d" parent="objects/doors/guestroom" index="2" unique_id=236775629]
 visible = true
 
-[node name="back" parent="objects/doors" unique_id=641251834 instance=ExtResource("9_de74l")]
+[node name="back" parent="objects/doors" unique_id=641251834 groups=["interactable-object"] instance=ExtResource("9_de74l")]
 z_index = 5
 texture_filter = 1
 position = Vector2(-16, 341)
@@ -1858,14 +1904,14 @@ dialog_name = "kitchen_door"
 [node name="collision_shape_2d" parent="objects/doors/back" index="2" unique_id=363208448]
 position = Vector2(1.2627615e-07, -4.6789646e-06)
 
-[node name="front" parent="objects/doors" unique_id=104687334 instance=ExtResource("7_ptc3g")]
+[node name="front" parent="objects/doors" unique_id=104687334 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
 position = Vector2(33, 99)
 scale = Vector2(0.8, 0.32)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
-[node name="bathroom" parent="objects/doors" unique_id=200330778 instance=ExtResource("7_ptc3g")]
+[node name="bathroom" parent="objects/doors" unique_id=200330778 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
 position = Vector2(278.00006, 272.99994)
 rotation = -1.5707964
@@ -1879,7 +1925,7 @@ visible = true
 [node name="collision_shape_2d" parent="objects/doors/bathroom" index="2" unique_id=236775629]
 visible = true
 
-[node name="bedroom" parent="objects/doors" unique_id=958335291 instance=ExtResource("7_ptc3g")]
+[node name="bedroom" parent="objects/doors" unique_id=958335291 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 z_index = 12
 texture_filter = 1
 position = Vector2(491.0001, 244.99994)
@@ -1905,7 +1951,7 @@ rotation = -0.9773844
 scale = Vector2(0.75, 1)
 skew = 0.9773844
 
-[node name="bedroom_closet" parent="objects/doors" unique_id=840223582 instance=ExtResource("7_ptc3g")]
+[node name="bedroom_closet" parent="objects/doors" unique_id=840223582 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 z_index = 7
 texture_filter = 1
 position = Vector2(489.99994, 304.99994)
@@ -1932,7 +1978,7 @@ rotation = 0.9773844
 scale = Vector2(0.75, 1)
 skew = -0.9773844
 
-[node name="bedroom_bathroom" parent="objects/doors" unique_id=1571382840 instance=ExtResource("7_ptc3g")]
+[node name="bedroom_bathroom" parent="objects/doors" unique_id=1571382840 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 z_index = 7
 texture_filter = 1
 position = Vector2(490.00003, 374.99997)
@@ -1961,7 +2007,7 @@ skew = -0.9773844
 
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
 
-[node name="bookshelf" parent="objects/guestroom_objects" unique_id=1948526707 instance=ExtResource("9_7685u")]
+[node name="bookshelf" parent="objects/guestroom_objects" unique_id=1948526707 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 11
 texture_filter = 1
 position = Vector2(559.99994, 180.99995)
@@ -1989,7 +2035,7 @@ constant_angular_velocity = 0.017453292
 position = Vector2(-0.00024414063, -39)
 shape = SubResource("RectangleShape2D_3xd07")
 
-[node name="computer" parent="objects/guestroom_objects" unique_id=745050616 instance=ExtResource("9_7685u")]
+[node name="computer" parent="objects/guestroom_objects" unique_id=745050616 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 11
 texture_filter = 1
 position = Vector2(490, 178.99995)
@@ -2043,7 +2089,7 @@ rotation = -1.5707964
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("18_4jkga")
 
-[node name="fridge" parent="objects/kitchen_objects" unique_id=1931563014 instance=ExtResource("9_7685u")]
+[node name="fridge" parent="objects/kitchen_objects" unique_id=1931563014 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 1
 position = Vector2(167, 298)
 rotation = 3.1415927
@@ -2067,7 +2113,7 @@ visible = false
 position = Vector2(37.5, -18)
 shape = SubResource("RectangleShape2D_qrght")
 
-[node name="pantry" parent="objects/kitchen_objects" unique_id=1847724227 instance=ExtResource("9_7685u")]
+[node name="pantry" parent="objects/kitchen_objects" unique_id=1847724227 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 position = Vector2(-16, 273)
 rotation = 1.5707964
 scale = Vector2(0.15, 0.15)
@@ -2213,7 +2259,7 @@ rotation = 4.712389
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_57tf3")
 
-[node name="fooddish" parent="objects/diningroom_objects" unique_id=502821847 instance=ExtResource("9_7685u")]
+[node name="fooddish" parent="objects/diningroom_objects" unique_id=502821847 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 5
 texture_filter = 1
 position = Vector2(-2, 206.99998)
@@ -2286,7 +2332,7 @@ rotation = 4.712389
 scale = Vector2(2, 2)
 texture = ExtResource("27_4jkga")
 
-[node name="greencouch" parent="objects/livingroom_objects" unique_id=947305527 instance=ExtResource("9_7685u")]
+[node name="greencouch" parent="objects/livingroom_objects" unique_id=947305527 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 1
 position = Vector2(184.00005, 126)
 rotation = 3.1415927
@@ -2310,7 +2356,7 @@ position = Vector2(0.35705566, -13.571472)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_nrgyv")
 
-[node name="whitecouch" parent="objects/livingroom_objects" unique_id=1524489993 instance=ExtResource("9_7685u")]
+[node name="whitecouch" parent="objects/livingroom_objects" unique_id=1524489993 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 position = Vector2(349.00003, 124.99998)
 rotation = 3.1415927
 scale = Vector2(0.7, 0.7)
@@ -2348,10 +2394,10 @@ shape = SubResource("RectangleShape2D_lamap")
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/livingroom_objects/coffeetable" unique_id=842425335]
 position = Vector2(7.6293945e-06, 3.0517578e-05)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("22_3kuml")
+scale = Vector2(1.5, 1.75)
+texture = ExtResource("30_r2srw")
 
-[node name="cellphone" parent="objects/livingroom_objects/coffeetable" unique_id=1755411704 instance=ExtResource("9_7685u")]
+[node name="cellphone" parent="objects/livingroom_objects/coffeetable" unique_id=1755411704 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 texture_filter = 1
 position = Vector2(3.9999962, -13.000003)
 scale = Vector2(0.85, 0.85)

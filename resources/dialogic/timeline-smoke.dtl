@@ -4,15 +4,22 @@ if {SMOKE.LET_INSIDE} == true:
 		bailey (exhausted): Yeah, yeah I've got your food right here just let me figure out where to set it down!
 		[end_timeline]
 	else:
-		if {SMOKE.FED} == true:
-#			set Gamedata.SMOKE_IDLELOCATION  = true
-#			set Gamedata.smoke_idlecoords = (-110.0,-267.0)
-			
+		if {SMOKE.FED} == false:
 			smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
-			[end_timeline]
-		else:
-			smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
-			[end_timeline]
+			bailey (thinking): Hmmm... Smoke seems to be waiting for something. But what could he want me to do?
+			bailey (surprised): Oh yeah! Maybe I can ask him using my new {CatSpanish}!
+			bailey (thinking): Buenos dias, Smoke. ¿Hablas "Gato español"?
+			smoke (default): ...Mrow?
+			bailey (exhausted): Arggh! [ns=.65][lspeed=0.15][i]Of course[/i].
+			bailey (exhausted): You don't speak {CatSpanish}.
+			bailey (winking): I'll just have to figure out what Smoke wants from me using my big brain!
+
+
+smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+[end_timeline]
 else:
-	smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
-	[end_timeline]
+smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+[end_timeline]
+else:
+smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+[end_timeline]

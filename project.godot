@@ -81,6 +81,8 @@ variables={
 "FIRST_SPANISH_CONVO": true,
 "LET_OUTSIDE": false
 },
+"CatSpanish": "[b][color=green]Cat Spanish[/color][/b]",
+"CrumpledNote": "[b][color=blue]crumpled note[/color][/b]",
 "DOOR_CLOSED": true,
 "FOUND_SPANISH_BOOK": false,
 "HOLDING_CAT_FOOD": false,

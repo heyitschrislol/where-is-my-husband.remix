@@ -9,7 +9,7 @@ if {SMOKE.FED} == false:
 			bailey (playful): Here you go, Smoke
 			[signal arg="food_placed"]
 			set {HOLDING_CAT_FOOD} = false
-			[wait time="4.0"]
+#			[wait time="4.0"]
 			smoke (content): Mrrrow-ckkrowww....
 			bailey (playful): You were hungry, huh buddy?
 			[signal arg="smoke_fed"]

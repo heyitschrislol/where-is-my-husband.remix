@@ -72,19 +72,19 @@ func _ready():
 			Gamedata.load_stored_positions()
 			Gamedata.CHARLES_FOLLOW = false
 			Gamedata.SMOKE_FOLLOW = false
-			Gamedata.SMOKE_DESTINATION_SET = true
-			Gamedata.set_destination_coords("smoke",Vector2(-110.0,-267.0))
 		#elif not Gamedata.SMOKE_FED and Gamedata.HOLDING_CAT_FOOD:
 
 		elif Gamedata.SMOKE_FED:
 			Gamedata.SMOKE_FOLLOW = false
-			Gamedata.SMOKE_DESTINATION_SET = true
+			#Gamedata.SMOKE_DESTINATION_SET = true
 
 
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
+	if Gamedata.PENDING_SMOKE_ROUTE != "":
+		_start_pending_smoke_route.call_deferred()
 #func _process(_delta):
 
 	#Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -103,36 +103,101 @@ func _on_dialog_request(timeline_name: String,_location: String):
 
 func _on_dialogic_signal(argument:String):
 	if argument == "play_duolingo":
-		Gamedata.goto_cutscene("duolingo", false)
+		_on_play_duolingo()
+
 	elif argument == "start_cutsceneA":
 		print("setting special positions")
-		#Gamedata.store_character_positions(Vector2(589,-157),Vector2(1085,-637),Vector2(582,-16))
-		#Gamedata.position_store["player"] = Vector2(735,-162)
-		#Gamedata.position_store["smoke"] = Vector2(544,-448)
-		#Gamedata.position_store["charles"] = Vector2(1045,-647)
-		Gamedata.LET_CHARLES_OUTSIDE = true
-		Gamedata.SMOKE_INSIDE = true
-		Gamedata.goto_cutscene("cutscene_kitchenA", true)
-		Gamedata.set_destination_coords("smoke",Vector2(-110.0,-267.0))
-		Gamedata.SMOKE_DESTINATION_SET = true
-	elif argument == "back_door":
-		door_back.SPECIAL_DOOR = false
+		_on_let_charles_outside()
+
 	elif argument == "holding_cat_food":
-		Gamedata.HOLDING_CAT_FOOD = true
-		Gamedata.SMOKE_DESTINATION_SET = false
-		#Gamedata.SMOKE_FOLLOW = true
+		_on_holding_cat_food()
+
 	elif argument == "food_placed":
-		Gamedata.FOOD_PLACED = true
-		Gamedata.HOLDING_CAT_FOOD = false
-		Gamedata.set_destination_coords("smoke",Vector2(-18.0,-207.0))
-		Gamedata.SMOKE_DESTINATION_SET = true
+		_on_food_placed()
+
 	elif argument == "smoke_fed":
-		Gamedata.SMOKE_FED = true
-		Gamedata.SMOKE_FOLLOW = false
-		smoke.destination_coords = Vector2(-14.0,-205.0)
+		_on_smoke_fed()
+
+func route(route_node: Node2D) -> Array[Vector2]:
+	var points: Array[Vector2] = []
+	for child in route_node.get_children():
+		if child is Marker2D:
+			points.append(child.global_position)
+	return points
+
+#func _on_story_event():
+	#pass
+
+func _on_first_charles_interaction():
+	pass
+
+func _on_spanish_book_found():
+	pass
+
+func _on_play_duolingo():
+	Gamedata.goto_cutscene("duolingo", false)
+
+func _on_learned_cat_spanish():
+	pass
+
+func _on_charles_dialog_in_spanish():
+	pass
+
+func _on_let_charles_outside():
+	Gamedata.LET_CHARLES_OUTSIDE = true
+	Gamedata.SMOKE_INSIDE = true
+	Gamedata.PENDING_SMOKE_ROUTE = "BackDoorToWaitSpot"
+	Gamedata.goto_cutscene("cutscene_kitchenA", true)
+	door_back.SPECIAL_DOOR = false
+	var points = route($routes/BackDoorToWaitSpot)
+	#points.append($Markers/FoodBowl.global_position)
+	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	#var cats = Gamedata._get_cats()
+	smoke.move_along(points)
+	await smoke.destination_reached
+
+func _on_holding_cat_food():
+	Gamedata.HOLDING_CAT_FOOD = true
+
+func _on_food_placed():
+	Gamedata.FOOD_PLACED = true
+	Gamedata.HOLDING_CAT_FOOD = false
+	#Gamedata.move_npc_to("smoke", $markers/FoodDish.global_position)
+	var points = route($routes/WaitSpotToFoodDish)
+	points.append($markers/FoodDish.global_position)
+	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	smoke.move_along(points)
+	#await smoke.destination_reached
+
+func _on_smoke_fed():
+	Gamedata.SMOKE_FED = true
+	Gamedata.SMOKE_FOLLOW = false
+
+func _on_crumpled_note_dropped():
+	pass
+
+func _on_crumpled_note_read():
+	pass
+
+func _on_access_computer():
+	pass
+
+func _on_pmail_hacked():
+	pass
 
 
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	# do something else here
+
+func _start_pending_smoke_route() -> void:
+	var route_name := Gamedata.PENDING_SMOKE_ROUTE
+	Gamedata.PENDING_SMOKE_ROUTE = ""   # clear first — this must never fire twice
+	var route_node = $routes.get_node_or_null(route_name)
+	if route_node == null:
+		push_warning("No route node named '%s' under House/Routes" % route_name)
+		return
+	smoke.move_along(route(route_node))
+	await smoke.destination_reached
+	print("smoke finished her route")

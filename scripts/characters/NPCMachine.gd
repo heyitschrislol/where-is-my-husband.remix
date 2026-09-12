@@ -17,10 +17,18 @@ var state : States = States.IDLE
 @export_group("""""")
 
 @export_group("Target Destination")
-@export var destination_coords : Vector2
-@export var distance_from_target : float
-@export_group("""""")
-#var destination_coords : Vector2
+@export var arrival_threshold := 4.0
+@export_group("")
+
+@export var stuck_timeout := 4.0
+var _best_distance := INF
+var _stuck_time := 0.0
+var destination_coords: Vector2 = Vector2.ZERO
+var has_destination: bool = false
+var waypoints: Array[Vector2] = []
+
+
+signal destination_reached
 
 func _ready():
 
@@ -28,23 +36,89 @@ func _ready():
 
 
 func _physics_process(_delta):
-	pass
-	#if get_distance_to_player() <= follow_radius:
-		#set_state(States.IDLE)
-	#else:
-		#if Gamedata.CHARLES_FOLLOW:
-			#set_state(States.FOLLOWING)
-		#else:
-			#set_state(States.IDLE)
-	#update_anim()
-	#move_and_slide()
-	#if get_distance_to_player() <= detection_radius:
-		#set_state(States.FOLLOWING)
-	#else:
-		#set_state(States.IDLE)
-	#update_anim()
-	#move_and_slide()
+	decide_state()
+	apply_state(_delta)
+	update_anim()
+	move_and_slide()
 
+func decide_state() -> void:
+	state = States.IDLE
+
+func apply_state(delta: float) -> void:
+	match state:
+		States.IDLE:
+			velocity = Vector2.ZERO
+		States.FOLLOWING:
+			var to_player := player.global_position - global_position
+			if to_player.length() <= follow_radius:
+				velocity = Vector2.ZERO
+			else:
+				velocity = to_player.normalized() * follow_speed
+		States.MOVINGTO:
+			_step_toward_destination(delta)
+
+
+func _step_toward_destination(delta: float) -> void:
+	if not has_destination:
+		velocity = Vector2.ZERO
+		return
+
+	var to_target := destination_coords - global_position
+	var distance := to_target.length()
+	if distance < _best_distance - 1.0:
+		_best_distance = distance
+		_stuck_time = 0.0
+	else:
+		_stuck_time += delta
+		if _stuck_time > stuck_timeout:
+			push_warning("%s stuck en route to %s" % [name, destination_coords])
+			global_position = destination_coords
+			_best_distance = INF
+			_stuck_time = 0.0
+	var step := follow_speed * delta  # how far one physics frame carries us
+
+	# Stop if we're inside the threshold OR if one more frame would overshoot.
+	if distance <= max(arrival_threshold, step):
+		if not waypoints.is_empty():
+			destination_coords = waypoints.pop_front()
+			_step_toward_destination(delta)   # re-aim immediately, same frame
+			return
+
+		velocity = Vector2.ZERO
+		has_destination = false
+		state = States.IDLE
+		destination_reached.emit()
+		return
+
+	velocity = to_target.normalized() * follow_speed
+
+
+## Public API — this is what the rest of the game calls.
+func move_to(target: Vector2) -> void:
+	_best_distance = INF
+	_stuck_time = 0.0
+	waypoints.clear()
+	destination_coords = target
+	has_destination = true
+	state = States.MOVINGTO
+
+## Walk a multi-point route. The final point is the destination.
+func move_along(points: Array[Vector2]) -> void:
+	_best_distance = INF
+	_stuck_time = 0.0
+	if points.is_empty():
+		return
+	waypoints = points.duplicate()   # duplicate so we don't mutate the caller's array
+	destination_coords = waypoints.pop_front()
+	has_destination = true
+	state = States.MOVINGTO
+
+func cancel_move_to() -> void:
+	waypoints.clear()
+	has_destination = false
+	velocity = Vector2.ZERO
+	if state == States.MOVINGTO:
+		state = States.IDLE
 
 func set_state(new_state: States) -> void:
 	var direction := player.global_position - global_position
@@ -121,20 +195,9 @@ func get_distance_to_object(object_pos: Vector2) -> float:
 	return object_pos.distance_to(global_position)
 
 func debugtext(direction,distance,debug_data: Dictionary = {}):
-
-
 	for item in debug_data:
 		var data_item =debug_data.get(item,0)
 		if data_item:
 			print(item, ": ", debug_data[item])
 		else:
 			print(item," is 0")
-
-
-	#print(get_distance_to_player())
-	#print("npc-dir",debugdata.get("npc-dir"))
-	#print("npc-distance",debugdata.get("npc-distance"))
-		#if debugdata[arg]
-	#for x in debugdata:
-		#print(x, debugdata[x])
-		#

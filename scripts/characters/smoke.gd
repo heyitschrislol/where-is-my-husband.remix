@@ -15,6 +15,7 @@ func _ready():
 	dialog_signal.connect(_on_dialog_request)
 	follow_speed = 55
 	follow_radius = 45
+	#arrival_threshold = 10
 
 
 func _on_dialog_request(timeline: String,_location: String):
@@ -33,49 +34,59 @@ func _on_interact():
 	#Gamedata.position_store["charles"] = global_position
 	start_dialog(timeline_name)
 
-func _physics_process(_delta):
-	if get_distance_to_player() <= follow_radius:
-		set_state(States.IDLE)
+func decide_state() -> void:
+	if has_destination:
+		state = States.MOVINGTO
+	elif Gamedata.SMOKE_FOLLOW:
+		state = States.FOLLOWING
 	else:
-		if Gamedata.SMOKE_FOLLOW:
-			set_state(States.FOLLOWING)
-		elif Gamedata.SMOKE_DESTINATION_SET:
-			set_state(States.MOVINGTO)
-			if get_distance_to_object(destination_coords) <= follow_radius:
-				set_state(States.IDLE)
-			else:
-				set_state(States.MOVINGTO)
-		else:
-			set_state(States.IDLE)
-	update_anim()
-	move_and_slide()
+		state = States.IDLE
 
-func set_state(new_state: States):
-	var direction := player.global_position - global_position
-	var distance = direction.length()
+#func _physics_process(_delta):
+	#if Gamedata.SMOKE_FOLLOW:
+		#if get_distance_to_player() <= follow_radius:
+			#set_state(States.IDLE)
+		#else:
+			#set_state(States.FOLLOWING)
+	#elif Gamedata.SMOKE_DESTINATION_SET:
+		#set_state(States.MOVINGTO)
+		#if get_distance_to_object(destination_coords) <= follow_radius:
+			#set_state(States.IDLE)
+		#else:
+			#set_state(States.MOVINGTO)
+	#else:
+		#set_state(States.IDLE)
+	##else:
+		##set_state(States.IDLE)
+	#update_anim()
+	#move_and_slide()
 
+#func set_state(new_state: States):
+	#var direction := player.global_position - global_position
+	#var distance = direction.length()
+#
+#
+	#var _previous_state := state
+	#state = new_state
+#
+	#if state == States.IDLE:
+		#velocity = Vector2.ZERO
+	#elif state == States.FOLLOWING:
+		#velocity = direction.normalized()*follow_speed
+		#if distance <= follow_radius:
+			#velocity = Vector2.ZERO
+		##elif distance > follow_radius:
+			##state = States.FOLLOWING
+	#elif state == States.MOVINGTO:
+		#if not destination_coords.is_zero_approx():
+			#var objdirection : Vector2 = destination_coords - global_position
+			#var objdistance = objdirection.length()
+			#velocity = objdirection.normalized()*follow_speed
+			#if objdistance <= arrival_threshold:
+				#velocity = Vector2.ZERO
 
-	var _previous_state := state
-	state = new_state
-
-	if state == States.IDLE:
-		velocity = Vector2.ZERO
-	elif state == States.FOLLOWING:
-		velocity = direction.normalized()*follow_speed
-		if distance <= follow_radius:
-			velocity = Vector2.ZERO
-		#elif distance > follow_radius:
-			#state = States.FOLLOWING
-	elif state == States.MOVINGTO:
-		if not destination_coords.is_zero_approx():
-			var objdirection : Vector2 = global_position - destination_coords
-			var objdistance = objdirection.length()
-			velocity = objdirection.normalized()*follow_speed
-			if objdistance <= distance_from_target:
-				velocity = Vector2.ZERO
-
-	if debugging:
-		debugtext(direction,distance)
+	#if debugging:
+		#debugtext(direction,distance)
 
 func update_anim():
 	var moving = velocity != Vector2.ZERO
@@ -96,28 +107,7 @@ func update_anim():
 		animated_sprite.play("idle_" + facing)
 	else:
 		animated_sprite.play("walk_" + facing)
-	#if velocity == Vector2.ZERO:
-		#match player.last_dir:
-			##"up"	:		animated_sprite.flip_h = true
-			##"down":	animated_sprite.flip_h = false
-			#"left":	animated_sprite.play("idle_left")
-			#"right":	animated_sprite.play("idle_right")
-#
-	#elif abs(velocity.x) >= abs(velocity.y):
-		#if velocity.x > 0:
-			#animated_sprite.play("walk_right")
-		#elif velocity.x < 0:
-			#animated_sprite.play("walk_left")
-			##animated_sprite.flip_h = true
-	#else:
-		#if velocity.y > 0:
-			#animated_sprite.play("walk_down")
-		#elif velocity.y < 0:
-			#animated_sprite.play("walk_up")
 
-
-func set_movingto_state(location : Vector2):
-	destination_coords = location
 
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,location)

@@ -560,29 +560,28 @@ lines = Array[String](["Me-..ack..-orrww", "Mroaa..aa..aa..oww", "ackk-..owww"])
 animated_sprite = NodePath("animated_sprite_2d")
 follow_radius = 45.0
 follow_speed = 55.0
-distance_from_target = 10.0
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=742757515]
 position = Vector2(5.102042, 0)
 sprite_frames = SubResource("SpriteFrames_lypf5")
 animation = &"idle_right"
-frame_progress = 0.78963125
+frame_progress = 0.35587707
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1280807264]
 libraries/ = SubResource("AnimationLibrary_ejc4m")
 
-[node name="interaction_area" parent="." unique_id=55889324 groups=["npc"] instance=ExtResource("6_ejc4m")]
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("6_ejc4m")]
 position = Vector2(6, 0)
 collision_layer = 4
 collision_mask = 11
 action_name = "talk"
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1766191669 groups=["npc"]]
+[node name="collision_shape_2d" type="CollisionShape2D" parent="interaction_area" unique_id=1766191669]
 position = Vector2(1.1920929e-07, -9.536743e-07)
 shape = SubResource("CircleShape2D_lvkx1")
 debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=1676307787 groups=["npc"]]
+[node name="collision_shape_2d" type="CollisionShape2D" parent="." unique_id=1676307787]
 position = Vector2(7, 0)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("CircleShape2D_l7b6q")

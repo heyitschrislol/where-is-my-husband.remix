@@ -10,9 +10,6 @@ var _is_dialog_active: bool = false
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
 
-var CHARLES_DESTINATION_SET = false
-var SMOKE_DESTINATION_SET = false
-
 #var GAME_START = true
 var GAME_START = false
 
@@ -25,6 +22,7 @@ var SMOKE_FED = false
 var CRUMPLED_NOTE_DROPPED = false
 var CRUMPLED_NOTE_READ = false
 var HOLDING_CAT_FOOD = false
+var PENDING_SMOKE_ROUTE: String = ""
 ## GUESTROOM
 ## -----------
 var PMAIL_HACKED = false
@@ -82,9 +80,17 @@ func _process(_delta: float):
 		CHARLES_FOLLOW = false
 		SMOKE_FOLLOW = false
 
-func set_destination_coords(npc_name: String, coords: Vector2):
-	var npc = get_node("/root/House/characters/" + npc_name)
-	npc.destination_coords = coords
+func move_npc_to(npc_name: String, coords: Vector2) -> Node:
+	for npc in get_tree().get_nodes_in_group("npcs"):
+		if npc.name == npc_name:
+			npc.move_to(coords)
+			return npc
+	push_warning("move_npc_to: no NPC named " + npc_name)
+	return null
+
+#func set_destination_coords(npc_name: String, coords: Vector2):
+	#var npc = get_node("/root/House/characters/" + npc_name)
+	#npc.destination_coords = coords
 
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.
@@ -163,7 +169,7 @@ func _on_dialogue_ended():
 func _get_player():
 	return get_tree().get_first_node_in_group("player")
 func _get_cats():
-	return get_tree().get_nodes_in_group("npcs")
+	return get_tree().get_nodes_in_group("npc")
 
 
 

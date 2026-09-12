@@ -42,6 +42,14 @@ func _on_interact():
 	#Gamedata.position_store["charles"] = global_position
 	start_dialog(timeline_name)
 
+func decide_state() -> void:
+	if has_destination:
+		state = States.MOVINGTO
+	elif Gamedata.CHARLES_FOLLOW:
+		state = States.FOLLOWING
+	else:
+		state = States.IDLE
+
 func _physics_process(_delta):
 	if Gamedata.CHARLES_FOLLOW:
 		if get_distance_to_player() <= follow_radius:
@@ -60,38 +68,38 @@ func _physics_process(_delta):
 	update_anim()
 	move_and_slide()
 
-func set_state(new_state: States):
-	var direction := player.global_position - global_position
-	var distance = direction.length()
-	var _previous_state := state
-	state = new_state
-
-	if state == States.IDLE:
-		velocity = Vector2.ZERO
-	if state == States.FOLLOWING:
-		velocity = direction.normalized()*follow_speed
-		if distance <= follow_radius:
-			velocity = Vector2.ZERO
-		#elif distance > follow_radius:
-			#state = States.FOLLOWING
-
-
-	if debugging:
-		var debugdata = {
-			"npc-dir"														:	direction,
-			"npc-distance"											:	distance,
-			#"npc-velocity.x"										:	velocity.x,
-			#"npc-velocity.y"										:	velocity.y,
-			"npc-state"													:	state,
-			#"npc-follow-speed"								:	follow_speed,
-			#"npc-follow-radius"							:	follow_radius,
-			#"npc-detection-radius"					:	detection_radius,
-			"player-speed"											:	player.speed,
-			"player-velocity-x"							:	player.velocity.x,
-			"player-velocity-y"							:	player.velocity.y
-		}
-
-		debugtext(direction, distance,debugdata)
+#func set_state(new_state: States):
+	#var direction := player.global_position - global_position
+	#var distance = direction.length()
+	#var _previous_state := state
+	#state = new_state
+#
+	#if state == States.IDLE:
+		#velocity = Vector2.ZERO
+	#if state == States.FOLLOWING:
+		#velocity = direction.normalized()*follow_speed
+		#if distance <= follow_radius:
+			#velocity = Vector2.ZERO
+		##elif distance > follow_radius:
+			##state = States.FOLLOWING
+#
+#
+	#if debugging:
+		#var debugdata = {
+			#"npc-dir"														:	direction,
+			#"npc-distance"											:	distance,
+			##"npc-velocity.x"										:	velocity.x,
+			##"npc-velocity.y"										:	velocity.y,
+			#"npc-state"													:	state,
+			##"npc-follow-speed"								:	follow_speed,
+			##"npc-follow-radius"							:	follow_radius,
+			##"npc-detection-radius"					:	detection_radius,
+			#"player-speed"											:	player.speed,
+			#"player-velocity-x"							:	player.velocity.x,
+			#"player-velocity-y"							:	player.velocity.y
+		#}
+#
+		#debugtext(direction, distance,debugdata)
 
 func update_anim():
 	if is_transitioning:
