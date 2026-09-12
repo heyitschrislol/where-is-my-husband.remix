@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://dwyfjfqhn6vk2" path="res://assets/art/PNG/objects/coffeetable_sm.PNG" id="22_3kuml"]
 [ext_resource type="Texture2D" uid="uid://8urdwal6q56k" path="res://assets/art/PNG/objects/lamp2.png" id="22_4jkga"]
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
+[ext_resource type="Texture2D" uid="uid://1gvudu5wipxi" path="res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png" id="25_8cron"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="26_p4eap"]
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
 [ext_resource type="Texture2D" uid="uid://bee445v35so7h" path="res://assets/art/PNG/objects/white-couch-side.png" id="29_k27xr"]
@@ -1658,6 +1660,12 @@ height = 189.06909
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in3qe"]
 size = Vector2(40, 43.333344)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xd07"]
+radius = 46.154297
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq8tk"]
+radius = 76.92285
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8noe"]
 size = Vector2(80, 49)
 
@@ -2274,6 +2282,24 @@ collision_mask = 6
 position = Vector2(0, -1.666687)
 shape = SubResource("RectangleShape2D_in3qe")
 debug_color = Color(0.70673937, 0.48834383, 0.019049766, 0.41960785)
+
+[node name="crumpled-note" type="Sprite2D" parent="objects/diningroom_objects" unique_id=795575249]
+visible = false
+texture_filter = 1
+position = Vector2(47.000015, 191.99997)
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("25_8cron")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="objects/diningroom_objects/crumpled-note" unique_id=823485559]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/diningroom_objects/crumpled-note/StaticBody2D" unique_id=1980285877]
+shape = SubResource("CircleShape2D_3xd07")
+
+[node name="interaction_area" parent="objects/diningroom_objects/crumpled-note" unique_id=547834299 instance=ExtResource("26_p4eap")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/diningroom_objects/crumpled-note/interaction_area" unique_id=800893027]
+shape = SubResource("CircleShape2D_jq8tk")
+debug_color = Color(0.7490196, 0.45882353, 0, 0.6901961)
 
 [node name="hallway_objects" type="Node2D" parent="objects" unique_id=1807488133]
 

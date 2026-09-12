@@ -41,6 +41,7 @@ extends Node2D
 @onready var obj_livingroom_whitecouch = $objects/livingroom_objects/whitecouch
 @onready var obj_livingroom_greencouch = $objects/livingroom_objects/greencouch
 @onready var obj_kitchen_fridge = $objects/kitchen_objects/fridge
+@onready var obj_diningroom_crumpled_note = $"objects/diningroom_objects/crumpled-note"
 #@onready var obj_kitchen_pantry = $objects/guestroom_objects/computer
 #@onready var obj_kitchen_crumpled_note = $objects/guestroom_objects/computer
 
@@ -172,6 +173,8 @@ func _on_food_placed():
 func _on_smoke_fed():
 	Gamedata.SMOKE_FED = true
 	Gamedata.SMOKE_FOLLOW = false
+	Gamedata.CRUMPLED_NOTE_DROPPED = true
+	obj_diningroom_crumpled_note.visible = true
 
 func _on_crumpled_note_dropped():
 	pass
