@@ -7,9 +7,9 @@ if {SMOKE.FED} == false:
 			bailey (thinking): Now where can I put this food for Smoke?
 			bailey (surprised): Oh this little tray looks like a good place!
 			bailey (playful): Here you go, Smoke
-			[signal arg="feed_smoke"]
+			[signal arg="food_placed"]
 			set {HOLDING_CAT_FOOD} = false
-			
+			[wait time="4.0"]
 			smoke (content): Mrrrow-ckkrowww....
 			bailey (playful): You were hungry, huh buddy?
 			[signal arg="smoke_fed"]
@@ -19,5 +19,5 @@ if {SMOKE.FED} == false:
 			bailey (default): It's a small, tin tray sitting on the ground. It's empty.
 			[end_timeline]
 else:
-		bailey (surprised): Smoke ate all of the food I put here already!
-		[end_timeline]
+	bailey (surprised): Smoke ate all of the food I put here already!
+	[end_timeline]

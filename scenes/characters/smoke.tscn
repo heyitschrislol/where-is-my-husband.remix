@@ -327,7 +327,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 10.5,
+"duration": 8.0,
 "texture": SubResource("AtlasTexture_fhpfb")
 }, {
 "duration": 1.5,
@@ -344,7 +344,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 10.5,
+"duration": 8.0,
 "texture": SubResource("AtlasTexture_js3p3")
 }, {
 "duration": 1.5,
@@ -552,16 +552,21 @@ radius = 18.000008
 texture_filter = 1
 collision_layer = 4
 collision_mask = 11
+motion_mode = 1
 script = ExtResource("1_mkbkt")
 interaction_area = NodePath("interaction_area")
 timeline_name = "timeline_smoke"
 lines = Array[String](["Me-..ack..-orrww", "Mroaa..aa..aa..oww", "ackk-..owww"])
 animated_sprite = NodePath("animated_sprite_2d")
+follow_radius = 45.0
+follow_speed = 55.0
+distance_from_target = 10.0
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=742757515]
 position = Vector2(5.102042, 0)
 sprite_frames = SubResource("SpriteFrames_lypf5")
-animation = &"idle_down"
+animation = &"idle_right"
+frame_progress = 0.78963125
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1280807264]
 libraries/ = SubResource("AnimationLibrary_ejc4m")

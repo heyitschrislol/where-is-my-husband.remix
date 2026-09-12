@@ -5,6 +5,9 @@ if {SMOKE.LET_INSIDE} == true:
 		[end_timeline]
 	else:
 		if {SMOKE.FED} == true:
+#			set Gamedata.SMOKE_IDLELOCATION  = true
+#			set Gamedata.smoke_idlecoords = (-110.0,-267.0)
+			
 			smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
 			[end_timeline]
 		else:

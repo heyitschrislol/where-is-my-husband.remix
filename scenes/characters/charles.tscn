@@ -706,12 +706,15 @@ z_index = 2
 texture_filter = 1
 collision_layer = 4
 collision_mask = 15
+motion_mode = 1
 script = ExtResource("1_vlt10")
 interaction_area = NodePath("interaction_area")
 timeline_name = "bedroom_charles"
 lines = Array[String](["Meow", "....meow", "mrr... mrrr... mrr"])
 debugging = true
 animated_sprite = NodePath("animated_sprite_2d")
+follow_radius = 45.0
+follow_speed = 65.0
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 texture_filter = 1

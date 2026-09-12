@@ -66,11 +66,20 @@ func _ready():
 		#Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
 		#Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
 		Gamedata.goto_cutscene("open_cutscene", true)
-	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE and !Gamedata.SMOKE_FED:
-		Gamedata.store_character_positions(Vector2(-89.0,-228.0),Vector2(98.0,-418.0),Vector2(-123.0,-338.0))
-		Gamedata.load_stored_positions()
-		Gamedata.CHARLES_FOLLOW = false
-		Gamedata.SMOKE_FOLLOW = true
+	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
+		if not Gamedata.SMOKE_FED and not Gamedata.HOLDING_CAT_FOOD:
+			Gamedata.store_character_positions(Vector2(-89.0,-228.0),Vector2(98.0,-418.0),Vector2(-5.0,-350.0))
+			Gamedata.load_stored_positions()
+			Gamedata.CHARLES_FOLLOW = false
+			Gamedata.SMOKE_FOLLOW = false
+			Gamedata.SMOKE_DESTINATION_SET = true
+			Gamedata.set_destination_coords("smoke",Vector2(-110.0,-267.0))
+		#elif not Gamedata.SMOKE_FED and Gamedata.HOLDING_CAT_FOOD:
+
+		elif Gamedata.SMOKE_FED:
+			Gamedata.SMOKE_FOLLOW = false
+			Gamedata.SMOKE_DESTINATION_SET = true
+
 
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)
@@ -104,16 +113,23 @@ func _on_dialogic_signal(argument:String):
 		Gamedata.LET_CHARLES_OUTSIDE = true
 		Gamedata.SMOKE_INSIDE = true
 		Gamedata.goto_cutscene("cutscene_kitchenA", true)
+		Gamedata.set_destination_coords("smoke",Vector2(-110.0,-267.0))
+		Gamedata.SMOKE_DESTINATION_SET = true
 	elif argument == "back_door":
 		door_back.SPECIAL_DOOR = false
 	elif argument == "holding_cat_food":
 		Gamedata.HOLDING_CAT_FOOD = true
-	elif argument == "feed_smoke":
+		Gamedata.SMOKE_DESTINATION_SET = false
+		#Gamedata.SMOKE_FOLLOW = true
+	elif argument == "food_placed":
+		Gamedata.FOOD_PLACED = true
 		Gamedata.HOLDING_CAT_FOOD = false
+		Gamedata.set_destination_coords("smoke",Vector2(-18.0,-207.0))
+		Gamedata.SMOKE_DESTINATION_SET = true
 	elif argument == "smoke_fed":
 		Gamedata.SMOKE_FED = true
 		Gamedata.SMOKE_FOLLOW = false
-		smoke.idlelocation = Vector2(-14.0,-205.0)
+		smoke.destination_coords = Vector2(-14.0,-205.0)
 
 
 

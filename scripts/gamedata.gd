@@ -6,16 +6,21 @@ var previous_scene = null
 var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false
+
 var CHARLES_FOLLOW = false
-var CHARLES_IDLELOCATION = false
 var SMOKE_FOLLOW = false
-var SMOKE_IDLELOCATION = false
+
+var CHARLES_DESTINATION_SET = false
+var SMOKE_DESTINATION_SET = false
+
 #var GAME_START = true
 var GAME_START = false
+
 ## KITCHEN
 ## -----------
 var LET_CHARLES_OUTSIDE = false
 var SMOKE_INSIDE = false
+var FOOD_PLACED = false
 var SMOKE_FED = false
 var CRUMPLED_NOTE_DROPPED = false
 var CRUMPLED_NOTE_READ = false
@@ -71,11 +76,15 @@ func _process(_delta: float):
 		SMOKE_FOLLOW = false
 	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE and !SMOKE_FED:
 		CHARLES_FOLLOW = false
-		SMOKE_FOLLOW = true
+		#SMOKE_FOLLOW = true
+		SMOKE_FOLLOW = false
 	else:
 		CHARLES_FOLLOW = false
 		SMOKE_FOLLOW = false
 
+func set_destination_coords(npc_name: String, coords: Vector2):
+	var npc = get_node("/root/House/characters/" + npc_name)
+	npc.destination_coords = coords
 
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.

@@ -4,8 +4,6 @@ extends NPCMachine
 @export var timeline_name : String
 @export var location: String
 @export var lines: Array[String] = []
-var idlelocation : Vector2
-var facing := "right"
 
 
 signal dialog_signal(timeline: String,location: String)
@@ -15,8 +13,8 @@ func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite.play("idle_left")
 	dialog_signal.connect(_on_dialog_request)
-	follow_speed = 65
-	follow_radius = 50
+	follow_speed = 55
+	follow_radius = 45
 
 
 func _on_dialog_request(timeline: String,_location: String):
@@ -41,9 +39,9 @@ func _physics_process(_delta):
 	else:
 		if Gamedata.SMOKE_FOLLOW:
 			set_state(States.FOLLOWING)
-		elif Gamedata.SMOKE_IDLELOCATION:
+		elif Gamedata.SMOKE_DESTINATION_SET:
 			set_state(States.MOVINGTO)
-			if get_distance_to_object(idlelocation) <= follow_radius:
+			if get_distance_to_object(destination_coords) <= follow_radius:
 				set_state(States.IDLE)
 			else:
 				set_state(States.MOVINGTO)
@@ -62,18 +60,18 @@ func set_state(new_state: States):
 
 	if state == States.IDLE:
 		velocity = Vector2.ZERO
-	if state == States.FOLLOWING:
+	elif state == States.FOLLOWING:
 		velocity = direction.normalized()*follow_speed
 		if distance <= follow_radius:
 			velocity = Vector2.ZERO
 		#elif distance > follow_radius:
 			#state = States.FOLLOWING
-	if state == States.MOVINGTO:
-		if idlelocation:
-			var objdirection := idlelocation - global_position
+	elif state == States.MOVINGTO:
+		if not destination_coords.is_zero_approx():
+			var objdirection : Vector2 = global_position - destination_coords
 			var objdistance = objdirection.length()
 			velocity = objdirection.normalized()*follow_speed
-			if objdistance <= follow_radius:
+			if objdistance <= distance_from_target:
 				velocity = Vector2.ZERO
 
 	if debugging:
@@ -96,7 +94,7 @@ func update_anim():
 
 	if not moving:
 		animated_sprite.play("idle_" + facing)
-	elif moving:
+	else:
 		animated_sprite.play("walk_" + facing)
 	#if velocity == Vector2.ZERO:
 		#match player.last_dir:
@@ -119,7 +117,7 @@ func update_anim():
 
 
 func set_movingto_state(location : Vector2):
-	idlelocation = location
+	destination_coords = location
 
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,location)

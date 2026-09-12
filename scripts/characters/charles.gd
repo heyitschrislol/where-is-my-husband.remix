@@ -5,24 +5,20 @@ extends NPCMachine
 @export var location: String
 @export var lines: Array[String] = []
 
-
-
 signal dialog_signal(timeline: String,location: String)
 
 var was_moving := false
 var is_transitioning := false
-var facing := "right"
 
 
 func _ready():
-	debugging
+	#debugging
 	interaction_area.action_name = "speak"
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite.play("sitting_idle_" + facing)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	dialog_signal.connect(_on_dialog_request)
-	follow_speed = 65
-	follow_radius = 40
+
 	_check_transition_anims_not_looping()
 
 func _check_transition_anims_not_looping():
@@ -47,14 +43,20 @@ func _on_interact():
 	start_dialog(timeline_name)
 
 func _physics_process(_delta):
-
-	if get_distance_to_player() <= follow_radius:
-		set_state(States.IDLE)
-	else:
-		if Gamedata.CHARLES_FOLLOW:
-			set_state(States.FOLLOWING)
-		else:
+	if Gamedata.CHARLES_FOLLOW:
+		if get_distance_to_player() <= follow_radius:
 			set_state(States.IDLE)
+		else:
+			set_state(States.FOLLOWING)
+	else:
+		set_state(States.IDLE)
+	#if get_distance_to_player() <= follow_radius:
+		#set_state(States.IDLE)
+	#else:
+		#if Gamedata.CHARLES_FOLLOW:
+			#set_state(States.FOLLOWING)
+		#else:
+			#set_state(States.IDLE)
 	update_anim()
 	move_and_slide()
 

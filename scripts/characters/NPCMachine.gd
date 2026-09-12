@@ -9,11 +9,18 @@ var state : States = States.IDLE
 @export var player : Player
 @export var animated_sprite : AnimatedSprite2D
 
-@export_group("Vision Ranges")
+@export_group("Movement Behavior")
 @export var detection_radius := 250.0
 @export var follow_radius := 100.0
 @export var follow_speed := 175.0
+@export var facing := "down"
 @export_group("""""")
+
+@export_group("Target Destination")
+@export var destination_coords : Vector2
+@export var distance_from_target : float
+@export_group("""""")
+#var destination_coords : Vector2
 
 func _ready():
 
@@ -71,22 +78,41 @@ func set_state(new_state: States) -> void:
 	#pass
 
 func update_anim():
-		if !velocity:
-			match player.last_dir:
-				#"up":		animated_sprite.play("idle_up")
-				#"down":		animated_sprite.play("idle_down")
-				"left":		animated_sprite.play("idle_left")
-				"right":	animated_sprite.play("idle_right")
+	var moving = velocity != Vector2.ZERO
+	if moving:
 		if abs(velocity.x) >= abs(velocity.y):
 			if velocity.x > 0:
-				animated_sprite.play("walk_right")
-			else:
-				animated_sprite.play("walk_left")
+				facing = "right"
+			elif velocity.x < 0:
+				facing = "left"
 		else:
 			if velocity.y > 0:
-				animated_sprite.play("walk_down")
-			else:
-				animated_sprite.play("walk_up")
+				facing = "down"
+			elif velocity.y < 0:
+				facing = "up"
+		animated_sprite.play("walk_" + facing)
+	else:
+		animated_sprite.play("idle_" + facing)
+	#if not moving:
+		#animated_sprite.play("idle_" + facing)
+	#else:
+		#animated_sprite.play("walk_" + facing)
+		#if !velocity:
+			#match player.last_dir:
+				##"up":		animated_sprite.play("idle_up")
+				##"down":		animated_sprite.play("idle_down")
+				#"left":		animated_sprite.play("idle_left")
+				#"right":	animated_sprite.play("idle_right")
+		#if abs(velocity.x) >= abs(velocity.y):
+			#if velocity.x > 0:
+				#animated_sprite.play("walk_right")
+			#else:
+				#animated_sprite.play("walk_left")
+		#else:
+			#if velocity.y > 0:
+				#animated_sprite.play("walk_down")
+			#else:
+				#animated_sprite.play("walk_up")
 
 func get_distance_to_player() -> float:
 	return player.global_position.distance_to(global_position)
