@@ -174,4 +174,5 @@ func _close_lesson():
 	Gamedata.CAT_SPANISH_LEARNED = true
 	Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
 	scene_finished.emit()
+	await Gamedata.give_item("spanish_book")
 	#queue_free()

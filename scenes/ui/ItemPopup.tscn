@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://cp6d10e0e1gm5"]
 
 [ext_resource type="Script" uid="uid://dxo38fdxlkfen" path="res://scripts/item_popup.gd" id="1_05dob"]
+[ext_resource type="FontFile" uid="uid://dk4csv882upye" path="res://assets/Fonts/pixelfonts/Pix32.ttf" id="2_71e0w"]
 [ext_resource type="AudioStream" uid="uid://disev0uk6qnjl" path="res://assets/sfx/approved-mission.mp3" id="2_apdwj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8csbg"]
+font = ExtResource("2_71e0w")
 
 [node name="ItemPopup" type="CanvasLayer" unique_id=343727109]
 layer = 100
@@ -49,6 +53,7 @@ stretch_mode = 5
 [node name="item_label" type="Label" parent="center/panel/margin/vbox" unique_id=1747892300]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+label_settings = SubResource("LabelSettings_8csbg")
 horizontal_alignment = 1
 autowrap_mode = 2
 

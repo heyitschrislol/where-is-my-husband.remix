@@ -11,6 +11,7 @@ if {SMOKE.FED} == false:
 			smoke: aaackk---eoww--ack!
 			bailey (exhausted): You and me both buddy.
 			bailey (playful):  Let me get a cup of food out for you...
+			[wait time="2.0"]
 			set {HOLDING_CAT_FOOD} = true
 			[signal arg="holding_cat_food"]
 			[end_timeline]

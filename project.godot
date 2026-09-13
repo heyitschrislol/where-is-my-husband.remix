@@ -83,11 +83,13 @@ variables={
 "LET_OUTSIDE": false
 },
 "CatSpanish": "[b][color=green]Cat Spanish[/color][/b]",
-"CrumpledNote": "[b][color=blue]crumpled note[/color][/b]",
+"Clue": "[b][color=purple]clue[/color][/b]",
+"CrumpledNote": "[b][color=blue]crumpled-up paper ball[/color][/b]",
 "DOOR_CLOSED": true,
 "FOUND_SPANISH_BOOK": false,
 "HOLDING_CAT_FOOD": false,
 "PLAYED_DUOLINGO": false,
+"PMAIL": "[b][color=pink]Pmail[/color][/b]",
 "SMOKE": {
 "FED": false,
 "LET_INSIDE": false
@@ -143,6 +145,7 @@ choices/hotkey_behaviour=1
 
 window/size/viewport_width=1280
 window/size/viewport_height=1024
+window/size/mode=3
 window/size/initial_position_type=3
 window/size/resizable=false
 window/size/extend_to_title=true

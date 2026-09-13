@@ -53,7 +53,7 @@ func reveal_room(room_name: String) -> void:
 ##---ITEM LIST---##
 var item_db := {
 	"spanish_book": {
-		"name": "a Spanish Textbook: Cat Dialect Edition",
+		"name": "the ability to speak Cat Spanish",
 		"icon": "res://assets/art/PNG/objects/spanishbook-full.png"
 	},
 	"cat_food": {
@@ -104,7 +104,6 @@ func _process(_delta: float):
 		SMOKE_FOLLOW = false
 	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE and !SMOKE_FED:
 		CHARLES_FOLLOW = false
-		#SMOKE_FOLLOW = true
 		SMOKE_FOLLOW = false
 	else:
 		CHARLES_FOLLOW = false
@@ -118,9 +117,6 @@ func move_npc_to(npc_name: String, coords: Vector2) -> Node:
 	push_warning("move_npc_to: no NPC named " + npc_name)
 	return null
 
-#func set_destination_coords(npc_name: String, coords: Vector2):
-	#var npc = get_node("/root/House/characters/" + npc_name)
-	#npc.destination_coords = coords
 
 # Saves the current scene, loads the new one on top.
 # When the new scene emits `scene_finished`, swaps back.

@@ -41,7 +41,8 @@ extends Node2D
 @onready var obj_livingroom_whitecouch = $objects/livingroom_objects/whitecouch
 @onready var obj_livingroom_greencouch = $objects/livingroom_objects/greencouch
 @onready var obj_kitchen_fridge = $objects/kitchen_objects/fridge
-@onready var obj_diningroom_crumpled_note = $"objects/diningroom_objects/crumpled-note"
+@onready var obj_kitchen_torn_note = $"objects/kitchen_objects/torn_note"
+@onready var obj_diningroom_crumpled_note = $"objects/diningroom_objects/crumpled_note"
 #@onready var obj_kitchen_pantry = $objects/guestroom_objects/computer
 #@onready var obj_kitchen_crumpled_note = $objects/guestroom_objects/computer
 
@@ -60,7 +61,10 @@ func _ready():
 	#Gamedata.SMOKE_INSIDE = true
 	#####								#####
 
-
+	obj_kitchen_torn_note.visible = false
+	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_DISABLED
+	obj_diningroom_crumpled_note.visible = false
+	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
 	if Gamedata.GAME_START:
 		Gamedata.store_character_positions(Vector2(-70.0,-96.0),Vector2(-594.0,-359.0),Vector2(90.0,-419.0))
 		#Gamedata.position_store["player"] = Vector2(-167.0,-77.0)
@@ -103,10 +107,10 @@ func _on_dialog_request(timeline_name: String,_location: String):
 	#get_viewport().set_input_as_handled()
 
 func _on_dialogic_signal(argument:String):
-	if argument == "spanish_book_taken":
-		Gamedata.give_item("spanish_book")
+	#if argument == "spanish_book_taken":
 	if argument == "play_duolingo":
 		_on_play_duolingo()
+
 
 	elif argument == "start_cutsceneA":
 		print("setting special positions")
@@ -120,6 +124,13 @@ func _on_dialogic_signal(argument:String):
 
 	elif argument == "smoke_fed":
 		_on_smoke_fed()
+
+	elif argument == "crumpled_note_taken":
+		_on_crumpled_note_taken()
+	elif argument == "crumpled_note_opened":
+		_on_crumpled_note_opened()
+	elif argument == "crumpled_note_dropped":
+		_on_crumpled_note_dropped()
 
 func route(route_node: Node2D) -> Array[Vector2]:
 	var points: Array[Vector2] = []
@@ -161,6 +172,7 @@ func _on_let_charles_outside():
 
 func _on_holding_cat_food():
 	Gamedata.HOLDING_CAT_FOOD = true
+	Gamedata.give_item("cat_food")
 
 func _on_food_placed():
 	Gamedata.FOOD_PLACED = true
@@ -177,12 +189,24 @@ func _on_smoke_fed():
 	Gamedata.SMOKE_FOLLOW = false
 	Gamedata.CRUMPLED_NOTE_DROPPED = true
 	obj_diningroom_crumpled_note.visible = true
+	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_crumpled_note_taken():
+	Gamedata.give_item("crumpled_note")
+	obj_diningroom_crumpled_note.visible = false
+	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+	#pass
+
+func _on_crumpled_note_opened():
+	Gamedata.give_item("torn_note")
+	obj_kitchen_torn_note.visible = true
+	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_crumpled_note_dropped():
-	pass
-
-func _on_crumpled_note_read():
-	pass
+	obj_diningroom_crumpled_note.visible = true
+	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_access_computer():
 	pass

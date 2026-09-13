@@ -15,11 +15,11 @@ if {SMOKE.LET_INSIDE} == true:
 			bailey (winking): I'll just have to figure out what Smoke wants from me using my big brain!
 
 
-smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
-[end_timeline]
+#smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+#[end_timeline]
 else:
 smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
 [end_timeline]
-else:
-smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
-[end_timeline]
+#else:
+#smoke (default): <Me-..ack..-orrww/Mroaa..aa..aa..oww/ackk-..owww>
+#[end_timeline]

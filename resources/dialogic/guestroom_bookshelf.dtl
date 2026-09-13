@@ -6,7 +6,7 @@ if {FOUND_SPANISH_BOOK} == false:
 	bailey (thinking): Maybe there's an [color=green][b]app[/b][/color] on my phone I could use...  
 	set {FOUND_SPANISH_BOOK} = true
 	set {Gamedata.FOUND_SPANISH_BOOK} = true
-	[signal arg="spanish_book_taken"]
+#	[signal arg="spanish_book_taken"]
 	#	set {FOUND_SPANISH_BOOK} = true
 	#	set {Gamedata.FOUND_SPANISH_BOOK} = true
 	[end_timeline]

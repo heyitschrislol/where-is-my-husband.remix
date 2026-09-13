@@ -23,16 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://rfb1dn0jkvpn" path="res://assets/art/PNG/objects/food-dish.png" id="19_qrght"]
 [ext_resource type="Texture2D" uid="uid://br7bga03f1uhp" path="res://assets/art/PNG/objects/doorcubby.png" id="20_de74l"]
 [ext_resource type="Texture2D" uid="uid://dvbp1jjj4l4m5" path="res://assets/art/PNG/objects/masterbed_side_3_128x128.png" id="21_4jkga"]
+[ext_resource type="Texture2D" uid="uid://cq4bww62u840x" path="res://assets/art/PNG/objects/SECRET-NOTE-SMALL.png" id="21_80gfe"]
 [ext_resource type="Texture2D" uid="uid://dwyfjfqhn6vk2" path="res://assets/art/PNG/objects/coffeetable_sm.PNG" id="22_3kuml"]
 [ext_resource type="Texture2D" uid="uid://8urdwal6q56k" path="res://assets/art/PNG/objects/lamp2.png" id="22_4jkga"]
 [ext_resource type="Texture2D" uid="uid://ds86wxq8bnyf2" path="res://assets/art/PNG/objects/diningset.png" id="23_8cron"]
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
 [ext_resource type="Texture2D" uid="uid://1gvudu5wipxi" path="res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png" id="25_8cron"]
-[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="26_p4eap"]
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
 [ext_resource type="Texture2D" uid="uid://bee445v35so7h" path="res://assets/art/PNG/objects/white-couch-side.png" id="29_k27xr"]
 [ext_resource type="Texture2D" uid="uid://btt0rsl8j5rwb" path="res://assets/art/PNG/objects/a_white_coffee_table.png" id="30_r2srw"]
+[ext_resource type="Texture2D" uid="uid://b2ja6a0of3hsw" path="res://assets/art/PNG/objects/toilet.png" id="34_p4eap"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2srw"]
 texture = ExtResource("2_de74l")
@@ -1659,12 +1660,6 @@ size = Vector2(34.999996, 40.000004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in3qe"]
 size = Vector2(40, 43.333344)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3xd07"]
-radius = 46.154297
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jq8tk"]
-radius = 76.92285
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8noe"]
 size = Vector2(80, 49)
 
@@ -1688,6 +1683,9 @@ size = Vector2(156, 37.7274)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de74l"]
 size = Vector2(51.33629, 94.11769)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
+size = Vector2(22, 22)
 
 [node name="House" type="Node2D" unique_id=515807016]
 script = ExtResource("1_f74lx")
@@ -1840,7 +1838,7 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-525, -272)
+position = Vector2(-103, -109)
 wall_min_slide_angle = 0.061086524
 speed = 105.0
 
@@ -2141,6 +2139,16 @@ position = Vector2(-3.3333726, 3.3334968)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qrght")
 
+[node name="torn_note" parent="objects/kitchen_objects" unique_id=1747493553 instance=ExtResource("9_7685u")]
+visible = false
+position = Vector2(73.00002, 324.00003)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_80gfe")
+dialog_name = "torn_note"
+
+[node name="CollisionShape2D" parent="objects/kitchen_objects/torn_note/interaction_area" parent_id_path=PackedInt32Array(1747493553, 55889324) index="0" unique_id=588109631]
+debug_color = Color(0.6751168, 0.5069369, 0, 0.41960785)
+
 [node name="bedroom_objects" type="Node2D" parent="objects" unique_id=1573146749]
 
 [node name="grp_bed" type="Node2D" parent="objects/bedroom_objects" unique_id=2039630114]
@@ -2276,23 +2284,19 @@ position = Vector2(0, -1.666687)
 shape = SubResource("RectangleShape2D_in3qe")
 debug_color = Color(0.70673937, 0.48834383, 0.019049766, 0.41960785)
 
-[node name="crumpled-note" type="Sprite2D" parent="objects/diningroom_objects" unique_id=795575249]
+[node name="crumpled_note" parent="objects/diningroom_objects" unique_id=1557020060 instance=ExtResource("9_7685u")]
 visible = false
 texture_filter = 1
-position = Vector2(68.00002, 237.99997)
+position = Vector2(68.00003, 243.99998)
 scale = Vector2(0.045, 0.045)
 texture = ExtResource("25_8cron")
+dialog_name = "crumpled_note"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="objects/diningroom_objects/crumpled-note" unique_id=823485559]
+[node name="interaction_area" parent="objects/diningroom_objects/crumpled_note" index="0" unique_id=55889324]
+action_name = "pickup"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/diningroom_objects/crumpled-note/StaticBody2D" unique_id=1980285877]
-shape = SubResource("CircleShape2D_3xd07")
-
-[node name="interaction_area" parent="objects/diningroom_objects/crumpled-note" unique_id=547834299 instance=ExtResource("26_p4eap")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/diningroom_objects/crumpled-note/interaction_area" unique_id=800893027]
-shape = SubResource("CircleShape2D_jq8tk")
-debug_color = Color(0.7490196, 0.45882353, 0, 0.6901961)
+[node name="CollisionShape2D" parent="objects/diningroom_objects/crumpled_note/interaction_area" index="0" unique_id=588109631]
+debug_color = Color(0.68380094, 0.5020786, 0, 0.41960785)
 
 [node name="hallway_objects" type="Node2D" parent="objects" unique_id=1807488133]
 
@@ -2429,6 +2433,20 @@ scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_de74l")
 debug_color = Color(0.6901961, 0.49803922, 0, 0.7019608)
 
+[node name="hallbathroom_objects" type="Node2D" parent="objects" unique_id=1775120053]
+
+[node name="toilet" type="Sprite2D" parent="objects/hallbathroom_objects" unique_id=109992930]
+z_index = 5
+position = Vector2(208.00003, 391.99997)
+rotation = 3.1415927
+texture = ExtResource("34_p4eap")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="objects/hallbathroom_objects/toilet" unique_id=490497834]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/hallbathroom_objects/toilet/StaticBody2D" unique_id=1057340186]
+position = Vector2(6, -6)
+shape = SubResource("RectangleShape2D_6fhyq")
+
 [editable path="characters/player"]
 [editable path="characters/charles"]
 [editable path="characters/smoke"]
@@ -2442,7 +2460,9 @@ debug_color = Color(0.6901961, 0.49803922, 0, 0.7019608)
 [editable path="objects/guestroom_objects/computer"]
 [editable path="objects/kitchen_objects/fridge"]
 [editable path="objects/kitchen_objects/pantry"]
+[editable path="objects/kitchen_objects/torn_note"]
 [editable path="objects/diningroom_objects/fooddish"]
+[editable path="objects/diningroom_objects/crumpled_note"]
 [editable path="objects/livingroom_objects/greencouch"]
 [editable path="objects/livingroom_objects/whitecouch"]
 [editable path="objects/livingroom_objects/whitecouch/interaction_area"]
