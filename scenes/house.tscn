@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bjj7e0d735ec1" path="res://assets/art/PNG/objects/fridge_sm.PNG" id="13_e5ov4"]
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
+[ext_resource type="Script" uid="uid://7ukjt7dvg1o8" path="res://scripts/computer.gd" id="17_m31jp"]
 [ext_resource type="Texture2D" uid="uid://xflaf8se1hhp" path="res://assets/art/PNG/objects/A_square_kitchen_island_with_chairs.png" id="18_4jkga"]
 [ext_resource type="Texture2D" uid="uid://rfb1dn0jkvpn" path="res://assets/art/PNG/objects/food-dish.png" id="19_qrght"]
 [ext_resource type="Texture2D" uid="uid://br7bga03f1uhp" path="res://assets/art/PNG/objects/doorcubby.png" id="20_de74l"]
@@ -1843,7 +1844,6 @@ position = Vector2(960, 545)
 z_index = 13
 position = Vector2(-103, -109)
 wall_min_slide_angle = 0.061086524
-speed = 105.0
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1
@@ -1857,6 +1857,7 @@ wall_min_slide_angle = 0.061086524
 timeline_name = "timeline-charles"
 debugging = false
 player = NodePath("../player")
+follow_speed = 70.0
 
 [node name="collision_shape_2d" parent="characters/charles" index="3" unique_id=376067245]
 position = Vector2(0, 1)
@@ -2047,7 +2048,9 @@ position = Vector2(490, 178.99995)
 rotation = -3.1415925
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("11_7685u")
-dialog_name = "guestroom_computer"
+script = ExtResource("17_m31jp")
+timeline_before = "guestroom_computer"
+timeline_after = "guestroom_computer_pmail"
 
 [node name="CollisionShape2D" parent="objects/guestroom_objects/computer/interaction_area" parent_id_path=PackedInt32Array(745050616, 55889324) index="0" unique_id=588109631]
 position = Vector2(-0.00024414063, -11.791748)

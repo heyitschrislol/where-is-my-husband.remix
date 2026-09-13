@@ -19,8 +19,7 @@ func start_dialogue(timeline_name: String) -> void:
 	Gamedata.GAME_START = false
 	# Start the dialogue
 	Dialogic.start(timeline_name)
-
-	 anim_player.animation_finished
+	anim_player.animation_finished
 
 	Dialogic.start("startingscene2")
 	# Wait for Dialogic to finish this specific segment
