@@ -26,11 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://cq4bww62u840x" path="res://assets/art/PNG/objects/SECRET-NOTE-SMALL.png" id="21_80gfe"]
 [ext_resource type="Texture2D" uid="uid://dwyfjfqhn6vk2" path="res://assets/art/PNG/objects/coffeetable_sm.PNG" id="22_3kuml"]
 [ext_resource type="Texture2D" uid="uid://8urdwal6q56k" path="res://assets/art/PNG/objects/lamp2.png" id="22_4jkga"]
+[ext_resource type="Script" uid="uid://cohtv6rim83c3" path="res://scripts/closeup.gd" id="22_q425y"]
 [ext_resource type="Texture2D" uid="uid://ds86wxq8bnyf2" path="res://assets/art/PNG/objects/diningset.png" id="23_8cron"]
+[ext_resource type="Texture2D" uid="uid://lkmy44xvsfik" path="res://assets/art/PNG/special/SECRET-NOTE-fixed.png" id="23_in3qe"]
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
 [ext_resource type="Texture2D" uid="uid://1gvudu5wipxi" path="res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png" id="25_8cron"]
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
+[ext_resource type="Script" uid="uid://b2djgtnhydiqu" path="res://scripts/pickup.gd" id="29_in3qe"]
 [ext_resource type="Texture2D" uid="uid://bee445v35so7h" path="res://assets/art/PNG/objects/white-couch-side.png" id="29_k27xr"]
 [ext_resource type="Texture2D" uid="uid://btt0rsl8j5rwb" path="res://assets/art/PNG/objects/a_white_coffee_table.png" id="30_r2srw"]
 [ext_resource type="Texture2D" uid="uid://b2ja6a0of3hsw" path="res://assets/art/PNG/objects/toilet.png" id="34_p4eap"]
@@ -2141,10 +2144,16 @@ shape = SubResource("CapsuleShape2D_qrght")
 
 [node name="torn_note" parent="objects/kitchen_objects" unique_id=1747493553 instance=ExtResource("9_7685u")]
 visible = false
+texture_filter = 1
 position = Vector2(73.00002, 324.00003)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_80gfe")
-dialog_name = "torn_note"
+script = ExtResource("22_q425y")
+closeup_image = ExtResource("23_in3qe")
+prompt_verb = "read"
+flag_name = "TORN_NOTE_READ"
+dialogic_var = ""
+timeline_after = ""
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/torn_note/interaction_area" parent_id_path=PackedInt32Array(1747493553, 55889324) index="0" unique_id=588109631]
 debug_color = Color(0.6751168, 0.5069369, 0, 0.41960785)
@@ -2292,7 +2301,12 @@ texture_filter = 1
 position = Vector2(68.00003, 243.99998)
 scale = Vector2(0.045, 0.045)
 texture = ExtResource("25_8cron")
-dialog_name = "crumpled_note"
+script = ExtResource("29_in3qe")
+item_id = "crumpled_note"
+flag_name = "CRUMPLED_NOTE_TAKEN"
+dialogic_var = "CRUMPLED_NOTE_TAKEN"
+timeline_after = "crumpled_note_pickup"
+disappear_on_pickup = true
 
 [node name="interaction_area" parent="objects/diningroom_objects/crumpled_note" index="0" unique_id=55889324]
 action_name = "pickup"

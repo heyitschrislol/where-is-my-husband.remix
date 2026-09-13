@@ -18,9 +18,9 @@ func _ready():
 
 func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	var dialog = Dialogic.start(timeline_name)
-	dialog.offset.x = _get_player().position.x
-	dialog.offset.y = _get_player().position.y
+	Dialogic.start(timeline_name)
+	#dialog.offset.x = _get_player().position.x
+	#dialog.offset.y = _get_player().position.y
 	Gamedata._is_dialog_active = true
 
 func _get_player():

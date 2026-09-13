@@ -28,10 +28,10 @@ func _check_transition_anims_not_looping():
 
 func _on_dialog_request(timeline: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	var dialog = Dialogic.start(timeline)
+	Dialogic.start(timeline_name)
 	#player.add_child(dialog)
-	dialog.offset.x = player.position.x
-	dialog.offset.y = player.position.y
+	#dialog.offset.x = player.position.x
+	#dialog.offset.y = player.position.y
 	Gamedata._is_dialog_active = true
 
 func _on_timeline_ended():

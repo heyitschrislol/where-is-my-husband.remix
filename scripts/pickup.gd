@@ -5,6 +5,7 @@ extends Sprite2D
 @export var item_id: String = ""            ## key in Gamedata.item_db
 @export var flag_name: String = ""          ## optional Gamedata bool to set true
 @export var dialogic_var: String = ""       ## optional Dialogic variable to set true
+@export var timeline_after: String = ""      ## optional timeline once dismissed
 @export var disappear_on_pickup: bool = true
 
 var _taken := false
@@ -29,3 +30,6 @@ func _on_pickup() -> void:
 
 	if disappear_on_pickup:
 		queue_free()
+	if timeline_after != "":
+		Gamedata._is_dialog_active = true
+		Dialogic.start(timeline_after)

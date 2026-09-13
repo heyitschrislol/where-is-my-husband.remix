@@ -63,7 +63,7 @@ func _input(event):
 	if not is_instance_valid(player):
 		return
 
-	if event.is_action_pressed("interact") && can_interact && not Gamedata._is_dialog_active:
+	if event.is_action_pressed("interact") && can_interact && not Gamedata.is_input_blocked():
 		if active_areas.size() > 0:
 			#Gamedata.player_previous_location = player.global_position
 			can_interact = false

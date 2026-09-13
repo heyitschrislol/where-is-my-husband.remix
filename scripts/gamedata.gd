@@ -5,7 +5,10 @@ var current_scene = null
 var previous_scene = null
 var current_location = null
 var player_previous_location = null
-var _is_dialog_active: bool = false
+var _is_dialog_active: bool = false   			## owned by Dialogic timelines ONLY
+var _is_popup_active: bool = false    				## owned by ItemPopup ONLY
+##---PRE-SCENE POSITIONS---##
+var position_store : Dictionary[String,Vector2] = {}
 
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
@@ -15,14 +18,19 @@ var GAME_START = false
 
 ## KITCHEN
 ## -----------
+var PENDING_SMOKE_ROUTE: String = ""
 var LET_CHARLES_OUTSIDE = false
 var SMOKE_INSIDE = false
+var HOLDING_CAT_FOOD = false
 var FOOD_PLACED = false
 var SMOKE_FED = false
+
 var CRUMPLED_NOTE_DROPPED = false
-var CRUMPLED_NOTE_READ = false
-var HOLDING_CAT_FOOD = false
-var PENDING_SMOKE_ROUTE: String = ""
+var CRUMPLED_NOTE_TAKEN = false
+var CRUMPLED_NOTE_OPENED = false
+var TORN_NOTE_READ = false
+
+
 ## GUESTROOM
 ## -----------
 var PMAIL_HACKED = false
@@ -42,6 +50,7 @@ var GUESTROOM_REVEALED = false
 var BACKYARD_REVEALED = false
 var CLOSET_REVEALED = false
 
+##---SIGNALS---##
 signal room_revealed(room_name: String)
 
 func reveal_room(room_name: String) -> void:
@@ -50,42 +59,6 @@ func reveal_room(room_name: String) -> void:
 		set(flag_name, true)
 		room_revealed.emit(room_name)
 
-##---ITEM LIST---##
-var item_db := {
-	"spanish_book": {
-		"name": "the ability to speak Cat Spanish",
-		"icon": "res://assets/art/PNG/objects/spanishbook-full.png"
-	},
-	"cat_food": {
-		"name": "a Cup of Chicken Recipe Senior Cat Food",
-		"icon": "res://assets/art/PNG/special/a_bag_of_science_diet_senior_7.png"
-	},
-	"crumpled_note": {
-		"name": "a Crumpled Note",
-		"icon": "res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png"
-	},
-	"torn_note": {
-		"name": "an Uncrumpled Note - it is torn",
-		"icon": "res://assets/art/PNG/special/SECRET-NOTE-fixed.png"
-	},
-}
-
-
-## Awards an item to the player and shows the popup.
-## Awaitable: await Gamedata.give_item("spanish_book")
-func give_item(item_id: String) -> void:
-	if not item_db.has(item_id):
-		push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
-		return
-	var data = item_db[item_id]
-	await ItemPopup.show_item(data["name"], load(data["icon"]))
-
-func show_item(item_id: String) -> void:
-	if not item_db.has(item_id):
-		push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
-		return
-	var data = item_db[item_id]
-	await ItemCloseup.show_item(data["name"], load(data["icon"]))
 
 ##---SCENE LIST---##
 var scene_paths = {
@@ -95,8 +68,8 @@ var scene_paths = {
 	"cutscene_kitchenA"		:	"res://scenes/cutscenes/KitchenCharles_cutscene.tscn",
 	"cutscene_kitchenB"		:	"res://scenes/cutscenes/KitchenSmokeFeeding_cutscene.tscn"
 }
-##---PRE-SCENE POSITIONS---##
-var position_store : Dictionary[String,Vector2] = {}
+
+
 
 func _ready():
 	var root = get_tree().root
@@ -115,6 +88,57 @@ func _process(_delta: float):
 	else:
 		CHARLES_FOLLOW = false
 		SMOKE_FOLLOW = false
+
+
+
+
+##---ITEM LIST---##
+var item_db := {
+	"spanish_book": {
+		"name": "the ability to speak Cat Spanish",
+		"icon": "res://assets/art/PNG/objects/spanishbook-full.png",
+		"timeline-after":""
+	},
+	"cat_food": {
+		"name": "a Cup of Chicken Recipe Senior Cat Food",
+		"icon": "res://assets/art/PNG/special/a_bag_of_science_diet_senior_7.png",
+		"timeline-after":""
+	},
+	"crumpled_note": {
+		"name": "a Crumpled Note",
+		"icon": "res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png",
+		"timeline-after":""
+	},
+	"torn_note": {
+		"name": "an Uncrumpled Note - it is torn",
+		"icon": "res://assets/art/PNG/special/SECRET-NOTE-fixed.png",
+		"timeline-after":"torn_note_reading"
+	},
+}
+
+## Awards an item to the player and shows the popup.
+## Awaitable: await Gamedata.give_item("spanish_book")
+func give_item(item_id: String) -> void:
+	if not item_db.has(item_id):
+		push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
+		return
+	var data = item_db[item_id]
+	await Overlay.show_item(data["name"], load(data["icon"]),data["timeline-after"])
+
+#func show_item(item_id: String) -> void:
+	#if not item_db.has(item_id):
+		#push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
+		#return
+	#var data = item_db[item_id]
+	#await ItemCloseup.show_item(data["name"], load(data["icon"]))
+
+## Single source of truth for "the player should not be controlling anything".
+func is_input_blocked() -> bool:
+	return _is_dialog_active or _is_popup_active
+
+
+
+
 
 func move_npc_to(npc_name: String, coords: Vector2) -> Node:
 	for npc in get_tree().get_nodes_in_group("npcs"):

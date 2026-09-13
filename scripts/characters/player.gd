@@ -10,7 +10,7 @@ func _ready():
 	player_sprite.play("idle_down")
 
 func _physics_process(_delta):
-	if not Gamedata._is_dialog_active:
+	if not Gamedata.is_input_blocked():
 		#Gamedata.position_store["player"] = global_position
 		var direction = Vector2(
 			Input.get_axis("ui_left", "ui_right"),

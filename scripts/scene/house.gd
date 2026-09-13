@@ -49,13 +49,13 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	#Gamedata.CAT_SPANISH_LEARNED = true
-	#Gamedata.CHARLES_FIRST_INTERACTION = false
-	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
+	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	Gamedata.CAT_SPANISH_LEARNED = true
+	Gamedata.CHARLES_FIRST_INTERACTION = false
+	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
@@ -98,11 +98,13 @@ func _ready():
 
 func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	var dialog = Dialogic.start(timeline_name)
-	#player.add_child(dialog)
-	dialog.offset.x = player.position.x
-	dialog.offset.y = player.position.y
+	Dialogic.start(timeline_name)
 	Gamedata._is_dialog_active = true
+
+	#var dialog = Dialogic.start(timeline_name)			DELETE?
+	#player.add_child(dialog)
+	#dialog.offset.x = player.position.x			DELETE
+	#dialog.offset.y = player.position.y			DELETTE
 
 	#get_viewport().set_input_as_handled()
 
@@ -123,14 +125,14 @@ func _on_dialogic_signal(argument:String):
 	elif argument == "smoke_fed":
 		_on_smoke_fed()
 
-	elif argument == "crumpled_note_taken":
-		_on_crumpled_note_taken()
+	#elif argument == "crumpled_note_taken":
+		#_on_crumpled_note_taken()
 	elif argument == "crumpled_note_opened":
 		_on_crumpled_note_opened()
 	elif argument == "crumpled_note_dropped":
 		_on_crumpled_note_dropped()
-	elif argument=="read_torn_note":
-		_on_torn_note_interaction()
+	#elif argument=="read_torn_note":
+		#_on_torn_note_interaction()
 
 func route(route_node: Node2D) -> Array[Vector2]:
 	var points: Array[Vector2] = []
@@ -191,10 +193,10 @@ func _on_smoke_fed():
 	obj_diningroom_crumpled_note.visible = true
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
 
-func _on_crumpled_note_taken():
-	Gamedata.give_item("crumpled_note")
-	obj_diningroom_crumpled_note.visible = false
-	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
+#func _on_crumpled_note_taken():
+	##Gamedata.give_item("crumpled_note")
+	#obj_diningroom_crumpled_note.visible = false
+	#obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 	#pass
@@ -203,13 +205,18 @@ func _on_crumpled_note_opened():
 	Gamedata.give_item("torn_note")
 	obj_kitchen_torn_note.visible = true
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_INHERIT
+	Gamedata.CRUMPLED_NOTE_OPENED = true
+
 
 func _on_crumpled_note_dropped():
 	obj_diningroom_crumpled_note.visible = true
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
-
-func _on_torn_note_interaction():
-	Gamedata.show_item("torn_note")
+	Gamedata.CRUMPLED_NOTE_DROPPED = true
+#
+#
+#func _on_torn_note_interaction():
+	##Gamedata.show_item("torn_note")
+	#pass
 
 func _on_access_computer():
 	pass

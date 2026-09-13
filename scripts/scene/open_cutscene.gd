@@ -20,7 +20,7 @@ func start_dialogue(timeline_name: String) -> void:
 	# Start the dialogue
 	Dialogic.start(timeline_name)
 
-	await anim_player.animation_finished
+	 anim_player.animation_finished
 
 	Dialogic.start("startingscene2")
 	# Wait for Dialogic to finish this specific segment
