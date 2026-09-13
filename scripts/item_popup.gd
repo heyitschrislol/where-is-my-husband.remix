@@ -3,6 +3,8 @@ extends CanvasLayer
 ## Emitted once the popup has fully closed.
 signal popup_closed
 
+@export var popup_type = ""
+
 @onready var dimmer: ColorRect = $dimmer
 @onready var panel: PanelContainer = $center/panel
 @onready var item_icon: TextureRect = $center/panel/margin/vbox/item_icon
@@ -28,7 +30,8 @@ func show_item(display_name: String, texture: Texture2D) -> void:
 	_can_dismiss = false
 
 	item_icon.texture = texture
-	item_label.text = "You obtained %s" % display_name
+	if popup_type == "popup":
+		item_label.text = "You obtained %s" % display_name
 
 	# Freezes the player and blocks InteractionManager, using the flag
 	# the rest of the project already checks.

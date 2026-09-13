@@ -1,16 +1,17 @@
-[gd_scene format=3 uid="uid://cp6d10e0e1gm5"]
+[gd_scene format=3 uid="uid://d0wjbatmf378l"]
 
-[ext_resource type="Script" uid="uid://dxo38fdxlkfen" path="res://scripts/item_popup.gd" id="1_05dob"]
-[ext_resource type="FontFile" uid="uid://dk4csv882upye" path="res://assets/Fonts/pixelfonts/Pix32.ttf" id="2_71e0w"]
-[ext_resource type="AudioStream" uid="uid://disev0uk6qnjl" path="res://assets/sfx/approved-mission.mp3" id="2_apdwj"]
+[ext_resource type="Script" uid="uid://dxo38fdxlkfen" path="res://scripts/item_popup.gd" id="1_66pr6"]
+[ext_resource type="Texture2D" uid="uid://lkmy44xvsfik" path="res://assets/art/PNG/special/SECRET-NOTE-fixed.png" id="2_65vw7"]
+[ext_resource type="FontFile" uid="uid://dk4csv882upye" path="res://assets/Fonts/pixelfonts/Pix32.ttf" id="2_vjy3e"]
+[ext_resource type="AudioStream" uid="uid://disev0uk6qnjl" path="res://assets/sfx/approved-mission.mp3" id="3_65vw7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8csbg"]
-font = ExtResource("2_71e0w")
+font = ExtResource("2_vjy3e")
 
-[node name="ItemPopup" type="CanvasLayer" unique_id=343727109]
+[node name="ItemCloseup" type="CanvasLayer" unique_id=343727109]
 layer = 100
-script = ExtResource("1_05dob")
-popup_type = "popup"
+script = ExtResource("1_66pr6")
+popup_type = "closeup"
 
 [node name="dimmer" type="ColorRect" parent="." unique_id=343625438]
 anchors_preset = 15
@@ -46,8 +47,9 @@ alignment = 1
 
 [node name="item_icon" type="TextureRect" parent="center/panel/margin/vbox" unique_id=2022316294]
 texture_filter = 1
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(768, 768)
 layout_mode = 2
+texture = ExtResource("2_65vw7")
 expand_mode = 1
 stretch_mode = 5
 
@@ -59,4 +61,4 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="sfx" type="AudioStreamPlayer" parent="." unique_id=777425006]
-stream = ExtResource("2_apdwj")
+stream = ExtResource("3_65vw7")

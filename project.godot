@@ -22,6 +22,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 InteractionManager="*uid://bx8fmu533p70h"
 Gamedata="*uid://b3joqbgohcl3p"
 ItemPopup="*uid://cp6d10e0e1gm5"
+ItemCloseup="*uid://d0wjbatmf378l"
 
 [debug]
 
@@ -133,6 +134,7 @@ directories/dtl_directory={
 "livingroom_greencouch": "res://resources/dialogic/livingroom_greencouch.dtl",
 "livingroom_phone": "res://resources/dialogic/livingroom_phone.dtl",
 "livingroom_whitecouch": "res://resources/dialogic/livingroom_whitecouch.dtl",
+"read_torn_note": "res://resources/dialogic/read_torn_note.dtl",
 "startingscene": "res://resources/dialogic/startingscene.dtl",
 "startingscene2": "res://resources/dialogic/startingscene2.dtl",
 "testline": "res://resources/dialogic/testline.dtl",

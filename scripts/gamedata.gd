@@ -80,6 +80,13 @@ func give_item(item_id: String) -> void:
 	var data = item_db[item_id]
 	await ItemPopup.show_item(data["name"], load(data["icon"]))
 
+func show_item(item_id: String) -> void:
+	if not item_db.has(item_id):
+		push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
+		return
+	var data = item_db[item_id]
+	await ItemCloseup.show_item(data["name"], load(data["icon"]))
+
 ##---SCENE LIST---##
 var scene_paths = {
 	"house"					:	"res://scenes/house.tscn",

@@ -118,10 +118,8 @@ func _on_dialogic_signal(argument:String):
 
 	elif argument == "holding_cat_food":
 		_on_holding_cat_food()
-
 	elif argument == "food_placed":
 		_on_food_placed()
-
 	elif argument == "smoke_fed":
 		_on_smoke_fed()
 
@@ -131,6 +129,8 @@ func _on_dialogic_signal(argument:String):
 		_on_crumpled_note_opened()
 	elif argument == "crumpled_note_dropped":
 		_on_crumpled_note_dropped()
+	elif argument=="read_torn_note":
+		_on_torn_note_interaction()
 
 func route(route_node: Node2D) -> Array[Vector2]:
 	var points: Array[Vector2] = []
@@ -207,6 +207,9 @@ func _on_crumpled_note_opened():
 func _on_crumpled_note_dropped():
 	obj_diningroom_crumpled_note.visible = true
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_torn_note_interaction():
+	Gamedata.show_item("torn_note")
 
 func _on_access_computer():
 	pass

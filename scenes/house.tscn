@@ -1655,7 +1655,7 @@ size = Vector2(23.571447, 41.4286)
 size = Vector2(32.857166, 5.7142887)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qy4l"]
-size = Vector2(34.999996, 40.000004)
+size = Vector2(31, 40.000004)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in3qe"]
 size = Vector2(40, 43.333344)
@@ -1693,7 +1693,7 @@ script = ExtResource("1_f74lx")
 [node name="markers" type="Node2D" parent="." unique_id=20358726]
 
 [node name="FoodDish" type="Marker2D" parent="markers" unique_id=1424081731]
-position = Vector2(947, 316)
+position = Vector2(927, 317)
 gizmo_extents = 73.3
 
 [node name="routes" type="Node2D" parent="." unique_id=689679821]
@@ -1701,10 +1701,10 @@ gizmo_extents = 73.3
 [node name="BackDoorToWaitSpot" type="Node2D" parent="routes" unique_id=1683330730]
 
 [node name="BackDoor" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=1953039527]
-position = Vector2(958, 202)
+position = Vector2(954, 193)
 
 [node name="SinkFront" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=2144273765]
-position = Vector2(834, 195)
+position = Vector2(833, 192)
 
 [node name="FridgeFront" type="Marker2D" parent="routes/BackDoorToWaitSpot" unique_id=2055601425]
 position = Vector2(833, 258)
@@ -2247,11 +2247,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("22_4jkga")
 
 [node name="diningroom_objects" type="Node2D" parent="objects" unique_id=728038343]
+texture_filter = 1
 
 [node name="diningtable" type="StaticBody2D" parent="objects/diningroom_objects" unique_id=5230343]
 z_index = 3
 texture_filter = 1
-position = Vector2(19.000032, 173)
+position = Vector2(17.000032, 166)
 rotation = 3.1415927
 scale = Vector2(0.85, 1)
 collision_mask = 6
@@ -2260,8 +2261,9 @@ constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/diningroom_objects/diningtable" unique_id=2096294303]
 z_index = 1
-position = Vector2(1, -7.5)
+position = Vector2(0.9998779, -5.5)
 rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_7qy4l")
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/diningroom_objects/diningtable" unique_id=1394445975]
@@ -2271,7 +2273,7 @@ texture = ExtResource("23_8cron")
 [node name="fooddish" parent="objects/diningroom_objects" unique_id=502821847 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 5
 texture_filter = 1
-position = Vector2(-2.999998, 228.99998)
+position = Vector2(10.000002, 229.99998)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_qrght")
 dialog_name = "diningroom_fooddish"
