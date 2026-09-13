@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{{TITLE}}</title>
+<style>
+  :root { --bg:#f6f8fc; --card:#fff; --text:#202124; --muted:#5f6368; --line:#e0e3eb; --blue:#1a73e8; --shadow:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15); }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+
+  .topbar{ height:64px; display:flex; align-items:center; gap:14px; padding:0 16px; background:var(--bg); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+  .logo{ width:34px;height:34px;border-radius:10px; background:linear-gradient(135deg,#ea4335,#fbbc05,#34a853,#4285f4); }
+  .brand{ font-weight:650; }
+  .search{ flex:1; max-width:760px; display:flex; align-items:center; gap:10px; padding:10px 14px; background:#eaf1fb; border-radius:24px; color:var(--muted); }
+  .search input{ border:none; outline:none; background:transparent; width:100%; font-size:14px; }
+  .topright{ margin-left:auto; display:flex; align-items:center; gap:12px; }
+  .acct{ text-align:right; line-height:1.1; }
+  .acctname{ font-size:12px; color:var(--muted); }
+  .acctemail{ font-size:13px; }
+  .avatar{ width:34px;height:34px;border-radius:50%; background:#d7e3fc; display:flex; align-items:center; justify-content:center; font-weight:700; color:#174ea6; }
+
+  main{ padding:14px 18px; max-width: 1100px; margin: 0 auto; }
+  .panel{ background:var(--card); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; border:1px solid rgba(0,0,0,.03); }
+  .msghead{ padding:16px 16px 10px; border-bottom:1px solid var(--line); }
+  .msghead h1{ margin:0 0 8px; font-size:20px; font-weight:650; }
+  .msgmeta{ display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:13px; }
+  .back{ display:inline-block; margin-top:10px; color:var(--blue); text-decoration:none; font-size:13px; }
+  .msgbody{ padding:16px; line-height:1.55; font-size:14.5px; }
+</style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="logo"></div>
+    <div class="brand">{{BRAND}}</div>
+    <div class="search">🔎 <input placeholder="Search mail" disabled /></div>
+    <div class="topright">
+      <div class="acct">
+        <div class="acctname">{{ACCOUNT_NAME}}</div>
+        <div class="acctemail">{{EMAIL}}</div>
+      </div>
+      <div class="avatar">H</div>
+    </div>
+  </div>
+
+  <main>
+    <div class="panel">
+      <div class="msghead">
+        <h1>{{SUBJECT}}</h1>
+        <div class="msgmeta">
+          <div><b>{{FROM_NAME}}</b> &lt;{{FROM_EMAIL}}&gt;</div>
+          <div>{{DATE}}</div>
+        </div>
+        <a class="back" href="/mail/u/0/inbox">← Back to Inbox</a>
+      </div>
+      <div class="msgbody">
+        {{BODY_HTML}}
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1847,7 +1847,7 @@ speed = 105.0
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1
-zoom = Vector2(1.75, 1.75)
+zoom = Vector2(2.2, 2.2)
 
 [node name="charles" parent="characters" unique_id=2050738804 node_paths=PackedStringArray("player") instance=ExtResource("2_se78b")]
 z_index = 12

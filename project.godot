@@ -158,11 +158,10 @@ choices/hotkey_behaviour=1
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=1024
-window/size/mode=3
-window/size/initial_position_type=3
+window/size/viewport_height=768
+window/size/initial_position_type=0
+window/size/initial_screen=2
 window/size/resizable=false
-window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
