@@ -1,32 +1,53 @@
-extends StaticBody2D
+extends InteractItem
 
-@onready var sprite = $Sprite2D
 @onready var door_collision = $collision_shape_2d
-@onready var interaction_area: InteractionArea = $interaction_area
-@onready var dialog_name = ""
-@onready var state = "closed"
+@onready var door_sprite = $Sprite2D
+#@onready var closed_sprite = $closed_sprite
+#@onready var open_sprite = $open_sprite
+@export var state = "closed"
+@export var facing_direction = ""
+#@export var dialog_condition
 
-
-signal dialog_signal(timeline_name: String,location: String,default_text: String)
+var northsouth_texture = load("res://assets/art/PNG/objects/white_wooden_bedroom_door_32X48.png")
+var eastwest_texture = load("res://assets/art/PNG/objects/white_wooden_bedroom_door_open_32X48.png")
+var open_visible : bool
+var closed_visible : bool
 
 func _ready():
-	interaction_area.action_name = "interact"
+	if facing_direction == "northsouth":
+		open_visible = false
+		closed_visible = true
+		door_sprite.texture = northsouth_texture
+		visible = true
+	elif facing_direction == "eastwest":
+		open_visible = true
+		closed_visible = false
+		visible = false
+		door_sprite.texture = eastwest_texture
+	#if state == "closed":
+	#_open_door()
+	action_name = "open door"
+	interaction_area.action_name = action_name
 	interaction_area.interact = Callable(self, "_open_door")
 
 
 func _open_door():
 	if state == "closed":
-		visible = false
+		if open_visible:
+			visible = true
+		else:
+			visible = false
 		door_collision.set_deferred("disabled", true)
-		#door_collision.position.x = position_array["opened"][0]
-		#door_collision.position.y = position_array["opened"][1]
-		#sprite.position.x = position_array["opened"][0]
-		#sprite.position.y = position_array["opened"][1]
 		state = "open"
+		interaction_area.action_name = "close door"
 	elif state == "open":
-		visible = true
+		if closed_visible:
+			visible = true
+		else:
+			visible = false
 		door_collision.set_deferred("disabled", false)
 		state = "closed"
+		interaction_area.action_name = "open door"
 
 func _check_door():
 	#sprite.frame = 1 if sprite.frame == 0 else 0

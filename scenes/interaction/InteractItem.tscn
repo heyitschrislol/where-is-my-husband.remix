@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bxgk1unntekvv"]
+
+[ext_resource type="Script" uid="uid://b53xhcb8j3xha" path="res://scripts/interact_item.gd" id="1_ygc6r"]
+[ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="2_7vsmm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8tk"]
+
+[node name="InteractItem" type="StaticBody2D" unique_id=997019165]
+script = ExtResource("1_ygc6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463425800]
+shape = SubResource("RectangleShape2D_3xd07")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1772285864]
+
+[node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("2_7vsmm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area" unique_id=1252563545]
+shape = SubResource("RectangleShape2D_jq8tk")
+debug_color = Color(0.7321135, 0.4723869, 0.0015082252, 0.41960785)
