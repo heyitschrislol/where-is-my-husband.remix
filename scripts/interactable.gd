@@ -1,4 +1,4 @@
-extends Sprite2D
+class_name Interactable extends Sprite2D
 
 @onready var interaction_area: InteractionArea = $interaction_area
 @export var dialog_name = ""

@@ -6,10 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kho8x"]
 size = Vector2(101.818115, 139.09827)
 
-[node name="Interactable" type="Sprite2D" unique_id=745050616]
+[node name="Interactable" type="Sprite2D" unique_id=40414792]
 script = ExtResource("1_1o2tx")
+metadata/_custom_type_script = "uid://rpjmcqelw5xt"
 
 [node name="interaction_area" parent="." unique_id=55889324 instance=ExtResource("2_sl0ci")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area" unique_id=588109631]
 shape = SubResource("RectangleShape2D_kho8x")
+debug_color = Color(0.76720476, 0.4475894, 1.92523e-07, 0.41960785)
