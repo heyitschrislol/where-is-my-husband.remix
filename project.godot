@@ -148,12 +148,17 @@ directories/dtl_directory={
 "livingroom_phone": "res://resources/dialogic/livingroom_phone.dtl",
 "livingroom_whitecouch": "res://resources/dialogic/livingroom_whitecouch.dtl",
 "read_torn_note": "res://resources/dialogic/read_torn_note.dtl",
+"sink_hall": "res://resources/dialogic/sink_hall.dtl",
+"sink_master": "res://resources/dialogic/sink_master.dtl",
 "startingscene": "res://resources/dialogic/startingscene.dtl",
 "startingscene2": "res://resources/dialogic/startingscene2.dtl",
 "testline": "res://resources/dialogic/testline.dtl",
 "timeline-charles": "res://resources/dialogic/timeline-charles.dtl",
 "timeline-smoke": "res://resources/dialogic/timeline-smoke.dtl",
-"torn_note_reading": "res://resources/dialogic/torn_note_reading.dtl"
+"toilet_hall": "res://resources/dialogic/toilet_hall.dtl",
+"toilet_master": "res://resources/dialogic/toilet_master.dtl",
+"torn_note_reading": "res://resources/dialogic/torn_note_reading.dtl",
+"tub_hall": "res://resources/dialogic/tub_hall.dtl"
 }
 choices/hotkey_behaviour=1
 
