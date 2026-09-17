@@ -1,10 +1,11 @@
     #!/usr/bin/env python3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs, urlparse
-import secrets, time, html, os
+import os, html, secrets, sys, threading, time
 
 HOST = "127.0.0.1"
-PORT = 8080
+PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
+PARENT_PID = int(sys.argv[2]) if len(sys.argv) > 2 else 0
 
 WEB_DIR = os.path.join(os.path.dirname(__file__), "web")
 
@@ -312,10 +313,46 @@ class Handler(BaseHTTPRequestHandler):
 
         self.send_html(404, "Not found")
 
+def _parent_alive(pid):
+    if pid <= 0:
+        return True
+    if os.name == "nt":
+        import ctypes
+        PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+        STILL_ACTIVE = 259
+        k = ctypes.windll.kernel32
+        h = k.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+        if not h:
+            return False
+        code = ctypes.c_ulong()
+        ok = k.GetExitCodeProcess(h, ctypes.byref(code))
+        k.CloseHandle(h)
+        return bool(ok) and code.value == STILL_ACTIVE
+    try:
+        os.kill(pid, 0)       # signal 0 = existence check, sends nothing
+    except OSError:
+        return False
+    return True
+
+
+def _watchdog(pid):
+    while True:
+        time.sleep(1.0)
+        if not _parent_alive(pid):
+            os._exit(0)       # blunt on purpose: guarantees the socket dies with us
+
+class ExclusiveHTTPServer(HTTPServer):
+    allow_reuse_address = False
+
 def main():
-    httpd = HTTPServer((HOST, PORT), Handler)
+    threading.Thread(target=_watchdog, args=(PARENT_PID,), daemon=True).start()
+    # httpd = HTTPServer((HOST, PORT), Handler)
+    httpd = ExclusiveHTTPServer((HOST, PORT), Handler)
     print(f"Serving on http://{HOST}:{PORT}")
     httpd.serve_forever()
+    # httpd = HTTPServer((HOST, PORT), Handler)
+    # print(f"Serving on http://{HOST}:{PORT}")
+    # httpd.serve_forever()
 
 if __name__ == "__main__":
     main()

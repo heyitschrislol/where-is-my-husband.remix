@@ -1,7 +1,8 @@
 extends Node
 
 const HOST := "127.0.0.1"
-const PORT := 8080
+var _port := 0
+
 
 ## Every file server.py needs on disk. Paths are relative to both
 ## SRC_DIR and RUN_DIR, so the folder shape is preserved by the copy.
@@ -16,7 +17,7 @@ const SRC_DIR := "res://assets/pmail/"
 const RUN_DIR := "user://pmail/"
 
 var _pid := -1
-
+var _launching := false
 
 func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -30,6 +31,16 @@ func _on_dialogic_signal(argument: String) -> void:
 	if argument == "open_pmail":
 		launch()
 
+## Asks the OS for an unused port by binding to 0, then immediately releasing
+## it. Python re-binds the same number a moment later.
+
+func _find_free_port() -> int:
+	var probe := TCPServer.new()
+	if probe.listen(0, HOST) != OK:
+		return 0
+	var p := probe.get_local_port()
+	probe.stop()
+	return p
 
 ## Stages the files, starts Python, waits for the port, opens the browser.
 func launch() -> void:
@@ -38,7 +49,18 @@ func launch() -> void:
 		OS.shell_open(_url())
 		return
 
+	if _launching:
+		return
+	_launching = true
+
+	_port = _find_free_port()
+	if _port <= 0:
+		push_error("Pmail: could not reserve a port.")
+		_launching = false
+		return
+
 	if not _stage_files():
+		_launching = false
 		return
 
 	var script_path := ProjectSettings.globalize_path(RUN_DIR + "server.py")
@@ -46,21 +68,59 @@ func launch() -> void:
 	# create_process does not tell us "python isn't installed" in a useful way,
 	# so we try each likely name and keep the first one that spawns.
 	for exe in _python_candidates():
-		var pid := OS.create_process(exe, [script_path], false)
+		var pid := OS.create_process(exe, [script_path, str(_port), str(OS.get_process_id())], false)
 		if pid > 0:
 			_pid = pid
-			print("Pmail: started via '%s' (pid %d)" % [exe, pid])
+			print("Pmail: started via '%s' on port %d (pid %d)" % [exe, _port, pid])
 			break
 
 	if _pid <= 0:
 		push_error("Pmail: no Python interpreter could be started.")
+		_launching = false
 		return
 
 	if await _wait_for_port():
 		OS.shell_open(_url())
 	else:
-		push_error("Pmail: server never answered on port %d." % PORT)
+		push_error("Pmail: server never answered on port %d." % _port)
 		stop()
+
+	_launching = false
+#func launch() -> void:
+	#_port = _find_free_port()
+	#if _port == 0:
+		#push_error("Pmail: could not reserve a port.")
+		#return
+#
+	## Already running (player came back and said yes again) - just reopen the tab.
+	#if _is_running():
+		#OS.shell_open(_url())
+		#return
+#
+	#if not _stage_files():
+		#return
+#
+	#var script_path := ProjectSettings.globalize_path(RUN_DIR + "server.py")
+#
+	## create_process does not tell us "python isn't installed" in a useful way,
+	## so we try each likely name and keep the first one that spawns.
+	#for exe in _python_candidates():
+		##var pid := OS.create_process(exe, [script_path], false)
+		#var pid := OS.create_process(exe, [script_path, str(_port), str(OS.get_process_id())], false)
+		#if pid > 0:
+			#_pid = pid
+			#print("Pmail: started via '%s' (pid %d)" % [exe, pid])
+			#break
+#
+	#if _pid <= 0:
+		#push_error("Pmail: no Python interpreter could be started.")
+		#return
+#
+	#if await _wait_for_port():
+		#OS.shell_open(_url())
+	#else:
+		#push_error("Pmail: server never answered on port %d." % _port)
+		#stop()
 
 
 func stop() -> void:
@@ -74,14 +134,14 @@ func _is_running() -> bool:
 
 
 func _url() -> String:
-	return "http://%s:%d/" % [HOST, PORT]
+	return "http://%s:%d/" % [HOST, _port]
 
 
 func _python_candidates() -> Array:
 	# pythonw.exe first on Windows: it is the GUI-subsystem build, so it does
 	# NOT pop a black console window in front of the game.
 	if OS.get_name() == "Windows":
-		return ["pythonw.exe", "python.exe", "py.exe"]
+		return ["pythonw.exe", "python.exe"]
 	return ["python3", "python"]
 
 
@@ -114,7 +174,7 @@ func _wait_for_port(timeout_sec := 6.0) -> bool:
 
 	while Time.get_ticks_msec() < deadline:
 		var probe := StreamPeerTCP.new()
-		if probe.connect_to_host(HOST, PORT) == OK:
+		if probe.connect_to_host(HOST, _port) == OK:
 			# connect_to_host is non-blocking, so poll until it resolves.
 			for i in 30:
 				probe.poll()
