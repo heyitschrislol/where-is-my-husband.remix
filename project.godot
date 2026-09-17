@@ -65,7 +65,7 @@ audio/channel_defaults={
 "letter-scroll-sfx": {
 "audio_bus": "",
 "fade_length": 0.0,
-"loop": false,
+"loop": true,
 "volume": 0.0
 },
 "music": {
@@ -140,6 +140,7 @@ directories/dtl_directory={
 "guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
 "guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",
 "guestroom_computer_pmail": "res://resources/dialogic/guestroom_computer_pmail.dtl",
+"hub_dresser": "res://resources/dialogic/hub_dresser.dtl",
 "kitchen_charles1": "res://resources/dialogic/kitchen_charles1.dtl",
 "kitchen_door": "res://resources/dialogic/kitchen_door.dtl",
 "kitchen_fridge": "res://resources/dialogic/kitchen_fridge.dtl",

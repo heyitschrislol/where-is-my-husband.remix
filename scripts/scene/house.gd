@@ -181,10 +181,14 @@ func _on_food_placed():
 	Gamedata.HOLDING_CAT_FOOD = false
 	#Gamedata.move_npc_to("smoke", $markers/FoodDish.global_position)
 	var points = route($routes/WaitSpotToFoodDish)
+	var player_points = route($routes/PlayerStepAside)
 	points.append($markers/FoodDish.global_position)
 	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	player.move_along(player_points)
+	await player.destination_reached
 	smoke.move_along(points)
-	#await smoke.destination_reached
+	await smoke.destination_reached
+	smoke.animated_sprite.play("chow_down")
 
 func _on_smoke_fed():
 	Gamedata.SMOKE_FED = true
@@ -239,4 +243,6 @@ func _start_pending_smoke_route() -> void:
 		return
 	smoke.move_along(route(route_node))
 	await smoke.destination_reached
+	#if Gamedata.SMOKE_SPECIAL_ANIM:
+		#smoke.animated_sprite.play("chow_down")
 	print("smoke finished her route")

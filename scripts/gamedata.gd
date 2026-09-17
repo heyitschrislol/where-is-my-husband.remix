@@ -12,6 +12,7 @@ var position_store : Dictionary[String,Vector2] = {}
 
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
+#var SMOKE_SPECIAL_ANIM = false
 
 #var GAME_START = true
 var GAME_START = false

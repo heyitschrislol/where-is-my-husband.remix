@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwujaclgvr0lh" path="res://scripts/characters/smoke.gd" id="1_mkbkt"]
 [ext_resource type="Texture2D" uid="uid://blbyffwb0bira" path="res://assets/art/PNG/smoke/smoke_idle_west.png" id="2_hpkm8"]
+[ext_resource type="Texture2D" uid="uid://msute7vtm0oe" path="res://assets/art/PNG/smoke/smoke_lowers_head_to_eat.png" id="2_ook7m"]
 [ext_resource type="Texture2D" uid="uid://d1kgr7krnppe" path="res://assets/art/PNG/smoke/smoke_idle_north.png" id="3_co58j"]
 [ext_resource type="Texture2D" uid="uid://dwg26egjn03r3" path="res://assets/art/PNG/smoke/smoke_idle_east.png" id="3_fpurm"]
 [ext_resource type="Texture2D" uid="uid://cx178s74nkibw" path="res://assets/art/PNG/smoke/smoke_walk-south.png" id="4_pvvh7"]
@@ -10,6 +11,42 @@
 [ext_resource type="Texture2D" uid="uid://bqhnpj4icgrdo" path="res://assets/art/PNG/smoke/smoke_walk-east.png" id="6_co58j"]
 [ext_resource type="PackedScene" uid="uid://bh7v5cfmhsqdf" path="res://scenes/interaction/InteractionArea.tscn" id="6_ejc4m"]
 [ext_resource type="Texture2D" uid="uid://bxhdewgrrqhpd" path="res://assets/art/PNG/smoke/smoke_walk_north.png" id="7_ook7m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mubja"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a60qb"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuuj4"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swfqs"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lbxu"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky3sh"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwkb8"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10itb"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ryl"]
+atlas = ExtResource("2_ook7m")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3nsk"]
 atlas = ExtResource("5_ook7m")
@@ -285,6 +322,62 @@ region = Rect2(476, 0, 68, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lypf5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mubja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a60qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuuj4")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_swfqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lbxu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ky3sh")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_8lbxu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ky3sh")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_8lbxu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ky3sh")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_8lbxu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ky3sh")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_8lbxu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ky3sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwkb8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_10itb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ryl")
+}],
+"loop": 1,
+"name": &"chow_down",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v3nsk")
@@ -564,8 +657,7 @@ follow_speed = 55.0
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=742757515]
 position = Vector2(5.102042, 0)
 sprite_frames = SubResource("SpriteFrames_lypf5")
-animation = &"idle_right"
-frame_progress = 0.35587707
+animation = &"chow_down"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1280807264]
 libraries/ = SubResource("AnimationLibrary_ejc4m")
