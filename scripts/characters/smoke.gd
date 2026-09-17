@@ -104,7 +104,10 @@ func update_anim():
 				facing = "up"
 
 	if not moving:
-		animated_sprite.play("idle_" + facing)
+		if Gamedata.SMOKE_CHOW_DOWN:
+			animated_sprite.play("chow_down")
+		else:
+			animated_sprite.play("idle_" + facing)
 	else:
 		animated_sprite.play("walk_" + facing)
 

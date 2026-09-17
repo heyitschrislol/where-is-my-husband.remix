@@ -8,7 +8,7 @@ var state : States = States.IDLE
 @export var last_dir: String = "down"
 @onready var player_sprite = $animated_sprite_2d
 @export var is_stopped: bool
-@export var facing := "down"
+#@export var facing := "down"
 
 @export_group("Target Destination")
 @export var arrival_threshold := 4.0
@@ -21,6 +21,7 @@ var destination_coords: Vector2 = Vector2.ZERO
 var has_destination: bool = false
 var waypoints: Array[Vector2] = []
 
+var input_dir: Vector2 = Vector2.ZERO
 
 signal destination_reached
 
@@ -62,23 +63,25 @@ func _physics_process(_delta):
 		#move_and_slide()
 
 func decide_state() -> void:
+	input_dir = Vector2(
+		Input.get_axis("ui_left", "ui_right"),
+		Input.get_axis("ui_up", "ui_down")
+	).normalized()
+
 	if has_destination:
 		state = States.MOVINGTO
-	elif velocity != Vector2.ZERO:
+	elif input_dir != Vector2.ZERO and not Gamedata.is_input_blocked():
 		state = States.WALKING
 	else:
 		state = States.IDLE
+
 
 func apply_state(delta: float) -> void:
 	match state:
 		States.IDLE:
 			velocity = Vector2.ZERO
 		States.WALKING:
-			var direction = Vector2(
-				Input.get_axis("ui_left", "ui_right"),
-				Input.get_axis("ui_up", "ui_down")
-			).normalized()
-			velocity = direction * speed
+			velocity = input_dir * speed
 		States.MOVINGTO:
 			_step_toward_destination(delta)
 
@@ -177,17 +180,17 @@ func update_anim():
 	if moving:
 		if abs(velocity.x) >= abs(velocity.y):
 			if velocity.x > 0:
-				facing = "right"
+				last_dir = "right"
 			elif velocity.x < 0:
-				facing = "left"
+				last_dir = "left"
 		else:
 			if velocity.y > 0:
-				facing = "down"
+				last_dir = "down"
 			elif velocity.y < 0:
-				facing = "up"
-		player_sprite.play("walk_" + facing)
+				last_dir = "up"
+		player_sprite.play("walk_" + last_dir)
 	else:
-		player_sprite.play("idle_" + facing)
+		player_sprite.play("idle_" + last_dir)
 #func update_anim(direction: Vector2):
 	#if direction == Vector2.ZERO:
 		#is_stopped = true

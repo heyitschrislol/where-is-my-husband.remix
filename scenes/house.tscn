@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://8dlqgxr1kgg4" path="res://assets/art/PNG/objects/bookshelf_sm.png" id="9_65la3"]
 [ext_resource type="PackedScene" uid="uid://qsly621ahfr7" path="res://scenes/interaction/Interactable.tscn" id="9_7685u"]
 [ext_resource type="PackedScene" uid="uid://b5k8betmn662u" path="res://scenes/objects/specialdoor.tscn" id="9_de74l"]
-[ext_resource type="Texture2D" uid="uid://bjj7e0d735ec1" path="res://assets/art/PNG/objects/fridge_sm.PNG" id="13_e5ov4"]
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
 [ext_resource type="Texture2D" uid="uid://da1kdthgqsvkp" path="res://assets/art/PNG/objects/husband-computer.png" id="17_1erkf"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
@@ -36,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://ds86wxq8bnyf2" path="res://assets/art/PNG/objects/diningset.png" id="23_8cron"]
 [ext_resource type="Texture2D" uid="uid://lkmy44xvsfik" path="res://assets/art/PNG/special/SECRET-NOTE-fixed.png" id="23_in3qe"]
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
+[ext_resource type="Texture2D" uid="uid://ce86a0251wqjd" path="res://assets/art/PNG/objects/fridge-east.png" id="25_1erkf"]
 [ext_resource type="Texture2D" uid="uid://1gvudu5wipxi" path="res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png" id="25_8cron"]
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
@@ -2704,14 +2704,14 @@ size = Vector2(151.42857, 101.953896)
 size = Vector2(120.00006, 55.172768)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2gpw"]
-size = Vector2(120.000015, 184)
+size = Vector2(82.758606, 141.37897)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lamap"]
-radius = 79.0
-height = 328.0
+radius = 38.333252
+height = 140.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrght"]
-size = Vector2(137, 296)
+size = Vector2(44.333374, 83.33334)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q425y"]
 size = Vector2(363.33328, 256.66736)
@@ -2783,7 +2783,7 @@ script = ExtResource("1_f74lx")
 [node name="markers" type="Node2D" parent="." unique_id=20358726]
 
 [node name="FoodDish" type="Marker2D" parent="markers" unique_id=1424081731]
-position = Vector2(937, 316)
+position = Vector2(940, 314)
 gizmo_extents = 73.3
 
 [node name="routes" type="Node2D" parent="." unique_id=689679821]
@@ -2829,19 +2829,23 @@ position = Vector2(937, 338)
 [node name="P2" type="Marker2D" parent="routes/PlayerStepAside" unique_id=799505651]
 position = Vector2(907, 350)
 
+[node name="PlayerMoveToIsland" type="Node2D" parent="routes" unique_id=2143428223]
+
+[node name="P1" type="Marker2D" parent="routes/PlayerMoveToIsland" unique_id=546744299]
+position = Vector2(883, 239)
+
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
-visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
 texture_filter = 1
-position = Vector2(1158, 192)
+position = Vector2(715.425, 196.06668)
+scale = Vector2(0.5375, 0.63333327)
 color = Color(0.06, 0.06, 0.08, 1)
-polygon = PackedVector2Array(-102, 152, -38, 152, -38, 112, 122, 112, 122, -128, -118, -128, -118, 112, -102, 112)
+polygon = PackedVector2Array(-38, 112, 2.837143, 112.00001, 122, 112, 122, -128, -118, -128, -118, 112, -102, 112)
 script = ExtResource("2_nrgyv")
 room_name = "HALLBATH"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="masterbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=166293336]
 z_index = 99
@@ -2852,7 +2856,6 @@ polygon = PackedVector2Array(-57, -79.07866, -57, -0.6741638, -57, 48.067413, 31
 script = ExtResource("2_nrgyv")
 room_name = "MASTERBATH"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="bedroom_blinder" type="Polygon2D" parent="roomblinders" unique_id=563614559]
 z_index = 99
@@ -2863,7 +2866,6 @@ polygon = PackedVector2Array(168, 328, 168, 248, 168, 176, 176, 176, 176, -192, 
 script = ExtResource("2_nrgyv")
 room_name = "BEDROOM"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="guestroom_blinder" type="Polygon2D" parent="roomblinders" unique_id=1216310433]
 z_index = 99
@@ -2872,27 +2874,28 @@ scale = Vector2(0.375, 0.46875)
 color = Color(0.06, 0.06, 0.08, 1)
 polygon = PackedVector2Array(-53.333374, -164.2669, -341.33337, -164.2669, -341.33337, 166.39972, 344, 166.39972, 344, -34.133606, 370.66663, -34.133606, 370.66663, -164.2669, 298.66663, -164.2669, 176, -164.2669)
 script = ExtResource("2_nrgyv")
+room_name = "GUESTROOM"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="backyard_blinder" type="Polygon2D" parent="roomblinders" unique_id=657691991]
 z_index = 99
-position = Vector2(1864, -104)
+position = Vector2(1029, 63)
+scale = Vector2(1, 0.26871663)
 color = Color(0.06, 0.06, 0.08, 1)
-polygon = PackedVector2Array(-72, 296, -72, 232, -40, 232, -40, 72, -40, -152, 376, -152, 376, 1344, -248, 1344, -248, 1048, -40, 1048, -40, 296)
+polygon = PackedVector2Array(-40, 72, -40, -152, 376, -148.891, 376, 1344, -40, 1343.4225)
 script = ExtResource("2_nrgyv")
+room_name = "BACKYARD"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="closet_blinder" type="Polygon2D" parent="roomblinders" unique_id=767417690]
 z_index = 99
-position = Vector2(569.7213, 263)
-scale = Vector2(0.9672131, 0.9756098)
+position = Vector2(570.8142, 267)
+scale = Vector2(0.9781418, 1.073171)
 color = Color(0.06, 0.06, 0.08, 1)
-polygon = PackedVector2Array(-100, -41, -100, 0, 83, -1, 83, -41)
+polygon = PackedVector2Array(-100, -41, -100, 0, -9.216469, 0, 83, 0, 83, -41)
 script = ExtResource("2_nrgyv")
+room_name = "CLOSET"
 metadata/_custom_type_script = "uid://combwywqqbehf"
-metadata/_edit_lock_ = true
 
 [node name="tilemaps" type="Node2D" parent="." unique_id=1637877863]
 texture_filter = 1
@@ -2935,8 +2938,9 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-103, -109)
+position = Vector2(-111, -143)
 wall_min_slide_angle = 0.061086524
+speed = 125.0
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1
@@ -2950,7 +2954,7 @@ wall_min_slide_angle = 0.061086524
 timeline_name = "timeline-charles"
 debugging = false
 player = NodePath("../player")
-follow_speed = 70.0
+follow_speed = 110.0
 
 [node name="collision_shape_2d" parent="characters/charles" index="3" unique_id=376067245]
 position = Vector2(0, 1)
@@ -2977,7 +2981,11 @@ position = Vector2(443.00006, 187.99998)
 scale = Vector2(1, 1)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "northsouth"
+room_name = "GUESTROOM"
+action_name = ""
+dialog_name = ""
 
 [node name="collision_shape_2d" parent="objects/doors/guestroom/interaction_area" parent_id_path=PackedInt32Array(974404425, 55889324) index="0" unique_id=1115233311]
 position = Vector2(7.86805e-07, 9)
@@ -3011,7 +3019,11 @@ position = Vector2(27, 100)
 scale = Vector2(0.8, 0.32)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "eastwest"
+room_name = ""
+action_name = ""
+dialog_name = ""
 
 [node name="bathroom" parent="objects/doors" unique_id=200330778 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
@@ -3019,7 +3031,11 @@ position = Vector2(283.00006, 267.99997)
 scale = Vector2(1, 1)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "northsouth"
+room_name = "HALLBATH"
+action_name = ""
+dialog_name = ""
 
 [node name="collision_shape_2d" parent="objects/doors/bathroom/interaction_area" parent_id_path=PackedInt32Array(200330778, 55889324) index="0" unique_id=1115233311]
 position = Vector2(5.2453663e-07, 6)
@@ -3040,7 +3056,11 @@ rotation = 3.1415927
 scale = Vector2(0.533, 0.379)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "eastwest"
+room_name = "BEDROOM"
+action_name = ""
+dialog_name = ""
 
 [node name="collision_shape_2d" parent="objects/doors/bedroom/interaction_area" parent_id_path=PackedInt32Array(958335291, 55889324) index="0" unique_id=1115233311]
 position = Vector2(3.752463, 18.46968)
@@ -3061,7 +3081,11 @@ rotation = 3.1415927
 scale = Vector2(0.533, 0.38)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "eastwest"
+room_name = "CLOSET"
+action_name = ""
+dialog_name = "closet_gaslight"
 
 [node name="collision_shape_2d" parent="objects/doors/bedroom_closet/interaction_area" parent_id_path=PackedInt32Array(840223582, 55889324) index="0" unique_id=1115233311]
 position = Vector2(3.7521768, 18.420973)
@@ -3082,7 +3106,11 @@ rotation = 3.1415927
 scale = Vector2(0.533, 0.38)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
+state = "closed"
 facing_direction = "eastwest"
+room_name = "MASTERBATH"
+action_name = ""
+dialog_name = ""
 
 [node name="collision_shape_2d" parent="objects/doors/bedroom_bathroom/interaction_area" parent_id_path=PackedInt32Array(1571382840, 55889324) index="0" unique_id=1115233311]
 position = Vector2(3.752349, 21.052631)
@@ -3211,9 +3239,9 @@ constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/kitchen_objects/kitchen_island" unique_id=737365343]
-visible = false
 z_index = 1
-position = Vector2(-12, 4)
+position = Vector2(-10.34491, -8.621094)
+scale = Vector2(1.0000004, 1.0000004)
 shape = SubResource("RectangleShape2D_c2gpw")
 
 [node name="Sprite2D" type="Sprite2D" parent="objects/kitchen_objects/kitchen_island" unique_id=1914906241]
@@ -3225,15 +3253,14 @@ texture = ExtResource("18_4jkga")
 
 [node name="fridge" parent="objects/kitchen_objects" unique_id=1931563014 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 1
-position = Vector2(167, 298)
+position = Vector2(164, 299)
 rotation = 3.1415927
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("13_e5ov4")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("25_1erkf")
 dialog_name = "kitchen_fridge"
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/fridge/interaction_area" parent_id_path=PackedInt32Array(1931563014, 55889324) index="0" unique_id=588109631]
-visible = false
-position = Vector2(37, -8)
+position = Vector2(-1.666687, 1.1444092e-05)
 shape = SubResource("CapsuleShape2D_lamap")
 debug_color = Color(0.7490196, 0.45882353, 0, 0.6901961)
 
@@ -3243,8 +3270,7 @@ constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/kitchen_objects/fridge/StaticBody2D" unique_id=1423332333]
-visible = false
-position = Vector2(37.5, -18)
+position = Vector2(-1.666626, -11.666687)
 shape = SubResource("RectangleShape2D_qrght")
 
 [node name="pantry" parent="objects/kitchen_objects" unique_id=1847724227 groups=["interactable-object"] instance=ExtResource("9_7685u")]
@@ -3255,7 +3281,6 @@ texture = ExtResource("22_3kuml")
 dialog_name = "kitchen_pantry"
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/pantry/interaction_area" parent_id_path=PackedInt32Array(1847724227, 55889324) index="0" unique_id=588109631]
-visible = false
 position = Vector2(21.666626, 11.66748)
 shape = SubResource("RectangleShape2D_q425y")
 debug_color = Color(0.73270077, 0.47159153, 0.03319963, 0.41960785)
@@ -3266,7 +3291,6 @@ constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/kitchen_objects/pantry/StaticBody2D" unique_id=118569332]
-visible = false
 position = Vector2(-3.3333726, 3.3334968)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qrght")
@@ -3463,7 +3487,7 @@ texture = ExtResource("23_8cron")
 [node name="fooddish" parent="objects/diningroom_objects" unique_id=502821847 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 5
 texture_filter = 1
-position = Vector2(10, 228.99998)
+position = Vector2(11, 228.99998)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_qrght")
 dialog_name = "diningroom_fooddish"

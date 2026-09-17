@@ -49,13 +49,13 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	#Gamedata.CAT_SPANISH_LEARNED = true
-	#Gamedata.CHARLES_FIRST_INTERACTION = false
-	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
+	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	Gamedata.CAT_SPANISH_LEARNED = true
+	Gamedata.CHARLES_FIRST_INTERACTION = false
+	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
@@ -188,7 +188,8 @@ func _on_food_placed():
 	await player.destination_reached
 	smoke.move_along(points)
 	await smoke.destination_reached
-	smoke.animated_sprite.play("chow_down")
+	#smoke.animated_sprite.play("chow_down")
+	Gamedata.SMOKE_CHOW_DOWN = true
 
 func _on_smoke_fed():
 	Gamedata.SMOKE_FED = true
@@ -206,6 +207,9 @@ func _on_smoke_fed():
 	#pass
 
 func _on_crumpled_note_opened():
+	var points = route($routes/PlayerMoveToIsland)
+	player.move_along(points)
+	await player.destination_reached
 	Gamedata.give_item("torn_note")
 	obj_kitchen_torn_note.visible = true
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_INHERIT

@@ -7,8 +7,8 @@ bailey (surprised): What's this? I think I see blue ink... is there something wr
 bailey (thinking): Should I uncrumble the paper ball and see what's written on it
 - Yes
 	bailey (thinking): Let's set this down here and take a closer look...
-	[wait time="3.0"]
 	[signal arg="crumpled_note_opened"]
+	[wait time="3.0"]
 	[end_timeline]
 - No
 	bailey (default): No, the {FANCY_FORMATTING.CrumpledNote} isn't the mystery I need to focus on solving right now. 

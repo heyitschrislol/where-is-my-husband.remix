@@ -12,7 +12,7 @@ var position_store : Dictionary[String,Vector2] = {}
 
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
-#var SMOKE_SPECIAL_ANIM = false
+var SMOKE_CHOW_DOWN = false
 
 #var GAME_START = true
 var GAME_START = false
@@ -50,6 +50,18 @@ var BEDROOM_REVEALED = false
 var GUESTROOM_REVEALED = false
 var BACKYARD_REVEALED = false
 var CLOSET_REVEALED = false
+
+#func get_door_room(room_name: String) -> bool:
+	#var rooms = {
+		#"HALLBATH"			:	HALLBATH_REVEALED,
+		#"MASTERBATH"		:	MASTERBATH_REVEALED,
+		#"BEDROOM"				:	BEDROOM_REVEALED,
+		#"GUESTROOM"		:	GUESTROOM_REVEALED,
+		#"CLOSET"				:	CLOSET_REVEALED,
+		#"BACKYARD"			:	BACKYARD_REVEALED
+	#}
+	#return rooms[room_name]
+
 
 ##---SIGNALS---##
 signal room_revealed(room_name: String)

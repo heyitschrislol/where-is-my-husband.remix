@@ -131,6 +131,8 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
+"closet_gaslight": "res://resources/dialogic/closet_gaslight.dtl",
+"closet_ready": "res://resources/dialogic/closet_ready.dtl",
 "crumpled_note": "res://resources/dialogic/crumpled_note.dtl",
 "crumpled_note_decision_to_open": "res://resources/dialogic/crumpled_note_decision_to_open.dtl",
 "crumpled_note_ignore": "res://resources/dialogic/crumpled_note_ignore.dtl",
