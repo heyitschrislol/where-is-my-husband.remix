@@ -24,7 +24,10 @@ const SFX := {
 		#preload("res://assets/sfx/footstep05.mp3")
 		#preload("res://assets/sfx/footstep07.mp3"),
 		#preload("res://assets/sfx/footstep09.mp3")
-		]
+		],
+		"ui_button_press1"	:	preload("res://assets/sfx/click3.mp3"),
+		"ui_button_press2"	:	preload("res://assets/sfx/switch3.mp3"),
+		"ui_button_press3"	:	preload("res://assets/sfx/switch31.mp3"),
 }
 
 var _players: Array[AudioStreamPlayer] = []

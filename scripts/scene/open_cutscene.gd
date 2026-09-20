@@ -7,29 +7,22 @@ signal scene_finished
 
 
 func _ready():
-
-
 	Dialogic.signal_event.connect(_on_dialogic_signal)
+	#anim_player.play("slow_walk")
 	start_dialogue("startingscene")
 
-func _process(_delta):
-	pass
 
 func start_dialogue(timeline_name: String) -> void:
 	Gamedata.GAME_START = false
 	# Start the dialogue
 	Dialogic.start(timeline_name)
-	anim_player.animation_finished
 
-	Dialogic.start("startingscene2")
 	# Wait for Dialogic to finish this specific segment
 	Dialogic.timeline_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
 
 
 	## PAUSE the AnimationPlayer so the line stays on screen
 	#anim_player.pause()
-
-
 
 func _on_dialogue_finished() -> void:
 	# RESUME the AnimationPlayer to continue the sequence
@@ -38,3 +31,4 @@ func _on_dialogue_finished() -> void:
 func _on_dialogic_signal(argument:String):
 	if argument == "start_animation":
 		anim_player.play("slow_walk")
+		await anim_player.animation_finished

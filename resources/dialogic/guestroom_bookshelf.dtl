@@ -1,22 +1,24 @@
 if {CHARLES.FIRST_INTERACTION} == true:
-	set {Overlay._skip_popup} = true
 	bailey (default): I should find Charles and see if he knows where my Husband is before I look for clues here.
 	[end_timeline]
 if {CHARLES.FIRST_INTERACTION} == false and {FOUND_SPANISH_BOOK} == false:
 	bailey (default): Computer accessories... picture frames... books...
 	bailey (default): My husband sure has decided to store a wide variety of objects on this...[pause=0.5] [i]"shelf"[/i]
-	bailey (thinking): What's this? A Spanish textbook... Hmm, my Husband likes to speak to Charles in Spanish, doesn't he? 
-	bailey (thinking): Maybe if I learn how to [b][color=orange]speak Charles language[/color][/b] then that little turd will start cooperating.
-	bailey (thinking): Maybe there's an [color=green][b]app[/b][/color] on my phone I could use...  
-	set {FOUND_SPANISH_BOOK} = true
-	set {Gamedata.FOUND_SPANISH_BOOK} = true
-	[end_timeline]
+	bailey (thinking): What's this?	
+#	do Overlay.show_image("spanish_book")
+do Overlay.show_image_path("res://assets/art/PNG/objects/spanishbook-full.png","book_close")
+bailey (thinking): A Spanish textbook... Hmm, my Husband likes to speak to Charles in Spanish, doesn't he?
+bailey (thinking): Maybe if I learn how to [b][color=orange]speak Charles language[/color][/b] then that little turd will start cooperating.
+bailey (thinking): Maybe there's an [color=red][b]app on my phone[/b][/color] I could use...
+set {FOUND_SPANISH_BOOK} = true
+set {Gamedata.FOUND_SPANISH_BOOK} = true
+[end_timeline]
 elif {FOUND_SPANISH_BOOK} == true and {PLAYED_DUOLINGO} == false:
-	bailey (thinking): What could I use to improve my [b][color=orange]Spanish-speaking skills[/color][/b] so that Charles will stop ignoring me when I talk?
-	bailey (thinking): Maybe there's an [color=green][b]app[/b][/color] on my phone I could use...  
-	bailey (thinking): ....where is my phone anyway?
-	[end_timeline]
+bailey (thinking): What could I use to improve my [b][color=orange]Spanish-speaking skills[/color][/b] so that Charles will stop ignoring me when I talk?
+bailey (thinking): Maybe there's an [color=red][b]app on my phone[/b][/color] I could use...
+bailey (thinking): ....where is my phone anyway?
+[end_timeline]
 else:
-	bailey (default): Computer accessories... picture frames... books...
-	bailey (default): My husband sure has decided to store a wide variety of objects on this...	[pause=0.5] [i]"shelf"[/i]
-	[end_timeline]
+bailey (default): Computer accessories... picture frames... books...
+bailey (default): My husband sure has decided to store a wide variety of objects on this...	[pause=0.5] [i]"shelf"[/i]
+[end_timeline]

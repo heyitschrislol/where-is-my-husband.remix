@@ -84,7 +84,7 @@ func show_item(display_name: String, texture: Texture2D, _timeline_after: String
 
 ## Shows a full-screen closeup image until the player dismisses it.
 ## Awaitable: await ItemPopup.show_image(my_texture)
-func show_image(texture: Texture2D,item_sfx : String = "",delay : bool = false, item_name : String = "") -> void:
+func show_image(texture: Texture2D,item_sfx : String = "", item_name : String = "") -> void:
 	#if _is_open or _skip_popup:
 		#_skip_popup = false
 	if _is_open:
@@ -125,6 +125,15 @@ func show_image(texture: Texture2D,item_sfx : String = "",delay : bool = false, 
 	_can_dismiss = true
 	await popup_closed
 
+## Timeline-friendly wrapper: takes a resource path instead of a Texture2D
+## so it can be called from a Dialogic Call event.
+## Timeline usage: Call → Overlay → show_image_path → ["res://assets/…/note.png"]
+func show_image_path(path: String, item_sfx: String = "") -> void:
+	var tex := load(path) as Texture2D
+	if tex == null:
+		push_error("Overlay.show_image_path: no Texture2D at %s" % path)
+		return
+	await show_image(tex, item_sfx)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _is_open or not _can_dismiss:

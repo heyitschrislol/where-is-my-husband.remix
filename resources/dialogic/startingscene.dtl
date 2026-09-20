@@ -1,4 +1,11 @@
 bailey (exhausted): Ugh... finally home from work...
 bailey (thinking): What is my husband's car doing in the driveway? He shouldn't be off work yet.
-bailey (thinking): And why did he leave the trunk open?
+# #bailey (thinking): And why did he leave the trunk open?
 [signal arg="start_animation"]
+[wait time="4.0"]
+bailey (exhausted): I'm so [i][b]hungry[/b][/i]...[pause= 0.5]\
+...and I need a [i][b]bassage[/b][/i][pause= 0.2]
+[wait time="2.0"]
+bailey (thinking): ...and just where is my husband?
+[end_timeline]
+#do Overlay.show_image("")

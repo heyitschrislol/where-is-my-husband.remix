@@ -23,20 +23,14 @@ func start_dialogue(cutscene: String) -> void:
 	##	6. (smoke anim.play(to-inside)							smoke walks inside
 	##	7. (dialogic cutscene_kitchenB)							bailey welcomes smoke
 
-
-
 	# Start the dialogue
 	print("dialog started "+cutscene)
 	var layout = Dialogic.start("dtl_cutscene_kitchenA")
 	#print("current timeline: ")
 
-
-
-
 	# Wait for Dialogic to finish this specific segment
 	last = true
 	Dialogic.timeline_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
-
 
 	## PAUSE the AnimationPlayer so the line stays on screen
 	#anim_player.pause()

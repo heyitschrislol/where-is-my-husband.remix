@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
 [ext_resource type="Texture2D" uid="uid://da1kdthgqsvkp" path="res://assets/art/PNG/objects/husband-computer.png" id="17_1erkf"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
-[ext_resource type="Texture2D" uid="uid://fipwolpnt0sv" path="res://assets/art/PNG/objects/spanishbook-full.png" id="17_g6dbt"]
 [ext_resource type="Script" uid="uid://7ukjt7dvg1o8" path="res://scripts/computer.gd" id="17_m31jp"]
 [ext_resource type="Texture2D" uid="uid://xflaf8se1hhp" path="res://assets/art/PNG/objects/A_square_kitchen_island_with_chairs.png" id="18_4jkga"]
 [ext_resource type="Texture2D" uid="uid://75uk4r0fperd" path="res://assets/art/PNG/objects/window_SM_kitchen.png" id="19_g6dbt"]
@@ -3137,13 +3136,7 @@ position = Vector2(559.99994, 180.99995)
 rotation = -3.1415925
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_65la3")
-script = ExtResource("22_q425y")
-closeup_image = ExtResource("17_g6dbt")
-prompt_verb = "read"
-flag_name = ""
-dialogic_var = "FOUND_SPANISH_BOOK"
-timeline_after = "guestroom_bookshelf"
-item_sfx = "book_close"
+dialog_name = "guestroom_bookshelf"
 
 [node name="CollisionShape2D" parent="objects/guestroom_objects/bookshelf/interaction_area" parent_id_path=PackedInt32Array(1948526707, 55889324) index="0" unique_id=588109631]
 position = Vector2(-0.00027108192, 0)

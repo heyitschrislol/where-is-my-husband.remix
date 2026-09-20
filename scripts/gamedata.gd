@@ -233,7 +233,7 @@ func _deferred_goto_scene(path):
 ## Deliberately does NOT call load_stored_positions() — house.gd seeds
 ## the opening positions itself when GAME_START is true.
 func start_new_game() -> void:
-	GAME_START = true
+	#GAME_START = true
 	_deferred_start_new_game.call_deferred()
 
 func _deferred_start_new_game() -> void:

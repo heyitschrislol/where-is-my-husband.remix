@@ -60,10 +60,16 @@ var questions = [
 ]
 
 func _ready():
+	##	Disable/hide mouse as an input option for this
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+	#get_viewport().gui_focus_changed
+
 	progress_bar.max_value = questions.size()
 	progress_bar.value = 0
 
 	#continue_btn.hide()
+	continue_btn.add_theme_stylebox_override("focus", _make_focus_style())
 	feedback_label.hide()
 	load_question()
 
@@ -74,6 +80,7 @@ func load_question():
 
 	# Clear old buttons
 	for child in answer_grid.get_children():
+		answer_grid.remove_child(child)
 		child.queue_free()
 
 	# Create answer buttons
@@ -81,6 +88,9 @@ func load_question():
 		var btn = Button.new()
 		btn.text = q["answers"][i]
 		btn.add_theme_color_override("font_color",Color("#58cc02"))
+		btn.add_theme_color_override("font_focus_color", Color("#58cc02"))
+		btn.add_theme_color_override("font_hover_color", Color("#58cc02"))
+		btn.add_theme_color_override("font_pressed_color", Color("#58cc02"))
 		btn.pressed.connect(_on_answer_pressed.bind(i))
 
 		var state_colors = {
@@ -90,6 +100,7 @@ func load_question():
 			"disabled": Color("#CCCCCC"),  # muted when locked out
 		}
 		for state in state_colors:
+			btn.add_theme_stylebox_override("focus", _make_focus_style())
 			var style = StyleBoxFlat.new()
 			style.corner_radius_top_left = 12
 			style.corner_radius_top_right = 12
@@ -106,12 +117,37 @@ func load_question():
 	feedback_label.hide()
 	continue_btn.icon = iconA
 
+	# Give the gamepad a starting point for directional navigation.
+	if answer_grid.get_child_count() > 0:
+		answer_grid.get_child(0).grab_focus()
+
+
+func _make_focus_style() -> StyleBoxFlat:
+	var s := StyleBoxFlat.new()
+	s.draw_center = false          # don't paint over the button's own background
+	s.border_width_left = 6
+	s.border_width_top = 6
+	s.border_width_right = 6
+	s.border_width_bottom = 6
+	s.border_color = Color("#1cb0f6")   # Duolingo blue, to match your palette
+	s.corner_radius_top_left = 12
+	s.corner_radius_top_right = 12
+	s.corner_radius_bottom_left = 12
+	s.corner_radius_bottom_right = 12
+	# push the ring slightly outside the button's edge so it reads as a halo
+	s.expand_margin_left = 3
+	s.expand_margin_top = 3
+	s.expand_margin_right = 3
+	s.expand_margin_bottom = 3
+	return s
+
 func _on_answer_pressed(index: int):
 	var correct = questions[current_question_index]["correct"]
 
 	# Disable all buttons
 	for btn in answer_grid.get_children():
 		btn.disabled = true
+		continue_btn.grab_focus()
 
 	if index == correct:
 		feedback_label.text = "✓ Correct!"
@@ -159,6 +195,7 @@ func _on_lesson_failed():
 	continue_btn.pressed.connect(_restart_lesson)
 
 func _restart_lesson():
+	Input.MOUSE_MODE_VISIBLE
 	current_question_index = 0
 	mistakes = 0
 	continue_btn.pressed.disconnect(_restart_lesson)
@@ -166,6 +203,7 @@ func _restart_lesson():
 	load_question()
 
 func _close_lesson():
+	Input.MOUSE_MODE_VISIBLE
 	Gamedata.CAT_SPANISH_LEARNED = true
 	Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
 	scene_finished.emit()
