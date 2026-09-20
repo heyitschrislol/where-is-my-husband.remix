@@ -1,10 +1,9 @@
-if {PMAIL_HACKED} == true:
-	if {HAD_POST_HACK_CONVO} == false
-		bailey (surprised): Wow, so my Husband was planning something... a gift it sounds like?
-		bailey (thinking): Wasn't there an email that mentioned [b][color=gold]where he was going to prepare this surprise[/color][/b]?
-		{HAD_POST_HACK_CONVO} = true
-		set Gamedata.HAD_POST_HACK_CONVO = true
-		[end_timeline]
-	else:
-		bailey (playful): time to use what I learned to find that Husband of mine!
-		[end_timeline]
+if {HAD_POST_HACK_CONVO} == false:
+	set {HAD_POST_HACK_CONVO} = true
+	set {Gamedata.HAD_POST_HACK_CONVO} = true
+	bailey (surprised): Wow, so my Husband was planning something... a gift it sounds like?
+	bailey (thinking): Wasn't there an email that mentioned [b][color=gold]where he was going to prepare this surprise[/color][/b]?
+	[end_timeline]
+else:
+	bailey (playful): time to use what I learned to find that Husband of mine!
+	[end_timeline]

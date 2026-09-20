@@ -2958,7 +2958,7 @@ scale = Vector2(0.55, 0.55)
 wall_min_slide_angle = 0.061086524
 debugging = false
 player = NodePath("../player")
-follow_speed = 70.0
+follow_speed = 110.0
 
 [node name="collision_shape_2d" parent="characters/charles" index="3" unique_id=376067245]
 position = Vector2(0, 1)

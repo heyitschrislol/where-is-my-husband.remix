@@ -17,6 +17,15 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
+"annoyed": {
+"export_overrides": {
+"image": "\"res://assets/art/PNG/portraits/baileyportrait-annoyed-export.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "default": {
 "export_overrides": {
 "image": "\"res://assets/art/PNG/portraits/baileyportrait-default-export.png\""

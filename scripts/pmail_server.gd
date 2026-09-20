@@ -79,14 +79,32 @@ func _on_request_completed(_result: int, code: int,
 		print("Pmail: login detected.")
 
 
+#func _notification(what: int) -> void:
+	#if what != NOTIFICATION_APPLICATION_FOCUS_IN:
+		#return
+	#if not _reaction_pending or Gamedata.is_input_blocked():
+		#return
+	#_reaction_pending = false
+	#Gamedata._is_dialog_active = true
+	#Dialogic.start("after_pmail_hacked")
+
 func _notification(what: int) -> void:
 	if what != NOTIFICATION_APPLICATION_FOCUS_IN:
 		return
 	if not _reaction_pending or Gamedata.is_input_blocked():
 		return
 	_reaction_pending = false
+	_start_reaction.call_deferred()
+
+
+## Runs on a clean frame boundary. NOTIFICATION_APPLICATION_FOCUS_IN arrives
+## from the OS window handler, where pending queue_free() deletions from the
+## previous timeline have not been flushed yet.
+func _start_reaction() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
 	Gamedata._is_dialog_active = true
-	Dialogic.start("after_pmail_hacked")
+	Dialogic.start("pmail_after_login")
 
 func _base() -> String:
 	return "http://%s:%d" % [HOST, PORT]
