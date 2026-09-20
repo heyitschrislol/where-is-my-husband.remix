@@ -234,7 +234,6 @@ custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_7r2l4")
-toggle_mode = true
 action_mode = 0
 shortcut = SubResource("Shortcut_3xd07")
 text = "press start"
@@ -265,3 +264,5 @@ parameters/looping = true
 [node name="title_animation" type="AnimationPlayer" parent="." unique_id=458054699]
 root_node = NodePath("../center/vbox/title_txt")
 libraries/ = SubResource("AnimationLibrary_4l1s2")
+
+[connection signal="pressed" from="center/vbox/press_start" to="." method="_on_start_btn_pressed"]

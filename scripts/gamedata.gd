@@ -229,6 +229,27 @@ func _deferred_goto_scene(path):
 	#get_tree.call_deferred("load_stored_positions")
 	load_stored_positions()
 
+## Entry point from the title screen. Starts a fresh playthrough.
+## Deliberately does NOT call load_stored_positions() — house.gd seeds
+## the opening positions itself when GAME_START is true.
+func start_new_game() -> void:
+	GAME_START = true
+	_deferred_start_new_game.call_deferred()
+
+func _deferred_start_new_game() -> void:
+	# Free whatever is on screen (the title screen).
+	var old = get_tree().current_scene
+	if is_instance_valid(old):
+		old.free()
+
+	var s = ResourceLoader.load(scene_paths["house"])
+
+	# current_scene MUST be assigned before add_child(). add_child() fires
+	# house.gd::_ready() immediately, and that calls goto_cutscene(), which
+	# reads current_scene.scene_file_path.
+	current_scene = s.instantiate()
+	get_tree().root.add_child(current_scene)
+	get_tree().current_scene = current_scene
 
 func _on_dialogue_started():
 	_is_dialog_active = true

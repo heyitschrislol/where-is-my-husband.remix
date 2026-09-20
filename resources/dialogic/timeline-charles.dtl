@@ -5,9 +5,12 @@ if {CHARLES.FIRST_INTERACTION} == true:
 	set {CHARLES.FIRST_INTERACTION} = false
 	set Gamedata.CHARLES_FIRST_INTERACTION = false
 	[end_timeline]
+
 elif {CHARLES.FIRST_INTERACTION} == false:
 	if {PLAYED_DUOLINGO} == false:
 		charles (default): <..../...mrow/......./.../.....>
+		bailey (exhausted): he's not listening...
+		bailey (thinking): I wonder if it's because [b][i][color=orange]he can't understand my language[/color][/i][/b]
 		[end_timeline]
 	elif {PLAYED_DUOLINGO} == true:
 		set Gamedata.CAT_SPANISH_LEARNED = true

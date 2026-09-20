@@ -6,18 +6,7 @@
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "defaultbb",
-"sound_moods": {
-"defaultbb": {
-"mode": 0,
-"name": "defaultbb",
-"pitch_base": 1.0,
-"pitch_variance": 0.0,
-"skip_characters": 0.0,
-"sound_path": "res://assets/sfx/494920__evretro__text-scroll-f-0-230.mp3",
-"volume_base": 0.0,
-"volume_variance": 0.0
-}
-},
+"sound_moods": {},
 "style": "mainstyle",
 "suffix": ""
 },

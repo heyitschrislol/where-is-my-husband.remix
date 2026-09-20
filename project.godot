@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WhereIsMyHusband.remix"
-run/main_scene="uid://bnxweo4w86il6"
+run/main_scene="uid://bp011crmx0na7"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

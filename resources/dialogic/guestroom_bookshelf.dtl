@@ -13,7 +13,7 @@ if {CHARLES.FIRST_INTERACTION} == false and {FOUND_SPANISH_BOOK} == false:
 	[end_timeline]
 elif {FOUND_SPANISH_BOOK} == true and {PLAYED_DUOLINGO} == false:
 	bailey (thinking): What could I use to improve my [b][color=orange]Spanish-speaking skills[/color][/b] so that Charles will stop ignoring me when I talk?
-	bailey (thinking): Maybe there's an  [color=green][b]app[/b][/color] on my phone I could use...  
+	bailey (thinking): Maybe there's an [color=green][b]app[/b][/color] on my phone I could use...  
 	bailey (thinking): ....where is my phone anyway?
 	[end_timeline]
 else:

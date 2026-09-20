@@ -2957,7 +2957,6 @@ z_index = 12
 position = Vector2(-594.00006, -359)
 scale = Vector2(0.55, 0.55)
 wall_min_slide_angle = 0.061086524
-timeline_name = "timeline-charles"
 debugging = false
 player = NodePath("../player")
 follow_speed = 70.0
