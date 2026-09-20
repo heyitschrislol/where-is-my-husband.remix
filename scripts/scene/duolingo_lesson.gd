@@ -16,11 +16,6 @@ signal scene_finished
 @onready var iconA = preload("res://assets/art/Scene/duolingo/duocheckbtn1.png")
 @onready var iconB = preload("res://assets/art/Scene/duolingo/duocheckbtn2.png")
 
-##	--	SOUND EFFECTS
-##	----------------------
-@onready var sfx_correct = $Control/CorrectSound
-@onready var sfx_wrong = $Control/IncorrectSound
-@onready var sfx_passed = $Control/spanishlearnedSound
 
 
 var current_question_index = 0
@@ -121,12 +116,12 @@ func _on_answer_pressed(index: int):
 	if index == correct:
 		feedback_label.text = "✓ Correct!"
 		feedback_label.modulate = Color.GREEN
-		sfx_correct.play()
+		Audio.play("quiz_correct",-2.0)
 	else:
 		feedback_label.text = "✗ Wrong! The answer was: " + questions[current_question_index]["answers"][correct]
 		feedback_label.modulate = Color.RED
 		mistakes += 1
-		sfx_wrong.play()
+		Audio.play("quiz_wrong",-2.0)
 
 	continue_btn.icon = iconB
 	feedback_label.show()
@@ -148,7 +143,7 @@ func _on_lesson_passed():
 	Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
 	feedback_label.text = "🎉 ¡Perfecto! Lesson Complete!"
 	feedback_label.modulate = Color.GREEN
-	sfx_passed.play()
+	Audio.play("quiz_passed",-2.0)
 	feedback_label.show()
 	continue_btn.text = "Continue"
 	continue_btn.pressed.disconnect(_on_continue_button_pressed)

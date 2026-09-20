@@ -49,13 +49,13 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	Gamedata.CAT_SPANISH_LEARNED = true
-	Gamedata.CHARLES_FIRST_INTERACTION = false
-	Gamedata.CHARLES_DIALOG_IN_SPANISH = false
+	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	#Gamedata.CAT_SPANISH_LEARNED = true
+	#Gamedata.CHARLES_FIRST_INTERACTION = false
+	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
@@ -110,6 +110,8 @@ func _on_dialog_request(timeline_name: String,_location: String):
 
 func _on_dialogic_signal(argument:String):
 	#if argument == "spanish_book_taken":
+	#if argument == "guestroom_bookshelf":
+		#_on_guestroom_bookshelf()
 	if argument == "play_duolingo":
 		_on_play_duolingo()
 
@@ -147,9 +149,11 @@ func route(route_node: Node2D) -> Array[Vector2]:
 func _on_first_charles_interaction():
 	pass
 
-func _on_spanish_book_found():
-	pass
-
+func _on_guestroom_bookshelf():
+	if Gamedata.CHARLES_FIRST_INTERACTION:
+		obj_guestroom_bookshelf.set_skip_popup = true
+	else:
+		obj_guestroom_bookshelf.set_skip_popup = false
 func _on_play_duolingo():
 	Gamedata.goto_cutscene("duolingo", false)
 
@@ -166,9 +170,7 @@ func _on_let_charles_outside():
 	Gamedata.goto_cutscene("cutscene_kitchenA", true)
 	door_back.SPECIAL_DOOR = false
 	var points = route($routes/BackDoorToWaitSpot)
-	#points.append($Markers/FoodBowl.global_position)
 	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
-	#var cats = Gamedata._get_cats()
 	smoke.move_along(points)
 	await smoke.destination_reached
 

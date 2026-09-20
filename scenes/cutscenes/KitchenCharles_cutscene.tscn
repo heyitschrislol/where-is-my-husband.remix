@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://ckxowovaq1xwd" path="res://scripts/scene/kitchen_charles_cutscene.gd" id="1_ibtc4"]
 [ext_resource type="Texture2D" uid="uid://bupy45pykg0q0" path="res://assets/art/Scene/diningroom-BG.png" id="3_bcg0m"]
 [ext_resource type="Texture2D" uid="uid://dlgabvonukqw0" path="res://assets/art/PNG/objects/doorframe_scenic.png" id="3_wv7bt"]
-[ext_resource type="Texture2D" uid="uid://brbgk6lh74lj7" path="res://assets/art/PNG/objects/droom-door.png" id="4_wv7bt"]
+[ext_resource type="Texture2D" uid="uid://iw8vv24d0lnh" path="res://assets/art/PNG/objects/droom-door.png" id="4_wv7bt"]
 [ext_resource type="Texture2D" uid="uid://cj2oyhnhka5yt" path="res://assets/art/PNG/objects/droom-opendoor.png" id="5_eyrbp"]
 [ext_resource type="Texture2D" uid="uid://dh1ved0qu705d" path="res://assets/art/PNG/objects/island.png" id="5_w4w37"]
 [ext_resource type="Texture2D" uid="uid://bqbchphdl514" path="res://assets/art/PNG/bb-idle1.png" id="8_mjm4x"]
+[ext_resource type="Texture2D" uid="uid://irmk5sgf1cnh" path="res://assets/art/PNG/charlie-walk1.png" id="9_wv7bt"]
 [ext_resource type="AnimationLibrary" uid="uid://3pedgju8iv1q" path="res://resources/cutscene-kitchen.res" id="11_4x3q6"]
-[ext_resource type="Texture2D" uid="uid://cqnj6orrufm7r" path="res://assets/art/PNG/charles-idle1.png" id="13_soqll"]
-[ext_resource type="Texture2D" uid="uid://2rug0aqal8f7" path="res://assets/art/PNG/smokeidleright1.png" id="15_6xbe3"]
+[ext_resource type="Texture2D" uid="uid://3ma7ccd6qa6c" path="res://assets/art/PNG/smokeidleright1.png" id="15_6xbe3"]
 
 [sub_resource type="Animation" id="Animation_rne83"]
 length = 0.001
@@ -158,6 +158,7 @@ _data = {
 }
 
 [node name="KitchenCharlesCutscene" type="Node2D" unique_id=2053742607]
+z_index = 110
 script = ExtResource("1_ibtc4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=386890197]
@@ -207,9 +208,9 @@ libraries/cutscene-kitchen = ExtResource("11_4x3q6")
 
 [node name="charles" type="Sprite2D" parent="." unique_id=1885241799]
 z_index = 1
-position = Vector2(365, 594)
+position = Vector2(135.78024, 507.91913)
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("13_soqll")
+texture = ExtResource("9_wv7bt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="charles" unique_id=713887106]
 root_node = NodePath("../..")

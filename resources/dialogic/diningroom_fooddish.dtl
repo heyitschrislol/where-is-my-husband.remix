@@ -10,10 +10,10 @@ if {SMOKE.FED} == false:
 			[signal arg="food_placed"]
 			set {HOLDING_CAT_FOOD} = false
 #			[wait time="4.0"]
-			smoke (content): Mrrrow-ckkrowww....
-			bailey (playful): You were hungry, huh buddy?
-			[signal arg="smoke_fed"]
-			set {SMOKE.FED} = true
+smoke (content): Mrrrow-ckkrowww....
+bailey (playful): You were hungry, huh buddy?
+[signal arg="smoke_fed"]
+set {SMOKE.FED} = true
 [end_timeline]
 elif {HOLDING_CAT_FOOD} == false:
 bailey (default): It's a small, tin tray sitting on the ground. It's empty.

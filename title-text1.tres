@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://cp70jh3fi6cue"]
+
+[ext_resource type="FontFile" uid="uid://cmb5vtjp1eccs" path="res://assets/Fonts/pixelfonts/ari-w9500-condensed-bold.ttf" id="1_ljsvl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr7xr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3r86b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xca7i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjlwc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7ghw"]
+
+[resource]
+default_font = ExtResource("1_ljsvl")
+default_font_size = 32
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.3817035, 0.38170317, 0.38170305, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.1254902, 0.03137255, 0.03137255, 1)
+Button/colors/font_pressed_color = Color(0.46970904, 0.19812974, 0.1975883, 1)
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_ljsvl")
+Button/styles/focus = SubResource("StyleBoxEmpty_cr7xr")
+Button/styles/hover = SubResource("StyleBoxEmpty_3r86b")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_xca7i")
+Button/styles/normal = SubResource("StyleBoxEmpty_bjlwc")
+Button/styles/pressed = SubResource("StyleBoxEmpty_h7ghw")

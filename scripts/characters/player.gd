@@ -12,6 +12,7 @@ var state : States = States.IDLE
 
 @export_group("Target Destination")
 @export var arrival_threshold := 4.0
+@export var moving_to_speed : float = 0.0
 @export_group("")
 
 @export var stuck_timeout := 4.0
@@ -23,44 +24,22 @@ var waypoints: Array[Vector2] = []
 
 var input_dir: Vector2 = Vector2.ZERO
 
+## STEP AUDIO ##
+const STEP_DISTANCE := 40.0   # pixels between footsteps — tune by ear
+var _distance_since_step := 0.0
+
 signal destination_reached
 
 func _ready():
 	pass
 
 func _physics_process(_delta):
-	#var direction = Vector2(
-	#Input.get_axis("ui_left", "ui_right"),
-	#Input.get_axis("ui_up", "ui_down")
-	#).normalized()
-		##match direction:
-			##Vector2(1,0): last_dir="right"
-			##Vector2(-1,0): last_dir="left"
-			##Vector2(0,-1): last_dir="up"
-			##Vector2(0,1): last_dir="down"
-	#velocity = direction * speed
+
 	decide_state()
 	apply_state(_delta)
 	update_anim()
 	move_and_slide()
-	#if not Gamedata.is_input_blocked():
-		##Gamedata.position_store["player"] = global_position
-		#var direction = Vector2(
-			#Input.get_axis("ui_left", "ui_right"),
-			#Input.get_axis("ui_up", "ui_down")
-		#).normalized()
-		##match direction:
-			##Vector2(1,0): last_dir="right"
-			##Vector2(-1,0): last_dir="left"
-			##Vector2(0,-1): last_dir="up"
-			##Vector2(0,1): last_dir="down"
-#
-#
-		#velocity = direction * speed
-		#decide_state()
-		#apply_state(_delta)
-		#update_anim()
-		#move_and_slide()
+	_update_footsteps(_delta)
 
 func decide_state() -> void:
 	input_dir = Vector2(
@@ -191,28 +170,20 @@ func update_anim():
 		player_sprite.play("walk_" + last_dir)
 	else:
 		player_sprite.play("idle_" + last_dir)
-#func update_anim(direction: Vector2):
-	#if direction == Vector2.ZERO:
-		#is_stopped = true
-		#match last_dir:
-			#"up":		player_sprite.play("idle_up")
-			#"down":		player_sprite.play("idle_down")
-			#"left":		player_sprite.play("idle_left")
-			#"right":	player_sprite.play("idle_right")
-	#else:
-		#if abs(direction.x) >= abs(direction.y):
-			#if direction.x > 0:
-				#last_dir = "right"
-				#player_sprite.play("walk_right")
-			#else:
-				#last_dir = "left"
-				#player_sprite.play("walk_left")
-		#else:
-			#if direction.y > 0:
-				#last_dir = "down"
-				#player_sprite.play("walk_down")
-			#else:
-				#last_dir = "up"
-				#player_sprite.play("walk_up")
+
+
+func _update_footsteps(delta: float) -> void:
+	if velocity.length() < 1.0:
+		# Standing still. Prime the counter so the first step after
+		# starting to walk lands quickly instead of feeling delayed.
+		_distance_since_step = STEP_DISTANCE * 0.5
+		return
+
+	_distance_since_step += velocity.length() * delta
+	if _distance_since_step >= STEP_DISTANCE:
+		_distance_since_step = 0.0
+		Audio.play_varied("footstep", -8.0)
+
+
 func get_distance_to_object(object_pos: Vector2) -> float:
 	return object_pos.distance_to(global_position)

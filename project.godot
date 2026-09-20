@@ -16,11 +16,16 @@ run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cpoy86tudfgir"
+
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
 PmailServer="*uid://c2ieblvoyg8q"
 InteractionManager="*uid://bx8fmu533p70h"
+Audio="*uid://b02tqcnudbrfs"
 Gamedata="*uid://b3joqbgohcl3p"
 Overlay="*uid://cp6d10e0e1gm5"
 
@@ -103,7 +108,8 @@ variables={
 "FED": false,
 "LET_INSIDE": false
 },
-"TORN_NOTE_READ": false
+"TORN_NOTE_READ": false,
+"_2ND_PC_TOUCH": false
 }
 glossary/default_case_sensitive=true
 text/autoadvance_enabled=false

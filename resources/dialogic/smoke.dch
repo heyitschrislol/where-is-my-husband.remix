@@ -6,7 +6,18 @@
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "defaults",
-"sound_moods": {},
+"sound_moods": {
+"defaultsm": {
+"mode": 1,
+"name": "defaultsm",
+"pitch_base": 0.6,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "res://assets/sfx/494921__evretro__text-scroll-d-3-3-225.mp3",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "mainstyle",
 "suffix": ""
 },
@@ -25,7 +36,7 @@
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": "",
-"sound_mood": "defaults"
+"sound_mood": "defaultsm"
 },
 "default": {
 "export_overrides": {

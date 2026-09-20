@@ -16,5 +16,5 @@ if {SMOKE.FED} == false:
 			[signal arg="holding_cat_food"]
 			[end_timeline]
 else:
-		bailey (thinking): I already fed Smoke, I don't think I need anything in here anymore.
-		[end_timeline]
+	bailey (thinking): I already fed Smoke, I don't think I need anything in here anymore.
+	[end_timeline]

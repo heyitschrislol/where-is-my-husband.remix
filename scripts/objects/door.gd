@@ -41,6 +41,7 @@ func _open_door():
 	else:
 		if state == "closed":
 			Gamedata.reveal_room(room_name)
+			Audio.play("door_open")
 			#if Gamedata.
 			if open_visible:
 				visible = true
@@ -50,6 +51,7 @@ func _open_door():
 			state = "open"
 			interaction_area.action_name = "close door"
 		elif state == "open":
+			Audio.play("door_close")
 			if closed_visible:
 				visible = true
 			else:

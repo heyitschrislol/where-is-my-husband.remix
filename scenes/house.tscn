@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
 [ext_resource type="Texture2D" uid="uid://da1kdthgqsvkp" path="res://assets/art/PNG/objects/husband-computer.png" id="17_1erkf"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
+[ext_resource type="Texture2D" uid="uid://fipwolpnt0sv" path="res://assets/art/PNG/objects/spanishbook-full.png" id="17_g6dbt"]
 [ext_resource type="Script" uid="uid://7ukjt7dvg1o8" path="res://scripts/computer.gd" id="17_m31jp"]
 [ext_resource type="Texture2D" uid="uid://xflaf8se1hhp" path="res://assets/art/PNG/objects/A_square_kitchen_island_with_chairs.png" id="18_4jkga"]
 [ext_resource type="Texture2D" uid="uid://75uk4r0fperd" path="res://assets/art/PNG/objects/window_SM_kitchen.png" id="19_g6dbt"]
@@ -855,10 +856,10 @@ texture = ExtResource("5_a0083")
 14:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:3/0 = 0
 18:3/0/z_index = 14
-18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.6000004, -8, 8, -8, 8, 8, 1.6000004, 8)
+18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -4.8, -8, -4.8)
 19:3/0 = 0
 19:3/0/z_index = 14
-19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4.8, 8, 4.8, -8, -8, -8)
+19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4.8, 8, 4.8, -4.8, -8, -4.8)
 6:4/0 = 0
 6:4/0/z_index = 14
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.8, 8, -4.8, 8, 8, -8, 8)
@@ -879,7 +880,7 @@ texture = ExtResource("5_a0083")
 15:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.5999999, -8, -1.5999999, 8, -8, 8)
 18:4/0 = 0
 18:4/0/z_index = 14
-18:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.6000004, -8, 8, -8, 8, 8, 1.6000004, 8)
+18:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
 19:4/0 = 0
 19:4/0/z_index = 14
 19:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4.8, 8, 4.8, -8, -8, -8)
@@ -891,10 +892,10 @@ texture = ExtResource("5_a0083")
 7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:5/0 = 0
 18:5/0/z_index = 6
-18:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.6000004, -8, 8, -8, 8, 1.6000004, 1.6000004, 1.6000004)
+18:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.5999999, 8, -1.5999999, 8, -8, -8, -8)
 19:5/0 = 0
 19:5/0/z_index = 6
-19:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4.8, 8, 4.8, -8, -8, -8)
+19:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.5999999, 4.8, -1.5999999, 4.8, -8, -8, -8)
 6:6/0 = 0
 6:6/0/z_index = 14
 6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
@@ -905,7 +906,7 @@ texture = ExtResource("5_a0083")
 18:6/0/z_index = 6
 19:6/0 = 0
 19:6/0/z_index = 6
-19:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4.8, 8, 4.8, -8, -8, -8)
+19:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 1.6000004, -8, 1.6000004, -8, -8, -8)
 4:7/0 = 0
 4:7/0/z_index = 6
 4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -4.8, -8, -4.8)
@@ -1368,18 +1369,19 @@ texture = ExtResource("5_a0083")
 21:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.8, 8, -4.8, 8, 8, -8, 8)
 22:6/0 = 0
 22:6/0/z_index = 6
-22:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 8, 8, 8, 8, -8, -4.8, -8)
+22:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, -8, 8, -8, 8, -8, -4.8, -8)
 22:5/0 = 0
 22:5/0/z_index = 6
-22:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 8, 8, 8, 8, -8, -4.8, -8)
+22:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, -1.5999999, 8, -1.5999999, 8, -8, -4.8, -8)
 22:4/0 = 0
 22:4/0/z_index = 14
 22:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 8, 8, 8, 8, -8, -4.8, -8)
 22:3/0 = 0
 22:3/0/z_index = 14
-22:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 8, 8, 8, 8, -8, -4.8, -8)
+22:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 8, 8, 8, 8, -4.8, -4.8, -4.8)
 23:3/0 = 0
 23:3/0/z_index = 14
+23:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -4.8, -8, -4.8)
 23:2/0 = 0
 23:2/0/z_index = 14
 23:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -4.8, -8, -4.8)
@@ -1390,8 +1392,10 @@ texture = ExtResource("5_a0083")
 22:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -4.8, -8, -4.8)
 23:4/0 = 0
 23:4/0/z_index = 14
+23:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
 23:5/0 = 0
 23:5/0/z_index = 6
+23:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.5999999, 8, -1.5999999, 8, -8, -8, -8)
 23:6/0 = 0
 23:6/0/z_index = 6
 21:0/0 = 0
@@ -2839,8 +2843,8 @@ position = Vector2(883, 239)
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
 texture_filter = 1
-position = Vector2(715.425, 196.06668)
-scale = Vector2(0.5375, 0.63333327)
+position = Vector2(716.209, 188.03557)
+scale = Vector2(0.539271, 0.571111)
 color = Color(0.06, 0.06, 0.08, 1)
 polygon = PackedVector2Array(-38, 112, 2.837143, 112.00001, 122, 112, 122, -128, -118, -128, -118, 112, -102, 112)
 script = ExtResource("2_nrgyv")
@@ -2889,8 +2893,8 @@ metadata/_custom_type_script = "uid://combwywqqbehf"
 
 [node name="closet_blinder" type="Polygon2D" parent="roomblinders" unique_id=767417690]
 z_index = 99
-position = Vector2(570.8142, 267)
-scale = Vector2(0.9781418, 1.073171)
+position = Vector2(570.8142, 252)
+scale = Vector2(0.9781418, 0.7073175)
 color = Color(0.06, 0.06, 0.08, 1)
 polygon = PackedVector2Array(-100, -41, -100, 0, -9.216469, 0, 83, 0, 83, -41)
 script = ExtResource("2_nrgyv")
@@ -2938,9 +2942,11 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-111, -143)
+position = Vector2(-404, -238)
 wall_min_slide_angle = 0.061086524
-speed = 125.0
+
+[node name="animated_sprite_2d" parent="characters/player" index="0" unique_id=1686775873]
+animation = &"walk_down"
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1
@@ -2954,7 +2960,7 @@ wall_min_slide_angle = 0.061086524
 timeline_name = "timeline-charles"
 debugging = false
 player = NodePath("../player")
-follow_speed = 110.0
+follow_speed = 70.0
 
 [node name="collision_shape_2d" parent="characters/charles" index="3" unique_id=376067245]
 position = Vector2(0, 1)
@@ -3027,7 +3033,7 @@ dialog_name = ""
 
 [node name="bathroom" parent="objects/doors" unique_id=200330778 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
-position = Vector2(283.00006, 267.99997)
+position = Vector2(283.00006, 268.99997)
 scale = Vector2(1, 1)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
@@ -3038,11 +3044,11 @@ action_name = ""
 dialog_name = ""
 
 [node name="collision_shape_2d" parent="objects/doors/bathroom/interaction_area" parent_id_path=PackedInt32Array(200330778, 55889324) index="0" unique_id=1115233311]
-position = Vector2(5.2453663e-07, 6)
+position = Vector2(3.4969105e-07, 4)
 scale = Vector2(1, 0.35)
 
 [node name="collision_shape_2d" parent="objects/doors/bathroom" index="1" unique_id=236775629]
-position = Vector2(5.8698225e-07, 6.0000095)
+position = Vector2(9.3667336e-07, 10.00001)
 scale = Vector2(1.4, 0.2)
 
 [node name="Sprite2D" parent="objects/doors/bathroom" index="2" unique_id=1049246469]
@@ -3132,7 +3138,13 @@ position = Vector2(559.99994, 180.99995)
 rotation = -3.1415925
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_65la3")
-dialog_name = "guestroom_bookshelf"
+script = ExtResource("22_q425y")
+closeup_image = ExtResource("17_g6dbt")
+prompt_verb = "read"
+flag_name = ""
+dialogic_var = "FOUND_SPANISH_BOOK"
+timeline_after = "guestroom_bookshelf"
+item_sfx = "book_close"
 
 [node name="CollisionShape2D" parent="objects/guestroom_objects/bookshelf/interaction_area" parent_id_path=PackedInt32Array(1948526707, 55889324) index="0" unique_id=588109631]
 position = Vector2(-0.00027108192, 0)
@@ -3307,6 +3319,7 @@ prompt_verb = "read"
 flag_name = "TORN_NOTE_READ"
 dialogic_var = ""
 timeline_after = ""
+item_sfx = "paper_crumple"
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/torn_note/interaction_area" parent_id_path=PackedInt32Array(1747493553, 55889324) index="0" unique_id=588109631]
 debug_color = Color(0.6751168, 0.5069369, 0, 0.41960785)

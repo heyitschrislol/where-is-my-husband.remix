@@ -224,22 +224,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("12_hdner")
 }, {
 "duration": 0.6,
 "texture": ExtResource("13_m38kj")
 }, {
-"duration": 0.6,
+"duration": 0.9,
 "texture": ExtResource("14_v1y1o")
 }, {
-"duration": 0.6,
+"duration": 0.9,
 "texture": ExtResource("15_hnvwh")
 }, {
-"duration": 0.6,
+"duration": 0.9,
 "texture": ExtResource("16_rfou0")
 }, {
-"duration": 0.6,
+"duration": 0.9,
 "texture": ExtResource("17_vkt2s")
 }],
 "loop": 1,
@@ -247,28 +247,28 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("18_6ux5t")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("19_lvr6b")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("20_nktl3")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("21_yyjep")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("22_6aj6e")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("23_n7k00")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("24_lnpl6")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("25_5bn3a")
 }],
 "loop": 1,
@@ -276,28 +276,28 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("26_tnye5")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("27_as8yd")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("28_qmarm")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("29_w5bca")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("30_j057w")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("31_18mi3")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("32_3uc7m")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("33_pue7u")
 }],
 "loop": 1,
@@ -305,22 +305,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("34_7k8pb")
 }, {
-"duration": 0.4,
+"duration": 0.6,
 "texture": ExtResource("35_5njio")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("36_aphfe")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("37_dvq58")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("38_qgqs5")
 }, {
-"duration": 0.4,
+"duration": 0.9,
 "texture": ExtResource("39_e1rhj")
 }],
 "loop": 1,
@@ -357,13 +357,12 @@ collision_layer = 2
 collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_4flbx")
+moving_to_speed = 35.0
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1686775873]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8sqrr")
-animation = &"walk_down"
-frame = 5
-frame_progress = 0.9502374
+animation = &"walk_up"
 
 [node name="animations" type="Node" parent="." unique_id=1511487854]
 

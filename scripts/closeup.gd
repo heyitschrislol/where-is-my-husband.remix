@@ -7,6 +7,7 @@ extends Sprite2D
 @export var flag_name: String = ""           ## optional Gamedata bool to set true
 @export var dialogic_var: String = ""        ## optional Dialogic variable to set true
 @export var timeline_after: String = ""      ## optional timeline once dismissed
+@export var item_sfx : String = ""		## optional sound to play when shown
 
 
 func _ready() -> void:
@@ -15,12 +16,14 @@ func _ready() -> void:
 
 
 func _on_view() -> void:
-	await Overlay.show_image(closeup_image)
+
+	await Overlay.show_image(closeup_image, item_sfx)
 
 	if flag_name != "":
 		Gamedata.set(flag_name, true)
 	if dialogic_var != "":
 		Dialogic.VAR.set_variable(dialogic_var, true)
+
 
 	if timeline_after != "":
 		Gamedata._is_dialog_active = true

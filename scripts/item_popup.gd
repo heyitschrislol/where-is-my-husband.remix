@@ -3,6 +3,8 @@ extends CanvasLayer
 ## Emitted once the popup has fully closed.
 signal popup_closed
 
+#signal delayed_popup(item_name: String)
+
 @export var popup_type = ""
 
 @onready var dimmer: ColorRect = $dimmer
@@ -16,10 +18,10 @@ signal popup_closed
 const IMAGE_TARGET_SIZE := 768.0
 const IMAGE_SCREEN_MARGIN := 48.0
 
-@onready var sfx: AudioStreamPlayer = $sfx
 
 var _is_open := false
 var _can_dismiss := false
+#var _skip_popup := false
 
 
 func _ready() -> void:
@@ -51,8 +53,8 @@ func show_item(display_name: String, texture: Texture2D, _timeline_after: String
 	center.show()
 
 	show()
-	if sfx.stream:
-		sfx.play()
+	await get_tree().create_timer(1.0).timeout
+	Audio.play("item_get")
 
 	# Let CenterContainer lay out `panel` so panel.size is real,
 	# otherwise pivot_offset is (0,0) and it scales from the corner.
@@ -82,7 +84,9 @@ func show_item(display_name: String, texture: Texture2D, _timeline_after: String
 
 ## Shows a full-screen closeup image until the player dismisses it.
 ## Awaitable: await ItemPopup.show_image(my_texture)
-func show_image(texture: Texture2D) -> void:
+func show_image(texture: Texture2D,item_sfx : String = "",delay : bool = false, item_name : String = "") -> void:
+	#if _is_open or _skip_popup:
+		#_skip_popup = false
 	if _is_open:
 		return
 	_is_open = true
@@ -97,9 +101,11 @@ func show_image(texture: Texture2D) -> void:
 
 	center.hide()
 	image_center.show()
-
 	Gamedata._is_popup_active = true
 	show()
+	#await get_tree().create_timer(1.0).timeout
+	if item_sfx != "":
+		Audio.play(item_sfx)
 
 	await get_tree().process_frame
 	item_closeup.pivot_offset = item_closeup.size / 2.0
