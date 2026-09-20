@@ -28,6 +28,11 @@ const SFX := {
 		"ui_button_press1"	:	preload("res://assets/sfx/click3.mp3"),
 		"ui_button_press2"	:	preload("res://assets/sfx/switch3.mp3"),
 		"ui_button_press3"	:	preload("res://assets/sfx/switch31.mp3"),
+
+		"type_default"	:	preload("res://assets/sfx/text_scroll_230B.wav"),
+		"type_charles"	:	preload("res://assets/sfx/text_scroll_225B.wav"),
+		"type_smoke"	:	preload("res://assets/sfx/text_scroll_225B.wav"),
+		"type_husband"	:	preload("res://assets/sfx/text_scroll_200B.wav"),
 }
 
 var _players: Array[AudioStreamPlayer] = []

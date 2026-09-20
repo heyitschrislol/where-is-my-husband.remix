@@ -1,5 +1,8 @@
 extends Node
 
+var player_node : Node
+var charles_node : Node
+var smoke_node : Node
 #var player = get_tree().get_first_node_in_group("player")
 var current_scene = null
 var previous_scene = null
@@ -9,6 +12,7 @@ var _is_dialog_active: bool = false   			## owned by Dialogic timelines ONLY
 var _is_popup_active: bool = false    				## owned by ItemPopup ONLY
 ##---PRE-SCENE POSITIONS---##
 var position_store : Dictionary[String,Vector2] = {}
+var stored_global_pos : Dictionary[String,Vector2] = {}
 
 var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
@@ -34,9 +38,11 @@ var TORN_NOTE_READ = false
 
 ## GUESTROOM
 ## -----------
+var HAD_POST_HACK_CONVO = false
 var PMAIL_HACKED = false
 var FOUND_SPANISH_BOOK = false
 var CAT_SPANISH_LEARNED = false
+var PLAYED_DUOLINGO = false
 ## BEDROOM
 ## -----------
 var CHARLES_FIRST_INTERACTION = true
@@ -86,6 +92,7 @@ var scene_paths = {
 
 func _ready():
 	var root = get_tree().root
+	player_node = get_tree().get_first_node_in_group("player")
 	# Using a negative index counts from the end, so this gets the last child node of `root`.
 	current_scene = root.get_child(-1)
 	#var player = get_tree().get_first_node_in_group("player")
@@ -170,6 +177,7 @@ func goto_cutscene(cutscene: String, custompos: bool):
 		var cnode = get_node("/root/House/characters/charles")
 		var snode = get_node("/root/House/characters/smoke")
 		store_character_positions(pnode.position,cnode.position,snode.position)
+		record_positions()
 	var return_scene_path = current_scene.scene_file_path
 	print(scene_paths[cutscene])
 	_deferred_goto_cutscene.call_deferred(scene_paths[cutscene], return_scene_path)
@@ -259,14 +267,55 @@ func _on_dialogue_ended():
 
 func _get_player():
 	return get_tree().get_first_node_in_group("player")
+
 func _get_cats():
 	return get_tree().get_nodes_in_group("npc")
+
+func _set_player_node() -> void:
+	var playa = get_tree().get_first_node_in_group("player")
+	player_node = playa
+
+func _set_cats_nodes() -> void:
+	## 		returns an Array[Node]
+	var cats = get_tree().get_nodes_in_group("npc")
+	for cat in cats:
+		if cat.name == "charles":
+			charles_node = cat
+		elif cat.name == "smoke":
+			smoke_node = cat
+
+
 
 
 
 ##	---------------------------------------------
 ##	--- PROGRESSION TRACKING
 ##	---------------------------------------------
+func record_positions() -> void:
+	_set_player_node()
+	_set_cats_nodes()
+	stored_global_pos = {
+		"player-location"		:	Vector2(
+			player_node.global_position.x,
+			player_node.global_position.y
+		),
+		"charles-location"	: Vector2(
+			charles_node.global_position.x,
+			charles_node.global_position.y
+		),
+		"smoke-location"	: Vector2(
+			smoke_node.global_position.x,
+			smoke_node.global_position.y
+		)
+	}
+
+func load_positions() -> void:
+	_set_player_node()
+	_set_cats_nodes()
+
+	player_node.set_position(stored_global_pos["player-location"])
+	charles_node.set_position(stored_global_pos["charles-location"])
+	smoke_node.set_position(stored_global_pos["smoke-location"])
 
 func store_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
 	position_store["player"] = ppos

@@ -5,7 +5,7 @@
 &"color": Color(1, 0.65649414, 0.21484375, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "defaultc",
+"sound_mood_default": "cdefault",
 "sound_moods": {},
 "style": "mainstyle",
 "suffix": ""
@@ -25,7 +25,7 @@
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": "",
-"sound_mood": "defaultc"
+"sound_mood": "cdefault"
 },
 "default": {
 "export_overrides": {

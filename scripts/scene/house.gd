@@ -52,6 +52,7 @@ func _ready():
 	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
 	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
 	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
 	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
 	#Gamedata.CAT_SPANISH_LEARNED = true
 	#Gamedata.CHARLES_FIRST_INTERACTION = false
@@ -155,6 +156,7 @@ func _on_guestroom_bookshelf():
 	else:
 		obj_guestroom_bookshelf.set_skip_popup = false
 func _on_play_duolingo():
+	Gamedata.record_positions()
 	Gamedata.goto_cutscene("duolingo", false)
 
 func _on_learned_cat_spanish():

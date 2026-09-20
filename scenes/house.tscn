@@ -7,16 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://g6v2017ot3sj" path="res://scenes/characters/charles.tscn" id="2_se78b"]
 [ext_resource type="Texture2D" uid="uid://behjty2afvjfq" path="res://assets/art/Tiles/TopDownHouse_Walls1.png" id="3_0l2s1"]
 [ext_resource type="PackedScene" uid="uid://ctp6fk8umtmq5" path="res://scenes/characters/smoke.tscn" id="3_3bgk5"]
-[ext_resource type="Texture2D" uid="uid://dp0nxug5pywjx" path="res://assets/art/PNG/objects/shelf-books.png" id="4_3bgk5"]
 [ext_resource type="Texture2D" uid="uid://f8i46xaxd02p" path="res://assets/art/Tiles/TopDownHouse_FloorsAndWalls.png" id="5_4jkga"]
 [ext_resource type="Texture2D" uid="uid://cy6kecf4bnrcj" path="res://assets/art/Tiles/VISUAL-AID-WALL-TILES2.png" id="5_a0083"]
 [ext_resource type="Texture2D" uid="uid://d3ggtc5i13hyj" path="res://assets/art/Tiles/nice_floor_tiles.png" id="6_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bkhc2rpemml6a" path="res://assets/art/Tiles/VISUAL-AID-WALL-TILES.png" id="7_c2gpw"]
 [ext_resource type="PackedScene" uid="uid://d4iiljtkqjhow" path="res://scenes/objects/Door.tscn" id="7_ptc3g"]
-[ext_resource type="Texture2D" uid="uid://8dlqgxr1kgg4" path="res://assets/art/PNG/objects/bookshelf_sm.png" id="9_65la3"]
 [ext_resource type="PackedScene" uid="uid://qsly621ahfr7" path="res://scenes/interaction/Interactable.tscn" id="9_7685u"]
 [ext_resource type="PackedScene" uid="uid://b5k8betmn662u" path="res://scenes/objects/specialdoor.tscn" id="9_de74l"]
 [ext_resource type="Texture2D" uid="uid://uwrby6ikeb1p" path="res://assets/art/PNG/objects/stone_path_sm.PNG" id="14_lamap"]
+[ext_resource type="Texture2D" uid="uid://pw0xok0v38w3" path="res://assets/art/PNG/objects/guestroom_bookshelf_RIZZ.png" id="15_11a5k"]
 [ext_resource type="Texture2D" uid="uid://da1kdthgqsvkp" path="res://assets/art/PNG/objects/husband-computer.png" id="17_1erkf"]
 [ext_resource type="Texture2D" uid="uid://dv8botye16inn" path="res://assets/art/PNG/objects/hall-rug_sm.PNG" id="17_ep1bp"]
 [ext_resource type="Script" uid="uid://7ukjt7dvg1o8" path="res://scripts/computer.gd" id="17_m31jp"]
@@ -28,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://dvbp1jjj4l4m5" path="res://assets/art/PNG/objects/masterbed_side_3_128x128.png" id="21_4jkga"]
 [ext_resource type="Texture2D" uid="uid://cq4bww62u840x" path="res://assets/art/PNG/objects/SECRET-NOTE-SMALL.png" id="21_80gfe"]
 [ext_resource type="Texture2D" uid="uid://efad5tpvmb3m" path="res://assets/art/PNG/objects/kitchen-shelves-top.png" id="21_j00kf"]
-[ext_resource type="Texture2D" uid="uid://dwyfjfqhn6vk2" path="res://assets/art/PNG/objects/coffeetable_sm.PNG" id="22_3kuml"]
 [ext_resource type="Texture2D" uid="uid://8urdwal6q56k" path="res://assets/art/PNG/objects/lamp2.png" id="22_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bbbahes42tkhm" path="res://assets/art/PNG/objects/kitchen-shelves-bottom.png" id="22_bveog"]
 [ext_resource type="Script" uid="uid://cohtv6rim83c3" path="res://scripts/closeup.gd" id="22_q425y"]
@@ -37,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b15y5ej6x8bv1" path="res://assets/art/PNG/objects/cellphone.png" id="23_lamap"]
 [ext_resource type="Texture2D" uid="uid://ce86a0251wqjd" path="res://assets/art/PNG/objects/fridge-east.png" id="25_1erkf"]
 [ext_resource type="Texture2D" uid="uid://1gvudu5wipxi" path="res://assets/art/PNG/portraits/a_crumpled-up_piece_of_paper_w.png" id="25_8cron"]
+[ext_resource type="Texture2D" uid="uid://g83lwecf6slt" path="res://assets/art/PNG/objects/kitchen-pantry-west.png" id="25_11a5k"]
 [ext_resource type="Texture2D" uid="uid://c2fcspnunjlmj" path="res://assets/art/PNG/objects/endtable.png" id="27_4jkga"]
 [ext_resource type="Texture2D" uid="uid://bg2lbr0h2d87i" path="res://assets/art/PNG/objects/green-couch-side.png" id="28_r2srw"]
 [ext_resource type="Script" uid="uid://b2djgtnhydiqu" path="res://scripts/pickup.gd" id="29_in3qe"]
@@ -2698,7 +2697,7 @@ texture = ExtResource("5_4jkga")
 sources/0 = SubResource("TileSetAtlasSource_80gfe")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
-size = Vector2(88, 62)
+size = Vector2(88, 74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4eap"]
 size = Vector2(151.42857, 101.953896)
@@ -2717,11 +2716,10 @@ height = 140.0
 size = Vector2(44.333374, 83.33334)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q425y"]
-size = Vector2(363.33328, 256.66736)
+size = Vector2(64.444374, 128.88889)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrght"]
-radius = 110.0
-height = 366.66675
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1erkf"]
+size = Vector2(117.777794, 26.666504)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivbqp"]
 size = Vector2(23.571447, 41.4286)
@@ -2838,6 +2836,7 @@ position = Vector2(907, 350)
 position = Vector2(883, 239)
 
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
+visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
@@ -2941,8 +2940,9 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-404, -238)
+position = Vector2(-92, -98)
 wall_min_slide_angle = 0.061086524
+speed = 125.0
 
 [node name="animated_sprite_2d" parent="characters/player" index="0" unique_id=1686775873]
 animation = &"walk_down"
@@ -3132,21 +3132,16 @@ scale = Vector2(1.2, 1.2)
 [node name="bookshelf" parent="objects/guestroom_objects" unique_id=1948526707 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 11
 texture_filter = 1
-position = Vector2(559.99994, 180.99995)
+position = Vector2(537.99994, 183.99995)
 rotation = -3.1415925
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_65la3")
+texture = ExtResource("15_11a5k")
 dialog_name = "guestroom_bookshelf"
 
 [node name="CollisionShape2D" parent="objects/guestroom_objects/bookshelf/interaction_area" parent_id_path=PackedInt32Array(1948526707, 55889324) index="0" unique_id=588109631]
 position = Vector2(-0.00027108192, 0)
+scale = Vector2(1, 0.9)
 debug_color = Color(0.6509804, 0.5176471, 0.09411765, 0.41960785)
-
-[node name="books" type="Sprite2D" parent="objects/guestroom_objects/bookshelf" unique_id=963329952]
-texture_filter = 1
-position = Vector2(15.555664, -57.777973)
-scale = Vector2(0.11000001, 0.11000001)
-texture = ExtResource("4_3bgk5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="objects/guestroom_objects/bookshelf" unique_id=2144488156]
 collision_mask = 6
@@ -3154,7 +3149,7 @@ constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/guestroom_objects/bookshelf/StaticBody2D" unique_id=1935243170]
-position = Vector2(-0.00024414063, -39)
+position = Vector2(-0.00024414063, -33)
 shape = SubResource("RectangleShape2D_3xd07")
 
 [node name="computer" parent="objects/guestroom_objects" unique_id=745050616 groups=["interactable-object"] instance=ExtResource("9_7685u")]
@@ -3278,14 +3273,14 @@ position = Vector2(-1.666626, -11.666687)
 shape = SubResource("RectangleShape2D_qrght")
 
 [node name="pantry" parent="objects/kitchen_objects" unique_id=1847724227 groups=["interactable-object"] instance=ExtResource("9_7685u")]
-position = Vector2(-14.999998, 295)
-rotation = 1.5707964
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("22_3kuml")
+position = Vector2(-4.9999976, 291.00003)
+rotation = 3.1415927
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("25_11a5k")
 dialog_name = "kitchen_pantry"
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/pantry/interaction_area" parent_id_path=PackedInt32Array(1847724227, 55889324) index="0" unique_id=588109631]
-position = Vector2(21.666626, 11.66748)
+position = Vector2(1.111084, -11.111145)
 shape = SubResource("RectangleShape2D_q425y")
 debug_color = Color(0.73270077, 0.47159153, 0.03319963, 0.41960785)
 
@@ -3295,9 +3290,9 @@ constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objects/kitchen_objects/pantry/StaticBody2D" unique_id=118569332]
-position = Vector2(-3.3333726, 3.3334968)
+position = Vector2(0, -5.555603)
 rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_qrght")
+shape = SubResource("RectangleShape2D_1erkf")
 
 [node name="torn_note" parent="objects/kitchen_objects" unique_id=1747493553 instance=ExtResource("9_7685u")]
 visible = false

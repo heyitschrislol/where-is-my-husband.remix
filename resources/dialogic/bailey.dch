@@ -5,7 +5,7 @@
 &"color": Color(0.640625, 1, 0, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "defaultbb",
+"sound_mood_default": "bbdefault",
 "sound_moods": {},
 "style": "mainstyle",
 "suffix": ""
@@ -25,7 +25,7 @@
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": "",
-"sound_mood": "defaultbb"
+"sound_mood": "bbdefault"
 },
 "exhausted": {
 "export_overrides": {

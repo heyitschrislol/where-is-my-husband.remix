@@ -28,6 +28,7 @@ InteractionManager="*uid://bx8fmu533p70h"
 Audio="*uid://b02tqcnudbrfs"
 Gamedata="*uid://b3joqbgohcl3p"
 Overlay="*uid://cp6d10e0e1gm5"
+TypeSound="*uid://csvgsoyfxckx1"
 
 [debug]
 
@@ -83,6 +84,7 @@ audio/channel_defaults={
 layout/style_list=["res://resources/dialogic/mainstyle.tres"]
 layout/default_style=""
 variables={
+"CAT_SPANISH_LEARNED": false,
 "CHARLES": {
 "FIRST_INTERACTION": true,
 "FIRST_SPANISH_CONVO": true,
@@ -97,9 +99,10 @@ variables={
 "CatSpanish": "[b][color=green]Cat Spanish[/color][/b]",
 "Clue": "[b][color=purple]clue[/color][/b]",
 "CrumpledNote": "[b][color=blue]crumpled-up paper ball[/color][/b]",
-"Pmail": "[b][color=pink]Pmail[/color][/b]"
+"PMAIL": "[b][color=pink]PMAIL[/color][/b]"
 },
 "FOUND_SPANISH_BOOK": false,
+"HAD_POST_HACK_CONVO": false,
 "HOLDING_CAT_FOOD": false,
 "PLAYED_DUOLINGO": false,
 "PMAIL_HACKED": false,
@@ -136,6 +139,7 @@ directories/dch_directory={
 "smoke": "res://resources/dialogic/smoke.dch"
 }
 directories/dtl_directory={
+"after_pmail_hacked": "res://resources/dialogic/after_pmail_hacked.dtl",
 "bedroom_charles": "res://resources/dialogic/bedroom_charles.dtl",
 "closet_gaslight": "res://resources/dialogic/closet_gaslight.dtl",
 "closet_ready": "res://resources/dialogic/closet_ready.dtl",

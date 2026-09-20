@@ -13,7 +13,7 @@ bailey (thinking): Maybe there's an [color=red][b]app on my phone[/b][/color] I 
 set {FOUND_SPANISH_BOOK} = true
 set {Gamedata.FOUND_SPANISH_BOOK} = true
 [end_timeline]
-elif {FOUND_SPANISH_BOOK} == true and {PLAYED_DUOLINGO} == false:
+elif {FOUND_SPANISH_BOOK} == true and {CAT_SPANISH_LEARNED} == false:
 bailey (thinking): What could I use to improve my [b][color=orange]Spanish-speaking skills[/color][/b] so that Charles will stop ignoring me when I talk?
 bailey (thinking): Maybe there's an [color=red][b]app on my phone[/b][/color] I could use...
 bailey (thinking): ....where is my phone anyway?

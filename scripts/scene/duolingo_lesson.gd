@@ -22,6 +22,8 @@ var current_question_index = 0
 var mistakes = 0
 var max_mistakes = 0  # 0 = must be perfect
 
+var _passed : bool = false
+
 var questions = [
 	{
 		"prompt": "What does 'afuera' mean?",
@@ -175,8 +177,7 @@ func _on_continue_button_pressed() -> void:
 		load_question()#func _on_continue_button_pressed():
 
 func _on_lesson_passed():
-	Gamedata.CAT_SPANISH_LEARNED = true
-	Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
+	_passed = true
 	feedback_label.text = "🎉 ¡Perfecto! Lesson Complete!"
 	feedback_label.modulate = Color.GREEN
 	Audio.play("quiz_passed",-2.0)
@@ -204,8 +205,13 @@ func _restart_lesson():
 
 func _close_lesson():
 	Input.MOUSE_MODE_VISIBLE
-	Gamedata.CAT_SPANISH_LEARNED = true
-	Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
-	scene_finished.emit()
-	await Gamedata.give_item("spanish_book")
+	if Gamedata.CAT_SPANISH_LEARNED:
+		scene_finished.emit()
+	elif  not Gamedata.CAT_SPANISH_LEARNED:
+		Gamedata.CAT_SPANISH_LEARNED = true
+		Gamedata.PLAYED_DUOLINGO = true
+		Dialogic.VAR.set_variable("CAT_SPANISH_LEARNED", true)
+		Dialogic.VAR.set_variable("PLAYED_DUOLINGO", true)
+		scene_finished.emit()
+		await Gamedata.give_item("spanish_book")
 	#queue_free()

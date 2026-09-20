@@ -1,12 +1,21 @@
-bailey (thinking): Maybe I can find a clue somewhere on this machine
-bailey: There's a browser sitting right there on the taskbar.
-bailey (thinking): ...some of the text scribbled on that crumpled note I found sure looked \
-like that of a [b][color=blue]web page URL[/color][/b]
-bailey (thinking): Should I open a web browser and try that {FANCY_FORMATTING.Pmail} login?
-- Yes
-	bailey (default): Okay. Deep breath.
-	[signal arg="open_pmail"]
-	[end_timeline]
-- Not right now
-	bailey (thinking): Not yet. I'm not sure I want to know.
-	[end_timeline]
+if {PMAIL_HACKED} == false:
+	bailey (thinking): Maybe I can find a clue somewhere on this machine
+	bailey: There's a browser sitting right there on the taskbar.
+	bailey (thinking): ...some of the text scribbled on that crumpled note I found sure looked \
+	like that of a [b][color=blue]web page URL[/color][/b]
+	bailey (thinking): Should I open a web browser and try that {FANCY_FORMATTING.PMAIL} login?
+	- Yes
+		bailey (default): Okay. Deep breath.
+		[signal arg="open_pmail"]
+		[end_timeline]
+	- Not right now
+		bailey (thinking): Not yet. I'm not sure I want to know.
+		[end_timeline]
+elif {PMAIL_HACKED} == true:
+	bailey (playful): Access PMAIL?
+	- Yes
+		[signal arg="open_pmail"]
+		[end_timeline]
+	- No
+		bailey (thinking): I've already read my Husband's {FANCY_FORMATTING.PMAIL}s. Time to use what I learned to finally find where my Husband went off to!
+		[end_timeline]
