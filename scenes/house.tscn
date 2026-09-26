@@ -2836,7 +2836,6 @@ position = Vector2(907, 350)
 position = Vector2(883, 239)
 
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
-visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
