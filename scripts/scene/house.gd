@@ -30,7 +30,7 @@ extends Node2D
 @onready var door_back = $objects/doors/back
 @onready var door_bathroom = $objects/doors/bathroom
 @onready var door_bedroom = $objects/doors/bedroom
-@onready var door_bedroom_closet = $objects/doors/bedroom_closet
+#@onready var door_bedroom_closet = $objects/doors/bedroom_closet
 @onready var door_bedroom_bathroom = $objects/doors/bedroom_bathroom
 @onready var door_guestroom = $objects/doors/guestroom
 

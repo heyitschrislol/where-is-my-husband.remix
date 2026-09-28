@@ -1,3 +1,17 @@
-bailey (thinking): I don't need anything in the closet right now. 
-bailey (exhausted): Besides, the weather lately has caused the door frame to swell and now the door gets stuck!
-bailey (exhausted): ...it's not worth the effort right now
+if {PMAIL_HACKED} == false:
+	bailey (thinking): I don't need anything in the closet. 
+	bailey (exhausted): Besides, the weather lately has caused the frame to swell and now the door gets stuck!
+	bailey (exhausted): ...it's not worth the effort right now
+	[end_timeline]
+if {PMAIL_HACKED} == true:
+	if {HAD_POST_HACK_CONVO} == true:
+		bailey (thinking): According to that {FANCY_FORMATTING.PMAIL} message, my Husband was trying to set up a surprise for me in this closet.
+		bailey (default): ...time to see what he was up to in here.
+		[wait time="1.0"]
+		bailey (surprised): The door is stuck!
+		[signal arg="end_closet_sound"]
+		bailey (surprised): wait what's that sound?
+		bailey (surprised): Husband... is that you?!
+		bailey (default): Don't worry honey, my LOVE will give me strength to get this door open!
+		[signal arg="end_closet_animation"]
+		[end_timeline]
