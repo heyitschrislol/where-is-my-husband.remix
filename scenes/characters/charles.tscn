@@ -30,7 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://c25th8e1sxsjs" path="res://assets/art/PNG/charles/licking_animation/charles_idle_lick_east_012.png" id="25_qkgt1"]
 [ext_resource type="Texture2D" uid="uid://dx3cnx4sgvvw7" path="res://assets/art/PNG/charles/charles_walk_south_000.png" id="26_cxcu1"]
 [ext_resource type="Texture2D" uid="uid://bnaaiw3s7mihx" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_006.png" id="26_heup3"]
+[ext_resource type="Texture2D" uid="uid://dalrdav0q4yyo" path="res://assets/art/PNG/charles/meowing_animation/charles-seated-meowing-west-sheet.png" id="26_xedf3"]
 [ext_resource type="Texture2D" uid="uid://op6i6ajdt866" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_007.png" id="27_pxii2"]
+[ext_resource type="Texture2D" uid="uid://5upltekpl140" path="res://assets/art/PNG/charles/meowing_animation/charles-seated-meowing-westV2-sheet.png" id="27_rv7u6"]
 [ext_resource type="Texture2D" uid="uid://ber8dnpv1jnr6" path="res://assets/art/PNG/charles/charles_walk_south_001.png" id="27_x3dh3"]
 [ext_resource type="Texture2D" uid="uid://ccpxyr3btkdhx" path="res://assets/art/PNG/charles/charles_walk_south_002.png" id="28_krjnm"]
 [ext_resource type="Texture2D" uid="uid://dig2ns1axclac" path="res://assets/art/PNG/charles/sitting_idle_animation/charles_sitting_west_008.png" id="28_xedf3"]
@@ -96,6 +98,62 @@
 [ext_resource type="Texture2D" uid="uid://csx1wahwuix54" path="res://assets/art/PNG/charles/charles_walk_northB_005.png" id="63_8tjqg"]
 [ext_resource type="Texture2D" uid="uid://cx5xwhdwml4p1" path="res://assets/art/PNG/charles/charles_walk_northB_006.png" id="64_foe30"]
 [ext_resource type="Texture2D" uid="uid://dnxukr51aysdw" path="res://assets/art/PNG/charles/charles_walk_northB_007.png" id="65_rs7gu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00fxt"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75yxk"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvxqh"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wo6t"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4xwg"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(224, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acfrn"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(280, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwckt"]
+atlas = ExtResource("26_xedf3")
+region = Rect2(336, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00ao8"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dur7l"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifm68"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78mmy"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4jvv"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(224, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vobff"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(280, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm7cc"]
+atlas = ExtResource("27_rv7u6")
+region = Rect2(336, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxii2"]
 atlas = ExtResource("53_pxii2")
@@ -269,6 +327,58 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00fxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75yxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvxqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wo6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4xwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acfrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwckt")
+}],
+"loop": 1,
+"name": &"seated_meow_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00ao8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dur7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifm68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78mmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4jvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vobff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm7cc")
+}],
+"loop": 1,
+"name": &"seated_meow_left-v2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -719,7 +829,9 @@ follow_speed = 65.0
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"walk_right"
+animation = &"seated_meow_left-v2"
+frame = 1
+frame_progress = 0.18823722
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")

@@ -25,6 +25,13 @@ extends Node2D
 @onready var player = $characters/player
 @onready var smoke = $characters/smoke
 
+@onready var floating_txt_anims: Array[AnimatedSprite2D] = [
+	$ui/floating_txt_meow,
+	$ui/floating_txt_meow2,
+	$ui/floating_txt_meow3,
+	$ui/floating_txt_meow4
+	]
+
 # DOORS
 @onready var door_front = $objects/doors/front
 @onready var door_back = $objects/doors/back
@@ -49,12 +56,12 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	#Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
-	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	#Gamedata.CAT_SPANISH_LEARNED = true
+	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
+	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	Gamedata.CAT_SPANISH_LEARNED = true
 	#Gamedata.CHARLES_FIRST_INTERACTION = false
 	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
@@ -62,6 +69,7 @@ func _ready():
 	#Gamedata.SMOKE_INSIDE = true
 	#####								#####
 
+	floating_txt_anim.visible = false
 	obj_kitchen_torn_note.visible = false
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_DISABLED
 	obj_diningroom_crumpled_note.visible = false

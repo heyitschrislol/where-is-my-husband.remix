@@ -1,0 +1,173 @@
+{
+  "group_id": "48250975-7946-4655-8d0f-f133e52e31c4",
+  "states": [
+    {
+      "character": {
+        "id": "d55529e6-616d-40ac-b552-ac406d352357",
+        "name": "Idle",
+        "prompt": "grumpy male orange cat ",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "cat",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-09-01T15:00:52.564679+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "The_cat_lifts_its_left_hind_leg_to_take_a_steady_s": {
+            "south": [
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_000.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_001.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_002.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_003.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_004.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_005.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_006.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_007.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_008.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_009.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_010.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_011.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_012.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_013.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_014.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/south/frame_015.png"
+            ],
+            "north-14a6cfb2": [
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_000.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_001.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_002.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_003.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_004.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_005.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_006.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_007.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-14a6cfb2/frame_008.png"
+            ],
+            "east": [
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_000.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_001.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_002.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_003.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_004.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_005.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_006.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/east/frame_007.png"
+            ],
+            "north-a18c3656": [
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_000.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_001.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_002.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_003.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_004.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_005.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_006.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/north-a18c3656/frame_007.png"
+            ],
+            "west": [
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_000.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_001.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_002.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_003.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_004.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_005.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_006.png",
+              "Idle/animations/The_cat_lifts_its_left_hind_leg_to_take_a_steady_s/west/frame_007.png"
+            ]
+          },
+          "The_orange_tabby_cat_transitions_from_a_standing_p": {
+            "south-0e8f8416": [
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_000.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_001.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_002.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_003.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_004.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_005.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_006.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_007.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-0e8f8416/frame_008.png"
+            ],
+            "west": [
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_000.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_001.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_002.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_003.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_004.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_005.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_006.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_007.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/west/frame_008.png"
+            ],
+            "south-6a689302": [
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_000.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_001.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_002.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_003.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_004.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_005.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_006.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_007.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/south-6a689302/frame_008.png"
+            ],
+            "east": [
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_000.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_001.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_002.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_003.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_004.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_005.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_006.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_007.png",
+              "Idle/animations/The_orange_tabby_cat_transitions_from_a_standing_p/east/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "58925017-8c73-44a5-bc8f-2073a5245fb4",
+        "name": "moving around",
+        "prompt": "grumpy male orange cat ",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "cat",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-09-02T04:00:26.741719+00:00"
+      },
+      "folder": "moving_around",
+      "frames": {
+        "rotations": {
+          "south": "moving_around/rotations/south.png",
+          "south-east": "moving_around/rotations/south-east.png",
+          "east": "moving_around/rotations/east.png",
+          "north-east": "moving_around/rotations/north-east.png",
+          "north": "moving_around/rotations/north.png",
+          "north-west": "moving_around/rotations/north-west.png",
+          "west": "moving_around/rotations/west.png",
+          "south-west": "moving_around/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-09-02T15:52:56.598079"
+}
