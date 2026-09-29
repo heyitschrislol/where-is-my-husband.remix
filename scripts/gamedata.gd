@@ -20,6 +20,7 @@ var SMOKE_CHOW_DOWN = false
 
 #var GAME_START = true
 var GAME_START = false
+var TEST_DOOR = false
 
 ## KITCHEN
 ## -----------

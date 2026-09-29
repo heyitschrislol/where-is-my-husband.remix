@@ -40,6 +40,7 @@ extends Node2D
 #@onready var door_bedroom_closet = $objects/doors/bedroom_closet
 @onready var door_bedroom_bathroom = $objects/doors/bedroom_bathroom
 @onready var door_guestroom = $objects/doors/guestroom
+@onready var door_test_door = $objects/doors/TEST_DOOR
 
 # INTERACTABLE OBJECTS
 @onready var obj_guestroom_bookshelf = $objects/guestroom_objects/bookshelf
@@ -56,6 +57,9 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
+	door_test_door.set_deferred("disabled", true)
+	door_test_door.visible = false
+
 	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
 	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
 	Dialogic.VAR.set('PLAYED_DUOLINGO',true)

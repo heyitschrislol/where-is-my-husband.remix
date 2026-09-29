@@ -3322,7 +3322,6 @@ room_name = "GUESTROOM"
 metadata/_custom_type_script = "uid://combwywqqbehf"
 
 [node name="backyard_blinder" type="Polygon2D" parent="roomblinders" unique_id=657691991]
-visible = false
 z_index = 99
 position = Vector2(1029, 63)
 scale = Vector2(1, 0.26871663)
@@ -3545,6 +3544,32 @@ scale = Vector2(0.89, 1)
 
 [node name="Sprite2D" parent="objects/doors/bedroom_bathroom" index="2" unique_id=1049246469]
 scale = Vector2(1.2, 1.2)
+
+[node name="TEST_DOOR" parent="objects/doors" unique_id=2020179029 instance=ExtResource("7_ptc3g")]
+visible = false
+texture_filter = 1
+position = Vector2(108.000015, 223.99998)
+constant_linear_velocity = Vector2(1, 1)
+constant_angular_velocity = 0.017453292
+state = "closed"
+facing_direction = "northsouth"
+room_name = "TESTDOOR"
+action_name = "open"
+dialog_name = "test_back_door"
+
+[node name="interaction_area" parent="objects/doors/TEST_DOOR" index="0" unique_id=55889324]
+texture_filter = 1
+
+[node name="collision_shape_2d" parent="objects/doors/TEST_DOOR/interaction_area" index="0" unique_id=1115233311]
+scale = Vector2(1, 0.35)
+
+[node name="collision_shape_2d" parent="objects/doors/TEST_DOOR" index="1" unique_id=236775629]
+position = Vector2(0, 0)
+scale = Vector2(1.4, 0.2)
+
+[node name="Sprite2D" parent="objects/doors/TEST_DOOR" index="2" unique_id=1049246469]
+texture_filter = 1
+scale = Vector2(0.65, 0.65)
 
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
 
@@ -4376,6 +4401,7 @@ sprite_frames = SubResource("SpriteFrames_3xd07")
 [editable path="objects/doors/bathroom"]
 [editable path="objects/doors/bedroom"]
 [editable path="objects/doors/bedroom_bathroom"]
+[editable path="objects/doors/TEST_DOOR"]
 [editable path="objects/guestroom_objects/bookshelf"]
 [editable path="objects/guestroom_objects/computer"]
 [editable path="objects/guestroom_objects/white_bookshelf"]
