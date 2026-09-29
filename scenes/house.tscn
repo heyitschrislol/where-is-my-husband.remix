@@ -3216,7 +3216,7 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_xwwgm")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"default",
 "speed": 8.0
 }]
@@ -4343,7 +4343,6 @@ position = Vector2(928.00006, 158.00002)
 rotation = 0.3403392
 scale = Vector2(1.2, 0.85)
 sprite_frames = SubResource("SpriteFrames_3xd07")
-frame = 28
 
 [node name="floating_txt_meow2" type="AnimatedSprite2D" parent="ui" unique_id=1047982784]
 z_index = 199
@@ -4352,7 +4351,6 @@ position = Vector2(922, 221)
 rotation = -0.2984513
 scale = Vector2(0.8, 0.58)
 sprite_frames = SubResource("SpriteFrames_3xd07")
-frame = 28
 
 [node name="floating_txt_meow3" type="AnimatedSprite2D" parent="ui" unique_id=87072908]
 z_index = 199
@@ -4361,7 +4359,6 @@ position = Vector2(1069, 213.00002)
 rotation = -0.08552113
 scale = Vector2(1, 0.725)
 sprite_frames = SubResource("SpriteFrames_3xd07")
-frame = 28
 
 [node name="floating_txt_meow4" type="AnimatedSprite2D" parent="ui" unique_id=62438259]
 z_index = 199
@@ -4370,7 +4367,6 @@ position = Vector2(1024, 181.99998)
 rotation = -0.72431165
 scale = Vector2(0.65, 0.326)
 sprite_frames = SubResource("SpriteFrames_3xd07")
-frame = 28
 
 [editable path="characters/player"]
 [editable path="characters/charles"]

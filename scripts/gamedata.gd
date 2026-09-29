@@ -25,6 +25,7 @@ var GAME_START = false
 ## -----------
 var PENDING_SMOKE_ROUTE: String = ""
 var LET_CHARLES_OUTSIDE = false
+var LET_CHARLES_BACK_INSIDE = false
 var SMOKE_INSIDE = false
 var HOLDING_CAT_FOOD = false
 var FOOD_PLACED = false

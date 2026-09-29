@@ -69,7 +69,7 @@ func _ready():
 	#Gamedata.SMOKE_INSIDE = true
 	#####								#####
 
-	floating_txt_anim.visible = false
+
 	obj_kitchen_torn_note.visible = false
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_DISABLED
 	obj_diningroom_crumpled_note.visible = false
@@ -262,3 +262,13 @@ func _start_pending_smoke_route() -> void:
 	#if Gamedata.SMOKE_SPECIAL_ANIM:
 		#smoke.animated_sprite.play("chow_down")
 	print("smoke finished her route")
+
+
+func _charles_wants_back_inside():
+	var index : int
+	while Gamedata.LET_CHARLES_BACK_INSIDE != true:
+		index = randi_range(0, 3)
+		floating_txt_anims[index].visible = true
+		floating_txt_anims[index].play("default")
+		await floating_txt_anims[index].animation_finished
+		floating_txt_anims[index].visible = false
