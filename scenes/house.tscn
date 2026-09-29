@@ -57,7 +57,9 @@
 [ext_resource type="Texture2D" uid="uid://b6k3vsc2mxkyx" path="res://assets/art/PNG/objects/bathroom_mirror_south.png" id="45_t68hv"]
 [ext_resource type="Texture2D" uid="uid://bgfrf5cpcgjdb" path="res://assets/art/PNG/objects/hallway-travel-map.png" id="46_bveog"]
 [ext_resource type="Texture2D" uid="uid://htiurb8lw8lq" path="res://assets/art/PNG/objects/window_SM_bathroom.png" id="52_l6yao"]
+[ext_resource type="Texture2D" uid="uid://dslu6brxp22bu" path="res://assets/art/PNG/objects/a_taller_lamp_livingroom.png" id="53_e6xbv"]
 [ext_resource type="Texture2D" uid="uid://nonl7je7e2qf" path="res://assets/art/PNG/objects/livingroom-sm-desk-east.png" id="53_y08by"]
+[ext_resource type="Texture2D" uid="uid://dnylom8oo7lav" path="res://assets/art/PNG/objects/livingroom-rug.png" id="54_e6xbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0083"]
 texture = ExtResource("3_0l2s1")
@@ -3735,6 +3737,20 @@ texture = ExtResource("53_y08by")
 [node name="CollisionShape2D" parent="objects/livingroom_objects/small_desk/interaction_area" parent_id_path=PackedInt32Array(766838509, 55889324) index="0" unique_id=1252563545]
 position = Vector2(13.333335, 19.999996)
 scale = Vector2(3.85, 3.5)
+
+[node name="desklamp" type="Sprite2D" parent="objects/livingroom_objects/small_desk" unique_id=1658734681]
+texture_filter = 1
+position = Vector2(30.000004, 39.999996)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("53_e6xbv")
+
+[node name="fancy-rug" type="Sprite2D" parent="objects/livingroom_objects" unique_id=1802632977]
+z_index = -1
+texture_filter = 1
+position = Vector2(277, 116.99998)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("54_e6xbv")
 
 [node name="hallbathroom_objects" type="Node2D" parent="objects" unique_id=1775120053]
 
