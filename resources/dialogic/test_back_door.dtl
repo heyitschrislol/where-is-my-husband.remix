@@ -1,0 +1,16 @@
+if {TEST_DOOR} == false:
+	bailey: TEST_DOOR IS FALSE
+	bailey: WHILE FALSE, OPEN/CLOSE BEHAVIOR OF DOOR IS DISABLED
+	bailey: DO YOU WANT TO SET TEST_DOOR TO TRUE?
+	- YES
+		set {TEST_DOOR} = true
+		set {Gamedata..TEST_DOOR} = true
+		bailey: [b]TEST_DOOR[/b] IS NOW TRUE. DIALOGUE DISABLED AND OPEN/CLOSE BEHAVIOR ENABLED
+		[end_timeline]
+	- NO
+		bailey: [b]TEST_DOOR[/b] REMAINS FALSE
+		[end_timeline]
+else:
+	set {Gamedata.TEST_DOOR} = true
+	[signal arg="test_door_react"]
+	[end_timeline]

@@ -25,6 +25,8 @@ var GAME_START = false
 ## -----------
 var PENDING_SMOKE_ROUTE: String = ""
 var LET_CHARLES_OUTSIDE = false
+var CHARLES_MEOWING_AT_DOOR = false
+var LET_CHARLES_BACK_INSIDE = false
 var SMOKE_INSIDE = false
 var HOLDING_CAT_FOOD = false
 var FOOD_PLACED = false
@@ -145,12 +147,6 @@ func give_item(item_id: String) -> void:
 	var data = item_db[item_id]
 	await Overlay.show_item(data["name"], load(data["icon"]),data["timeline-after"])
 
-#func show_item(item_id: String) -> void:
-	#if not item_db.has(item_id):
-		#push_error("Gamedata.give_item: unknown item id '%s'" % item_id)
-		#return
-	#var data = item_db[item_id]
-	#await ItemCloseup.show_item(data["name"], load(data["icon"]))
 
 ## Single source of truth for "the player should not be controlling anything".
 func is_input_blocked() -> bool:
@@ -241,7 +237,8 @@ func _deferred_goto_scene(path):
 ## Deliberately does NOT call load_stored_positions() — house.gd seeds
 ## the opening positions itself when GAME_START is true.
 func start_new_game() -> void:
-	GAME_START = true
+	GAME_START = false
+	#GAME_START = true
 	_deferred_start_new_game.call_deferred()
 
 func _deferred_start_new_game() -> void:

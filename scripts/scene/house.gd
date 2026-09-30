@@ -25,12 +25,20 @@ extends Node2D
 @onready var player = $characters/player
 @onready var smoke = $characters/smoke
 
+@onready var floating_txt_anims: Array[AnimatedSprite2D] = [
+	$ui/floating_txt_meow,
+	$ui/floating_txt_meow2,
+	$ui/floating_txt_meow3,
+	$ui/floating_txt_meow4
+	]
+
 # DOORS
 @onready var door_front = $objects/doors/front
 @onready var door_back = $objects/doors/back
+@onready var old_door = $objects/doors/old_back
 @onready var door_bathroom = $objects/doors/bathroom
 @onready var door_bedroom = $objects/doors/bedroom
-#@onready var door_bedroom_closet = $objects/doors/bedroom_closet
+@onready var door_bedroom_closet = $objects/doors/bedroom_closet
 @onready var door_bedroom_bathroom = $objects/doors/bedroom_bathroom
 @onready var door_guestroom = $objects/doors/guestroom
 
@@ -49,6 +57,9 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
+	old_door.set_deferred("disabled", true)
+	old_door.visible = false
+
 	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
 	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
 	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
@@ -61,6 +72,7 @@ func _ready():
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
 	#####								#####
+
 
 	obj_kitchen_torn_note.visible = false
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_DISABLED
@@ -91,9 +103,6 @@ func _ready():
 
 	if Gamedata.PENDING_SMOKE_ROUTE != "":
 		_start_pending_smoke_route.call_deferred()
-#func _process(_delta):
-
-	#Dialogic.signal_event.connect(_on_dialogic_signal)
 
 
 
@@ -102,17 +111,8 @@ func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.start(timeline_name)
 	Gamedata._is_dialog_active = true
 
-	#var dialog = Dialogic.start(timeline_name)			DELETE?
-	#player.add_child(dialog)
-	#dialog.offset.x = player.position.x			DELETE
-	#dialog.offset.y = player.position.y			DELETTE
-
-	#get_viewport().set_input_as_handled()
 
 func _on_dialogic_signal(argument:String):
-	#if argument == "spanish_book_taken":
-	#if argument == "guestroom_bookshelf":
-		#_on_guestroom_bookshelf()
 	if argument == "play_duolingo":
 		_on_play_duolingo()
 
@@ -170,7 +170,7 @@ func _on_let_charles_outside():
 	Gamedata.SMOKE_INSIDE = true
 	Gamedata.PENDING_SMOKE_ROUTE = "BackDoorToWaitSpot"
 	Gamedata.goto_cutscene("cutscene_kitchenA", true)
-	door_back.SPECIAL_DOOR = false
+	#door_back.SPECIAL_DOOR = false
 	var points = route($routes/BackDoorToWaitSpot)
 	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
 	smoke.move_along(points)
@@ -254,3 +254,13 @@ func _start_pending_smoke_route() -> void:
 	#if Gamedata.SMOKE_SPECIAL_ANIM:
 		#smoke.animated_sprite.play("chow_down")
 	print("smoke finished her route")
+
+
+func _charles_wants_back_inside():
+	var index : int
+	while Gamedata.LET_CHARLES_BACK_INSIDE != true:
+		index = randi_range(0, 3)
+		floating_txt_anims[index].visible = true
+		floating_txt_anims[index].play("default")
+		await floating_txt_anims[index].animation_finished
+		floating_txt_anims[index].visible = false

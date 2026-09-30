@@ -88,7 +88,9 @@ variables={
 "CHARLES": {
 "FIRST_INTERACTION": true,
 "FIRST_SPANISH_CONVO": true,
-"LET_OUTSIDE": false
+"LET_BACK_INSIDE": "",
+"LET_OUTSIDE": false,
+"MEOWING_AT_DOOR": false
 },
 "COMPUTER_ACCESSED": false,
 "CRUMPLED_NOTE_OPENED": false,
@@ -111,6 +113,7 @@ variables={
 "FED": false,
 "LET_INSIDE": false
 },
+"TEST_DOOR": false,
 "TORN_NOTE_READ": false,
 "_2ND_PC_TOUCH": false
 }
@@ -169,6 +172,7 @@ directories/dtl_directory={
 "sink_master": "res://resources/dialogic/sink_master.dtl",
 "startingscene": "res://resources/dialogic/startingscene.dtl",
 "startingscene2": "res://resources/dialogic/startingscene2.dtl",
+"test_back_door": "res://resources/dialogic/test_back_door.dtl",
 "testline": "res://resources/dialogic/testline.dtl",
 "timeline-charles": "res://resources/dialogic/timeline-charles.dtl",
 "timeline-smoke": "res://resources/dialogic/timeline-smoke.dtl",

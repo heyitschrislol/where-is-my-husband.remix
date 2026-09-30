@@ -21,3 +21,14 @@ if {CHARLES.LET_OUTSIDE} == false:
 			- No
 				bailey (thinking): Hmm... I know Charles wants to go out... but maybe not just yet
 				[end_timeline]
+else:
+	
+	if {CHARLES.MEOWING_AT_DOOR} == true:
+		bailey (thinking): Let Charles back inside?
+		- Yes
+			set {CHARLES.LET_BACK_INSIDE} = true
+			set {Gamedata.LET_CHARLES_BACK_INSIDE} = true
+			bailey (exhausted): Okay, okay hold your horses I'm coming!
+			[signal arg="kitchen_door_unlocked"]
+	- No
+			bailey (annoyed): You know what... you can
