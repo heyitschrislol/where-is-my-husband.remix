@@ -3278,6 +3278,43 @@ position = Vector2(907, 350)
 [node name="P1" type="Marker2D" parent="routes/PlayerMoveToIsland" unique_id=546744299]
 position = Vector2(883, 239)
 
+[node name="CharlesAtBackDoor" type="Node2D" parent="routes" unique_id=947855786]
+
+[node name="PorchCircle" type="Marker2D" parent="routes/CharlesAtBackDoor" unique_id=1247349633]
+position = Vector2(1087, 89)
+
+[node name="MID1" type="Marker2D" parent="routes/CharlesAtBackDoor" unique_id=878662330]
+position = Vector2(1075, 182)
+
+[node name="BackDoor" type="Marker2D" parent="routes/CharlesAtBackDoor" unique_id=1821891487]
+position = Vector2(1005, 204)
+
+[node name="CharlesComingInside" type="Node2D" parent="routes" unique_id=1239858057]
+
+[node name="BackDoor" type="Marker2D" parent="routes/CharlesComingInside" unique_id=333441270]
+position = Vector2(1005, 204)
+
+[node name="P1" type="Marker2D" parent="routes/CharlesComingInside" unique_id=525495854]
+position = Vector2(942, 215)
+
+[node name="P2" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1667167812]
+position = Vector2(879, 277)
+
+[node name="P3" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1444089221]
+position = Vector2(870, 315)
+
+[node name="P4" type="Marker2D" parent="routes/CharlesComingInside" unique_id=2069021130]
+position = Vector2(440, 305)
+
+[node name="P5" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1027440244]
+position = Vector2(453, 180)
+
+[node name="P6" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1578291387]
+position = Vector2(498, 179)
+
+[node name="JuiceDrip" type="Marker2D" parent="routes/CharlesComingInside" unique_id=2120289457]
+position = Vector2(516, 159)
+
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
@@ -3395,7 +3432,7 @@ zoom = Vector2(2.2, 2.2)
 
 [node name="charles" parent="characters" unique_id=2050738804 node_paths=PackedStringArray("player") instance=ExtResource("2_se78b")]
 z_index = 12
-position = Vector2(-594.00006, -359)
+position = Vector2(-572, -351)
 scale = Vector2(0.55, 0.55)
 wall_min_slide_angle = 0.061086524
 debugging = false
@@ -3444,7 +3481,35 @@ scale = Vector2(1.4, 0.2)
 [node name="Sprite2D" parent="objects/doors/guestroom" index="2" unique_id=1049246469]
 scale = Vector2(0.65, 0.65)
 
-[node name="back" parent="objects/doors" unique_id=641251834 groups=["interactable-object"] instance=ExtResource("9_de74l")]
+[node name="back" parent="objects/doors" unique_id=2020179029 instance=ExtResource("7_ptc3g")]
+texture_filter = 1
+position = Vector2(-16, 341)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+constant_linear_velocity = Vector2(1, 1)
+constant_angular_velocity = 0.017453292
+state = "closed"
+facing_direction = "eastwest"
+room_name = "BACKYARD"
+passable = false
+action_name = "closed"
+dialog_name = "kitchen_door"
+
+[node name="interaction_area" parent="objects/doors/back" index="0" unique_id=55889324]
+texture_filter = 1
+
+[node name="collision_shape_2d" parent="objects/doors/back/interaction_area" index="0" unique_id=1115233311]
+position = Vector2(0, -0.5)
+
+[node name="collision_shape_2d" parent="objects/doors/back" index="1" unique_id=236775629]
+position = Vector2(1.2627615e-07, -4.6789646e-06)
+
+[node name="Sprite2D" parent="objects/doors/back" index="2" unique_id=1049246469]
+texture_filter = 1
+scale = Vector2(0.65, 0.65)
+
+[node name="old_back" parent="objects/doors" unique_id=641251834 groups=["interactable-object"] instance=ExtResource("9_de74l")]
+visible = false
 z_index = 5
 texture_filter = 1
 position = Vector2(-16, 341)
@@ -3457,7 +3522,7 @@ SPECIAL_DOOR = true
 dialog_name = "kitchen_door"
 reveals_room = "BACKYARD"
 
-[node name="collision_shape_2d" parent="objects/doors/back" index="2" unique_id=363208448]
+[node name="collision_shape_2d" parent="objects/doors/old_back" index="2" unique_id=363208448]
 position = Vector2(1.2627615e-07, -4.6789646e-06)
 
 [node name="front" parent="objects/doors" unique_id=104687334 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
@@ -3545,31 +3610,31 @@ scale = Vector2(0.89, 1)
 [node name="Sprite2D" parent="objects/doors/bedroom_bathroom" index="2" unique_id=1049246469]
 scale = Vector2(1.2, 1.2)
 
-[node name="TEST_DOOR" parent="objects/doors" unique_id=2020179029 instance=ExtResource("7_ptc3g")]
-visible = false
+[node name="bedroom_closet" parent="objects/doors" unique_id=1073104421 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
+z_index = 7
 texture_filter = 1
-position = Vector2(108.000015, 223.99998)
+position = Vector2(488.00006, 298)
+rotation = 3.1415927
+scale = Vector2(0.4, 0.4)
 constant_linear_velocity = Vector2(1, 1)
 constant_angular_velocity = 0.017453292
 state = "closed"
-facing_direction = "northsouth"
-room_name = "TESTDOOR"
+facing_direction = "eastwest"
+room_name = "CLOSET"
+passable = false
 action_name = "open"
-dialog_name = "test_back_door"
+dialog_name = "closet_gaslight"
 
-[node name="interaction_area" parent="objects/doors/TEST_DOOR" index="0" unique_id=55889324]
-texture_filter = 1
+[node name="collision_shape_2d" parent="objects/doors/bedroom_closet/interaction_area" parent_id_path=PackedInt32Array(1073104421, 55889324) index="0" unique_id=1115233311]
+position = Vector2(0.7085228, 8.010864e-05)
+scale = Vector2(1.5, 0.85)
 
-[node name="collision_shape_2d" parent="objects/doors/TEST_DOOR/interaction_area" index="0" unique_id=1115233311]
-scale = Vector2(1, 0.35)
+[node name="collision_shape_2d" parent="objects/doors/bedroom_closet" index="1" unique_id=236775629]
+position = Vector2(5.054474e-05, 0.5724697)
+scale = Vector2(1.05, 1)
 
-[node name="collision_shape_2d" parent="objects/doors/TEST_DOOR" index="1" unique_id=236775629]
-position = Vector2(0, 0)
-scale = Vector2(1.4, 0.2)
-
-[node name="Sprite2D" parent="objects/doors/TEST_DOOR" index="2" unique_id=1049246469]
-texture_filter = 1
-scale = Vector2(0.65, 0.65)
+[node name="Sprite2D" parent="objects/doors/bedroom_closet" index="2" unique_id=1049246469]
+scale = Vector2(1.2, 1.2)
 
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
 
@@ -3946,22 +4011,6 @@ position = Vector2(515.00006, 406.99997)
 rotation = 3.1415927
 scale = Vector2(0.15, 0.11)
 texture = ExtResource("37_wmhmw")
-
-[node name="closet_door" parent="objects/bedroom_objects" unique_id=1554903459 instance=ExtResource("18_g6dbt")]
-z_index = 7
-position = Vector2(488.00006, 300)
-scale = Vector2(0.4, 0.4)
-collision_mask = 6
-action_name = "open"
-dialog_name = "closet_gaslight"
-
-[node name="CollisionShape2D" parent="objects/bedroom_objects/closet_door" index="0" unique_id=463425800]
-z_index = 2
-scale = Vector2(0.85, 4)
-
-[node name="CollisionShape2D" parent="objects/bedroom_objects/closet_door/interaction_area" parent_id_path=PackedInt32Array(1554903459, 55889324) index="0" unique_id=1252563545]
-z_index = 2
-scale = Vector2(1.85, 4)
 
 [node name="diningroom_objects" type="Node2D" parent="objects" unique_id=728038343]
 texture_filter = 1
@@ -4398,10 +4447,11 @@ sprite_frames = SubResource("SpriteFrames_3xd07")
 [editable path="characters/smoke"]
 [editable path="objects/doors/guestroom"]
 [editable path="objects/doors/back"]
+[editable path="objects/doors/old_back"]
 [editable path="objects/doors/bathroom"]
 [editable path="objects/doors/bedroom"]
 [editable path="objects/doors/bedroom_bathroom"]
-[editable path="objects/doors/TEST_DOOR"]
+[editable path="objects/doors/bedroom_closet"]
 [editable path="objects/guestroom_objects/bookshelf"]
 [editable path="objects/guestroom_objects/computer"]
 [editable path="objects/guestroom_objects/white_bookshelf"]
@@ -4410,7 +4460,6 @@ sprite_frames = SubResource("SpriteFrames_3xd07")
 [editable path="objects/kitchen_objects/pantry"]
 [editable path="objects/kitchen_objects/torn_note"]
 [editable path="objects/bedroom_objects/hubdresser/interaction_area"]
-[editable path="objects/bedroom_objects/closet_door"]
 [editable path="objects/diningroom_objects/fooddish"]
 [editable path="objects/diningroom_objects/crumpled_note"]
 [editable path="objects/hallway_objects/travel_map"]

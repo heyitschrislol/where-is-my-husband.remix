@@ -7,23 +7,17 @@ class_name InteractItem extends StaticBody2D
 #@onready var spritetexture = sprite.texture
 @onready var sprite_size: Vector2
 
-signal dialog_signal(timeline_name: String,location: String,default_text: String)
+signal dialog_signal(argument: String,location: String,default_text: String)
 
 func _ready():
-	#var sprite_texture = sprite.texture
-	#if spritetexture:
-		#sprite_size = spritetexture.get_size()
-		#collisionshape_interaction.shape.size = (sprite_size * 1.5) * scale
 	dialog_signal.connect(_on_dialog_request)
 	if action_name != "":
 		set_interaction_text(action_name)
 	interaction_area.interact = Callable(self, "_special_interaction")
 
-func _on_dialog_request(timeline_name: String,_location: String):
+func _on_dialog_request(argument: String = "",_location: String = ""):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	Dialogic.start(timeline_name)
-	#dialog.offset.x = _get_player().position.x
-	#dialog.offset.y = _get_player().position.y
+	Dialogic.start(dialog_name)
 	Gamedata._is_dialog_active = true
 
 func _get_player():

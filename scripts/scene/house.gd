@@ -35,12 +35,12 @@ extends Node2D
 # DOORS
 @onready var door_front = $objects/doors/front
 @onready var door_back = $objects/doors/back
+@onready var old_door = $objects/doors/old_back
 @onready var door_bathroom = $objects/doors/bathroom
 @onready var door_bedroom = $objects/doors/bedroom
-#@onready var door_bedroom_closet = $objects/doors/bedroom_closet
+@onready var door_bedroom_closet = $objects/doors/bedroom_closet
 @onready var door_bedroom_bathroom = $objects/doors/bedroom_bathroom
 @onready var door_guestroom = $objects/doors/guestroom
-@onready var door_test_door = $objects/doors/TEST_DOOR
 
 # INTERACTABLE OBJECTS
 @onready var obj_guestroom_bookshelf = $objects/guestroom_objects/bookshelf
@@ -57,15 +57,15 @@ extends Node2D
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	door_test_door.set_deferred("disabled", true)
-	door_test_door.visible = false
+	old_door.set_deferred("disabled", true)
+	old_door.visible = false
 
-	Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
-	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	Gamedata.CAT_SPANISH_LEARNED = true
+	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
+	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
+	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
+	#Gamedata.CAT_SPANISH_LEARNED = true
 	#Gamedata.CHARLES_FIRST_INTERACTION = false
 	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
 #
@@ -103,9 +103,6 @@ func _ready():
 
 	if Gamedata.PENDING_SMOKE_ROUTE != "":
 		_start_pending_smoke_route.call_deferred()
-#func _process(_delta):
-
-	#Dialogic.signal_event.connect(_on_dialogic_signal)
 
 
 
@@ -114,17 +111,8 @@ func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.start(timeline_name)
 	Gamedata._is_dialog_active = true
 
-	#var dialog = Dialogic.start(timeline_name)			DELETE?
-	#player.add_child(dialog)
-	#dialog.offset.x = player.position.x			DELETE
-	#dialog.offset.y = player.position.y			DELETTE
-
-	#get_viewport().set_input_as_handled()
 
 func _on_dialogic_signal(argument:String):
-	#if argument == "spanish_book_taken":
-	#if argument == "guestroom_bookshelf":
-		#_on_guestroom_bookshelf()
 	if argument == "play_duolingo":
 		_on_play_duolingo()
 
@@ -182,7 +170,7 @@ func _on_let_charles_outside():
 	Gamedata.SMOKE_INSIDE = true
 	Gamedata.PENDING_SMOKE_ROUTE = "BackDoorToWaitSpot"
 	Gamedata.goto_cutscene("cutscene_kitchenA", true)
-	door_back.SPECIAL_DOOR = false
+	#door_back.SPECIAL_DOOR = false
 	var points = route($routes/BackDoorToWaitSpot)
 	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
 	smoke.move_along(points)

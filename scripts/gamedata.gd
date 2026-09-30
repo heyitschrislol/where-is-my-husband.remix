@@ -20,12 +20,12 @@ var SMOKE_CHOW_DOWN = false
 
 #var GAME_START = true
 var GAME_START = false
-var TEST_DOOR = false
 
 ## KITCHEN
 ## -----------
 var PENDING_SMOKE_ROUTE: String = ""
 var LET_CHARLES_OUTSIDE = false
+var CHARLES_MEOWING_AT_DOOR = false
 var LET_CHARLES_BACK_INSIDE = false
 var SMOKE_INSIDE = false
 var HOLDING_CAT_FOOD = false

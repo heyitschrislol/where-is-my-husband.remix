@@ -35,16 +35,26 @@ func _ready():
 
 func _open_door():
 	if passable:
-		print("DEBUG: passable check PASSED, calling _operate_door")
+		#print("DEBUG: passable check PASSED, calling _operate_door")
 		_operate_door()
 	else:
-		print("DEBUG: passable check FAILED, deciding on dialog action")
+		#print("DEBUG: passable check FAILED, deciding on dialog action")
 		if room_name == "TESTDOOR":
 			if not Gamedata.TEST_DOOR:
 				_door_dialog("test_back_door")
 			else:
 				passable = true
 				_operate_door()
+
+		if room_name == "TESTDOOR":
+			if not Gamedata.TEST_DOOR:
+				_door_dialog("test_back_door")
+			else:
+				passable = true
+				_operate_door()
+
+		elif room_name == "CLOSET":
+			_door_dialog("closet_gaslight")
 	#if room_name == "CLOSET":
 		#if Gamedata.PMAIL_HACKED:
 			#_door_dialog("closet_ready")
@@ -89,12 +99,27 @@ func _door_dialog(_dialog_name : String = ""):
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,"")
 
-func _on_dialog_request(timeline_name: String,_location: String):
+func _on_dialog_request(argument: String = "",location: String = ""):
+	if argument == "":
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.start(dialog_name)
+		Gamedata._is_dialog_active = true
+		return
+	if argument == "kitchen_door_unlocked":
+		passable = true
+
+# *****	THE FOLLOWING NEEDS TO BE ADDED HERE:		******
+#						1.		door sprite changes to OPEN
+# 						2.		start bailey.move_along to move player from charles impending path
+# 						3.		start charles.move_along route inside the house and all the way to the master bathroom
+#						4.
+#
+
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	Dialogic.start(timeline_name)
-	#dialog.offset.x = _get_player().position.x
-	#dialog.offset.y = _get_player().position.y
+	Dialogic.start(argument)
 	Gamedata._is_dialog_active = true
+
+
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

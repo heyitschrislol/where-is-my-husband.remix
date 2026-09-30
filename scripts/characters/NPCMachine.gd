@@ -31,7 +31,6 @@ var waypoints: Array[Vector2] = []
 signal destination_reached
 
 func _ready():
-
 	pass
 
 
