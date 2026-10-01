@@ -1,7 +1,7 @@
-if {CHARLES.FIRST_INTERACTION} == true:
+if {CHARLES.HAD_FIRST_INTERACTION} == true:
 	bailey (default): I should find Charles and see if he knows where my Husband is before I look for clues here.
 	[end_timeline]
-if {CHARLES.FIRST_INTERACTION} == false and {FOUND_SPANISH_BOOK} == false:
+if {CHARLES.HAD_FIRST_INTERACTION} == false and {FOUND_SPANISH_BOOK} == false:
 	bailey (default): Computer accessories... picture frames... books...
 	bailey (default): My husband sure has decided to store a wide variety of objects on this...[pause=0.5] [i]"shelf"[/i]
 	bailey (thinking): What's this?	

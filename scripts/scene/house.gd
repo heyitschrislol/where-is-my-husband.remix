@@ -25,17 +25,17 @@ extends Node2D
 @onready var player = $characters/player
 @onready var smoke = $characters/smoke
 
-@onready var floating_txt_anims: Array[AnimatedSprite2D] = [
-	$ui/floating_txt_meow,
-	$ui/floating_txt_meow2,
-	$ui/floating_txt_meow3,
-	$ui/floating_txt_meow4
-	]
+#@onready var floating_txt_anims: Array[AnimatedSprite2D] = [
+	#$ui/floating_txt_meow,
+	#$ui/floating_txt_meow2,
+	#$ui/floating_txt_meow3,
+	#$ui/floating_txt_meow4
+	#]
+@onready var MEOW_TXT_ANIM = $ui/MEOW_TXT
 
 # DOORS
 @onready var door_front = $objects/doors/front
 @onready var door_back = $objects/doors/back
-@onready var old_door = $objects/doors/old_back
 @onready var door_bathroom = $objects/doors/bathroom
 @onready var door_bedroom = $objects/doors/bedroom
 @onready var door_bedroom_closet = $objects/doors/bedroom_closet
@@ -54,35 +54,33 @@ extends Node2D
 #@onready var obj_kitchen_pantry = $objects/guestroom_objects/computer
 #@onready var obj_kitchen_crumpled_note = $objects/guestroom_objects/computer
 
+var TXT_ANIM_STATE : bool = false
 
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
-	old_door.set_deferred("disabled", true)
-	old_door.visible = false
 
+	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',true)
+	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
 	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
-	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	#Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
-	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',false)
-	#Gamedata.CAT_SPANISH_LEARNED = true
-	#Gamedata.CHARLES_FIRST_INTERACTION = false
-	#Gamedata.CHARLES_DIALOG_IN_SPANISH = false
-#
+
+	Gamedata.CAT_SPANISH_LEARNED = true
+	Gamedata.HAD_CHARLES_FIRST_INTERACTION = true
+	#Gamedata.HAD_CHARLES_DIALOG_IN_SPANISH = true
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
-	#####								#####
 
+	#####								#####
 
 	obj_kitchen_torn_note.visible = false
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_DISABLED
 	obj_diningroom_crumpled_note.visible = false
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
+	MEOW_TXT_ANIM.visible = false
+	MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
 	if Gamedata.GAME_START:
 		Gamedata.store_character_positions(Vector2(-70.0,-96.0),Vector2(-594.0,-359.0),Vector2(90.0,-419.0))
-		#Gamedata.position_store["player"] = Vector2(-167.0,-77.0)
-		#Gamedata.position_store["charles"] = Vector2(-869.0,-289.0)
-		#Gamedata.position_store["smoke"] = Vector2(1105.0,-705.0)
 		Gamedata.goto_cutscene("open_cutscene", true)
 	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
 		if not Gamedata.SMOKE_FED and not Gamedata.HOLDING_CAT_FOOD:
@@ -90,12 +88,8 @@ func _ready():
 			Gamedata.load_stored_positions()
 			Gamedata.CHARLES_FOLLOW = false
 			Gamedata.SMOKE_FOLLOW = false
-		#elif not Gamedata.SMOKE_FED and Gamedata.HOLDING_CAT_FOOD:
-
 		elif Gamedata.SMOKE_FED:
 			Gamedata.SMOKE_FOLLOW = false
-			#Gamedata.SMOKE_DESTINATION_SET = true
-
 
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)
@@ -103,6 +97,16 @@ func _ready():
 
 	if Gamedata.PENDING_SMOKE_ROUTE != "":
 		_start_pending_smoke_route.call_deferred()
+
+func _physics_process(_delta: float):
+	if TXT_ANIM_STATE:
+		MEOW_TXT_ANIM.visible = true
+		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_INHERIT
+		MEOW_TXT_ANIM.play("default")
+	elif not TXT_ANIM_STATE:
+		MEOW_TXT_ANIM.visible = false
+		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
+		MEOW_TXT_ANIM.stop()
 
 
 
@@ -151,7 +155,7 @@ func _on_first_charles_interaction():
 	pass
 
 func _on_guestroom_bookshelf():
-	if Gamedata.CHARLES_FIRST_INTERACTION:
+	if not Gamedata.HAD_CHARLES_FIRST_INTERACTION:
 		obj_guestroom_bookshelf.set_skip_popup = true
 	else:
 		obj_guestroom_bookshelf.set_skip_popup = false
@@ -169,8 +173,10 @@ func _on_charles_dialog_in_spanish():
 func _on_let_charles_outside():
 	Gamedata.LET_CHARLES_OUTSIDE = true
 	Gamedata.SMOKE_INSIDE = true
+	#Dialogic.VAR.CHARLES.set('CHARLES_FOLLOWING', false)
 	Gamedata.PENDING_SMOKE_ROUTE = "BackDoorToWaitSpot"
 	Gamedata.goto_cutscene("cutscene_kitchenA", true)
+	Gamedata.reveal_room("BACKYARD")
 	#door_back.SPECIAL_DOOR = false
 	var points = route($routes/BackDoorToWaitSpot)
 	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
@@ -200,24 +206,26 @@ func _on_smoke_fed():
 	Gamedata.SMOKE_FED = true
 	Gamedata.SMOKE_FOLLOW = false
 
-func _charles_wants_back_inside():
-	var index : int
-	while Gamedata.LET_CHARLES_BACK_INSIDE != true:
-		index = randi_range(0, 3)
-		floating_txt_anims[index].visible = true
-		floating_txt_anims[index].play("default")
-		await floating_txt_anims[index].animation_finished
-		floating_txt_anims[index].visible = false
+#func _charles_wants_back_inside():
+	#var index : int
+	#while Gamedata.LET_CHARLES_BACK_INSIDE != true:
+		#index = randi_range(0, 3)
+		#floating_txt_anims[index].visible = true
+		#floating_txt_anims[index].play("default")
+		#await floating_txt_anims[index].animation_finished
+		#floating_txt_anims[index].visible = false
 
 func _charles_returns_to_door() -> void:
-	charles.move_along(route($routes/CharlesToKitchenDoor))
+	charles.move_along(route($routes/CharlesAtBackDoor))
 	await charles.destination_reached
 	# Both copies of the flag: Gamedata for GDScript, Dialogic.VAR for the .dtl check
 	Gamedata.CHARLES_MEOWING_AT_DOOR = true
 	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', true)
-	_charles_wants_back_inside()
+	TXT_ANIM_STATE = true
+	#_charles_wants_back_inside()
 
 func _on_let_charles_back_inside() -> void:
+	TXT_ANIM_STATE = false
 	Gamedata.LET_CHARLES_BACK_INSIDE = true      # also ends the meow loop
 	Gamedata.CHARLES_MEOWING_AT_DOOR = false
 	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', false)
@@ -262,7 +270,7 @@ func _on_access_computer():
 func _on_pmail_hacked():
 	pass
 
-
+#func floating_text_animation(state: bool):
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

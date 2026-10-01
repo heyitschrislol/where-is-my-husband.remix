@@ -1,12 +1,12 @@
-if {CHARLES.FIRST_INTERACTION} == true:
+if {CHARLES.HAD_FIRST_INTERACTION} == false:
 	bailey (exhausted): Hello Charles, I trust you have behaved yourself while I was at work.
 	charles (default): ....
 	bailey (thinking): .... rude
-	set {CHARLES.FIRST_INTERACTION} = false
-	set Gamedata.CHARLES_FIRST_INTERACTION = false
+	set {CHARLES.HAD_FIRST_INTERACTION} = true
+	set Gamedata.CHARLES_FIRST_INTERACTION = true
 	[end_timeline]
 
-elif {CHARLES.FIRST_INTERACTION} == false:
+elif {CHARLES.HAD_FIRST_INTERACTION} == true:
 	if {CAT_SPANISH_LEARNED} == false:
 		charles (default): <..../...mrow/......./.../.....>
 		bailey (exhausted): he's not listening...
@@ -14,22 +14,23 @@ elif {CHARLES.FIRST_INTERACTION} == false:
 		[end_timeline]
 	elif {CAT_SPANISH_LEARNED} == true:
 #		set Gamedata.CAT_SPANISH_LEARNED = true
-		if {CHARLES.FIRST_SPANISH_CONVO} == true:
-			bailey (exhausted): Está bien, señor gato. ¿Me entiende ahora?
-			charles (default): ..!
-			charles (alert): ¿Es eso ... "Gato español" que escucho?
-			bailey (default): ¡Gracias a Dios! ¿Me responderás ahora entonces?
-			charles (alert): Supuse... Pero tu habilidad para hablar "español de gato" requiere mucho trabajo, mamá.
-			bailey (exhausted): ¡Silencio tú! Charles, ¿dónde está tu padre?
-			charles (alert): No sé ¿Afuera, por favor?
-			bailey (exhausted): ...this has gotten me nowhere! Fine, I'll let you outside!
-			set {CHARLES.FIRST_SPANISH_CONVO} = false
-			set Gamedata.CHARLES_DIALOG_IN_SPANISH = true
-			[end_timeline]
-		elif {CHARLES.FIRST_SPANISH_CONVO} == false:
-			if {CHARLES.LET_OUTSIDE} == false:
-				charles (alert): ¿afuera, por favor?
-				[end_timeline]
-			elif {CHARLES.LET_OUTSIDE} == true:
-				charles (alert): <¡Yo tengo hambre, Madre! ¡Solo soy piel y huesos!/¿Debo esperar en el lavabo del baño?/Acabo de comprar una cama nueva y grande.>
-				[end_timeline]
+if {CHARLES.HAD_FIRST_SPANISH_CONVO} == false:
+	bailey (exhausted): Está bien, señor gato. ¿Me entiende ahora?
+	charles (default): ..!
+	charles (alert): ¿Es eso ... "Gato español" que escucho?
+	bailey (default): ¡Gracias a Dios! ¿Me responderás ahora entonces?
+	charles (alert): Supuse... Pero tu habilidad para hablar "español de gato" requiere mucho trabajo, mamá.
+	bailey (exhausted): ¡Silencio tú! Charles, ¿dónde está tu padre?
+	charles (alert): No sé ¿Afuera, por favor?
+	bailey (exhausted): ...this has gotten me nowhere! Fine, I'll let you outside!
+	set Gamedata.HAD_CHARLES_DIALOG_IN_SPANISH = true
+	set {CHARLES.HAD_FIRST_SPANISH_CONVO} = true
+	set {CHARLES.IS_FOLLOWING} = true
+	[end_timeline]
+elif {CHARLES.HAD_FIRST_SPANISH_CONVO} == true:
+	if {CHARLES.LET_OUTSIDE} == false:
+		charles (alert): ¿afuera, por favor?
+		[end_timeline]
+	elif {CHARLES.LET_OUTSIDE} == true:
+		charles (alert): <¡Yo tengo hambre, Madre! ¡Solo soy piel y huesos!/¿Debo esperar en el lavabo del baño?/Acabo de comprar una cama nueva y grande.>
+		[end_timeline]

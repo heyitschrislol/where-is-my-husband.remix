@@ -47,8 +47,8 @@ var CAT_SPANISH_LEARNED = false
 var PLAYED_DUOLINGO = false
 ## BEDROOM
 ## -----------
-var CHARLES_FIRST_INTERACTION = true
-var CHARLES_DIALOG_IN_SPANISH = false
+var HAD_CHARLES_FIRST_INTERACTION = false
+var HAD_CHARLES_DIALOG_IN_SPANISH = false
 
 ## ROOM SHADOWS
 ## -----------
@@ -101,10 +101,10 @@ func _ready():
 	#current_location = [player.location.x,player.location.y]
 
 func _process(_delta: float):
-	if CHARLES_DIALOG_IN_SPANISH and !LET_CHARLES_OUTSIDE:
+	if HAD_CHARLES_DIALOG_IN_SPANISH and not LET_CHARLES_OUTSIDE:
 		CHARLES_FOLLOW = true
 		SMOKE_FOLLOW = false
-	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE and !SMOKE_FED:
+	elif LET_CHARLES_OUTSIDE and SMOKE_INSIDE and not SMOKE_FED:
 		CHARLES_FOLLOW = false
 		SMOKE_FOLLOW = false
 	else:

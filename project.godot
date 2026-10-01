@@ -86,8 +86,9 @@ layout/default_style=""
 variables={
 "CAT_SPANISH_LEARNED": false,
 "CHARLES": {
-"FIRST_INTERACTION": true,
-"FIRST_SPANISH_CONVO": true,
+"HAD_FIRST_INTERACTION": true,
+"HAD_FIRST_SPANISH_CONVO": true,
+"IS_FOLLOWING": false,
 "LET_BACK_INSIDE": false,
 "LET_OUTSIDE": false,
 "MEOWING_AT_DOOR": false

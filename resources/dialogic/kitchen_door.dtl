@@ -1,46 +1,37 @@
+# #	----	charles has not been let outside yet
 if {CHARLES.LET_OUTSIDE} == false:
-#	----	charles has not been let outside yet
-	
-	if {CHARLES.FIRST_SPANISH_CONVO} == true:
-#	----	charles has not been let outside yet AND charles is not waiting to be let outside
+	if {CHARLES.IS_FOLLOWING} == true:
 		bailey: the door is closed
+		
+		elif {CHARLES.LET_OUTSIDE} == true:
 		bailey (thinking): Should I open the door for Charles?
 		- Yes
 			set {CHARLES.LET_OUTSIDE} = true
 			set {Gamedata.LET_CHARLES_OUTSIDE} = true
 			set {SMOKE.LET_INSIDE} = true
 			set {Gamedata.SMOKE_INSIDE} = true
+			set {CHARLES.IS_FOLLOWING} = false
 			[signal arg="start_cutsceneA"]
 			[end_timeline]
 		- No
 			bailey (thinking): Hmm... I know Charles wants to go out... but maybe not just yet
 			[end_timeline]
-			
-	else:
-#	----	charles has not been let outside yet AND charles is not waiting to be let outside
-
+	elif {CHARLES.IS_FOLLOWING} == false:
 		bailey: the door is closed
 		bailey (default): I don't think Charles wants to go outside at the moment.
 		[end_timeline]
-		
-elif {CHARLES.LET_OUTSIDE} == true:
-#	----	charles has been let outside
-	
-	if {CHARLES.MEOWING_AT_DOOR} == true:
-#	----	charles has been let outside AND charles is at the door meowing to be let back in
-		bailey (thinking): Let Charles back inside?
-		- Yes
-			set {CHARLES.LET_BACK_INSIDE} = true
-			set {Gamedata.LET_CHARLES_BACK_INSIDE} = true
-			bailey (exhausted): Okay, okay hold your horses I'm coming!
-			[signal arg="kitchen_door_unlocked"]
-			[end_timeline]
-		- No
-			bailey (annoyed): You know what... you can wait a bit longer!
-	elif {CHARLES.MEOWING_AT_DOOR} == false:
-#	----	charles has been let outside AND charles not asking to be let back inside
-
-		bailey: I just let Charles out a moment ago, but I don't want to forget to let him back inside...
-		bailey (thinking): I think I'll give him a little more time to explore
-		bailey (winking): ...but not as much time as my Husband likes to leave him out there for
+if {CHARLES.MEOWING_AT_DOOR} == true:
+	bailey (thinking): Let Charles back inside?
+	- Yes
+		set {CHARLES.LET_BACK_INSIDE} = true
+		set {Gamedata.LET_CHARLES_BACK_INSIDE} = true
+		bailey (exhausted): Okay, okay hold your horses I'm coming!
+		[signal arg="kitchen_door_unlocked"]
 		[end_timeline]
+	- No
+		bailey (annoyed): You know what... you can wait a bit longer!
+elif {CHARLES.MEOWING_AT_DOOR} == false:
+	bailey: I just let Charles out a moment ago, but I don't want to forget to let him back inside...
+	bailey (thinking): I think I'll give him a little more time to explore
+	bailey (winking): ...but not as much time as my Husband likes to leave him out there for
+	[end_timeline]
