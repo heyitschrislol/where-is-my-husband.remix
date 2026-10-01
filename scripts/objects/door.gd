@@ -35,35 +35,25 @@ func _ready():
 
 func _open_door():
 	if passable:
-		#print("DEBUG: passable check PASSED, calling _operate_door")
 		_operate_door()
 	else:
-		#print("DEBUG: passable check FAILED, deciding on dialog action")
-		if room_name == "TESTDOOR":
-			if not Gamedata.TEST_DOOR:
-				_door_dialog("test_back_door")
-			else:
-				passable = true
-				_operate_door()
-
-		if room_name == "TESTDOOR":
-			if not Gamedata.TEST_DOOR:
-				_door_dialog("test_back_door")
-			else:
-				passable = true
-				_operate_door()
-
+		if room_name == "BACKYARD":
+				_door_dialog("kitchen_door")
 		elif room_name == "CLOSET":
 			_door_dialog("closet_gaslight")
-	#if room_name == "CLOSET":
-		#if Gamedata.PMAIL_HACKED:
-			#_door_dialog("closet_ready")
-			##start_dialog("closet_ready")
-		#else:
-			#_door_dialog()
-			#start_dialog(dialog_name)
+		#elif room_name == "TESTDOOR":
+			#if not Gamedata.TEST_DOOR:
+				#_door_dialog("test_back_door")
+			#else:
+				#passable = true
+				#_operate_door()
 
 
+## Public API for story choreography (called from house.gd).
+func unlock_and_open() -> void:
+	passable = true
+	if state == "closed":
+		_operate_door()
 
 func _operate_door():
 	if state == "closed":
@@ -94,8 +84,6 @@ func _door_dialog(_dialog_name : String = ""):
 	else:
 		start_dialog(dialog_name)
 
-
-
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,"")
 
@@ -105,15 +93,6 @@ func _on_dialog_request(argument: String = "",location: String = ""):
 		Dialogic.start(dialog_name)
 		Gamedata._is_dialog_active = true
 		return
-	if argument == "kitchen_door_unlocked":
-		passable = true
-
-# *****	THE FOLLOWING NEEDS TO BE ADDED HERE:		******
-#						1.		door sprite changes to OPEN
-# 						2.		start bailey.move_along to move player from charles impending path
-# 						3.		start charles.move_along route inside the house and all the way to the master bathroom
-#						4.
-#
 
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	Dialogic.start(argument)

@@ -12,9 +12,9 @@ func _ready():
 	interaction_area.action_name = "speak"
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite.play("idle_left")
-	dialog_signal.connect(_on_dialog_request)
 	follow_speed = 55
 	follow_radius = 45
+	dialog_signal.connect(_on_dialog_request)
 	#arrival_threshold = 10
 
 
@@ -41,52 +41,6 @@ func decide_state() -> void:
 		state = States.FOLLOWING
 	else:
 		state = States.IDLE
-
-#func _physics_process(_delta):
-	#if Gamedata.SMOKE_FOLLOW:
-		#if get_distance_to_player() <= follow_radius:
-			#set_state(States.IDLE)
-		#else:
-			#set_state(States.FOLLOWING)
-	#elif Gamedata.SMOKE_DESTINATION_SET:
-		#set_state(States.MOVINGTO)
-		#if get_distance_to_object(destination_coords) <= follow_radius:
-			#set_state(States.IDLE)
-		#else:
-			#set_state(States.MOVINGTO)
-	#else:
-		#set_state(States.IDLE)
-	##else:
-		##set_state(States.IDLE)
-	#update_anim()
-	#move_and_slide()
-
-#func set_state(new_state: States):
-	#var direction := player.global_position - global_position
-	#var distance = direction.length()
-#
-#
-	#var _previous_state := state
-	#state = new_state
-#
-	#if state == States.IDLE:
-		#velocity = Vector2.ZERO
-	#elif state == States.FOLLOWING:
-		#velocity = direction.normalized()*follow_speed
-		#if distance <= follow_radius:
-			#velocity = Vector2.ZERO
-		##elif distance > follow_radius:
-			##state = States.FOLLOWING
-	#elif state == States.MOVINGTO:
-		#if not destination_coords.is_zero_approx():
-			#var objdirection : Vector2 = destination_coords - global_position
-			#var objdistance = objdirection.length()
-			#velocity = objdirection.normalized()*follow_speed
-			#if objdistance <= arrival_threshold:
-				#velocity = Vector2.ZERO
-
-	#if debugging:
-		#debugtext(direction,distance)
 
 func update_anim():
 	var moving = velocity != Vector2.ZERO

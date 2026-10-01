@@ -127,9 +127,9 @@ func _on_dialogic_signal(argument:String):
 		_on_food_placed()
 	elif argument == "smoke_fed":
 		_on_smoke_fed()
+	elif argument == "kitchen_door_unlocked":
+		_on_let_charles_back_inside()
 
-	#elif argument == "crumpled_note_taken":
-		#_on_crumpled_note_taken()
 	elif argument == "crumpled_note_opened":
 		_on_crumpled_note_opened()
 	elif argument == "crumpled_note_dropped":
@@ -155,6 +155,7 @@ func _on_guestroom_bookshelf():
 		obj_guestroom_bookshelf.set_skip_popup = true
 	else:
 		obj_guestroom_bookshelf.set_skip_popup = false
+
 func _on_play_duolingo():
 	Gamedata.record_positions()
 	Gamedata.goto_cutscene("duolingo", false)
@@ -192,23 +193,53 @@ func _on_food_placed():
 	await player.destination_reached
 	smoke.move_along(points)
 	await smoke.destination_reached
-	#smoke.animated_sprite.play("chow_down")
 	Gamedata.SMOKE_CHOW_DOWN = true
+	_charles_returns_to_door()
 
 func _on_smoke_fed():
 	Gamedata.SMOKE_FED = true
 	Gamedata.SMOKE_FOLLOW = false
-	Gamedata.CRUMPLED_NOTE_DROPPED = true
-	obj_diningroom_crumpled_note.visible = true
-	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
 
-#func _on_crumpled_note_taken():
-	##Gamedata.give_item("crumpled_note")
-	#obj_diningroom_crumpled_note.visible = false
-	#obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
+func _charles_wants_back_inside():
+	var index : int
+	while Gamedata.LET_CHARLES_BACK_INSIDE != true:
+		index = randi_range(0, 3)
+		floating_txt_anims[index].visible = true
+		floating_txt_anims[index].play("default")
+		await floating_txt_anims[index].animation_finished
+		floating_txt_anims[index].visible = false
+
+func _charles_returns_to_door() -> void:
+	charles.move_along(route($routes/CharlesToKitchenDoor))
+	await charles.destination_reached
+	# Both copies of the flag: Gamedata for GDScript, Dialogic.VAR for the .dtl check
+	Gamedata.CHARLES_MEOWING_AT_DOOR = true
+	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', true)
+	_charles_wants_back_inside()
+
+func _on_let_charles_back_inside() -> void:
+	Gamedata.LET_CHARLES_BACK_INSIDE = true      # also ends the meow loop
+	Gamedata.CHARLES_MEOWING_AT_DOOR = false
+	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', false)
+	door_back.unlock_and_open()
+	# "Brushes past": stop Charles colliding with the player's physics layer (layer 2)
+	charles.set_collision_mask_value(2, false)
+	var normal_speed = charles.follow_speed
+	charles.follow_speed = normal_speed * 1.8    # hurried
+	_drop_note_when_charles_passes(obj_diningroom_crumpled_note.global_position)
+	charles.move_along(route($routes/CharlesDoorToHallway))
+	await charles.destination_reached
+	charles.follow_speed = normal_speed
+	charles.set_collision_mask_value(2, true)
 
 
-	#pass
+func _drop_note_when_charles_passes(drop_pos: Vector2) -> void:
+	while charles.global_position.distance_to(drop_pos) > 20.0:
+		if not is_inside_tree():
+			return
+		await get_tree().physics_frame
+	_on_crumpled_note_dropped()   # existing function: shows note + sets flag
+
 
 func _on_crumpled_note_opened():
 	var points = route($routes/PlayerMoveToIsland)
@@ -224,11 +255,6 @@ func _on_crumpled_note_dropped():
 	obj_diningroom_crumpled_note.visible = true
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
 	Gamedata.CRUMPLED_NOTE_DROPPED = true
-#
-#
-#func _on_torn_note_interaction():
-	##Gamedata.show_item("torn_note")
-	#pass
 
 func _on_access_computer():
 	pass
@@ -254,13 +280,3 @@ func _start_pending_smoke_route() -> void:
 	#if Gamedata.SMOKE_SPECIAL_ANIM:
 		#smoke.animated_sprite.play("chow_down")
 	print("smoke finished her route")
-
-
-func _charles_wants_back_inside():
-	var index : int
-	while Gamedata.LET_CHARLES_BACK_INSIDE != true:
-		index = randi_range(0, 3)
-		floating_txt_anims[index].visible = true
-		floating_txt_anims[index].play("default")
-		await floating_txt_anims[index].animation_finished
-		floating_txt_anims[index].visible = false

@@ -4053,9 +4053,8 @@ shape = SubResource("RectangleShape2D_in3qe")
 debug_color = Color(0.70673937, 0.48834383, 0.019049766, 0.41960785)
 
 [node name="crumpled_note" parent="objects/diningroom_objects" unique_id=1557020060 instance=ExtResource("9_7685u")]
-visible = false
 texture_filter = 1
-position = Vector2(68.00003, 243.99998)
+position = Vector2(144.00003, 242.99998)
 scale = Vector2(0.045, 0.045)
 texture = ExtResource("25_8cron")
 script = ExtResource("29_in3qe")

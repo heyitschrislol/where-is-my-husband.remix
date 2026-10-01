@@ -50,61 +50,9 @@ func decide_state() -> void:
 	else:
 		state = States.IDLE
 
-func _physics_process(_delta):
-	if Gamedata.CHARLES_FOLLOW:
-		if get_distance_to_player() <= follow_radius:
-			set_state(States.IDLE)
-		else:
-			set_state(States.FOLLOWING)
-	else:
-		set_state(States.IDLE)
-	#if get_distance_to_player() <= follow_radius:
-		#set_state(States.IDLE)
-	#else:
-		#if Gamedata.CHARLES_FOLLOW:
-			#set_state(States.FOLLOWING)
-		#else:
-			#set_state(States.IDLE)
-	update_anim()
-	move_and_slide()
-
-#func set_state(new_state: States):
-	#var direction := player.global_position - global_position
-	#var distance = direction.length()
-	#var _previous_state := state
-	#state = new_state
-#
-	#if state == States.IDLE:
-		#velocity = Vector2.ZERO
-	#if state == States.FOLLOWING:
-		#velocity = direction.normalized()*follow_speed
-		#if distance <= follow_radius:
-			#velocity = Vector2.ZERO
-		##elif distance > follow_radius:
-			##state = States.FOLLOWING
-#
-#
-	#if debugging:
-		#var debugdata = {
-			#"npc-dir"														:	direction,
-			#"npc-distance"											:	distance,
-			##"npc-velocity.x"										:	velocity.x,
-			##"npc-velocity.y"										:	velocity.y,
-			#"npc-state"													:	state,
-			##"npc-follow-speed"								:	follow_speed,
-			##"npc-follow-radius"							:	follow_radius,
-			##"npc-detection-radius"					:	detection_radius,
-			#"player-speed"											:	player.speed,
-			#"player-velocity-x"							:	player.velocity.x,
-			#"player-velocity-y"							:	player.velocity.y
-		#}
-#
-		#debugtext(direction, distance,debugdata)
-
 func update_anim():
 	if is_transitioning:
 		return # a transition anim is playing — don't interrupt it
-
 	var moving = velocity != Vector2.ZERO
 
 	if moving:
@@ -131,20 +79,6 @@ func update_anim():
 		animated_sprite.play("walk_" + facing)
 
 	was_moving = moving
-
-		#if velocity == Vector2.ZERO:
-			#match player.last_dir:
-				##"up"	:		animated_sprite.flip_h = true
-				##"down":	animated_sprite.flip_h = false
-				#"left":	animated_sprite.play("idle_left")
-				#"right":	animated_sprite.play("idle_right")
-#
-		#elif abs(velocity.x) >= abs(velocity.y):
-			#if velocity.x > 0:
-				#animated_sprite.play("walk_right")
-			#elif velocity.x < 0:
-				#animated_sprite.play("walk_left")
-				#animated_sprite.flip_h = true
 
 func _on_animation_finished():
 	if animated_sprite.animation.begins_with("standing_motion"):
