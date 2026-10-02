@@ -193,7 +193,7 @@ func get_distance_to_player() -> float:
 func get_distance_to_object(object_pos: Vector2) -> float:
 	return object_pos.distance_to(global_position)
 
-func debugtext(direction,distance,debug_data: Dictionary = {}):
+func debugtext(_direction,_distance,debug_data: Dictionary = {}):
 	for item in debug_data:
 		var data_item =debug_data.get(item,0)
 		if data_item:

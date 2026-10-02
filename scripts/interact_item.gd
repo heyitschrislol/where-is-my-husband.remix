@@ -15,9 +15,12 @@ func _ready():
 		set_interaction_text(action_name)
 	interaction_area.interact = Callable(self, "_special_interaction")
 
-func _on_dialog_request(argument: String = "",_location: String = ""):
+func _on_dialog_request(_timeline: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	Dialogic.start(dialog_name)
+	if _timeline != "":
+		Dialogic.start(_timeline)
+	else:
+		Dialogic.start(dialog_name)
 	Gamedata._is_dialog_active = true
 
 func _get_player():

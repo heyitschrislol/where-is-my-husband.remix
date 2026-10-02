@@ -37,10 +37,14 @@ func _open_door():
 	if passable:
 		_operate_door()
 	else:
-		if room_name == "BACKYARD":
+		if dialog_name != "":
+			_door_dialog(dialog_name)
+		else:
+			if room_name == "BACKYARD":
 				_door_dialog("kitchen_door")
-		elif room_name == "CLOSET":
-			_door_dialog("closet_gaslight")
+			elif room_name == "CLOSET":
+				_door_dialog("closet_gaslight")
+
 		#elif room_name == "TESTDOOR":
 			#if not Gamedata.TEST_DOOR:
 				#_door_dialog("test_back_door")
@@ -87,7 +91,7 @@ func _door_dialog(_dialog_name : String = ""):
 func start_dialog(timeline):
 	dialog_signal.emit(timeline,"")
 
-func _on_dialog_request(argument: String = "",location: String = ""):
+func _on_dialog_request(argument: String = "",_location: String = ""):
 	if argument == "":
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start(dialog_name)

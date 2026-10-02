@@ -829,9 +829,7 @@ follow_speed = 65.0
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="." unique_id=1733175321]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oltu5")
-animation = &"seated_meow_left-v2"
-frame = 1
-frame_progress = 0.18823722
+animation = &"seated_meow_left"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=327160509]
 libraries/ = SubResource("AnimationLibrary_nlfmu")

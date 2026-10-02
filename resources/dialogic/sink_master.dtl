@@ -1,1 +1,8 @@
-bailey (surprised): Oh I'd better not turn this on or Charles might hear and start begging to let him play in it...
+if {CHARLES.LET_BACK_INSIDE} == true:
+	bailey (exhausted):  ¿Charles, por qué no puedes beber agua de un cuenco como un gato normal?
+	charles (default): <Me gusta cómo se siente el agua en la cabeza, mamá./¡Dame jugo, mamá!>
+	bailey (exhausted): Aquí tienes
+	charles (pouncy): Gracias, mamá.
+	[end_timeline]
+else:
+	bailey (surprised): Oh I'd better not turn this on or Charles might hear and start begging to let him play in it...

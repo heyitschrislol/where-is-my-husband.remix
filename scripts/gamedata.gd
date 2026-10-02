@@ -134,7 +134,7 @@ var item_db := {
 	"torn_note": {
 		"name": "an Uncrumpled Note - it is torn",
 		"icon": "res://assets/art/PNG/special/SECRET-NOTE-fixed.png",
-		"timeline-after":"torn_note_reading"
+		"timeline-after":""
 	},
 }
 

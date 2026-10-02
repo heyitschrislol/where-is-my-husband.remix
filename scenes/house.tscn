@@ -2994,33 +2994,34 @@ position = Vector2(1075, 182)
 [node name="BackDoor" type="Marker2D" parent="routes/CharlesAtBackDoor" unique_id=1821891487]
 position = Vector2(1005, 204)
 
-[node name="CharlesComingInside" type="Node2D" parent="routes" unique_id=1239858057]
+[node name="CharlesDoorToHallway" type="Node2D" parent="routes" unique_id=1239858057]
 
-[node name="BackDoor" type="Marker2D" parent="routes/CharlesComingInside" unique_id=333441270]
+[node name="BackDoor" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=333441270]
 position = Vector2(1005, 204)
 
-[node name="P1" type="Marker2D" parent="routes/CharlesComingInside" unique_id=525495854]
+[node name="P1" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=525495854]
 position = Vector2(942, 215)
 
-[node name="P2" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1667167812]
+[node name="P2" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=1667167812]
 position = Vector2(879, 277)
 
-[node name="P3" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1444089221]
+[node name="P3" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=1444089221]
 position = Vector2(870, 315)
 
-[node name="P4" type="Marker2D" parent="routes/CharlesComingInside" unique_id=2069021130]
+[node name="P4" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=2069021130]
 position = Vector2(440, 305)
 
-[node name="P5" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1027440244]
+[node name="P5" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=1027440244]
 position = Vector2(453, 180)
 
-[node name="P6" type="Marker2D" parent="routes/CharlesComingInside" unique_id=1578291387]
+[node name="P6" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=1578291387]
 position = Vector2(498, 179)
 
-[node name="JuiceDrip" type="Marker2D" parent="routes/CharlesComingInside" unique_id=2120289457]
+[node name="JuiceDrip" type="Marker2D" parent="routes/CharlesDoorToHallway" unique_id=2120289457]
 position = Vector2(516, 159)
 
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
+visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
@@ -3189,7 +3190,7 @@ scale = Vector2(0.65, 0.65)
 
 [node name="back" parent="objects/doors" unique_id=2020179029 instance=ExtResource("7_ptc3g")]
 texture_filter = 1
-position = Vector2(-16, 341)
+position = Vector2(-18, 347)
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 constant_linear_velocity = Vector2(1, 1)
@@ -3198,7 +3199,7 @@ state = "closed"
 facing_direction = "eastwest"
 room_name = "BACKYARD"
 passable = false
-action_name = "closed"
+action_name = "open door"
 dialog_name = "kitchen_door"
 
 [node name="interaction_area" parent="objects/doors/back" index="0" unique_id=55889324]
@@ -3206,13 +3207,14 @@ texture_filter = 1
 
 [node name="collision_shape_2d" parent="objects/doors/back/interaction_area" index="0" unique_id=1115233311]
 position = Vector2(0, -0.5)
+scale = Vector2(1.2, 1)
 
 [node name="collision_shape_2d" parent="objects/doors/back" index="1" unique_id=236775629]
 position = Vector2(1.2627615e-07, -4.6789646e-06)
 
 [node name="Sprite2D" parent="objects/doors/back" index="2" unique_id=1049246469]
 texture_filter = 1
-scale = Vector2(0.65, 0.65)
+position = Vector2(-8, 1.3987644e-06)
 
 [node name="front" parent="objects/doors" unique_id=104687334 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
@@ -3223,8 +3225,12 @@ constant_angular_velocity = 0.017453292
 state = "closed"
 facing_direction = "eastwest"
 room_name = ""
+passable = false
 action_name = ""
-dialog_name = ""
+dialog_name = "front_door"
+
+[node name="Sprite2D" parent="objects/doors/front" index="2" unique_id=1049246469]
+position = Vector2(11.249999, -3.1250021)
 
 [node name="bathroom" parent="objects/doors" unique_id=200330778 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
 texture_filter = 1
@@ -3272,6 +3278,7 @@ position = Vector2(5.6286364, 21.108204)
 scale = Vector2(0.89, 1)
 
 [node name="Sprite2D" parent="objects/doors/bedroom" index="2" unique_id=1049246469]
+position = Vector2(-3.752345, 9.2266777e-07)
 scale = Vector2(1.2, 1.2)
 
 [node name="bedroom_bathroom" parent="objects/doors" unique_id=1571382840 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
@@ -3297,6 +3304,7 @@ position = Vector2(4.291588, 18.07247)
 scale = Vector2(0.89, 1)
 
 [node name="Sprite2D" parent="objects/doors/bedroom_bathroom" index="2" unique_id=1049246469]
+position = Vector2(-3.752, 0)
 scale = Vector2(1.2, 1.2)
 
 [node name="bedroom_closet" parent="objects/doors" unique_id=1073104421 groups=["interactable-object"] instance=ExtResource("7_ptc3g")]
@@ -3323,6 +3331,7 @@ position = Vector2(5.054474e-05, 0.5724697)
 scale = Vector2(1.05, 1)
 
 [node name="Sprite2D" parent="objects/doors/bedroom_closet" index="2" unique_id=1049246469]
+position = Vector2(-3.752, 0)
 scale = Vector2(1.2, 1.2)
 
 [node name="guestroom_objects" type="Node2D" parent="objects" unique_id=1202336080]
@@ -3553,9 +3562,9 @@ texture = ExtResource("21_80gfe")
 script = ExtResource("22_q425y")
 closeup_image = ExtResource("23_in3qe")
 prompt_verb = "read"
-flag_name = "TORN_NOTE_READ"
+flag_name = ""
 dialogic_var = ""
-timeline_after = ""
+timeline_after = "torn_note_reading"
 item_sfx = "paper_crumple"
 
 [node name="CollisionShape2D" parent="objects/kitchen_objects/torn_note/interaction_area" parent_id_path=PackedInt32Array(1747493553, 55889324) index="0" unique_id=588109631]
@@ -4109,6 +4118,7 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 [editable path="characters/smoke"]
 [editable path="objects/doors/guestroom"]
 [editable path="objects/doors/back"]
+[editable path="objects/doors/front"]
 [editable path="objects/doors/bathroom"]
 [editable path="objects/doors/bedroom"]
 [editable path="objects/doors/bedroom_bathroom"]

@@ -144,12 +144,6 @@ func set_state(new_state: States) -> void:
 		velocity = Vector2.ZERO
 	if state == States.WALKING:
 		velocity = direction.normalized()*speed
-	#if state == States.FOLLOWING:
-		#velocity = direction.normalized()*speed
-		#if distance <= follow_radius:
-			#velocity = Vector2.ZERO
-		#elif distance > follow_radius:
-			#state = States.FOLLOWING
 	if state == States.MOVINGTO:
 		velocity = direction.normalized()*speed
 		state = States.MOVINGTO

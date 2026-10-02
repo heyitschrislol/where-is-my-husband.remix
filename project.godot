@@ -87,7 +87,7 @@ variables={
 "CAT_SPANISH_LEARNED": false,
 "CHARLES": {
 "HAD_FIRST_INTERACTION": true,
-"HAD_FIRST_SPANISH_CONVO": true,
+"HAD_FIRST_SPANISH_CONVO": false,
 "IS_FOLLOWING": false,
 "LET_BACK_INSIDE": false,
 "LET_OUTSIDE": false,
@@ -154,6 +154,7 @@ directories/dtl_directory={
 "crumpled_note_pickup": "res://resources/dialogic/crumpled_note_pickup.dtl",
 "diningroom_fooddish": "res://resources/dialogic/diningroom_fooddish.dtl",
 "dtl_cutscene_kitchenA": "res://resources/dialogic/dtl_cutscene_kitchenA.dtl",
+"front_door": "res://resources/dialogic/front_door.dtl",
 "guestroom_bookshelf": "res://resources/dialogic/guestroom_bookshelf.dtl",
 "guestroom_computer": "res://resources/dialogic/guestroom_computer.dtl",
 "guestroom_computer_pmail": "res://resources/dialogic/guestroom_computer_pmail.dtl",

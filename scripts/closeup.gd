@@ -13,11 +13,11 @@ extends Sprite2D
 func _ready() -> void:
 	interaction_area.action_name = prompt_verb
 	interaction_area.interact = Callable(self, "_on_view")
-
+	#dialog_signal.connect(_on_dialog_request)
 
 func _on_view() -> void:
 
-	await Overlay.show_image(closeup_image, item_sfx)
+	await Overlay.show_image(closeup_image, timeline_after, item_sfx)
 
 	if flag_name != "":
 		Gamedata.set(flag_name, true)

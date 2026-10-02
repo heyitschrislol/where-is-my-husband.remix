@@ -84,7 +84,7 @@ func show_item(display_name: String, texture: Texture2D, _timeline_after: String
 
 ## Shows a full-screen closeup image until the player dismisses it.
 ## Awaitable: await ItemPopup.show_image(my_texture)
-func show_image(texture: Texture2D,item_sfx : String = "", item_name : String = "") -> void:
+func show_image(texture: Texture2D,_timeline_after: String,item_sfx : String = "", _item_name : String = "") -> void:
 	#if _is_open or _skip_popup:
 		#_skip_popup = false
 	if _is_open:
@@ -124,6 +124,9 @@ func show_image(texture: Texture2D,item_sfx : String = "", item_name : String = 
 
 	_can_dismiss = true
 	await popup_closed
+	#if _timeline_after != "":
+		#Gamedata._is_dialog_active = true
+		#Dialogic.start(_timeline_after)
 
 ## Timeline-friendly wrapper: takes a resource path instead of a Texture2D
 ## so it can be called from a Dialogic Call event.
@@ -146,7 +149,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _close() -> void:
 	_can_dismiss = false
 
-	var content: Control = panel if center.visible else item_closeup
+	var _content: Control = panel if center.visible else item_closeup
 
 	var tween := create_tween()
 	tween.set_parallel(true)

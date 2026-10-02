@@ -26,12 +26,12 @@ func _check_transition_anims_not_looping():
 		if animated_sprite.sprite_frames.get_animation_loop(anim_name):
 			push_warning("Charles: '%s' has Loop enabled — it should be a one-shot transition!" % anim_name)
 
-func _on_dialog_request(timeline: String,_location: String):
+func _on_dialog_request(_timeline: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	Dialogic.start(timeline_name)
-	#player.add_child(dialog)
-	#dialog.offset.x = player.position.x
-	#dialog.offset.y = player.position.y
+	if _timeline != "":
+		Dialogic.start(_timeline)
+	else:
+		Dialogic.start(timeline_name)
 	Gamedata._is_dialog_active = true
 
 func _on_timeline_ended():

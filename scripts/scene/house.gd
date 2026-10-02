@@ -91,6 +91,7 @@ func _ready():
 		elif Gamedata.SMOKE_FED:
 			Gamedata.SMOKE_FOLLOW = false
 
+
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
 	Dialogic.timeline_ended.connect(Gamedata._on_dialogue_ended)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -98,17 +99,20 @@ func _ready():
 	if Gamedata.PENDING_SMOKE_ROUTE != "":
 		_start_pending_smoke_route.call_deferred()
 
-func _physics_process(_delta: float):
+#func _physics_process(_delta: float):
+
+
+func _process(_delta: float):
 	if TXT_ANIM_STATE:
 		MEOW_TXT_ANIM.visible = true
 		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_INHERIT
 		MEOW_TXT_ANIM.play("default")
+		charles.animated_sprite.play("seated_meow_left")
 	elif not TXT_ANIM_STATE:
 		MEOW_TXT_ANIM.visible = false
 		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
 		MEOW_TXT_ANIM.stop()
-
-
+		#charles.animated_sprite.stop()
 
 func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -194,11 +198,11 @@ func _on_food_placed():
 	var points = route($routes/WaitSpotToFoodDish)
 	var player_points = route($routes/PlayerStepAside)
 	points.append($markers/FoodDish.global_position)
-	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	var in_smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
 	player.move_along(player_points)
 	await player.destination_reached
-	smoke.move_along(points)
-	await smoke.destination_reached
+	in_smoke.move_along(points)
+	await in_smoke.destination_reached
 	Gamedata.SMOKE_CHOW_DOWN = true
 	_charles_returns_to_door()
 
@@ -248,6 +252,10 @@ func _drop_note_when_charles_passes(drop_pos: Vector2) -> void:
 		await get_tree().physics_frame
 	_on_crumpled_note_dropped()   # existing function: shows note + sets flag
 
+func _on_crumpled_note_dropped():
+	obj_diningroom_crumpled_note.visible = true
+	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
+	Gamedata.CRUMPLED_NOTE_DROPPED = true
 
 func _on_crumpled_note_opened():
 	var points = route($routes/PlayerMoveToIsland)
@@ -259,10 +267,7 @@ func _on_crumpled_note_opened():
 	Gamedata.CRUMPLED_NOTE_OPENED = true
 
 
-func _on_crumpled_note_dropped():
-	obj_diningroom_crumpled_note.visible = true
-	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_INHERIT
-	Gamedata.CRUMPLED_NOTE_DROPPED = true
+
 
 func _on_access_computer():
 	pass
