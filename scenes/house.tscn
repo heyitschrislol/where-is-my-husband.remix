@@ -2958,7 +2958,10 @@ position = Vector2(833, 258)
 position = Vector2(833, 317)
 
 [node name="DiningEntrance2" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=2051131239]
-position = Vector2(919, 346)
+position = Vector2(890, 330)
+
+[node name="DiningEntrance3" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=1277149404]
+position = Vector2(928, 330)
 
 [node name="Misc" type="Node2D" parent="routes" unique_id=366852686]
 
@@ -3134,7 +3137,7 @@ position = Vector2(960, 545)
 z_index = 13
 position = Vector2(-92, -98)
 wall_min_slide_angle = 0.061086524
-speed = 125.0
+speed = 175.0
 
 [node name="animated_sprite_2d" parent="characters/player" index="0" unique_id=1686775873]
 animation = &"walk_down"
@@ -3743,7 +3746,7 @@ texture = ExtResource("23_8cron")
 [node name="fooddish" parent="objects/diningroom_objects" unique_id=502821847 groups=["interactable-object"] instance=ExtResource("9_7685u")]
 z_index = 5
 texture_filter = 1
-position = Vector2(11, 228.99998)
+position = Vector2(9, 228.99998)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_qrght")
 dialog_name = "diningroom_fooddish"
@@ -3776,7 +3779,7 @@ debug_color = Color(0.68380094, 0.5020786, 0, 0.41960785)
 
 [node name="coffee_station" parent="objects/diningroom_objects" unique_id=435405653 instance=ExtResource("18_g6dbt")]
 z_index = 5
-position = Vector2(37.000034, 237)
+position = Vector2(45.000034, 237)
 rotation = 3.1415927
 collision_layer = 8
 collision_mask = 6

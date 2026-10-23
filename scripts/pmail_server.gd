@@ -104,7 +104,7 @@ func _start_reaction() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	Gamedata._is_dialog_active = true
-	Dialogic.start("pmail_after_login")
+	Dialogic.start("after_pmail_hacked")
 
 func _base() -> String:
 	return "http://%s:%d" % [HOST, PORT]
