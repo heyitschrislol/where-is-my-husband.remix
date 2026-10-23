@@ -53,6 +53,7 @@
 [ext_resource type="Script" uid="uid://b53xhcb8j3xha" path="res://scripts/interact_item.gd" id="42_2jwha"]
 [ext_resource type="Texture2D" uid="uid://u3mb6sljc0g8" path="res://assets/art/PNG/objects/toilet_west.png" id="42_llqda"]
 [ext_resource type="Texture2D" uid="uid://3a0n42dhhe5g" path="res://assets/art/PNG/objects/bathroom_sink_south.png" id="43_llqda"]
+[ext_resource type="Texture2D" uid="uid://w3stb1md6iem" path="res://assets/art/PNG/objects/diningroom_coffee_shelf.png" id="43_wmhmw"]
 [ext_resource type="Texture2D" uid="uid://b6k3vsc2mxkyx" path="res://assets/art/PNG/objects/bathroom_mirror_south.png" id="45_t68hv"]
 [ext_resource type="Texture2D" uid="uid://bgfrf5cpcgjdb" path="res://assets/art/PNG/objects/hallway-travel-map.png" id="46_bveog"]
 [ext_resource type="Texture2D" uid="uid://htiurb8lw8lq" path="res://assets/art/PNG/objects/window_SM_bathroom.png" id="52_l6yao"]
@@ -2956,6 +2957,9 @@ position = Vector2(833, 258)
 [node name="DiningEntrance" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=2141631263]
 position = Vector2(833, 317)
 
+[node name="DiningEntrance2" type="Marker2D" parent="routes/WaitSpotToFoodDish" unique_id=2051131239]
+position = Vector2(919, 346)
+
 [node name="Misc" type="Node2D" parent="routes" unique_id=366852686]
 
 [node name="GreenCouchBottom" type="Marker2D" parent="routes/Misc" unique_id=1601660141]
@@ -2976,7 +2980,10 @@ position = Vector2(685, 397)
 position = Vector2(937, 338)
 
 [node name="P2" type="Marker2D" parent="routes/PlayerStepAside" unique_id=799505651]
-position = Vector2(907, 350)
+position = Vector2(910, 339)
+
+[node name="P3" type="Marker2D" parent="routes/PlayerStepAside" unique_id=1546833272]
+position = Vector2(910, 360)
 
 [node name="PlayerMoveToIsland" type="Node2D" parent="routes" unique_id=2143428223]
 
@@ -3021,7 +3028,6 @@ position = Vector2(498, 179)
 position = Vector2(516, 159)
 
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
-visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
@@ -3768,6 +3774,27 @@ action_name = "pickup"
 [node name="CollisionShape2D" parent="objects/diningroom_objects/crumpled_note/interaction_area" index="0" unique_id=588109631]
 debug_color = Color(0.68380094, 0.5020786, 0, 0.41960785)
 
+[node name="coffee_station" parent="objects/diningroom_objects" unique_id=435405653 instance=ExtResource("18_g6dbt")]
+z_index = 5
+position = Vector2(37.000034, 237)
+rotation = 3.1415927
+collision_layer = 8
+collision_mask = 6
+action_name = "inspect"
+dialog_name = "coffee_station"
+
+[node name="CollisionShape2D" parent="objects/diningroom_objects/coffee_station" index="0" unique_id=463425800]
+position = Vector2(-8.901013e-07, -5)
+scale = Vector2(1.19, 1)
+
+[node name="Sprite2D" parent="objects/diningroom_objects/coffee_station" index="1" unique_id=1772285864]
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("43_wmhmw")
+
+[node name="CollisionShape2D" parent="objects/diningroom_objects/coffee_station/interaction_area" parent_id_path=PackedInt32Array(435405653, 55889324) index="0" unique_id=1252563545]
+position = Vector2(1.6294035e-07, 0.99999976)
+scale = Vector2(1.29, 1.09)
+
 [node name="hallway_objects" type="Node2D" parent="objects" unique_id=1807488133]
 
 [node name="rug" type="Sprite2D" parent="objects/hallway_objects" unique_id=373745980]
@@ -4133,6 +4160,7 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 [editable path="objects/bedroom_objects/hubdresser/interaction_area"]
 [editable path="objects/diningroom_objects/fooddish"]
 [editable path="objects/diningroom_objects/crumpled_note"]
+[editable path="objects/diningroom_objects/coffee_station"]
 [editable path="objects/hallway_objects/travel_map"]
 [editable path="objects/livingroom_objects/greencouch"]
 [editable path="objects/livingroom_objects/whitecouch"]

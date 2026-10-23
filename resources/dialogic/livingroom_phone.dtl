@@ -1,11 +1,20 @@
 if {FOUND_SPANISH_BOOK} == true:
-	bailey (playful): Look it's my phone.
-	bailey (thinking): Should I play Duolingo?
-	- Yes
-		[signal arg="play_duolingo"]
-	- No
-		bailey (default): maybe later
-	[end_timeline]
+	if {PLAYED_DUOLINGO} == false:
+		bailey (playful): Look it's my phone.
+		bailey (thinking): Should I play Duolingo?
+		- Yes
+			[signal arg="play_duolingo"]
+		- No
+			bailey (default): maybe later
+		[end_timeline]
+	elif {PLAYED_DUOLINGO} == true:
+		bailey (playful): That last Duolingo game was fun! I wouldn't mind playing again...
+		bailey (thinking): Do I want to play Duolingo again?
+		- Yes
+			[signal arg="play_duolingo"]
+		- No
+			bailey (default): maybe later
+		[end_timeline]
 else:
 	bailey (playful): Look it's my phone.
 	bailey (thinking): I should look more around the house before playing on my phone.
