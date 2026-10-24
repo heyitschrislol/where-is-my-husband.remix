@@ -2933,7 +2933,7 @@ script = ExtResource("1_f74lx")
 [node name="markers" type="Node2D" parent="." unique_id=20358726]
 
 [node name="FoodDish" type="Marker2D" parent="markers" unique_id=1424081731]
-position = Vector2(940, 314)
+position = Vector2(939, 312)
 gizmo_extents = 73.3
 
 [node name="routes" type="Node2D" parent="." unique_id=689679821]
