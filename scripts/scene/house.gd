@@ -78,7 +78,7 @@ func _ready():
 	MEOW_TXT_ANIM.visible = false
 	MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
 
-	#if Gamedata.LOAD_POINT.begins_with("CAT_SWAP_START"):
+	#if Gamedata.LOAD_POINT.begins_with("SMOKE_ARRIVES"):
 		#Gamedata.load_progress()
 		#Gamedata.goto_cutscene("open_cutscene", true)
 	#else:
@@ -89,7 +89,7 @@ func _ready():
 		#Gamedata.goto_cutscene("open_cutscene", true)
 
 	Gamedata.load_progress()
-	if Gamedata.LOAD_POINT.begins_with("CAT_SWAP_START"):
+	if Gamedata.LOAD_POINT.begins_with("SMOKE_ARRIVES"):
 		Gamedata.LET_CHARLES_OUTSIDE = true
 		Gamedata.SMOKE_INSIDE = true
 		#Dialogic.VAR.CHARLES.set('CHARLES_FOLLOWING', false)
@@ -100,7 +100,7 @@ func _ready():
 		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
 		smoke.move_along(points)
 		await smoke.destination_reached
-	elif Gamedata.LOAD_POINT.begins_with("DROPPED_NOTE_START"):
+	elif Gamedata.LOAD_POINT.begins_with("NOTE_DROP"):
 		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
 		smoke.animated_sprite.play("chow_down")
 		_on_let_charles_back_inside()

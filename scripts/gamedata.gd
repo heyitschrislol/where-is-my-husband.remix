@@ -1,13 +1,11 @@
 extends Node
 
-#var progress_key: Dictionary[String,Dictionary] = {
-	#"GAME_START"					:		{
-	#}
-#}
+##-----------------------		PRE-DEFINED PROGRESSION LOADING POINTS
+##	BEGINNING_POINT, SMOKE_ARRIVES, or NOTE_DROP
+##  the value of LOAD_POINT determines  which point in the story the game boots up to
+##-------------------------------------------------------
+var LOAD_POINT = "BEGINNING_POINT"
 
-var LOAD_POINT = "GAME_START"
-#var LOAD_POINT = "CAT_SWAP_START"
-#var LOAD_POINT = "DROPPED_NOTE_START"
 
 var player_node : Node
 var charles_node : Node
@@ -19,6 +17,7 @@ var current_location = null
 var player_previous_location = null
 var _is_dialog_active: bool = false   			## owned by Dialogic timelines ONLY
 var _is_popup_active: bool = false    				## owned by ItemPopup ONLY
+
 ##---PRE-SCENE POSITIONS---##
 var position_store : Dictionary[String,Vector2] = {}
 var stored_global_pos : Dictionary[String,Vector2] = {}
@@ -427,12 +426,12 @@ func load_progress_flags(gamedata_flags:Array,dialogic_flags:Array):
 
 
 var progress_key: Dictionary = {
-	"GAME_START"							:		{
+	"BEGINNING_POINT"							:		{
 		"positions"			:	{	"player":Vector2(-70.0,-96.0),"charles":Vector2(-594.0,-359.0),"smoke":Vector2(90.0,-419.0)	},
 		"gamedata_flags"			:	[],
 		"dialogic_flags"			:	[]
 	},
-	"CAT_SWAP_START"				:		{
+	"SMOKE_ARRIVES"				:		{
 		"positions"			:	{	"player":Vector2(-89.0,-228.0),"charles":Vector2(98.0,-418.0),"smoke":Vector2(-5.0,-350.0)	},
 		"gamedata_flags"			:	[
 			"LET_CHARLES_OUTSIDE","SMOKE_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","HAD_CHARLES_FIRST_INTERACTION","HAD_CHARLES_DIALOG_IN_SPANISH"
@@ -441,7 +440,7 @@ var progress_key: Dictionary = {
 			"CHARLES.LET_OUTSIDE","SMOKE.LET_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","CHARLES.HAD_FIRST_INTERACTION","CHARLES.HAD_FIRST_SPANISH_CONVO"
 			],
 	},
-	"DROPPED_NOTE_START"		:		{
+	"NOTE_DROP"		:		{
 		"positions"			:	{	"player":Vector2(-5.0,-353.0),"charles":Vector2(45.0,-340.0),"smoke":Vector2(-21.0,-233.0)	},
 		"gamedata_flags"			:		[
 			"LET_CHARLES_OUTSIDE","SMOKE_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","HAD_CHARLES_FIRST_INTERACTION",
