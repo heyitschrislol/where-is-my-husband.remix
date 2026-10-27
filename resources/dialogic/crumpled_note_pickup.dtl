@@ -14,5 +14,6 @@ bailey (thinking): Should I uncrumble the paper ball and see what's written on i
 - No
 	bailey (default): No, the {FANCY_FORMATTING.CrumpledNote} isn't the mystery I need to focus on solving right now. 
 	bailey: I can worry about it [i]after[/i] I figure out where my husband went.
+	set {TORN_NOTE_READ} = true
 	[signal arg="crumpled_note_dropped"]
 	[end_timeline]

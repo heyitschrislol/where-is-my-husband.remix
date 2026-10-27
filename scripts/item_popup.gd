@@ -34,8 +34,10 @@ func _ready() -> void:
 ## Shows the popup and does not return until the player dismisses it.
 ## Call it with: await ItemPopup.show_item("the Spanish Book", my_texture)
 func show_item(display_name: String, texture: Texture2D, _timeline_after: String) -> void:
+
 	if _is_open:
 		return
+	Gamedata.player_animation_handler("start","start_achievement")
 	_is_open = true
 	_can_dismiss = false
 
@@ -76,7 +78,10 @@ func show_item(display_name: String, texture: Texture2D, _timeline_after: String
 	# Only now is it safe to listen for input — see gotcha #1.
 	_can_dismiss = true
 
+
+
 	await popup_closed
+	Gamedata.player_animation_handler("end","loop_achievement")
 	if _timeline_after != "":
 		Gamedata._is_dialog_active = true
 		Dialogic.start(_timeline_after)
@@ -160,4 +165,5 @@ func _close() -> void:
 	hide()
 	_is_open = false
 	Gamedata._is_popup_active = false
+
 	popup_closed.emit()

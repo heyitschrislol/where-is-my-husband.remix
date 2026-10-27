@@ -94,6 +94,7 @@ variables={
 "MEOWING_AT_DOOR": false
 },
 "COMPUTER_ACCESSED": false,
+"CRUMPLED_NOTE_DROPPED": false,
 "CRUMPLED_NOTE_OPENED": false,
 "CRUMPLED_NOTE_PICKED_UP": false,
 "CRUMPLED_NOTE_TAKEN": false,
@@ -193,8 +194,10 @@ window/size/viewport_height=768
 window/size/initial_position_type=0
 window/size/initial_screen=2
 window/size/resizable=false
+window/hdr/request_hdr_output=true
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+window/vsync/vsync_mode=2
 
 [editor]
 
@@ -311,6 +314,7 @@ dismiss={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

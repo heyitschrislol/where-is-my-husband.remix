@@ -25,6 +25,7 @@ if {CHARLES.MEOWING_AT_DOOR} == true:
 	- Yes
 		set {CHARLES.LET_BACK_INSIDE} = true
 		set {Gamedata.LET_CHARLES_BACK_INSIDE} = true
+		set {CRUMPLED_NOTE_DROPPED} = true
 		bailey (exhausted): Okay, okay hold your horses I'm coming!
 		[signal arg="kitchen_door_unlocked"]
 		[wait time="0.5"]

@@ -1,5 +1,14 @@
 extends Node
 
+#var progress_key: Dictionary[String,Dictionary] = {
+	#"GAME_START"					:		{
+	#}
+#}
+
+var LOAD_POINT = "GAME_START"
+#var LOAD_POINT = "CAT_SWAP_START"
+#var LOAD_POINT = "DROPPED_NOTE_START"
+
 var player_node : Node
 var charles_node : Node
 var smoke_node : Node
@@ -18,8 +27,8 @@ var CHARLES_FOLLOW = false
 var SMOKE_FOLLOW = false
 var SMOKE_CHOW_DOWN = false
 
-#var GAME_START = true
-var GAME_START = false
+var GAME_START = true
+#var GAME_START = false
 
 ## KITCHEN
 ## -----------
@@ -59,6 +68,26 @@ var GUESTROOM_REVEALED = false
 var BACKYARD_REVEALED = false
 var CLOSET_REVEALED = false
 
+var progress_flags: Array = [
+	LET_CHARLES_OUTSIDE,
+	CHARLES_MEOWING_AT_DOOR,
+	LET_CHARLES_BACK_INSIDE,
+	SMOKE_INSIDE,
+	HOLDING_CAT_FOOD,
+	FOOD_PLACED,
+	SMOKE_FED,
+	CRUMPLED_NOTE_DROPPED,
+	CRUMPLED_NOTE_TAKEN,
+	CRUMPLED_NOTE_OPENED,
+	TORN_NOTE_READ,
+	HAD_POST_HACK_CONVO,
+	PMAIL_HACKED,
+	FOUND_SPANISH_BOOK,
+	CAT_SPANISH_LEARNED,
+	PLAYED_DUOLINGO,
+	HAD_CHARLES_FIRST_INTERACTION,
+	HAD_CHARLES_DIALOG_IN_SPANISH,
+]
 #func get_door_room(room_name: String) -> bool:
 	#var rooms = {
 		#"HALLBATH"			:	HALLBATH_REVEALED,
@@ -71,6 +100,8 @@ var CLOSET_REVEALED = false
 	#return rooms[room_name]
 
 
+
+
 ##---SIGNALS---##
 signal room_revealed(room_name: String)
 
@@ -79,6 +110,16 @@ func reveal_room(room_name: String) -> void:
 	if not get(flag_name):
 		set(flag_name, true)
 		room_revealed.emit(room_name)
+
+
+signal trigger_animation(anim_name: String)
+signal end_animation(anim_name: String)
+
+func player_animation_handler(state: String,anim_name: String) -> void:
+	if state.begins_with("start"):
+		trigger_animation.emit(anim_name)
+	elif state.begins_with("end"):
+		end_animation.emit(anim_name)
 
 
 ##---SCENE LIST---##
@@ -146,6 +187,11 @@ func give_item(item_id: String) -> void:
 		return
 	var data = item_db[item_id]
 	await Overlay.show_item(data["name"], load(data["icon"]),data["timeline-after"])
+
+
+#func _on_achievement_anim_handler(anim_name: String) -> void:
+	#player_node.start_animation(anim_name)
+
 
 
 ## Single source of truth for "the player should not be controlling anything".
@@ -306,13 +352,13 @@ func record_positions() -> void:
 		)
 	}
 
-func load_positions() -> void:
-	_set_player_node()
-	_set_cats_nodes()
-
-	player_node.set_position(stored_global_pos["player-location"])
-	charles_node.set_position(stored_global_pos["charles-location"])
-	smoke_node.set_position(stored_global_pos["smoke-location"])
+#func load_positions() -> void:
+	#_set_player_node()
+	#_set_cats_nodes()
+#
+	#player_node.set_position(stored_global_pos["player-location"])
+	#charles_node.set_position(stored_global_pos["charles-location"])
+	#smoke_node.set_position(stored_global_pos["smoke-location"])
 
 func store_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
 	position_store["player"] = ppos
@@ -326,13 +372,15 @@ func load_stored_positions():
 	cnode.set_position(position_store["charles"])
 	var snode = get_node("/root/House/characters/smoke")
 	snode.set_position(position_store["smoke"])
-func set_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
-	var pnode = get_node("/root/House/characters/player")
-	pnode.set_position(ppos)
-	var cnode = get_node("/root/House/characters/charles")
-	cnode.set_position(cpos)
-	var snode = get_node("/root/House/characters/smoke")
-	snode.set_position(spos)
+
+
+#func set_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
+	#var pnode = get_node("/root/House/characters/player")
+	#pnode.set_position(ppos)
+	#var cnode = get_node("/root/House/characters/charles")
+	#cnode.set_position(cpos)
+	#var snode = get_node("/root/House/characters/smoke")
+	#snode.set_position(spos)
 	#if p:
 		#position_store["player"] = p
 	#else:
@@ -345,3 +393,63 @@ func set_character_positions(ppos: Vector2, cpos: Vector2, spos: Vector2):
 		#position_store["smoke"] = s
 	#else:
 		#position_store["smoke"] = snode.global_position
+
+
+func load_progress(key_name: String = ""):
+	if !key_name:
+		key_name = LOAD_POINT
+	if progress_key.has(key_name):
+		print("setting_progress %s" % key_name )
+		#var prog_data = progress_key[key_name]
+		var positions = progress_key[key_name]["positions"]
+		print("setting character positions player: {player} , charles: {charles}, smoke: {smoke}".format(positions) )
+		store_character_positions(positions["player"],positions["charles"],positions["smoke"])
+		#load_character_positions(positions)
+		load_stored_positions()
+
+
+		var gamedata_flags = progress_key[key_name]["gamedata_flags"]
+		var dialogic_flags = progress_key[key_name]["dialogic_flags"]
+		load_progress_flags(gamedata_flags,dialogic_flags)
+
+#func load_character_positions(positions:Dictionary):
+
+func load_progress_flags(gamedata_flags:Array,dialogic_flags:Array):
+	for flag in gamedata_flags:
+		print("setting gamedata variable %s" % flag)
+		set(flag, true)
+	for x in dialogic_flags:
+		print("setting dialogic variable %s" % x)
+		Dialogic.VAR.set_variable(x, true)
+
+
+
+
+
+var progress_key: Dictionary = {
+	"GAME_START"							:		{
+		"positions"			:	{	"player":Vector2(-70.0,-96.0),"charles":Vector2(-594.0,-359.0),"smoke":Vector2(90.0,-419.0)	},
+		"gamedata_flags"			:	[],
+		"dialogic_flags"			:	[]
+	},
+	"CAT_SWAP_START"				:		{
+		"positions"			:	{	"player":Vector2(-89.0,-228.0),"charles":Vector2(98.0,-418.0),"smoke":Vector2(-5.0,-350.0)	},
+		"gamedata_flags"			:	[
+			"LET_CHARLES_OUTSIDE","SMOKE_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","HAD_CHARLES_FIRST_INTERACTION","HAD_CHARLES_DIALOG_IN_SPANISH"
+			],
+		"dialogic_flags"			:	[
+			"CHARLES.LET_OUTSIDE","SMOKE.LET_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","CHARLES.HAD_FIRST_INTERACTION","CHARLES.HAD_FIRST_SPANISH_CONVO"
+			],
+	},
+	"DROPPED_NOTE_START"		:		{
+		"positions"			:	{	"player":Vector2(-5.0,-353.0),"charles":Vector2(45.0,-340.0),"smoke":Vector2(-21.0,-233.0)	},
+		"gamedata_flags"			:		[
+			"LET_CHARLES_OUTSIDE","SMOKE_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","HAD_CHARLES_FIRST_INTERACTION",
+			"HAD_CHARLES_DIALOG_IN_SPANISH","HOLDING_CAT_FOOD","FOOD_PLACED","SMOKE_FED","CRUMPLED_NOTE_DROPPED"
+			],
+		"dialogic_flags"			:	[
+			"CHARLES.LET_OUTSIDE","SMOKE.LET_INSIDE","FOUND_SPANISH_BOOK","CAT_SPANISH_LEARNED","PLAYED_DUOLINGO","CHARLES.HAD_FIRST_INTERACTION","CHARLES.HAD_FIRST_SPANISH_CONVO",
+			"HOLDING_CAT_FOOD","SMOKE.FED","CRUMPLED_NOTE_DROPPED"
+			]
+	}
+}

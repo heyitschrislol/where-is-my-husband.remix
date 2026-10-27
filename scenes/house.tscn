@@ -3031,6 +3031,7 @@ position = Vector2(498, 179)
 position = Vector2(516, 159)
 
 [node name="roomblinders" type="Node2D" parent="." unique_id=953291153]
+visible = false
 
 [node name="hallbath_blinder" type="Polygon2D" parent="roomblinders" unique_id=1897486372]
 z_index = 99
@@ -3135,12 +3136,12 @@ position = Vector2(960, 545)
 
 [node name="player" parent="characters" unique_id=1847557259 instance=ExtResource("1_rk7hg")]
 z_index = 13
-position = Vector2(-92, -98)
+position = Vector2(-89, -98)
 wall_min_slide_angle = 0.061086524
-speed = 175.0
+speed = 155.0
 
 [node name="animated_sprite_2d" parent="characters/player" index="0" unique_id=1686775873]
-animation = &"walk_down"
+animation = &"idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="characters/player" unique_id=389894611]
 texture_filter = 1

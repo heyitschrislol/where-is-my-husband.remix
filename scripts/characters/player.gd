@@ -23,15 +23,21 @@ var has_destination: bool = false
 var waypoints: Array[Vector2] = []
 
 var input_dir: Vector2 = Vector2.ZERO
+var special_anim_playing := false
 
 ## STEP AUDIO ##
 const STEP_DISTANCE := 40.0   # pixels between footsteps — tune by ear
 var _distance_since_step := 0.0
 
 signal destination_reached
+#signal stop_anim
 
 func _ready():
-	pass
+	Gamedata.trigger_animation.connect(_on_anim_start_handler)
+	Gamedata.end_animation.connect(_on_anim_end_handler)
+	#stop_anim.connect(_on_anim_start_handler)
+	player_sprite.animation_finished.connect(_on_animation_finished)
+
 
 func _physics_process(_delta):
 
@@ -149,6 +155,8 @@ func set_state(new_state: States) -> void:
 		state = States.MOVINGTO
 
 func update_anim():
+	if special_anim_playing:
+		return 		# a special anim is playing — don't interrupt
 	var moving = velocity != Vector2.ZERO
 	if moving:
 		if abs(velocity.x) >= abs(velocity.y):
@@ -178,6 +186,28 @@ func _update_footsteps(delta: float) -> void:
 		_distance_since_step = 0.0
 		Audio.play_varied("footstep", -8.0)
 
-
 func get_distance_to_object(object_pos: Vector2) -> float:
 	return object_pos.distance_to(global_position)
+
+#Gamedata.start_player_animation("start_achievement")
+
+
+
+
+
+func  _on_anim_start_handler(anim_name: String = "") -> void:
+	special_anim_playing = true
+	if anim_name.begins_with("start_achievement"):
+		player_sprite.play(anim_name)
+		await player_sprite.animation_finished
+		player_sprite.play("loop_achievement")
+
+func  _on_anim_end_handler(anim_name: String) -> void:
+	player_sprite.play("end_achievement")
+	await player_sprite.animation_finished
+	special_anim_playing = false
+
+func _on_animation_finished():
+	if player_sprite.animation.begins_with("loop_achievement"):
+		player_sprite.play("end_achievement")
+		special_anim_playing = false

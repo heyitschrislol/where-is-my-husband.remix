@@ -5,17 +5,11 @@ extends Node2D
 #		**	TODO	**
 #	--------------------|
 #	(MUST-HAVE)	-	!!		FINISH THE GAME STORY BEATS UP TO THE GAME ENDING	!!
-#									(smoke drops clue, clue leads to PC, PC opens Firefox to fake email server site, read email
 #									leads to the mysteriously locked bedroom closet, game ends after closet gives a pop-up
 #									window with game's final message
-# (MUST-HAVE)	-	add visibility-blocking overlay to only reveal areas that have already been visited
 #	(MUST-HAVE)	-	 implement all remaining tasks required as part of story progression
 # (MUST-HAVE)	-	add fade to scene transitions
-#	(MUST-HAVE)	-	add display for when achieving special tasks
-#	(MUST-HAVE)	-	add sound-effects
-#	(MUST-HAVE)	-	fix dialogic letter sounds
 #	(MUST-HAVE)	-	add game pause functionality
-#	(MUST-HAVE)	-	create title/press start screen
 #								-	look into object shadows
 # 							- add music
 #								-	add debug overlay showing Gamedata variables
@@ -59,14 +53,18 @@ var TXT_ANIM_STATE : bool = false
 func _ready():
 	#####	 DEBUG TEST STUFF REMOVE LATER	#####
 
-	Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',true)
-	Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
-	Dialogic.VAR.set('PLAYED_DUOLINGO',true)
-	Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
+	## 		NOTE	!	!
+	##		-- Turn on/off opening cutscene within Gamedata at the "start_new_game" function
+
+
+	#Dialogic.VAR.CHARLES.set('FIRST_INTERACTION',true)
+	#Dialogic.VAR.set('FOUND_SPANISH_BOOK',true)
+	#Dialogic.VAR.set('PLAYED_DUOLINGO',true)
+	#Dialogic.VAR.set('CAT_SPANISH_LEARNED',true)
 	#Dialogic.VAR.CHARLES.set('FIRST_SPANISH_CONVO',true)
 
-	Gamedata.CAT_SPANISH_LEARNED = true
-	Gamedata.HAD_CHARLES_FIRST_INTERACTION = true
+	#Gamedata.CAT_SPANISH_LEARNED = true
+	#Gamedata.HAD_CHARLES_FIRST_INTERACTION = true
 	#Gamedata.HAD_CHARLES_DIALOG_IN_SPANISH = true
 	#Gamedata.LET_CHARLES_OUTSIDE = true
 	#Gamedata.SMOKE_INSIDE = true
@@ -79,17 +77,41 @@ func _ready():
 	obj_diningroom_crumpled_note.process_mode = Node.PROCESS_MODE_DISABLED
 	MEOW_TXT_ANIM.visible = false
 	MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
-	if Gamedata.GAME_START:
-		Gamedata.store_character_positions(Vector2(-70.0,-96.0),Vector2(-594.0,-359.0),Vector2(90.0,-419.0))
-		Gamedata.goto_cutscene("open_cutscene", true)
-	elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
-		if not Gamedata.SMOKE_FED and not Gamedata.HOLDING_CAT_FOOD:
-			Gamedata.store_character_positions(Vector2(-89.0,-228.0),Vector2(98.0,-418.0),Vector2(-5.0,-350.0))
-			Gamedata.load_stored_positions()
-			Gamedata.CHARLES_FOLLOW = false
-			Gamedata.SMOKE_FOLLOW = false
-		elif Gamedata.SMOKE_FED:
-			Gamedata.SMOKE_FOLLOW = false
+
+	#if Gamedata.LOAD_POINT.begins_with("CAT_SWAP_START"):
+		#Gamedata.load_progress()
+		#Gamedata.goto_cutscene("open_cutscene", true)
+	#else:
+		#Gamedata.load_progress()
+	#if Gamedata.GAME_START:
+		#Gamedata.store_character_positions(Vector2(-70.0,-96.0),Vector2(-594.0,-359.0),Vector2(90.0,-419.0))
+		#Gamedata.load_progress("GAME_START")
+		#Gamedata.goto_cutscene("open_cutscene", true)
+
+	Gamedata.load_progress()
+	if Gamedata.LOAD_POINT.begins_with("CAT_SWAP_START"):
+		Gamedata.LET_CHARLES_OUTSIDE = true
+		Gamedata.SMOKE_INSIDE = true
+		#Dialogic.VAR.CHARLES.set('CHARLES_FOLLOWING', false)
+		Gamedata.PENDING_SMOKE_ROUTE = "BackDoorToWaitSpot"
+		Gamedata.reveal_room("BACKYARD")
+		#door_back.SPECIAL_DOOR = false
+		var points = route($routes/BackDoorToWaitSpot)
+		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+		smoke.move_along(points)
+		await smoke.destination_reached
+	elif Gamedata.LOAD_POINT.begins_with("DROPPED_NOTE_START"):
+		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+		smoke.animated_sprite.play("chow_down")
+		_on_let_charles_back_inside()
+	#elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
+		#if not Gamedata.SMOKE_FED and not Gamedata.HOLDING_CAT_FOOD:
+			#Gamedata.store_character_positions(Vector2(-89.0,-228.0),Vector2(98.0,-418.0),Vector2(-5.0,-350.0))
+			#Gamedata.load_stored_positions()
+			#Gamedata.CHARLES_FOLLOW = false
+			#Gamedata.SMOKE_FOLLOW = false
+		#elif Gamedata.SMOKE_FED:
+			#Gamedata.SMOKE_FOLLOW = false
 
 
 	Dialogic.timeline_started.connect(Gamedata._on_dialogue_started)
