@@ -15,9 +15,9 @@ extends Node2D
 #								-	add debug overlay showing Gamedata variables
 #################################
 
-@onready var charles =$characters/charles
-@onready var player = $characters/player
-@onready var smoke = $characters/smoke
+@onready var charles_character =$characters/charles
+@onready var player_character = $characters/player
+@onready var smoke_character = $characters/smoke
 
 #@onready var floating_txt_anims: Array[AnimatedSprite2D] = [
 	#$ui/floating_txt_meow,
@@ -97,12 +97,12 @@ func _ready():
 		Gamedata.reveal_room("BACKYARD")
 		#door_back.SPECIAL_DOOR = false
 		var points = route($routes/BackDoorToWaitSpot)
-		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
-		smoke.move_along(points)
-		await smoke.destination_reached
+		#var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+		smoke_character.move_along(points)
+		await smoke_character.destination_reached
 	elif Gamedata.LOAD_POINT.begins_with("NOTE_DROP"):
-		var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
-		smoke.animated_sprite.play("chow_down")
+		#var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+		smoke_character.animated_sprite.play("chow_down")
 		_on_let_charles_back_inside()
 	#elif Gamedata.LET_CHARLES_OUTSIDE and Gamedata.SMOKE_INSIDE:
 		#if not Gamedata.SMOKE_FED and not Gamedata.HOLDING_CAT_FOOD:
@@ -129,12 +129,12 @@ func _process(_delta: float):
 		MEOW_TXT_ANIM.visible = true
 		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_INHERIT
 		MEOW_TXT_ANIM.play("default")
-		charles.animated_sprite.play("seated_meow_left")
+		charles_character.animated_sprite.play("seated_meow_left")
 	elif not TXT_ANIM_STATE:
 		MEOW_TXT_ANIM.visible = false
 		MEOW_TXT_ANIM.process_mode = Node.PROCESS_MODE_DISABLED
 		MEOW_TXT_ANIM.stop()
-		#charles.animated_sprite.stop()
+		#charles_character.animated_sprite.stop()
 
 func _on_dialog_request(timeline_name: String,_location: String):
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -205,9 +205,9 @@ func _on_let_charles_outside():
 	Gamedata.reveal_room("BACKYARD")
 	#door_back.SPECIAL_DOOR = false
 	var points = route($routes/BackDoorToWaitSpot)
-	var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
-	smoke.move_along(points)
-	await smoke.destination_reached
+	#var smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	smoke_character.move_along(points)
+	await smoke_character.destination_reached
 
 func _on_holding_cat_food():
 	Gamedata.HOLDING_CAT_FOOD = true
@@ -220,11 +220,11 @@ func _on_food_placed():
 	var points = route($routes/WaitSpotToFoodDish)
 	var player_points = route($routes/PlayerStepAside)
 	points.append($markers/FoodDish.global_position)
-	var in_smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
-	player.move_along(player_points)
-	await player.destination_reached
-	in_smoke.move_along(points)
-	await in_smoke.destination_reached
+	#var in_smoke = Gamedata._get_cats().filter(func(n): return n.name == "smoke")[0]
+	player_character.move_along(player_points)
+	await player_character.destination_reached
+	smoke_character.move_along(points)
+	await smoke_character.destination_reached
 	Gamedata.SMOKE_CHOW_DOWN = true
 	_charles_returns_to_door()
 
@@ -242,8 +242,8 @@ func _on_smoke_fed():
 		#floating_txt_anims[index].visible = false
 
 func _charles_returns_to_door() -> void:
-	charles.move_along(route($routes/CharlesAtBackDoor))
-	await charles.destination_reached
+	charles_character.move_along(route($routes/CharlesAtBackDoor))
+	await charles_character.destination_reached
 	# Both copies of the flag: Gamedata for GDScript, Dialogic.VAR for the .dtl check
 	Gamedata.CHARLES_MEOWING_AT_DOOR = true
 	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', true)
@@ -256,19 +256,19 @@ func _on_let_charles_back_inside() -> void:
 	Gamedata.CHARLES_MEOWING_AT_DOOR = false
 	Dialogic.VAR.CHARLES.set('MEOWING_AT_DOOR', false)
 	door_back.unlock_and_open()
-	# "Brushes past": stop Charles colliding with the player's physics layer (layer 2)
-	charles.set_collision_mask_value(2, false)
-	var normal_speed = charles.follow_speed
-	charles.follow_speed = normal_speed * 1.8    # hurried
+	# "Brushes past": stop Charles colliding with the player_character's physics layer (layer 2)
+	charles_character.set_collision_mask_value(2, false)
+	var normal_speed = charles_character.follow_speed
+	charles_character.follow_speed = normal_speed * 1.8    # hurried
 	_drop_note_when_charles_passes(obj_diningroom_crumpled_note.global_position)
-	charles.move_along(route($routes/CharlesDoorToHallway))
-	await charles.destination_reached
-	charles.follow_speed = normal_speed
-	charles.set_collision_mask_value(2, true)
+	charles_character.move_along(route($routes/CharlesDoorToHallway))
+	await charles_character.destination_reached
+	charles_character.follow_speed = normal_speed
+	charles_character.set_collision_mask_value(2, true)
 
 
 func _drop_note_when_charles_passes(drop_pos: Vector2) -> void:
-	while charles.global_position.distance_to(drop_pos) > 20.0:
+	while charles_character.global_position.distance_to(drop_pos) > 20.0:
 		if not is_inside_tree():
 			return
 		await get_tree().physics_frame
@@ -281,8 +281,8 @@ func _on_crumpled_note_dropped():
 
 func _on_crumpled_note_opened():
 	var points = route($routes/PlayerMoveToIsland)
-	player.move_along(points)
-	await player.destination_reached
+	player_character.move_along(points)
+	await player_character.destination_reached
 	Gamedata.give_item("torn_note")
 	obj_kitchen_torn_note.visible = true
 	obj_kitchen_torn_note.process_mode = Node.PROCESS_MODE_INHERIT
@@ -310,8 +310,8 @@ func _start_pending_smoke_route() -> void:
 	if route_node == null:
 		push_warning("No route node named '%s' under House/Routes" % route_name)
 		return
-	smoke.move_along(route(route_node))
-	await smoke.destination_reached
+	smoke_character.move_along(route(route_node))
+	await smoke_character.destination_reached
 	#if Gamedata.SMOKE_SPECIAL_ANIM:
 		#smoke.animated_sprite.play("chow_down")
 	print("smoke finished her route")

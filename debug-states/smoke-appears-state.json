@@ -1,0 +1,64 @@
+{
+	"flags":	{
+		"GAME_START":false,
+
+		"HAD_CHARLES_FIRST_INTERACTION":true,
+		"HAD_CHARLES_DIALOG_IN_SPANISH":true,
+		"FOUND_SPANISH_BOOK":true,
+		"CAT_SPANISH_LEARNED":true,
+		"PLAYED_DUOLINGO":true,
+		"LET_CHARLES_OUTSIDE":true,
+		"SMOKE_INSIDE":true,
+
+		"CHARLES_MEOWING_AT_DOOR":false,
+		"LET_CHARLES_BACK_INSIDE":false,
+		"HOLDING_CAT_FOOD":false,
+		"FOOD_PLACED":false,
+		"SMOKE_FED":false,
+		"CRUMPLED_NOTE_DROPPED":false,
+		"CRUMPLED_NOTE_TAKEN":false,
+		"CRUMPLED_NOTE_OPENED":false,
+		"TORN_NOTE_READ":false,
+		"HAD_POST_HACK_CONVO":false,
+		"PMAIL_HACKED":false,
+
+		"HALLBATH_REVEALED":false,
+		"MASTERBATH_REVEALED":false,
+		"BEDROOM_REVEALED":false,
+		"GUESTROOM_REVEALED":false,
+		"BACKYARD_REVEALED":false,
+		"CLOSET_REVEALED":false,
+
+		"CHARLES_FOLLOW":false,
+		"SMOKE_FOLLOW":false,
+		"SMOKE_CHOW_DOWN":false
+	},
+
+
+	"dialogic_flags":	{
+		"CAT_SPANISH_LEARNED": true,
+		"COMPUTER_ACCESSED": false,
+		"CRUMPLED_NOTE_DROPPED": false,
+		"CRUMPLED_NOTE_OPENED": false,
+		"CRUMPLED_NOTE_PICKED_UP": false,
+		"CRUMPLED_NOTE_TAKEN": false,
+		"DOOR_CLOSED": false,
+		"FOUND_SPANISH_BOOK": true,
+		"HAD_POST_HACK_CONVO": false,
+		"HOLDING_CAT_FOOD": false,
+		"PLAYED_DUOLINGO": true,
+		"PMAIL_HACKED": false,
+		"TEST_DOOR": false,
+		"TORN_NOTE_READ": false,
+		"2ND_PC_TOUCH": false,
+		"CHARLES.HAD_FIRST_INTERACTION": true,
+		"CHARLES.HAD_FIRST_SPANISH_CONVO": true,
+		"CHARLES.IS_FOLLOWING": false,
+		"CHARLES.LET_BACK_INSIDE": false,
+		"CHARLES.LET_OUTSIDE": true,
+		"CHARLES.MEOWING_AT_DOOR": false,
+		"SMOKE.CRUMPLED_NOTE_DROPPED": false,
+		"SMOKE.FED": false,
+		"SMOKE.LET_INSIDE": true
+	}
+}

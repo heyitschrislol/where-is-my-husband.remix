@@ -4,7 +4,6 @@ enum States { IDLE,WALKING,MOVINGTO	}
 var state : States = States.IDLE
 
 @export var speed: float = 85.0
-@export var inventory: Array[ContentItem] = []
 @export var last_dir: String = "down"
 @onready var player_sprite = $animated_sprite_2d
 @export var is_stopped: bool
@@ -141,7 +140,7 @@ func set_state(new_state: States) -> void:
 			Input.get_axis("ui_left", "ui_right"),
 			Input.get_axis("ui_up", "ui_down")
 		).normalized()
-	var distance = direction.length()
+	#var distance = direction.length()
 	var _previous_state := state
 
 	state = new_state
@@ -202,7 +201,7 @@ func  _on_anim_start_handler(anim_name: String = "") -> void:
 		await player_sprite.animation_finished
 		player_sprite.play("loop_achievement")
 
-func  _on_anim_end_handler(anim_name: String) -> void:
+func  _on_anim_end_handler(_anim_name: String) -> void:
 	player_sprite.play("end_achievement")
 	await player_sprite.animation_finished
 	special_anim_playing = false

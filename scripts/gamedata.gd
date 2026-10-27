@@ -4,7 +4,7 @@ extends Node
 ##	BEGINNING_POINT, SMOKE_ARRIVES, or NOTE_DROP
 ##  the value of LOAD_POINT determines  which point in the story the game boots up to
 ##-------------------------------------------------------
-var LOAD_POINT = "BEGINNING_POINT"
+var LOAD_POINT = "SMOKE_ARRIVES"
 
 
 var player_node : Node
@@ -87,17 +87,6 @@ var progress_flags: Array = [
 	HAD_CHARLES_FIRST_INTERACTION,
 	HAD_CHARLES_DIALOG_IN_SPANISH,
 ]
-#func get_door_room(room_name: String) -> bool:
-	#var rooms = {
-		#"HALLBATH"			:	HALLBATH_REVEALED,
-		#"MASTERBATH"		:	MASTERBATH_REVEALED,
-		#"BEDROOM"				:	BEDROOM_REVEALED,
-		#"GUESTROOM"		:	GUESTROOM_REVEALED,
-		#"CLOSET"				:	CLOSET_REVEALED,
-		#"BACKYARD"			:	BACKYARD_REVEALED
-	#}
-	#return rooms[room_name]
-
 
 
 
@@ -274,7 +263,6 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene = current_scene
 
 	# Place characters at their previous locations
-	#set_character_positions()
 	#get_tree.call_deferred("load_stored_positions")
 	load_stored_positions()
 
